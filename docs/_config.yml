@@ -1,0 +1,29 @@
+# Dependencies
+# markdown:         redcarpet
+# highlighter:      pygments
+
+# Permalinks
+# permalink:        pretty
+# relative_permalinks: true
+
+# Setup
+title:            CIBiG
+tagline:          'One month course'
+description:      'From sequencing data production to analysis for agriculture and health'
+#baseurl: ""
+url:              'cibig-course.github.io'
+author:
+  name:           'Christine Tranchant-Dubreuil'
+  mail:            christine.tranchant@ird.fr'
+
+
+#paginate:         5
+
+# Custom vars
+#version:          2.1.0
+
+github:
+  repo:           https://github.com/CIBiG-Course/CIBiG-course.github.io
+
+exclude:
+  -README.md
