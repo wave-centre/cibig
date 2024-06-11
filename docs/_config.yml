@@ -11,7 +11,7 @@ title:            CIBiG
 tagline:          'One month course'
 description:      'From sequencing data production to analysis for agriculture and health'
 #baseurl: ""
-url:              'cibig-course.github.io'
+url:              'cibig-wave.github.io'
 author:
   name:           'Christine Tranchant-Dubreuil'
   mail:            christine.tranchant@ird.fr'
@@ -23,7 +23,7 @@ author:
 #version:          2.1.0
 
 github:
-  repo:           https://github.com/CIBiG-Course/CIBiG-course.github.io
+  repo:           https://github.com/CIBiG-wave/cibig-wave.github.io
 
 exclude:
   -README.md
