@@ -37,7 +37,7 @@ The course will be in French, but the slides and other course material will be i
 | Linux                                              | Basic Linux Commands,  Bioinformatics Tools (e.g., BLAST), Advanced Linux (e.g., sed, awk), VCF, GFF Manipulation, slurm, Containers (Singularity, Conda) | 32h |
 | Data analysis and visualization in R               | Read Tabular File into DataFrame, DataFrame Manipulation, Data Visualization (Plotting), R Markdown                                                       | 12h |
 | OMICs data analysis                                | Diversity analysis / metagenomic analysis (ONT and illumina sequencing, Sequence Quality, Mapping, Structural Variant detection, SNP Annotation)          | 34h | 
-| Python programming                                 | Variables, Affichage, Listes, Boucles et comparaisons, Tests, Fichiers, Modules, Fonctions, Containers, dictionnaires, tuples et sets                                                                                                                                                          | 28h |
+| Python programming                                 | Variables, Display, Lists, Loops and Comparisons, Tests, Files, Modules, Functions, Containers, Dictionaries, Tuples, and Sets                                                                                                                                                          | 28h |
 | Science reproductibility                           | Best Practices (Data Management, Code, Licensing), Containers (Docker, Singularity), Conda, Git, Snakemake                                                | 12h |
 
 ### Practical sessions
