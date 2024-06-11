@@ -1,6 +1,6 @@
 <div style="display:flex"> 
-<img src="public/logo_wave2.jpeg" style="display: block; margin: 0 auto; width: 30%; height: 30%;">
-<img src="public/logo_uboigny.jpeg" style="display: block; margin: 0 auto; width: 20%; height: 20%;">
+<img src="docs/public/logo_wave2.jpeg" style="display: block; margin: 0 auto; width: 30%; height: 30%;">
+<img src="docs/public/logo_uboigny.jpeg" style="display: block; margin: 0 auto; width: 20%; height: 20%;">
 </div> 
 
 # Welcome on the github repository of the CIBIG
@@ -14,9 +14,9 @@ The CIBiG  offers an intensive training aimed at PhD students and researchers wh
 [More information on the CIBIG web site](https://cibig-course.github.io/)
 
 <div style="display:flex"> 
-<img src="public/logo_ujkz.jpeg" style="display: block; margin: 0 auto; width: 16%;">
-<img src="public/logo_itrop.png" style="display: block; margin: 0 auto; width: 16%; ">
-<img src="public/logo-ird-grey.jpg" style="display: block; margin: 0 auto; width: 30%;">
+<img src="docs/public/logo_ujkz.jpeg" style="display: block; margin: 0 auto; width: 16%;">
+<img src="docs/public/logo_itrop.png" style="display: block; margin: 0 auto; width: 16%; ">
+<img src="docs/public/logo-ird-grey.jpg" style="display: block; margin: 0 auto; width: 30%;">
 </div> 
 
 ### License
