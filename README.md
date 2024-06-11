@@ -3,7 +3,7 @@
 <img src="img/logo_uboigny.jpeg" style="display: block; margin: 0 auto; width: 20%; height: 20%;">
 </div> 
 
-# Welcome on the github repository of the CIBIG
+# Welcome on the github repository of the CIBiG
 
 The CIBiG  offers an intensive training aimed at PhD students and researchers who use sequencing technologies and data in their research. This one-month training  provides comprehensive insights into sequencing, genomics and bioinformatics, and will teach participants how to effectively use bioinformatics methods to analyse sequencing data, with a focus on applications in agriculture and health.
 
