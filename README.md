@@ -11,7 +11,7 @@ The CIBiG  offers an intensive training aimed at PhD students and researchers wh
 |---------|---------|---------|---------|
 | 9 September - 4 October 2024 | The <a href="https://wave-center.org/" target_blank>WAVE Regional Center of Excellence</a>, Université Felix Houphouët Boigny, Bingerville, Abijan | 15 participants | Application opened |
 
-[More information on the CIBIG web site](https://cibig-course.github.io/)
+[More information on the CIBIG web site](https://cibig-wave.github.io/)
 
 <div style="display:flex"> 
 <img src="img/logo_ujkz.jpeg" style="display: block; margin: 0 auto; width: 16%;">
