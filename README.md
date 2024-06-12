@@ -5,7 +5,7 @@
 
 # Welcome on the github repository of the CIBIG
 
-The CIBiG  offers an intensive training aimed at PhD students and researchers who use sequencing technologies and data in their research. This one-month training  provides comprehensive insights into sequencing, genomics and bioinformatics, and will teach participants how to effectively use bioinformatics methods to analyse sequencing data, with a focus on applications in agriculture and health.
+The International Certificate in Bioinformatics and Genomics (CIBiG)  offers an intensive training aimed at PhD students and researchers who use sequencing technologies and data in their research. This one-month training  provides comprehensive insights into sequencing, genomics and bioinformatics, and will teach participants how to effectively use bioinformatics methods to analyse sequencing data, with a focus on applications in agriculture and health.
 
 | Date | Location | Trainees | Status | 
 |---------|---------|---------|---------|
