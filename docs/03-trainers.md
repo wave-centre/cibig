@@ -42,7 +42,7 @@ title: Trainers
 
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="public/trainer_anonym.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
-    <p>Sebastien RAVEL - IRD</p>
+    <p>Sebastien RAVEL - CIRAD</p>
   </div>
 
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
