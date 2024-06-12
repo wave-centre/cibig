@@ -11,7 +11,7 @@ title: Home
 <br />
 <div>
  <p align="justify">
-The CIBiG will offer an intensive training aimed at PhD students and researchers who use sequencing technologies and data in their research.
+The International Certificate in Bioinformatics and Genomics (CIBiG) will offer an intensive training aimed at PhD students and researchers who use sequencing technologies and data in their research.
 This training will provide comprehensive insights into sequencing, genomics and bioinformatics, and  will teach participants how to effectively use bioinformatics methods to analyse sequencing data, with a focus on applications in agriculture and health.
 
 <div style="display: flex; align-items: center;">
