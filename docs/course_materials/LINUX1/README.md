@@ -28,17 +28,17 @@ After this course, participants should be able to:
 # Course material
 
 * Slides : 
-* Practice :
+* Practice : [here](https://github.com/CIBiG-wave/cibig-wave.github.io/blob/gh-pages/docs/course_materials/LINUX1/linux1_PRACTICE.md)
 * Tuto : 
 
 # Related courses
 
-| LINUX | 28h |
-|---------|-----|
-| Level 1 | url | 
-| Level 2 | url | 
-| Cluster | url | 
-| Singularity/conda | url | 
+| LINUX | 28h                                                                                                    |
+|---------|--------------------------------------------------------------------------------------------------------|
+| Level 1 | [here](https://github.com/CIBiG-wave/cibig-wave.github.io/blob/gh-pages/docs/course_materials/LINUX1/) | 
+| Level 2 | [here](https://github.com/CIBiG-wave/cibig-wave.github.io/blob/gh-pages/docs/course_materials/LINUX2/) | 
+| Cluster | url                                                                                                    | 
+| Singularity/conda | url                                                                                                    | 
 
 
 # Instructors
