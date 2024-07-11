@@ -69,7 +69,7 @@
 -----------------------
 
 
-<a name="practice-2"></a>
+<a name="practice-1"></a>
 ### Practice 1 : Get Connecting on a linux server by `ssh`
 
 In mobaXterm:
