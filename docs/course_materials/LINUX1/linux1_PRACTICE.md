@@ -14,7 +14,7 @@
 
 <!-- TOC depthFrom:2 depthTo:2 withLinks:1 updateOnSave:1 orderedList:0 -->
 * [Preambule: Softwares to install before connecting to a distant linux server ](#preambule)
-* [Practice 1: Get Connecting on a linux server by `ssh`](#practice-2)
+* [Practice 1: Get Connecting on a linux server by `ssh`](#practice-1)
 * [Practice 2: First steps : prompt & `pwd`command](#practice-3)
 * [Practice 3: List the files using `ls` command](#practice-4)
 * [Practice 4 : List the files using `ls` command and metacharacter _*_](#practice-5)
