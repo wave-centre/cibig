@@ -44,17 +44,17 @@
 
 ##### Getting connected to a Linux servers from Windows with SSH (Secure Shell) protocol
 
-| Platform | Software  | Description | url |
-| :------------- | :------------- | :------------- | :------------- |
-| <img width="10%" class="img-responsive" src="{{ site.url }}/images/tpLinux/osWin.png"/> | mobaXterm |An enhanced terminal for Windows with an X11 server and a tabbed SSH client | [More](https://mobaxterm.mobatek.net/) |
+| Platform                                                              | Software  | Description | url |
+|:----------------------------------------------------------------------| :------------- | :------------- | :------------- |
+| <img width="10%" class="img-responsive" src="img/osWin.png"/> | mobaXterm |An enhanced terminal for Windows with an X11 server and a tabbed SSH client | [More](https://mobaxterm.mobatek.net/) |
 
 
 
 ##### Transferring and copying files from your computer to a Linux servers with SFTP (SSH File Transfer Protocol) protocol
 
-| Platform | Software  | Description | url |
-| :------------- | :------------- | :------------- | :------------- |
-| <img width="10%" class="img-responsive" src="{{ site.url }}/images/tpLinux/osApple.png"/> <img width="10%" class="img-responsive" src="{{ site.url }}/images/tpLinux/osLinux.png"/> <img width="10%" class="img-responsive" src="{{ site.url }}/images/tpLinux/osWin.png"/>| <img width="10%" class="img-responsive" src="{{ site.url }}/images/tpLinux/filezilla.png"/> filezilla |  FTP and SFTP client  | [Download](https://filezilla-project.org/download.php?type=client)  |
+| Platform                                                                                                                                                                                     | Software  | Description | url |
+|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| :------------- | :------------- | :------------- |
+| <img width="10%" class="img-responsive" src="img/osApple.png"/> <img width="10%" class="img-responsive" src="img/osLinux.png"/> <img width="10%" class="img-responsive" src="img/osWin.png"/>| <img width="10%" class="img-responsive" src="img/filezilla.png"/> filezilla |  FTP and SFTP client  | [Download](https://filezilla-project.org/download.php?type=client)  |
 
 
 ##### Viewing and editing files on your computer before transferring on the linux server or directly on the distant server
@@ -103,7 +103,7 @@ tar -xzvf LINUX-TP.tar.gz
 * Check through filezilla the content of your home directory on the server now (cf. filetree just below)
 * Delete through filezilla the file LINUX-TP.tar.gz on the server
 
-<img width="50%" class="img-responsive" src="{{ site.url }}/images/tpLinux/arbo-1.png"/>
+<img width="50%" class="img-responsive" src="img/arbo-1.png"/>
 
 -----------------------
 
@@ -217,7 +217,7 @@ Test the command `tree`
 ### Practice 7 : Manipulating Files and Folders
 
 We will prepare our blast analysis performed after by creating directory and moving files as showing in the image just below :
-<img width="50%" class="img-responsive" src="{{ site.url }}/images/tpLinux/arbo-2.png"/>
+<img width="50%" class="img-responsive" src="img/arbo-2.png"/>
 
 * Create a subdirectory called `BlastAnalysis` in the directory `LINUX_TP` with the `mkdir` command.
 * Move `transcritsAssembly.fasta` into this new directory with the `mv` command.
@@ -458,7 +458,7 @@ When using Unix files on Windows, it is useful to convert the line endings to di
 
 In Notepad++: `Edit > EOL Conversion > Windows Format`
 
-<img width="50%" class="img-responsive" src="{{ site.url }}/images/tpLinux/tp-notepadUTF8.png"/>
+<img width="50%" class="img-responsive" src="img/tp-notepadUTF8.png"/>
 
 ###### `unix2dos` & `dos2unix`
 
@@ -507,13 +507,13 @@ ndzndioezdnezd^M
 ###### Komodo Edit
 
 After installing Komodo Edit, open it and click on _Edit –> Preferences_
-<img width="50%" class="img-responsive" src="{{ site.url }}/images/tpLinux/tp-komodoEdit1.png"/>
+<img width="50%" class="img-responsive" src="img/tp-komodoEdit1.png"/>
 
 Select Servers from the left and enter sftp account information, then save it.
-<img width="50%" class="img-responsive" src="{{ site.url }}/images/tpLinux/tp-komodoEdit2.png"/>
+<img width="50%" class="img-responsive" src="img/tp-komodoEdit2.png"/>
 
 To edit a distant content, click on _File –> Open –> Remote File_
-<img width="50%" class="img-responsive" src="{{ site.url }}/images/tpLinux/tp-komodoEdit3.png"/>
+<img width="50%" class="img-responsive" src="img/tp-komodoEdit3.png"/>
 
 -----------------------
 
@@ -614,7 +614,7 @@ Some helpful tips for using the man command :
 
 ##### Open FileZilla and save the cluster adress into the site manager
 
-<img width="50%" class="img-responsive" src="{{ site.url }}/images/tpLinux/tp-filezilla1.png"/>
+<img width="50%" class="img-responsive" src="img/tp-filezilla1.png"/>
 
 In the FileZilla menu, go to _File > Site Manager_. Then go through these 5 steps:
 
@@ -631,7 +631,7 @@ In the FileZilla menu, go to _File > Site Manager_. Then go through these 5 step
 
 ##### Transferring files
 
-<img width="50%" class="img-responsive" src="{{ site.url }}/images/tpLinux/tp-filezilla2.png"/>
+<img width="50%" class="img-responsive" src="img/tp-filezilla2.png"/>
 
 1. From your computer to the cluster : click and drag an text file item from the left to the right column
 2. From the cluster to your computer : click and drag an text file item from he right  to the left column
