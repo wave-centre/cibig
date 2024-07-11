@@ -1,12 +1,12 @@
 ## Description
 
-| Description | Hands On Lab Exercises for Linux |
-| :------------- | :------------- | :------------- | :------------- |
-| Related-course materials | [Linux for Dummies](https://) |
-| Authors | Christine Tranchant-Dubreuil (christine.tranchant@ird.fr)  |
-| Creation Date | 26/02/2018 |
-| Last Modified Date | 11/08/2024 |
-|Modified by | G. Sarah, G. Sempere, N. Tando, C. Tranchant (url SG)|
+| Description              | Hands On Lab Exercises for Linux                                                                                    |
+|:-------------------------|:--------------------------------------------------------------------------------------------------------------------|
+| Related-course materials | [Linux for Dummies](https://github.com/CIBiG-wave/cibig-wave.github.io/blob/gh-pages/docs/course_materials/LINUX1/) |
+| Authors                  | Christine Tranchant-Dubreuil (christine.tranchant@ird.fr)                                                           |
+| Creation Date            | 26/02/2018                                                                                                          |
+| Last Modified Date       | 11/08/2024                                                                                                          |
+| Modified by              | itrop/Soutgreen trainers ([see](https://southgreenplatform.github.io/trainings/linux/linuxPractice/)) |              |
 
 -----------------------
 
