@@ -15,23 +15,23 @@
 <!-- TOC depthFrom:2 depthTo:2 withLinks:1 updateOnSave:1 orderedList:0 -->
 * [Preambule: Softwares to install before connecting to a distant linux server ](#preambule)
 * [Practice 1: Get Connecting on a linux server by `ssh`](#practice-1)
-* [Practice 2: First steps : prompt & `pwd`command](#practice-3)
-* [Practice 3: List the files using `ls` command](#practice-4)
-* [Practice 4 : List the files using `ls` command and metacharacter _*_](#practice-5)
-* [practice-5 : Moving into file system using `cd`and `ls` commands](#practice-6)
-* [practice-6 : Manipulating Files and Folders](#practice-7)
-* [practice-7 : Searching with `grep`](#practice-8)
-* [practice-8 : Blast analysis](#practice-9)
-* [Practice-9: Redirecting a command output to a File with `>`](#practice-10)
-* [Practice-10: Sending data from one command to another (piping) with `|`](#practice-11)
-* [practice-11 : Dealing with VCF files](#practice-12)
-* [practice-12 : Filtering VCF files](#practice-13)
-* [Practice-13 : Getting basic stats](#practice-14)
+* [Practice 2: First steps : prompt & `pwd`command](#practice-2)
+* [Practice 3: List the files using `ls` command](#practice-3)
+* [Practice 4 : List the files using `ls` command and metacharacter _*_](#practice-4)
+* [practice-5 : Moving into file system using `cd`and `ls` commands](#practice-5)
+* [practice-6 : Manipulating Files and Folders](#practice-6)
+* [practice-7 : Searching with `grep`](#practice-7)
+* [practice-8 : Blast analysis](#practice-8)
+* [Practice-9: Redirecting a command output to a File with `>`](#practice-9)
+* [Practice-10: Sending data from one command to another (piping) with `|`](#practice-10)
+* [practice-11 : Dealing with VCF files](#practice-11)
+* [practice-12 : Filtering VCF files](#practice-12)
+* [Practice-13 : Getting basic stats](#practice-13)
 * [Tips](#tips)
   - [How to convert between Unix and Windows text files?](#convertFileFormat)
   - [How to open and read a file through a text editor on a distant linux server?](#readFile)
   - [Getting Help on any command-line](#help)
-  - [Transferring files with filezilla `sftp`](#practice-1)
+  - [Transferring files with filezilla `sftp`](#filezilla)
 * [Links](#links)
 * [License](#license)
 
@@ -85,8 +85,8 @@ In mobaXterm:
 
 -----------------------
 
-<a name="practice-3"></a>
-###  Practice 3 : First steps : prompt & `pwd`
+<a name="practice-2"></a>
+###  Practice 2 : First steps : prompt & `pwd`
 
 * What is the current/working directory just by looking the prompt?
 * Check the name of your working directory with `pwd` command?
@@ -605,8 +605,8 @@ Some helpful tips for using the man command :
 -----------------------
 
 
-<a name="practice-1"></a>
-### Practice 1 : Transferring files with filezilla `sftp`
+<a name="filezilla"></a>
+### Transferring files with filezilla `sftp`
 
 
 ##### Download and install FileZilla
