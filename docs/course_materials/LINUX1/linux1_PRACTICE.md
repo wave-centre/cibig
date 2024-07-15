@@ -107,8 +107,8 @@ tar -xzvf LINUX-TP.tar.gz
 
 -----------------------
 
-<a name="practice-4"></a>
-### Practice 4 : List the files using `ls` command
+<a name="practice-3"></a>
+### Practice 3 : List the files using `ls` command
 
 * List the content of your home directory
 * List the content of the directory `Fasta` by using its absolute path in first then its relative path - `ls` command
@@ -117,8 +117,8 @@ tar -xzvf LINUX-TP.tar.gz
 
 -----------------------
 
-<a name="practice-5"></a>
-### Practice 5 : List the files using `ls` command and metacharacter _*_
+<a name="practice-4"></a>
+### Practice 4 : List the files using `ls` command and metacharacter _*_
 
 * List the content of the directory `T-coffee`. Are there only fasta files ? - `ls` command
 * List only the files starting by sample (in the directory `T-coffee` ) -  `ls` command & _*_
@@ -126,8 +126,8 @@ tar -xzvf LINUX-TP.tar.gz
 
 -----------------------
 
-<a name="practice-6"></a>
-### Practice 6 : Moving into file system using `cd` and `ls` command
+<a name="practice-5"></a>
+### Practice 5 : Moving into file system using `cd` and `ls` command
 
 * Go to the directory `Script` and check in the prompt you have correctly changed your working directory (`pwd`).
 * List the dir content with `ls`.
