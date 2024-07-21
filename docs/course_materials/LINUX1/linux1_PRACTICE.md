@@ -233,9 +233,9 @@ We will prepare our blast analysis performed after by creating directory and mov
 
 
 
-<a name="practice-8"></a>
+<a name="practice-7"></a>
 
-### Practice 8 : Searching with `grep`
+### Practice 7 : Searching with `grep`
 
 * Go on the following page : https://plants.ensembl.org/Oryza_sativa/Info/Index using your internet navigator
 * Copy the url of the rice genome annotation file (gff format, all chromosomes) that we will use to download the file directly on the server
@@ -253,8 +253,8 @@ We will prepare our blast analysis performed after by creating directory and mov
 
 -----------------------
 
-<a name="practice-9"></a>
-### Practice 9 : Blast analysis
+<a name="practice-8"></a>
+### Practice 8 : Blast analysis
 
 ##### Connection to bioinfo-inter.ird.fr
 
@@ -349,14 +349,14 @@ The flag for the output format is -outfmt followed by a number which denotes the
 
 -----------------------
 
-<a name="practice-10"></a>
-### Practice 10 : Redirecting a command output to a File with `>`
+<a name="practice-9"></a>
+### Practice 9 : Redirecting a command output to a File with `>`
 * Extract all ESTs identifiers and print them in the file ESTs_accession.list - `cut >`
 
 -----------------------
 
-<a name="practice-11"></a>
-### Practice 11 :  Sending data from one command to another (piping) with `|`
+<a name="practice-10"></a>
+### Practice 10 :  Sending data from one command to another (piping) with `|`
 * How many sequences contains the file transcritsAssembly.fasta ?
 * How many sequences have a homology with EST sequences ? (TIPs: `cut` command with `sort -u` (uniq) or `uniq` command ))
 * Extract ESTs sequences from database (or "bank") with `seqtk` by typing :
@@ -388,8 +388,8 @@ seqtk comp  FASTA_FILE | head
 
 -----------------------
 
-<a name="practice-12"></a>
-### Practice 12 : Dealing with vcf Files 
+<a name="practice-11"></a>
+### Practice 11 : Dealing with vcf Files 
 
 * List the content of the directory `/scratch2/VCF_LINUX`
 * Before creating your directory `/scratch2/VCF_LINUX_FORMATIONX`, displays the amount of disk space available on the file system with the command `df`
@@ -413,8 +413,8 @@ Thus, OgOb-all-MSU7-CHR6.GATKVARIANTFILTRATION.LINK.vcf is the name of the new f
 
 -----------------------
 
-<a name="practice-13"></a>
-### Practice 13 :  Filtering VCF files `|` - `zgrep` 
+<a name="practice-12"></a>
+### Practice 12 :  Filtering VCF files `|` - `zgrep` 
 To get some basics stats of the output VCF files, let's use linux command!
 * How many polymorphisms were detected (Displaying all the lines which does not start with # / header lines) in the different vcf files ?
 * How many polymorphisms were considered "good" after filtering steps by GATK VARIANTFILTRATION (ie marked `PASS`)?
@@ -424,8 +424,8 @@ To get some basics stats of the output VCF files, let's use linux command!
 
 -----------------------
 
-<a name="practice-14"></a>
-### Practice 14 : Getting basic stats
+<a name="practice-13"></a>
+### Practice 13 : Getting basic stats
 * Go into the directory `LINUX-TP/Data/fastq/pairedTwoIndividusGzippedIrigin` - `cd`
 * List the directory content
 * Run fastq-stats program ( [more](http://manpages.ubuntu.com/manpages/xenial/man1/fastq-stats.1.html) to get stats about the fastq file `irigin1_1.fastq.gz`
