@@ -17,7 +17,7 @@
 * [Practice 1: Get Connecting on a linux server by `ssh`](#practice-1)
 * [Practice 2: First steps : prompt & `pwd`command](#practice-2)
 * [Practice 3: List the files using `ls` command](#practice-3)
-* [Practice 4 : List the files using `ls` command and metacharacter _*_](#practice-4)
+* [Practice 4 : List the files using `ls` command and wildcards  _*_](#practice-4)
 * [practice-5 : Moving into file system using `cd`and `ls` commands](#practice-5)
 * [practice-6 : Manipulating Files and Folders](#practice-6)
 * [practice-7 : Searching with `grep`](#practice-7)
@@ -118,7 +118,7 @@ tar -xzvf LINUX-TP.tar.gz
 -----------------------
 
 <a name="practice-4"></a>
-### Practice 4 : List the files using `ls` command and metacharacter _*_
+### Practice 4 : List the files using `ls` command and wildcards  _*_
 
 * List the content of the directory `T-coffee`. Are there only fasta files ? - `ls` command
 * List only the files starting by sample (in the directory `T-coffee` ) -  `ls` command & _*_
@@ -213,8 +213,8 @@ Test the command `tree`
 
 -----------------------
 
-<a name="practice-7"></a>
-### Practice 7 : Manipulating Files and Folders
+<a name="practice-6"></a>
+### Practice 6 : Manipulating Files and Folders
 
 We will prepare our blast analysis performed after by creating directory and moving files as showing in the image just below :
 <img width="50%" class="img-responsive" src="img/arbo-2.png"/>
