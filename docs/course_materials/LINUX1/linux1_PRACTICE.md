@@ -19,7 +19,7 @@
 * [Practice 3: List the files using `ls` command](#practice-3)
 * [Practice 4 : List the files using `ls` command and wildcards  _*_](#practice-4)
 * [practice-5 : Moving into file system using `cd`and `ls` commands](#practice-5)
-* [practice-6 : Manipulating Files and Folders](#practice-6)
+* [practice-6 : Manipulating Files and Directories](#practice-6)
 * [practice-7 : Searching with `grep`](#practice-7)
 * [practice-8 : Blast analysis](#practice-8)
 * [Practice-9: Redirecting a command output to a File with `>`](#practice-9)
@@ -214,7 +214,7 @@ Test the command `tree`
 -----------------------
 
 <a name="practice-6"></a>
-### Practice 6 : Manipulating Files and Folders
+### Practice 6 : Manipulating Files and Directories
 
 We will prepare our blast analysis performed after by creating directory and moving files as showing in the image just below :
 <img width="50%" class="img-responsive" src="img/arbo-2.png"/>
