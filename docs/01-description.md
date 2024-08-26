@@ -35,9 +35,7 @@ The course will be in French, but the slides and other course material will be i
 | Sequencing: from library preparation to sequencing | Overview of Sequencing Technologies, RNA/DNA Extraction, Library Preparation for Illumina and ONT, Sequencing and Quality Control                         | 30h |
 | Biological database                                | Sequence Databases (e.g., NCBI/SWISS-Prot), Blast Alignment, Primer design                                                                                | 8h |
 | Linux                                              | Basic Linux Commands,  Bioinformatics Tools (e.g., BLAST), Advanced Linux (e.g., sed, awk), VCF, GFF Manipulation, slurm, Containers (Singularity, Conda) | 38h |
-
 | Introduction to Algorithmics | 	Introduction to algorithms, data and control structures, with simplified exercises to acquire the basics, reused later in R and Python. | 8h | 
-
 | Data analysis and visualization in R               | Read Tabular File into DataFrame, DataFrame Manipulation, Data Visualization (Plotting), R Markdown                                                       | 12h |
 | OMICs data analysis                                | Diversity analysis / metagenomic analysis (ONT and illumina sequencing, Sequence Quality, Mapping, Structural Variant detection, SNP Annotation)          | 34h | 
 | Python programming                                 | Variables, Display, Lists, Loops and Comparisons, Tests, Files, Modules, Functions, Containers, Dictionaries, Tuples, and Sets                                                                                                                                                          | 24h |
