@@ -1,6 +1,5 @@
 ---
-layout: page
-title: Course description
+
 ---
 
 The WAVE (Central and West African Virus Epidemiology) Regional Center of Excellence for Transboundary Plant Pathogens is excited to welcome its first cohort for the theoretical and practical training of the International Certificate in Bioinformatics and Genomics (CIBiG). The training will take place at WAVE, located at the Pôle Scientifique et d'Innovation of University Félix Houphouët-Boigny (Bingerville), from September 9 to October 4, 2024, inclusive.
