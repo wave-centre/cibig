@@ -9,8 +9,8 @@ The training will take place at WAVE, located at the Pôle Scientifique et d'Inn
 
 ## Program structure
 
-| Code | Module                                             | Description                                                                                                                                               | Main Teachers | Helpers |
-|----------------------------------------------------|----| -----------------------------------------------------------------------------------------------------------------------------------------------------------|----|----|----|
+| Code | Module  | Description | Main Teachers | Helpers |
+|----------------------------------------------------|----| -----------------------------------------------------------------------------------------------------------------------------------------------------------|----|----|
 | ONLINE | Course review (12h)                                    | General biology, Genomics basis, Genome Structure and Evolution, Sequencing technologies and Applications | R. Nanema, F. Tiendrebeogo, F. Sabot |
 |  SEQUENCING (30h) | Sequencing: from library preparation to sequencing | Overview of Sequencing Technologies, RNA/DNA Extraction, Library Preparation for Illumina and ONT, Sequencing and Quality Control                         | M. Bangratz, M. Couderc | Roger |
 | BANK (8h) | Biological database                                 | Sequence Databases (e.g., NCBI/SWISS-Prot), Blast Alignment, Primer design                                                                                | A. Dereeper, E. Tibiri | |
