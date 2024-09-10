@@ -1,0 +1,46 @@
+---
+title: "ignite"
+format: revealjs
+---
+
+## Quarto
+
+Quarto is a multi-language, next generation version of **R Markdown** from Posit, with many new new features and capabilities.
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+## Bullets
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+## Create you own worksapce
+
+Now it is time to settle at home. BUT... wait! What is home?
+
+Let's first create a persistant folder that you will be using during the whole R trainning module:
+
+```{r}
+#| label: create my own work folder
+wd <- getwd()
+myWd <- file.path(wd, "mydatalocal", "myprecious")
+gitWd <- "~/mydatalocal/cibig-wave.github.io/docs/course_materials/R"
+
+dir.create(myWd)
+```
+
+Now let's bring in some furniture in your space to make it cozy and useful:
+
+```{r}
+#| label: create a copy of the github repo qmd files
+
+file.copy(from = file.path(gitWd), "data", to = myWd, recursive = TRUE)
+file.copy(from = file.path(gitWd), "rmds", to = myWd, recursive = TRUE)
+
+```
+
+
+
+
