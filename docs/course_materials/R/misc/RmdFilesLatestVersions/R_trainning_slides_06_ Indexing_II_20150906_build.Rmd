@@ -1,0 +1,1386 @@
+---
+title: 'IRD/CIRAD trainning to R, the statistical programming language'
+author: "Sebastien Cunnac & Emmanuel Paradis"
+date: "Sept. 7-11, 2015"
+output:
+  ioslides_presentation:
+    smaller: yes
+    widescreen: no
+---
+
+```{r setup, include = FALSE, cache = FALSE}
+knitr::opts_chunk$set(error = TRUE, collapse = TRUE)
+```
+
+
+# Data manipulation II: be the master of arrays (matrices), lists and data frames.
+
+**Pretty long section. Will cover:**
+
+* **The basics of indexing and subesetting for arrays, lists and data frames.**
+* **More intensive data frame manipulations using R default tools.**
+* **Introduction to packages reshape2 and dplyr.**
+
+# Basics of indexing and subesetting
+### - arrays (matrices) {.build}
+### - lists {.build}
+### - data frames {.build}
+
+
+## Indexing and subesetting for matrices and arrays {.build}
+
+* The basic subsetting syntax for arrays is to use the brackets operator containing vectors of indices for each dimension separated by commas. Examples for matrices:
+
+![](/media/cunnac/DONNEES/CUNNAC/Lab-Related/Communications/Teaching/R_trainning_module/slides/images/slicingMatrix.png)  
+[Source: Altuna Akalin](http://al2na.github.io/compgenr/intro_to_r/functions_and_control_structures_for,_ifelse_etc.html)
+
+##
+
+```{r}
+#  a matrix m
+m <- matrix(data = 1:20, nrow = 4, byrow = FALSE)
+m
+m[c(2, 4), ] # return a matrix, two lines, all columns
+m[ ,c(2, 4)] # a matrix,, two columns, all lines
+m[2:6] # vector-like indexing by column for matrices
+```
+
+##
+
+* Matrices and arrays can also be subset with an indexing integer matrix having as many columns as dimensions of the object to subset. Each row represents the coordinates of the element to extract.
+
+```{r}
+idx <- cbind(rows = 1:4, columns = 1:4) # bind two numeric vectors as columns of an idx matrix
+m[idx] # indexing returns a vector of values in the diagonal
+```
+
+* Matrices and arrays can also be subset with logical matrices/array/vectors
+
+```{r}
+# Use a logical vector to find rows that have a value > 5 in the second column
+# Extract columns two to five for these rows (all columns)
+m
+m[m[, 2] > 5, 2:4]
+```
+**We will do a lot of this for data frames**
+
+##
+
+* `row()` and `col()` return a matrix of integers containing respectively, their row or column number in a matrix-like object.
+
+```{r}
+row(m)
+col(m)
+```
+
+This is handy to extract specific regions of the matrix using a logical matrix of the same shape:
+
+```{r}
+row(m) == col(m) # the diagonal
+```
+
+##
+
+```{r}
+m[row(m) < col(m)] # extract the upper triangle by column without the diag
+```
+Actually, not surprisingly, R has dedicated functions for that: `lower.tri()`, `upper.tri()` and `diag()` (for extracting and setting).
+
+##
+
+* `which()` also works for arrays and can return a numeric indexing matrix. Lets's illustrate a use case where the goal is to find the locations of values of interest in a matrix:
+
+```{r}
+# One wants to find values 2, 5 and 10 in `m`:
+logiV <- m %in% c(2, 5, 10)
+logiV # a logical vector by column
+logiM <- matrix(data = logiV, nrow = 4, byrow = FALSE) # coerce into a matrix
+logiM
+m[logiM] # we did find them, apparently the values have no replicate
+
+# To find the coordinates of the values of interest in the matrix:
+idx <- which(logiM, arr.ind = TRUE)
+
+val <- m[idx]
+
+cbind(idx, val = val) # "column" bind the indexing matrix with the vector of values of interest.
+```
+
+
+## Handy Matrix Functions {.build}
+
+`t()`: transposes a matrix  
+`colSums()`: Sum of the column values  
+`rowSums()`: Sum of the row values  
+`colMeans()`: Mean of the column values  
+`rowMeans()`: Mean of the row values  
+`%*%`: matrices multiplication  
+…
+
+```{r}
+t(m)
+m + m
+m-m
+```
+
+
+
+## Exercice {.build}
+Take the `m` matrix. How would you change all the values of the diagonal to 1?
+
+```{r ANS01}
+m <- matrix(data = 1:20, nrow = 4, byrow = FALSE)
+diag(m) <- 1
+m
+```
+
+## Exercice {.build}
+
+<div class="columns-2">
+In biochemistry, people often use 96 wells microplates that are in essence a matrix of wells with 12 columns and 8 rows:
+
+![](/media/cunnac/DONNEES/CUNNAC/Lab-Related/Communications/Teaching/R_trainning_module/slides/images/microplate.jpeg)  
+</div>
+
+Here is a matrix containing the measures output by an instrument:
+```{r}
+measures <- matrix(data = round(runif(n = 96, max = 10), digits = 1), nrow = 8, ncol = 12)
+```
+
+In order to do computations on the values you would need to reshape it in a long format, *i.e.* in the form: row#, column#, value.
+Can you do that?
+
+```{r ANS02}
+dummyLogiMat <- matrix(TRUE, nrow = 8, ncol = 12)
+head(cbind(which(dummyLogiMat, measures), measure = as.vector(measures)))
+```
+
+
+## Indexing and subesetting for lists {.build}
+
+<div class="columns-2">
+**List indexing can be achieved with one of three indexing operators:**
+
+* `[`: selects sub-lists. It always returns a list. Used with a single positive integer, it returns a list of length one.
+* `[[`: returns the actual element within a list at the specified single index.
+* `$`: a shorthand for name indexing, where`x$y` is equivalent to `x[["y", exact = FALSE]]`
+* again, integer, logical and name indexing are possible.
+
+![](/media/cunnac/DONNEES/CUNNAC/Lab-Related/Communications/Teaching/R_trainning_module/slides/images/listIndexing.png) [Source : Hands-On Programming with R](http://shop.oreilly.com/product/0636920028574.do)
+
+
+</div>
+
+##
+
+```{r}
+fileCabinet <- list(drawer1 = c(length = 1, width = 3),
+                    drawer2 = FALSE,
+                    top = c(item1 = "flowers", item2 ="sharpener"))
+str(fileCabinet)
+```
+
+The `[` operator. These expressions all return the same **list**:
+
+```{r, eval = FALSE}
+fileCabinet[1:2]
+fileCabinet[c(T, T, F)]
+fileCabinet[c("drawer1", "drawer2")] # Partial name matching is not possible
+```
+
+The `[[` and $ operators. These expressions all return the same **element**:
+```{r, eval = FALSE}
+fileCabinet[[3]]
+fileCabinet[["top"]]
+fileCabinet[["t", exact = NA]] # the exact argument controls partial matching, TRUE or NA (return a warning)
+fileCabinet$top
+fileCabinet$t
+```
+
+##
+
+```{r}
+identical(fileCabinet[1], fileCabinet[[1]])
+```
+
+Take a couple of minutes to run these expressions and understand why they return the same thing.
+
+##
+
+* Recursive indexing:
+
+```{r}
+str(fileCabinet)
+fileCabinet[[c(1,2)]]
+fileCabinet[[c(3,2)]]
+fileCabinet[[c("top", "item2")]]
+fileCabinet$top[["item2"]]
+fileCabinet$top["item2"]
+# Combinations of subsetting operators are possible but not recommended because the code is hard to read:
+fileCabinet[[3]][[2]]
+fileCabinet[[3]][2]
+```
+
+Do you see a difference in the result of the last four expressions? This illustrates a case of simplifying the results of an idexing operation. We will come back to these shortly.
+
+
+##
+
+* Just like with other basic R structures, in place modification of a list is possible with indexing and the `<-` operator. 
+
+For example to delete elements in a list, assing `NULL`:
+```{r}
+lst <-  list(a = c(TRUE, FALSE), b = NULL, c = list(list()))
+lst[c("a", "c")] <- NULL
+```
+
+## Exercice {.build}
+
+How would you replace the last two elements of `fileCabinet` with the first element of `fileCabinet` and a sequence of number?
+
+```{r ANS03}
+fileCabinet <- list(drawer1 = c(length = 1, width = 3),
+                    drawer2 = FALSE,
+                    top = c(item1 = "flowers", item2 = "sharpener"))
+
+# Does not work as expected, why?
+fileCabinet[2:3] <- c(fileCabinet[1], coins = 1:5)
+# Works
+fileCabinet[2:3] <- c(fileCabinet[1], list(coins = 1:5))
+```
+
+How would you change the value of `width` in `drawer1` to 2?
+
+```{r ANS04}
+fileCabinet[[1:2]] <- 2
+fileCabinet$drawer1[2] <- c(WIDTH = 2)
+```
+
+
+
+## Basics of Indexing and subesetting for dataframes {.build}
+
+Data frames are hybrid objects at the intersection between a list and matrix. Not unexpectedly, both matrix and list indexing techniques apply to data frames.
+
+```{r}
+df <- data.frame(A = letters[1:4],
+                 `B-2` = rep(c(TRUE, FALSE), each = 2),
+                 `C with space` = seq(10, 20, length.out = 4),
+                 D = c(runif(3), NA)
+)
+df
+```
+See what happens with the weird column names?
+
+On a general note, if you want to make your life easier, just prohibit spaces, +, -, *, special characters in column/row names even in tabulated files that you want to import in R.
+
+##
+
+* List-like indexing:
+
+```{r}
+df[c(1,4)] # To select one or several columns. Returns a data frame
+df[3]
+df[[3]] #To select the CONTENT (class) of a a single column using the list braquets.
+df$C
+# And so on...
+```
+
+##
+
+* Matrix-like indexing:
+
+```{r}
+df[,c(1,4)] # extracts columns
+df[, c("A", "D")]
+df[2:3, ]
+```
+
+##
+
+* With logical values:
+
+```{r}
+df[df$B.2, ] # a df
+df[, colnames(df) %in% "D"] # column turned to a vector !!!
+df[, colnames(df) %in% "D", drop = FALSE] # column remains a df !!!
+
+df[df$C.with.space < 20 & df$D > 0.4, ] # use comparison and logical operators to subset
+```
+
+* This subsetting technique with `$` to refer to column can become tedious to type. So in interactive mode, one can use `with()`
+
+```{r}
+with(data = df, df[C.with.space < 20 & D > 0.4, ])
+```
+
+## Creating data frames with a list as a column {.build}
+
+```{r}
+# This works as expected
+DF <- data.frame(a = 1:3)
+DF$b <- list(1:1, 1:2, 1:3)
+str(DF)
+```
+
+```{r}
+# This alternative produce an odd result
+DF <- data.frame(a = 1:3, b = list(1:1, 1:2, 1:3))
+```
+
+* If a list or data frame or matrix is passed to `data.frame()` it is as if each component or column had been passed as a separate argument.
+* A solution if you need to use this type of construct? Use `I()` to protect you object and request that it is treated as such.
+
+```{r, eva = FALSE}
+DF <- data.frame(a = 1:3, b = I(list(1,1:2,1:3)))
+```
+
+## Simplifying vs. preserving {.build}
+
+Remember from previous slides?
+
+```{r}
+class(df[[3]]) == class(df[3])
+```
+
+* Unlike `[` with drop = FALSE, `[[` and `[` with default drop = TRUE, will *simplify* their return value.
+
+* *Simplifying subsets returns the simplest possible data structure that can represent the output, and is useful interactively because it usually gives you what you want.*
+
+* *Preserving subsetting keeps the structure of the output the same as the input, and is generally better for programming because the result will always be the same type.*
+
+* *Omitting drop = FALSE when subsetting matrices and data frames is one of the most common sources of programming errors. (It will work for your test cases, but then someone will pass in a single column data frame and it will fail in an unexpected and unclear way.)*
+
+Italics are direct copies from the source at http://adv-r.had.co.nz/Subsetting.html if you want a thorough outlook on this aspect follow the link.
+
+
+## Exercice {.build}
+Take `df` and keep all columns but "A" and "D". Do that in at least two different ways (think `<- list(NULL)`)
+
+<div class="columns-2">
+
+```{r ANS05}
+df[, !colnames(df) %in% c("A", "D")] # Option 1
+df[, -match(c("A", "D"), colnames(df))] # Option 2
+df[c("A", "D")] <- list(NULL) # Option 3
+df
+``` 
+For some reasons...
+```{r ANS06, eval=FALSE}
+df[c("A", "D")] <- NULL
+```
+...does not work for several columns of a df but it does for several elements of a list.  
+It does work to remove a single column:
+```{r}
+df["B.2"] <- NULL
+df
+```
+
+</div>
+
+## Exercice {.build}
+
+The function `installed.packages()` returns a data frame with info on the R packages installed in your system.
+
+* How would you programmatically check if the packages required for this trainning are installed on the system?  
+  We may gonna need `c("ape", "reshape2", "dplyr", "lattice", "ggplot2", "VennDiagram", "Biostrings")`.
+* For those that are installed generate a simple data frame with only columns "Package", "LibPath", "Version"
+
+```{r ANS07}
+neededPacks <- c("ape", "reshape2", "dplyr", "lattice", "ggplot2", "VennDiagram", "Biostrings")
+notInstalled <- neededPacks[!neededPacks %in% rownames(installed.packages())]
+notInstalled
+
+installed.packages()[neededPacks, c("Package", "LibPath", "Version")]
+
+```
+
+
+## Exercice {.build}
+Re-assign `df` to its original value and calculate the mean of the content of column "D".
+
+```{r ANS08}
+df <- data.frame(A = letters[1:4],
+                 `B-2` = rep(c(TRUE, FALSE), each = 2),
+                 `C with space` = seq(10, 20, length.out = 4),
+                 D = c(runif(3), NA)
+)
+mean(df$D, na.rm = FALSE)
+```
+Damned NAs...
+
+
+# Data frame manipulations: transformations, aggregation, ... using built-in R tools
+
+##
+![](/media/cunnac/DONNEES/CUNNAC/Lab-Related/Communications/Teaching/R_trainning_module/slides/images/processData.png)  
+[Source: Rob Kabacoff at Quick-R](http://www.statmethods.net/management/index.html)
+
+
+
+## Subsetting rows and columns with `subset()` {.build}
+
+Let's take our toy data frame:
+
+```{r}
+df <- data.frame(A = letters[1:4],
+                 B = rep(c(TRUE, FALSE), each = 2),
+                 C = seq(10, 20, length.out = 4),
+                 D = c(runif(3), NA)
+)
+```
+
+We have already encoutered multiple ways to extract rows and columns from a data frame.
+
+* When using logical indexing of rows, the `subset(x, subset, select, drop = FALSE, ...)` function can save you some substancial typing in interactive sessions and help understand the code faster.
+* The `select=` argument is also pretty convenient to keep only columns of interest
+
+##
+
+```{r, eval=FALSE}
+subset(x = df, subset = C < 20 & D > 0.4)
+subset(x = df, subset = C < 20 & D > 0.4, select = c("A", "B", "C"))
+subset(x = df, subset = C < 20 & D > 0.4, select = !colnames(df) %in% c("A", "D"))
+subset(x = df, subset = C < 20 & D > 0.4, select = A:C) # "sequence" of column names
+subset(x = df, subset = C < 20 & D > 0.4, select = -(C:D)) # "Negated" column names
+```
+* While `subset=` must have a logical value, `select=` accepts more types.
+
+* Note that in order to allow us from refering to data frame columns without specific use of the data frame name (like in `df$ColA`), `subset()` like `with()` and a other functions (especially in `dplyr` and `reshape2`) use *Non-Standard Evaluation*.
+
+  It is a fairly advanced topic, but you should remember that because of this usage of *NSE*, it is not recommended to include these functions when you define your own functions because it may just not work or cause unsuspected behavior.  
+  For a discussion on NYSE, see [Advanced R](http://adv-r.had.co.nz/Computing-on-the-language.html)
+
+
+
+## Renaming rows and columns in a data frame {.build}
+
+To change these attributes, there are two dedicated functions that work both for getting and modifying names: `rownames()` and `colnames()`.
+
+```{r}
+colnames(df)
+colnames(df) <- month.abb[1:ncol(df)]
+rownames(df) <- sample(state.name, size = nrow(df))
+df
+```
+
+In a data frame values for:
+
+* `rownames()` should be a character vector of non-duplicated and non-missing names.
+* `colnames()` a character vector of (preferably) unique syntactically-valid names.
+
+## Handling Not Available values {.build}
+
+We have seen before that one should always be wary of the presence of NAs in the data under analysis.
+
+* One informal way to look for them is to scrutinize the info displayed by `summary()`
+
+* To look for and exculde them programmatically, test for their presence with `is.na()` and used logical indexing.
+
+* `na.omit()` and related functions are usefull for conveniently deal with NAs in data frames.
+summary(df) indicate the number of NA for each variable.
+
+* Remember also that many (summary) functions have an argument like `na.rm=` that controls how to handle them.
+
+##
+
+
+Let's reset our `df` to factory values
+```{r, echo=FALSE, eval= TRUE}
+df <- data.frame(A = letters[1:4],
+                 B = rep(c(TRUE, FALSE), each = 2),
+                 C = seq(10, 20, length.out = 4),
+                 D = c(runif(3), NA)
+)
+```
+
+```{r}
+summary(df)
+
+df[!is.na(df$D), ]
+
+na.omit(df)
+```
+
+
+## Adding / Removing rows and columns {.build}
+
+* Adding / Removing rows
+
+    - To delete rows, use negative integer indexes or (negated) logical indexing and assign result to you df.
+    - To add rows use `rbind()` and re-assign (column names must match), or subsetting and assignment for in place modif.
+    
+```{r}
+df <- df[!is.na(df$D), ] # delete
+rbind(df, df[1, ]) # bind
+df[nrow(df) + 1, ] <- df[1, ] # bind with another method
+df
+```
+
+##
+
+* Adding / Removing columns 
+
+    - To delete columns, set column(s) to `list(NULL)` (`NULL`) or return only the columns you want and assign to your df.
+    - To add columns use subsetting and assignment for in place modif
+    - To add columns use `cbind()` and re-assing (if binding a character vector, it will be converted to factor unless `stringsAsFactors = FALSE`)
+
+```{r}
+subset(df, select = A:B) # could be re-assigned to df to delete col C and D
+df <- cbind(df, E = state.name[1:nrow(df)], F = rnorm(n = nrow(df))) # does convert to factor
+df[ , "G"] <- state.name[1:nrow(df)] # does NOT 
+str(df)
+df["G"] <- NULL
+```
+
+##
+
+* Creating new columns or values calculated by applying a function to other column(s)
+    - compute your new columns and add to your df with your technique of choice.
+    - use the convenience function `transform()` that also saves you from referring to df name in expressions and reassign.
+
+```{r}
+df <- cbind(df, G = sqrt(df$D)* (df$C + pi)) # calculate values with vectors of equal length
+df <- transform(df, H = ceiling(G - mean(C))) # mean(C) is recycled
+df
+```
+
+## Reordering the rows and columns in a data frame {.build}
+
+* General principle: permute the indices of columns or rows and reassign to your df.
+* As introduced for vectors, `order()` returns a permutation of the indices of the elements of x so that the corresponding element are ordered.
+* `order()` can work with a combination of sorting keys provided as vectors of the same lenght. So one can sort a data frame based on several columns:
+
+```{r}
+df
+df[ order(df$B, df$H, -df$F), ]
+```
+
+##
+
+Note that specifying the increase/decrease behavior for individual columns is achieved by negating the column name (see: also the stackoverflow [discussion](http://stackoverflow.com/questions/1296646/how-to-sort-a-dataframe-by-columns)).
+
+
+## Finding unique/duplicated rows {.build}
+
+* `unique()` returns only the unique elements
+* `duplicated()` returns a logical vector where TRUE indicates that the corresponding element is a duplicate.
+* they both work with vectors, arrays and data frames. 
+
+
+```{r}
+df <- subset(df, , A:D)
+unique(df)
+duplicated(df)
+df[duplicated(df), ]
+df[-duplicated(df), ]
+```
+
+## Merging data frames {.build}
+
+Merging data frames is a also a recurring necessity and powerfull technique in data analysis. It involves combining information of two data frames based on common variable(s) or key(s). This is reminiscent of running SQL queries across tables in relational databases.
+
+In base R, `merge()` let you combines these data frames:
+
+```{r, echo = FALSE}
+products <- data.frame(ProdID = LETTERS[1:4],
+                       category = c("vegetable", "meat", "can", "iceCream"),
+                       price = 4:1)
+
+sales <- data.frame(CustomID = c("a", "a", "b", "b", "b"),
+                    ProdID = c("C", "A", "B", "C", "E"),
+                    Date = seq(from = as.Date("2015/9/1"), to = as.Date("2015/9/3"), by = 1)[c(1,1, 2, 3, 3)])
+```
+
+```{r}
+# The grocery store example...
+products
+
+sales
+```
+
+How can we generate somekind of bill?
+
+##
+
+* The natural output, woud be to combine records from `sales` with info from `products` and sort by `CustomID`:
+
+```{r}
+bill <- merge(x = sales, y = products, by = "ProdID", all.x = TRUE, sort = FALSE)
+bill[order(bill$CustomID, bill$Date, bill$ProdID), ]
+# There is no info about product D, what did the cashier!!?
+```
+* There is something weird so we want all records combined by `ProdID`
+
+```{r}
+merge(x = sales, y = products, by = "ProdID", all = TRUE, sort = FALSE)
+# Product D did not sell well these last days.
+```
+
+
+##
+
+* Here is the full list of arguments to `merge()`:  
+
+`merge(x, y, by = intersect(names(x), names(y)),  
+    by.x = by, by.y = by, all = FALSE, all.x = all, all.y = all,  
+    sort = TRUE, suffixes = c(".x",".y"),  
+    incomparables = NULL, ...)`  
+
+
+* It is very flexible and enables all kind of combinations:
+    - use several variables for `by`
+    - do full, left, right and natural joins
+    - sort the output on `by`
+    - ...
+
+* Be carefull that you properly specify arguments to get what you want...
+
+## Aggregating data {.build}
+
+* Suppose now, we would like to calculate the total bill by customers. How would we do that?
+* This question relates to the issue of data aggregation which involves notably calculating summary statistics for specific groups of records defined by combinations of the levels of (categorical) variables (factors).
+
+* Probably the most *userfriendly* base R function to do these tasks is `aggregate()`.
+
+```{r}
+cleanBill <- na.omit(bill)
+aggregate(x = cleanBill$price, by = cleanBill[c("CustomID", "Date")], FUN = sum)
+# That answers our first question
+```
+
+##
+
+`aggregate()` comes in two flavors:
+
+* `aggregate(x, by, FUN, ..., simplify = TRUE)`
+    - `x =` is your data
+    - `by =` is a list of grouping factors
+    - `FUN =` the function used for aggregation
+    - `... =` optional arguments to `FUN`
+    - `simplify =`whether results should be simplified to vector or matrix/data frame if possible.
+
+* `aggregate(formula, data, FUN, ..., subset, na.action = na.omit)`
+    - `formula =` a formula e.g. `y ~ x` or `cbind(y1, y2) ~ x1 + x2`. Meaning summarises `y` by `x` as a grouping factor. We will learn more about formulas when discussing ploting and statistical modelling.
+    - `data =` the data frame where `x` and `y` can be found...
+
+If time allows, you can run the examples of documentation for `aggregate()` to get a better sense of what you can do with the formula notation.
+
+##
+Let's look at other examples using the famous `iris` dataset:
+
+First we want to calculate the means of the various measures conditionned on species:
+
+```{r}
+aggregate(. ~ Species, data = iris, FUN = mean)
+
+# The dot in formula means "any columns from data that are otherwise not used"
+```
+We are interested in determining the correlation between dimensions of sepal and petals conditionned on the plant species. For this we can use `cor()`.
+
+```{r}
+aggregate(iris[1:4], by = iris["Species"], FUN = cor, method = "spearman")
+# cor() complains...
+```
+
+Does not work because ``aggregate()` first separates columns and then for each column, it applies FUN to each subsets of values (vectors) defined by `by`. The problem is that here `cor()` takes a 2-D object...
+
+##
+
+Let's try `by()` that splits a data frame into a subset of data frames based on the values of one or more factors, and function FUN is applied to each data frame in turn.
+
+```{r}
+irisCorel <- by(iris[1:4], INDICES = iris["Species"], FUN = cor, method = "spearman")
+```
+Note that additional arguments to `FUN` are passed after the `FUN=` in the call.
+
+```{r}
+str(irisCorel)
+```
+
+##
+
+* To sum up:
+
+    - `aggregate()` is OK but for example, there is no way to provide names to the results of summarization in the output other than manually changing them afterwards.
+    - `by()` is OK, but we may need to further process its output to format it in a table-like fashion.
+    - `aggregate()` and `by()` passes the same function to all subsets. What if we wanted to calculate different summaries depending on the variable(s)?
+
+* The `dplyr` package will help you do some of that fairly easily.
+
+
+* For total control, you will have to write your own functions and apply them iteratively with `by()` or other functions of the `apply()` family.
+
+
+## Exercice {.build}
+
+[Source: Advanced R](http://adv-r.had.co.nz/Subsetting.html)
+
+* How would you select a random sample of `m` rows from a data frame (write a general code and use the `iris` dataset to test)?  
+
+
+```{r ANS09}
+mydf <- iris
+m <- 3
+mydf[ sample(1:nrow(mydf), size = m, replace = FALSE) , ]
+```
+
+##
+
+* What if the sample had to be contiguous (i.e., with an initial row, a final row, and every row in between)?
+
+```{r ANS10}
+rows <- sort(sample(1:nrow(mydf), size = 2, replace = FALSE))
+# Is the sort() necessary?
+
+head(mydf[ rows[1]:rows[2], ])
+```
+
+
+
+## Exercice {.build}
+
+Run the code below:
+
+```{r}
+library(ggplot2)
+mySimpleSumy <- aggregate(diamonds, list(diamonds$color), summary)
+```
+
+* What is this call doing? Take a look at the structure of the returned object. What is it?
+
+```{r ANS11, eval= FALSE}
+str(mySimpleSumy)
+```
+
+* run the same aggregate call but change the value of the `simplify` argument. What happens?
+
+```{r ANS12, eval = FALSE}
+mySumy <-aggregate(diamonds, list(diamonds$color), summary, simplify = FALSE)
+str(mySumy)
+```
+
+
+
+## Exercise {.build}
+
+[Source: Advanced R](http://adv-r.had.co.nz/Subsetting.html)
+
+* How could you put the columns in a data frame in alphabetical order?
+* Delete the last one.
+* Write a general code to do that and use `movies` from the `ggplot2` package to test it.
+
+```{r ANS13}
+library(ggplot2)
+myDf <- movies
+
+orderedColIdx <- order(colnames(myDf))
+
+myNewDf <- myDf[orderedColIdx]
+head(myNewDf, n = 2)
+```
+
+##
+
+```{r ANS14}
+myNewDf[ncol(myNewDf)] <- list(NULL)
+head(myNewDf, n = 2)
+```
+
+
+## Exercice {.build}
+
+Adapted and extended from [a Introduction to R](http://rcourses.github.io/nclRintroduction/)
+
+* Lets first take a close look at what is in the `movies` dataset from the `ggplot2` package. What can you tell about it?
+
+```{r ANS15, eval= FALSE}
+library(ggplot2)
+?movies
+```
+
+* How can you tell whether there are variables that have NA values?
+
+```{r ANS16}
+# Visual inspection
+# summary(movies)
+
+# Programmatically
+colnames(movies)[sapply(movies, function(x) sum(is.na(x))) > 0] ## we'll learn sapply() later
+```
+
+##
+
+* How many movies are there where budget is known (don't use `subset()`)
+
+```{r ANS17}
+sum(!is.na(movies$budget))
+```
+
+* How  many  movies  are  there  where  the  rating  is less than or equal to 2.5 or greater than 7.5 (don't use `subset()`)?
+
+```{r ANS18}
+sum(movies$rating <= 2.5 | movies$rating > 7.5)
+```
+
+* How  many  movies  were made in 1980 and have a rating above 5.0?
+
+```{r ANS19}
+sum(movies$year ==1980 & movies$rating > 5)
+```
+
+* How many movies were classified both as "Action" and "Animation?"
+
+```{r ANS20}
+sum(movies$Action & movies$Animation)
+```
+
+##
+
+* Don't sleep! What are the "precious" movies with the maximum number of votes or the longest length? How many votes for the later? You may use `subset()`.
+
+```{r ANS21}
+subset(movies, votes == max(votes) | length == max(length), title:votes)
+```
+
+* Append a new column named `rating_zscore` to movies by standardizing the Average IMDB user rating using the `scale()` function.
+
+```{r ANS22}
+movies <- transform(movies, rating_zscore = scale(rating)) # For interactive use
+# OR
+movies <- cbind(movies, rating_zscore = scale(movies$rating)) # When programming
+head(movies, 1)
+```
+
+##
+
+* Extract only the last binary columns used for genre classification.
+
+```{r ANS23}
+moviesGenre <- subset(movies, select = Action:Short)
+str(moviesGenre)
+```
+
+* Create an *aggregated* version of it that will count the number of movies belonging to each unique combination of genre.
+
+```{r ANS24}
+moviesGenreUnique <- aggregate(moviesGenre$Action, by = moviesGenre, FUN = length)
+```
+
+* Can you tell how many unique combinations of genre are present in this df?
+
+```{r ANS25}
+nrow(moviesGenreUnique)
+```
+
+##
+
+* What are three most abundant combinations of genre ?
+
+```{r ANS26}
+moviesGenreUnique[order(moviesGenreUnique$x, decreasing = TRUE)[1:3], ]
+```
+
+* How would you extract all the rows in `movies` that fit in only one genre?
+
+```{r ANS27}
+moviesInUniqueGenre <- movies[rowSums(moviesGenre) == 1, , drop = FALSE]
+```
+
+##
+
+* In what genre are on average the most costly movies? Does this guarantee a high IMDB user rating?
+
+```{r ANS28}
+genreBudget <- subset(moviesInUniqueGenre, !is.na(budget),
+                      select = c(budget, rating, Action:Short))
+
+avgBudgetByGenre <- aggregate(. ~ Action + Animation + Comedy + Drama +
+                                Documentary + Romance + Short,
+          data = genreBudget, FUN = mean)
+
+avgBudgetByGenre[order(-avgBudgetByGenre$budget), ]
+```
+
+
+## Contengency\cross-classification tables {.build}
+
+* Sometimes we need to do some checking for the number of observations having specific combinations of categorical variables levels.  
+
+* To calculate cross-classification table the `table()` and `xtabs()` functions are our friend. There are a few differences among them, the main one being that `xtabs()` takes formulas to specify crosstabulation.
+
+```{r}
+color <- c("red", "green", "green", "red", "green", "green", "red")
+shape <- c("round", "sharp", "sharp", "round", "round", "sharp", "round")
+size <- c("tall", "tall", "small", "tall", "small", "small", "tall")
+objects <- data.frame(color, shape, size)
+
+xclass <- xtabs(data = objects)
+str(xclass) # a list with other attributes
+```
+
+##
+
+```{r}
+summary(xclass)
+
+as.data.frame(xclass) # ALL combinations between levels are shown
+
+ftable(xclass) # Another way to flattened cross-classification tables with more than 2 dimensions
+```
+
+##
+
+```{r}
+# to compute margin sum or other functions
+addmargins(xtabs(formula = ~ color + shape, data = objects), FUN = sum)
+# to compute proportions (maring = 1, rowwise ; 2, colwise ; not specified, all table)
+prop.table(xtabs(formula = ~ color + shape, data = objects))
+
+```
+
+This is interesting but we can do somemore with `reshape2`
+
+## Exercice {.build}
+
+
+<div class="columns-2">
+
+* In the `movies` data set, convert `rating` to a factor with 5 levels. Use the `pretty()` function to generate the value of the `break` argument of `cut()`.
+* Calculate a contingency table between this recoded ratings and the `mpaa` ratings and add sums on both sides.
+* Is there any movie forbidden for people less than 17 rated more than 8 ?
+
+
+![](/media/cunnac/DONNEES/CUNNAC/Lab-Related/Communications/Teaching/R_trainning_module/slides/images/mpaa.jpg)
+
+
+</div>
+
+##
+
+```{r ANS29}
+library(ggplot2)
+ratingCat <- cut(movies$rating, breaks = pretty(movies$rating, 5))
+addmargins(table(movies$mpaa, ratingCat), margin = c(1, 2))
+```
+
+
+
+# Introduction to packages reshape2 and dplyr.
+
+## Tidy up and forget Excel's PivotTables {.build}
+<div class="centered">
+![](/media/cunnac/DONNEES/CUNNAC/Lab-Related/Communications/Teaching/R_trainning_module/slides/images/tidyData.png)
+</div>
+
+[Source Data Wrangling Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+
+* R follows a set of conventions that makes one layout of tabular data much easier to work with than others.  
+**Your data will be easier to work with in R if it follows [three rules](http://garrettgman.github.io/tidying/):**
+
+    - Each variable in the data set is placed in its own column
+    - Each observation/case/individual/experimental unit is placed in its own row
+    - Each value is placed in its own cell
+
+* Often times you received or gather data that is messy, *i.e.* the way the information is structured is not appropriate for efficient and straightforward analysis using R and you need to tidy it up.
+
+* Occasionally although you have a tidy dataset, as a part of the analysis, you also want to represent the data differently and possibly aggregate it, like in the contingency tables we just saw.
+
+
+## `melt()` and `dcast()` with `reshape2` {.build}
+
+In short, you need to **reshape** your data and swing seamlessly between long and wide table shapes.
+
+The standard R distribution has facilities to do this type of transformations: `stack()` and `unstack()` from the `utils` package and `reshape()` from the `stats` package.
+
+But, in my experience, they are difficult to use or are not as flexible as the two simple but powerful functions provided in the `reshape2` package:
+
+reshape2 is based around two key functions: melt and cast:
+
+* `melt()` takes **wide**-format data frames and **melts** it into **long**-format data.
+* `dcast()` takes **long**-format data frames and **casts** it into **wide**-format data.
+
+
+
+##
+
+![](/media/cunnac/DONNEES/CUNNAC/Lab-Related/Communications/Teaching/R_trainning_module/slides/images/reshapingData.png)
+
+
+[R-statistics blog](http://i2.wp.com/www.r-statistics.com/wp-content/uploads/2012/01/reshaping-data-using-melt-and-cast.png)
+
+
+
+##
+Let's see how to do that with a slightly more explicit toy data set:
+```{r}
+magicDrug <- data.frame(Name = rep(LETTERS[1:2], each = 2, times = 2),
+                        When = rep(c("before", "after"), times = 4),
+                        Speed = c(1, 2, 3, 5, 0, 1, 4, 5),
+                        Weight = c(10, 3, 20, 6, 11, 2, 23, 9)
+)
+```
+
+First melt:
+```{r}
+
+library(reshape2)
+mdata <- melt(data = magicDrug,
+              id.vars = c("Name", "When"), # Specified but unecessary because they're factors
+              measure.vars = c("Speed", "Weight"), # Specified but unecessary because they're numerics
+              variable.name = "IndPerformances", # What does these variables have in common?
+              na.rm = TRUE, # as a reminder for NAs
+              value.name = "value") # the default is good
+str(mdata)
+```
+
+##
+
+Now, we can `dcast()` the melted data in various ways to get some insight:
+
+* MagicDrug helps loose weight and run faster!!
+
+```{r}
+# again formula specification of the layout
+# mean() for aggregation
+dcast(data = mdata, formula = IndPerformances ~ When, fun.aggregate = mean)
+###  !!! Note that the fun.aggregate function should take a vector of numbers !!! {.build}
+###  !!! and return a single summary statistic                                !!! {.build}
+```
+
+* B runs faster than A and is heavier!!?
+
+```{r}
+dcast(mdata, Name ~ IndPerformances, mean)
+```
+
+* This is a contengency table...
+
+```{r}
+dcast(mdata, Name + When ~ IndPerformances, length)
+```
+
+
+
+## Exercice: {.build}
+
+In some regards, the iris dataset seems a little untidy. Let's try to tidy it up.  
+
+```{r}
+library(reshape2)
+summary(iris)
+```
+
+##
+* First add a `flowerID` variable to enable keeping track of what was measured on what flower.  
+* Melt the iris dataset with the variable.name = "Object.Dimension" and the value variable name = "Length" and sort it on these variables:
+
+```{r ANS30}
+newIris <- cbind(iris, flowerID = as.character(1:nrow(iris)))
+
+meltedIris <- melt(data = newIris,
+                   variable.name = "Object.Dimension",
+                   value.name = "Length",
+                   actorsAsStrings = FALSE)
+
+meltedIris <-meltedIris[order(meltedIris$Object.Dimension, meltedIris$Length), ]
+str(meltedIris)
+
+```
+
+##
+
+* Split the variable Object.Dimension into two variables `object` and `dimension` and bind to the melted iris data frame.  
+Tip: `merge()` the melted iris data frame with a custom made **recoding** dataframe on the Object.Dimension column.
+
+```{r ANS31}
+varRecodeDf <- cbind(Object.Dimension = levels(meltedIris$Object.Dimension),
+                           object = rep(c("sepal", "petal"), each = 2),
+                           dimension = rep(c("length", "width"), times = 2)
+)
+
+reshapedIris <- subset(merge(varRecodeDf, meltedIris), select = -Object.Dimension)
+str(reshapedIris)
+```
+
+##
+
+* Cast the resulting data frame into a matrix with `Species` and `object` as rows and `dimension` as columns and containing mean values.  
+  Note that a preliminary melt operatin MAY be necessary.
+
+
+```{r ANS32}
+# Melting first:
+meltedReshapedIris <- melt(data = reshapedIris)
+str(meltedReshapedIris)
+dcast(meltedReshapedIris, Species + object ~ dimension, fun.aggregate = mean)
+```
+
+##
+
+```{r ANS33}
+# casting directly: 
+dcast(reshapedIris, Species + object ~ dimension,
+      value.var = "Length", fun.aggregate = mean)
+```
+
+##
+
+* Just for the fun, lets run this:
+
+```{r}
+dcast(reshapedIris, Species + object + dimension ~ 1,
+      value.var = "Length", fun.aggregate = mean)
+```
+This is basically the melted data frame summarized with mean.
+
+
+## `dplyr`, a unifying framework for data frame manipulation and aggregation {.build}
+
+* Fundamental data processing functions exist in R but they are rather disparate, lack a consistent interface and the ability to easily flow together.
+
+* This makes it difficult to read, understand and write concise code.
+
+* The `dplyr` package attemps to overcome these limitations:
+    - a structured vocabulary for tabular data manipulation
+    - underlying manipulations are carried out in C++ -> speed is good
+    - transparently use the same syntax to acces/process data in a remote database (barely need to know any SQL…)
+    - great for interactive data analysis but it is more tricky to program with it because it uses NSE. [See this vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/nse.html).
+
+##
+
+* There are alternatives to `dplyr` (beside base distribution):
+    - The [data.table](https://github.com/Rdatatable/data.table/wiki) package has many functionalities in common with plyr and is a serious [competitor](http://stackoverflow.com/questions/21435339/data-table-vs-dplyr-can-one-do-something-well-the-other-cant-or-does-poorly).
+    - Unfortunately, I am not yet familiar with it but apparently it is  faster and can handle huge tables (billions of rows). Its syntax is however allegedly less smooth that dplr's.
+
+* The `dplyr` package philosophy is that preparing data in the form of a data frame for specific analysis always involves applying a combination of elementary manipulations.
+
+* Each of these basic manipulations has been formalized with a function named with a verb:
+
+##
+
+Main plyr function|     Effect              |Default R equivalent (pseudo code)
+------------------|-------------------------|--------------------------------------
+`filter()`        |keep rows matching criteria   |`subset()`
+`slice()`         |pick rows using index(es)  |`df[1:10, ]`
+`distinct()`|Extract distinct (unique) rows|`unique()`
+`sample_n()`|randomly sample rows|`df[sample(1:nrow(df), n), ]`
+`arrange()`|reorder rows|`df[order(df, factKey), ] `
+`select()`|pick columns by name|`subset()` or `df[ , c("ColB", "ColD")]`
+`rename()`| rename specific columns|`colnames(df)[ "ColA" %in% colnames(df) ] <- "ColX"`
+`mutate()`|add columns that are f() of existing ones|`transform()` or` cbind(df, X = f(df$ColA))`
+`xxx_join()`|combine data frames|`merge()`
+`intersect()`, etc|set operations between data frames|`NULL`
+`order_by() %>% summarise()`|reduce variables to values|`aggregate()` and `by()`
+
+##
+* `verb()` syntax:
+    - First argument is a data frame
+    - Subsequent arguments say what to do with data frame.
+    - No use of `$` to refer to `df` colums: like `subset()` and `transform()`.
+    - Never modify in place
+    - Always return a data frame
+
+* The [dplyr Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) is warmly recommended.
+* We will review selected examples mainly from the `dplyr` [tutorial](https://www.dropbox.com/sh/i8qnluwmuieicxc/AAAgt9tIKoIm7WZKIyK25lh6a) to highlight neat features that are more tedious to emulate with base R functions.
+* Note that we will only scratch the surface of what can be done. Look at the vignettes, tutorial and cheatsheet to learn about other features.
+
+
+##
+
+```{r, message=FALSE} 
+# download the 'flights.csv' file from the dropbox page and save to you curent working dir
+library(dplyr)
+flights <- tbl_df(read.csv("flights.csv", stringsAsFactors = FALSE))
+# or 
+# install.packages("hflights")
+# library(hflights) ; flights <- hflights
+
+# contains flights that departed from Houston in 2011
+glimpse(flights)
+```
+
+##
+
+* Find all flights: To SFO or OAK
+
+```{r, results='hide'}
+filter(flights, dest %in% c("SFO", "OAK"))
+```
+
+* Where the arrival delay was more than twice the departure delay
+
+```{r, results='hide'}
+filter(flights, arr_delay > 2 * dep_delay)
+```
+
+* Select the two delay variables (columns):
+
+```{r, results='hide'}
+select(flights, arr_delay:dep_delay)
+```
+
+* Compute speed in mph from time (in minutes) and distance (in miles). Which flight flew the
+fastest?
+
+```{r, results='hide'}
+flights <- mutate(flights, speed = dist / (time / 60))
+arrange(flights, desc(speed))
+```
+
+## The `%>%` (pipe) operator {.build}
+
+* The pipe operator `%>%` developed in the R package `magrittr`.
+* Extremely convenient when chaining multiple manipulation steps to avoid either deeply nested function calls or lines and lines of variable(s) assignment :
+    - Nested: `f( g( h(x), z=1), y=1 )`
+    - Piped: `h(x) %>% g(z=1) %>% g(y=1)`
+
+* Chainning `plyr` functions:
+
+Select the two delay variables for flights to SFO or OAK
+```{r}
+flights %>% filter(arr_delay > 2 * dep_delay) %>% select(arr_delay:dep_delay)
+```
+
+
+## `group_by()` for operating on subsets of the table {.build}
+
+* To specify a grouping scheme, use `group_by()` on a table specifying grouping variables.
+* Operate on the grouped table to achieve various effects:
+    - with `filter` : select rows meeting a criteria by group
+    - with `summarise` : apply aggregation function to summarise each group
+    - with `mutate` : calculate a summary value by group and append it to table
+
+Is there a destination where the mean arrival delay is uncommonly high?
+```{r}
+flights %>%
+    group_by(dest) %>%
+    summarise(avg_delay = mean(arr_delay, na.rm=TRUE)) %>%
+    arrange(-avg_delay)
+```
+
+##
+
+Calculate the mean time by `dest` and by `carrier` and divide `time` by this value to create a new column `carrierRelativeTime`.
+```{r}
+flights %>%
+    group_by(dest, carrier) %>% 
+    mutate(meanTimeByDByC = mean(time, na.rm = TRUE),
+           carrierRelativeTime = time / meanTimeByDByC) %>%
+    select(dest:carrierRelativeTime)
+```
+
+Do you understand the different behaviour of `summarise` and `mutate` when used alongside `group_by`? Compare the `nrow` of the respective tables.
+
+## `do()` is a `by()`-like function for fine control on computed values {.build}
+
+* `do()` another *verb* of the `plyr` vocabulary, performs arbitrary computation, returning either a data frame or arbitrary objects which will be stored in a list
+
+* Let's try to rerun the previous `iris` example that could not run with `aggregate()` but could with `cut()` althought the output was a list.
+
+```{r}
+# determining the correlation between dimensions of flower parts.
+aggregate(iris[1:4], by = iris["Species"], FUN = cor, method = "spearman")
+
+# in plyr jargon that translates in:
+myCors <- iris %>%
+          group_by(Species) %>%
+          do(cors = cor(subset(., , Sepal.Length:Petal.Width)))
+```
+
+##
+
+```{r}
+myCors
+str(myCors[1, ])
+```
+
+##
+
+Better than that:
+```{r}
+# Here, do() returns several results joint together in a data frame row
+myCors <- iris %>%
+          group_by(Species) %>%
+          do(data.frame(mpl = mean(.$Petal.Length),
+                        msl = mean(.$Sepal.Length),
+                        cors = I(list(cor(subset(., , Sepal.Length:Petal.Width))))
+                        )
+             )
+```
+
+```{r}
+myCors
+str(myCors[1, ])
+```
+
+##
+
+* Take home message: not limited by what function to apply to what variable and the results are formated in a df.
+* No need to write custom functions to do that but it is obviously possible to use custom functions inside verbs like `summarise()` and `do()`.
+* **Overall, `dplr` helps efficiently solve most of the routine data frame manipulation tasks.**
+* BUY IT!! `(;o`
+
+## Exercice {.build}
+
+Find all fligths that departed at midnight
+
+```{r ANS34}
+identical(filter(flights, hour == 0, minute == 0),
+          filter(flights, hour == 0 & minute == 0)
+)
+```
+
+##
+
+Calculate the min, max values of `time` and standard deviation of `speed` for each destination (beware of NA).
+
+```{r ANS35}
+flights %>% na.omit() %>%
+            group_by(dest) %>%
+            summarise(minT = min(time), maxT = max(time), sdS = sd(speed))
+```
+
+Try to guess (no code), the cause of the NA value of sdS for flight(s) to Augusta?
+
+##
+
+Find the number of flights that departed to JFK for each days of the year (tip: use `n()`)?
+
+```{r ANS36}
+flights %>% filter(dest == "JFK") %>%
+            group_by(date) %>%
+            summarise(countsToJFK = n())
+```
+
+##
+
+Pick the three most delayed flights at departure for each carrier (tip: `slice()` on `carrier` groups)
+
+```{r ANS37}
+flights %>% group_by(carrier) %>%
+            arrange(-dep_delay) %>%
+            slice(1:3)
+```
+
+##
+
+Create two subsamples of `flights` by randomly sampling 30% of the flights that went to SFO or LAX.
+Figure out how many fligths they have in common, how many are specific to each of them ?
+
+```{r ANS38}
+spl1 <- flights %>% filter(dest == "SFO" | dest == "LAX") %>%
+            sample_frac(size = 0.3)
+spl2 <- flights %>% filter(dest == "SFO" | dest == "LAX") %>%
+            sample_frac(size = 0.3)
+nrow(intersect(spl1, spl2))
+nrow(setdiff(spl1, spl2))
+nrow(setdiff(spl2, spl1))
+
+### To illustrate the effect of NSE/ {.build}
+## replicate(n, expr) run n times the expression expr and return a list with the results {.build}
+weird <- replicate(n = 2, flights %>% filter(dest == "SFO" | dest == "LAX") %>%
+            sample_frac(size = 0.3))
+weird
+```
+

@@ -1,0 +1,577 @@
+---
+title: 'IRD/CIRAD trainning to R, the statistical programming language'
+author: "Sebastien Cunnac & Emmanuel Paradis"
+date: "Sept. 7-11, 2015"
+output:
+  ioslides_presentation:
+    smaller: yes
+    widescreen: no
+---
+
+```{r setup, include = FALSE, cache = FALSE}
+knitr::opts_chunk$set(error = TRUE, collapse = TRUE)
+```
+
+# Updated tentative program of the week
+
+## J1 - Generalities on R {.build}
+* Short overview of R distributions, installation and packages
+* Finding, requesting and understanding R help: surfing a sea of resources
+* Writing and managing your R code
+* Getting to know the R IDE `Rstudio`
+* Introduction to Sweave et knitr
+* Data structure in R: vectors, factors, matrces, data frames and lists
+* Mathematical and statistical computations on numeric and logical vectors: basic functions and operators
+* Data manipulation I: play with the vector and make it your toy
+
+## J2 - R programming {.build}
+* Data manipulation II: be the master of arrays (matrices), lists and data frames
+* Writting and calling functions in R
+* An introduction to object-oriented programming in R: S3 classes and generic functions
+* Loops and conditional execution.
+* Character strings manipulation
+* The basics of R – operating system interactions
+
+## J3 - Graphics {.build}
+* R Graphics: low- and high-level graphical functions and graphical parameters (`par()`)
+* The `lattice` and `ggplot2` packages
+* A few examples of specific graphical functionalities
+
+## J4 - Statistics {.build}
+* Linerar models: simple regression, multiple regression , ANOVA, ANCOVA, statistical tests, formulas, continuous and descrete predictors, interactions.
+* Generalized linear models (GLM) : distributions, maximum likelyhood, statistical tests
+
+
+## J5 -  {.build}
+* Workshop on your own projects/data
+* Discussion on difficulties/common problems and possible solutions
+
+
+# Short overview of R distributions, installation and packages
+
+![](/media/cunnac/DONNEES/CUNNAC/Lab-Related/Communications/Teaching/R_trainning_module/slides/images/Rlogo.png)
+
+
+## Comprehensive R Archive Network (CRAN) {.build}
+
+*R is a system for statistical computation and graphics. It consists of a **language** plus a **run-time environment** with graphics, a debugger, access to certain system functions, and the ability to run programs stored in script files.*
+
+https://www.r-project.org/
+
+R version 3.2.2 (Fire Safety) has been released on 2015-08-14.
+
+There are R distributions for Linux, Mac, Windows… platforms.
+
+Installation procedure for your favorite platform should be straigthforward if you follow the [instructions](https://cran.r-project.org/doc/FAQ/R-FAQ.html#How-can-R-be-installed_003f) from CRAN.
+
+On Windows, upgrading R versions may be a pain, but see the [R Windows FAQ](https://cran.r-project.org/bin/windows/base/rw-FAQ.html#What_0027s-the-best-way-to-upgrade_003f).
+
+On linux systems, in my experience the most straightforward way to be kept up-to-date, is [to register a CRAN repository in your favorite package manager](https://cran.r-project.org/bin/linux/ubuntu/README.html).
+
+
+## Our first interactions with R {.build}
+
+* R is a lot of things but from a user perspective apart from a language, it is primarily:
+
+    -  an interpreter that interactively executes the commands you wrote at the prompt upon pressing the enter key.
+    - a Graphical display that opens windows (devices) to display graphics created by executing some code.
+
+* First start R if not done already and let's try to open a graphical window :
+```{r, fig.height = 2.5, fig.width = 3}
+hist(rnorm(1000))
+```
+
+##
+
+* Now let's execute a few simple expressions in the interpreter to warm up your fingers
+
+```{r, eval= FALSE}
+
+1 + 1
+
+# 124é"famoi'_(ù*$=+" - Use a hash '#' to add comments that are just ignored 
+
+a <- "hello" # assigning a value to a symbol/name
+A <- 1
+
+# If you simply enter the variable name or expression at the command prompt,
+# R will PRINT its value.
+a
+A
+
+2 <- "error"
+
+?Reserved
+
+B <- 2
+A + B
+
+C <- c(A, B)
+C
+```
+
+##
+
+```{r, eval = FALSE}
+mode(C)
+
+log(x=64, base=4) # reminder about functions and parameters
+log(64, 4)
+
+# Missing data
+y <- c(1,2,3,NA)
+is.na(y) # returns a vector (F F F T)
+
+# Not A Number
+sqrt(-9)
+
+# close your session
+q()
+```
+
+Does this sound familiar to all of you?
+
+## R packages are the standardized way of extending R {.build}
+
+* The standard R distribution comes with an amazing number of tools but one may need to perform specific tasks.
+
+* To extend R functionalities you will want to download and install additional *packages* and use them.
+
+* **Packages** (libraries, modules, ... in other languages) are collections of R functions, data, and compiled code in a well-defined format. The directory where packages are stored is called the **library**.
+
+* The standard distribution comes with several packages (`base`, `compiler`, `datasets`, `grDevices`, `graphics`, …)
+
+* Repositories hold collections of R packages and have mecanisms to download and install them on your system (99% of the time, it is really easy).
+
+* "Mainstream" repositories are CRAN, the [Omega project](http://www.omegahat.org/) and Bioconductor.
+
+## Package repositories and installation {.build}
+
+* The primary repository is CRAN. It holds about **7000** (!!!) packages.
+  The easiest way to install from CRAN is just to use `install.packages("packageName")`
+
+```{r, eval=FALSE}
+# Try and install:
+install.packages(c("ape", "devtools"))
+```
+
+* Another popular repository is ![](/media/cunnac/DONNEES/CUNNAC/Lab-Related/Communications/Teaching/R_trainning_module/slides/images/logo_bioconductor.gif)   
+
+[Bioconductor](https://www.bioconductor.org/) is *bioinformatics-oriented*
+
+* It supports many types of high-throughput sequencing data (DNA, RNA, chIP, methylomes and ribosome profiling, ...) and associated annotation resources and covers mircroarrays, proteomic, metabolomic, flow cytometry, quantitative imaging, cheminformatic and other high-throughput data :
+    - 1024 software packages
+    - 241 experiment data packages
+    - 917 up-to-date annotation packages.
+
+##
+
+* [To install Bioconductor packages](https://www.bioconductor.org/install/) the procedure is different:
+```{r, eval=FALSE}
+source("http://bioconductor.org/biocLite.R") # fetch and execute code of the  function:
+biocLite("packageName")
+```
+
+* GitHub is becoming increasingly popular as a repository for R packages:  
+  First install `devtools` from CRAN (!...) and then call the `devtools::install_github()` function.
+
+* To remove packages: `remove.packages(pkgs="packageName")`
+
+## Using packages {.build}
+
+* To know what packages are installed on your system: `installed.packages()`
+
+* To use resources from a package, you generally **attach** it to your working environment with `library()` (or `require()`).
+  This will ***load*** the ressources from the package in memory and ***attach*** it to your `search()` path.
+
+```{r}
+search() # list of attached R packages and objects
+library(ape) # or
+library("ape")
+search()
+```
+
+
+
+* When would you just want to ***load*** a package:
+    - if just need a quick function to avoid crowding unecessarily your seach path (decrease perf and may create name conflicts).
+    - overcome name conflicts by specifying where to find the object.
+
+##
+
+```{r}
+session_info() # This function is from devtools but is not loaded
+devtools::session_info() # loads devtools if not already done and call session_info()
+# run ?"::" if you want.
+```
+
+##
+
+* To only `detach("package:ape")` a package does not unload it.  
+  For this, you will need `unloadNamespace("ape")`  
+  In practice this is barely used.
+
+## Exercice {.build}
+
+We are probably going to need the following packages: "ape", "reshape2", "dplyr", "lattice", "ggplot2", "VennDiagram".
+
+* These should be hostetd on CRAN. Install them on your system.
+
+```{r ANS01, eval = FALSE}
+install.packages(c("ape", "reshape2", "dplyr", "lattice", "ggplot2", "VennDiagram"))
+```
+
+
+* "Biostrings" is a Bioconductor package. Please, install it as well.
+
+```{r ANS02, eval = FALSE}
+source("http://bioconductor.org/biocLite.R") # fetch and execute code of the  function:
+biocLite("Biostrings")
+```
+
+* Test if you can use them with `library()`
+
+
+Please, let us know if anything weird happened.
+
+# Finding, requesting and understanding R help: surfing a sea of resources.
+
+Clearly, one R's distinctive feature is that documentation ressources in broad terms are extremely aboundant:
+
+  - **R's documentation**: traditionally, the R developpers commmunity emphasized writing extensive help documents.
+  - **Books, tutorials, discussions**: R users base is pretty large and online community is very active.
+
+## Searching your local R documentation for help on a topic: {.build}
+
+* If you have a specific name in mind:
+  Documentation on a topic with name (typically, a R object or a data set)  
+    - `help("name")` or `?name` : **Beware**, `help()` searches only in loaded packages.  
+    - `help.start()` : starts the HTML version of help()
+  
+```{r, eval=FALSE}
+?summary
+```
+
+* If you look for a topic and do not know the function:
+  Search the **LOCAL** help system documentation matching a given character string in the name, alias, title, concept or keyword fields  
+    - `help.search("topic")` or `??topic`
+
+```{r, eval=FALSE}
+??"\\{"
+??DNA
+```
+
+## Anatomy of a R function documentation page {.build}
+
+* To illustrate the various sections of a function doucumentation, let's type
+
+```{r, eval=FALSE}
+?paste
+```
+
+* To take a look at an example documentation for a dataset:
+
+```{r, eval=FALSE}
+?iris
+```
+
+* Cool functions:
+
+```{r, eval = FALSE}
+example("paste") # Run the code in the "examples" section of a function doc
+demo("graphics") # some packages offer a demo of their functionalities!
+```
+
+## R Reference Card or Cheat Sheet {.build}
+
+Cheat sheets are very convenient especially when you are not familiar with a language or a package:
+
+* they remind you of specific aspects
+* they are a great overview of what you can do.
+
+
+https://cran.r-project.org/doc/contrib/Short-refcard.pdf
+
+If you can open it, find functions that may help you find help...
+
+
+## R manuals, tutorials, books : references used to prepare the slides {.build}
+
+* ***In English***:  
+Hands-On Programming with R	 http://shop.oreilly.com/product/0636920028574.do  
+The Art of R Programming	https://www.nostarch.com/artofr.htm  earlier free version at http://heather.cs.ucdavis.edu/~matloff/132/NSPpart.pdf  
+Advanced R 	http://adv-r.had.co.nz/  
+Datat Manipulation with R	http://www.springer.com/us/book/9780387747309   
+An introduction to R 	http://cran.stat.auckland.ac.nz/doc/manuals/R-intro.pdf  
+R Bootcamp	http://jaredknowles.com/r-bootcamp/  
+STATS 782	https://www.stat.auckland.ac.nz/~dscott/782/  
+R and Bioconductor by Thomas Girke 	 http://manuals.bioinformatics.ucr.edu/  
+
+* ***In French***:  
+R pour les débutants de E. Paradis	https://cran.r-project.org/doc/contrib/Paradis-rdebuts_fr.pdf  
+Dia de formation d'E. Paradis	http://ape-package.ird.fr/ep/teaching.html  
+Enseignements de Statistique en Biologie 	http://pbil.univ-lyon1.fr/R/  
+Documents pédagogiques de S. Déjean	http://perso.math.univ-toulouse.fr/dejean/formation/  
+Cours de Gilles Hunault	http://www.info.univ-angers.fr/pub/gh/  
+
+## R manuals, tutorials, books… {.build}
+
+* If you do not know what manual to pick you may want to start with this selection of [60+ R resssources](http://www.computerworld.com/article/2497464/business-intelligence/business-intelligence-60-r-resources-to-improve-your-data-skills.html) classified by topic and type 
+
+
+## Reaching out for help: what mailing lists exist for R? {.build}
+* The most relevant ones for a user:
+    - [R-help](https://stat.ethz.ch/mailman/listinfo/r-help). The ‘main’ R mailing list, for discussion about problems and solutions using R, announcements about the development of R and the availability of new code. 
+
+    - http://stackoverflow.com/tags/r/info
+
+    - https://support.bioconductor.org/t/Latest/
+
+* If you do not want to be politely patronized or humorously mocked read a posting guide (for example [here](http://www.r-project.org/posting-guide.html) or [here](http://www.bioconductor.org/help/support/posting-guide/)) before sending anything to any mailing list:
+    - do your homework
+    - provide a clear explanation of what you want
+    - provide a simple reproducible example of code if relevant
+    - do not forget your `sessionInfo()` (very usefull for diagnostic)
+
+```{r}
+print(sessionInfo(), locale = FALSE)
+```
+
+## Misc. tools to find what you want {.build}
+
+* **[Task views](http://cran.r-project.org/web/views/)** are a great place to start when you want to do something but do not know what tool to use because since you get a fairly comprehensive overview of what’s available on a topic.
+  Let's see for example what is available for "High-Performance and Parallel Computing with R".
+
+* Whenever available READ the **Package vignette** which is a practical and concise guide to your package that illustrates its key functionalities.  
+  Go directly to the package page on CRAN of use functions `browseVignettes("packagename")` and `vignette(x)`
+
+* For people interested in high-throughput genomic data, take a look at the **Bioconductor website**. It provides [workflows](https://www.bioconductor.org/help/workflows/) which are step-by-step guides to certain types of analysis.
+  Bioconductor vignettes are of excellent quality, the first tutorial to try
+
+* Use online search engines:
+    - [Rseek](http://rseek.org/)
+    - Google...
+
+
+# Writing and managing your R code
+
+Tips for efficiently writing understandable and reusable code
+
+
+## Save you code in script files. {.build}
+
+* No matter what you do, from a quick t-test on your last experiment data or a comprehensive analysis on RNA-seq data from a consortium of labs, **save your code for later**!
+
+* **R script files** are just plain text files with an `.R` extension, that is it!
+
+* Why keep records of your code?
+    - Document for reproducible research
+    - Re-use general purpose functions
+
+* How to **organise functional units of code**, from a single script to a package:
+    - Start in one script and separate code into logically separable units, often using functions.
+    - Group functions together in one section of the file (often the top)
+    - Keep functions focused, should be doing one thing, if reach more that ~15 lines of code, ask yourself whether you cannot split the task
+
+##
+
+*    - Consider breaking your script up into several files containing logical units.
+        - If scrolling around among logically unrelated units is an annoyance.
+        - If your functions are generic/mature enough to be reused in other scripts.
+    - You can then use `source()` to execute the code from R scipts and load your functions in your session.
+    - There are intermediate [alternative mechanisms]( http://stackoverflow.com/questions/1266279/how-to-organize-large-r-programs) of organizing reusable code into units without necessarily writing a package.
+    - Ultimately, you will want to [organize your code into a genuine R package]( http://r-pkgs.had.co.nz/)
+
+
+
+* if you have no idea what **"writing maintainable code, using version control and issue trackers, code reviews, unit testing, and task automation"** means, read this accessible **"Best Practices for Scientific Computing"** [PLoS Biology paper](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001745)
+
+
+## Coding style {.build}
+
+If you (or someone else) want to be able to quickly grasp what you wrote a few weeks after you actually wrote it, there are a few tips you should follow:
+
+* add comments, `# even if you think you will never read it again`
+
+* use descritive and judicious variable names (e.g. `samplingLocations` rather `x`), this is a difficult art.
+
+* use indentation to reflect code structure (in `if` construct, function definitions, ...)
+
+* use consitent formatting style (*e.g.* `DeletedObservations` or `delete_observations` but not both)
+
+* keep nesting to a strict minimum (`f(g(h(x)))`): hard balance between compactness vs. wordiness
+
+* ...
+
+For more detailled and R-oriented advices please try to browse one of those guides for tomorrow:
+
+* https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml
+* http://adv-r.had.co.nz/Style.html
+
+
+## Exercice {.build}
+
+Lets first fetch the zip archive and extract it in a directory named "Rtrainning_201509" in your user home.
+
+
+## Exercice {.build}
+
+Type
+```{r, eval = FALSE}
+history()
+```
+
+Save the commands of your session history into a file with:
+
+```{r, eval = FALSE}
+savehistory(file = "Rtrainning_20150907.R")
+```
+
+Find out where this file has been created by executing
+```{r, eval = FALSE}
+getwd()
+```
+
+With the file explorer, make sure it is there, move it into the RTrainning folder and open it with a text editor to look at its content.
+
+
+## Exercice {.build}
+
+Run the code contained in the script file `sourceMe.R`
+
+```{r ANS03, eval = FALSE}
+source(file = "sourceMe.R", echo = FALSE)
+```
+
+
+# Getting to know the R IDE `Rstudio`
+
+
+## An Integrated Development Environment (IDE) brigthens up your day {.build}
+
+* Select and run code
+* Syntax highlighting
+* On the fly syntax check
+* Code autocompletion
+* Code indentation
+* Easy invocation of help for language elements
+* Variable name occurrence highlighting across a script
+* Variable renaming across a script
+* Project/Package management
+* Version Control System interactions
+* And so on…
+
+## A non-exhaustive [list of IDE and editors](http://stackoverflow.com/tags/r/info) {.build}
+
+* [RStudio](http://www.rstudio.com/ide/) - R-specific IDE
+* [ESS](http://ess.r-project.org/) (Emacs Speaks Statistics) - package for Emacs and XEmacs
+* [Architect](http://www.openanalytics.eu/architect) - a remix of the Eclipse IDE with the StatET plugin
+* [TERR](http://tap.tibco.com/storefront/trialware/tibco-enterprise-runtime-for-r/prod15307.html)  - commercial IDE with its own R engine
+* [Live-R](http://care.live-analytics.com/) - R IDE in a browser
+* [JGR](http://rforge.net/JGR/) - Java-based GUI for R
+* [Tinn-R](http://www.sciviews.org/Tinn-R/) - R-specific code editor
+* [Sciviews-K](http://www.sciviews.org/SciViews-K) - Extension for the Komodo IDE
+* [NppToR](http://www.sciviews.org/SciViews-K) - plugin for Notepad++
+* [Vim-R](http://www.vim.org/scripts/script.php?script_id=2628) - plugin for Vim 
+* [Rgedit](http://rgedit.sourceforge.net/) - plugin for gedit and pluma
+* [Deducer](http://www.deducer.org/pmwiki/pmwiki.php?n=Main.DeducerManual) R Editor
+
+Let's start Rstudio on your machines!
+
+## RStudio: selected keyboard shortcuts {.build}
+
+For the complete list go [there](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts)
+
+Description|Windows & Linux|Mac
+---------------------------|-------------------|---------------
+Run current line/selection |Ctrl+Enter |Command+Enter
+Comment/uncomment current line/selection |Ctrl+Shift+C |Command+Shift+C
+Insert assignment operator |Alt+- |Option+-
+Reformat Selection |Ctrl+Shift+A |Command+Shift+A
+Find and Replace |Ctrl+F |Command+F
+Attempt completion |Tab or Ctrl+Space |Tab or Command+Space
+Show help for function at cursor |F1 |F1
+Show source code for function|F2|F2
+
+## Exercice with Rstudio {.build}
+
+* Open your "Rtrainning_20150907.R" file.
+
+* The graphical interface has 4 panels (layout customisable):
+    - The code and data editor
+    - The R console
+    - Files, plots, packages and help.
+    - Workspace and history.
+
+* Select some commands (preferentially not the package installation ones) and run them (use keyboard)
+
+* Go to the history tab and run these commands again by clicking 'To console'.
+
+* Find help on the function `library()` (use keyboard)
+
+* Other "Files", "Plot", "Packages", "Viewer" tabs
+
+## Exercice with Rstudio {.build}
+
+
+* Run
+
+```{r, eval=FALSE}
+head(iris)
+```
+
+* Look at the "Environment" tab (grid vs list display).
+* Try to find `USArrests` in the `package:datasets` environment. What is it?
+* Go back to Global, remove one object.
+* Run these commands:
+
+```{r, eval = FALSE}
+installed.packages()
+ls()
+str(iris)
+ls.str()
+rm(A)
+```
+
+## Exercice {.build}
+Source [Prof. Daniel Wegmann](https://moodle2.unifr.ch/course/view.php?id=9409)
+
+* Assign the values `6.7` and `−56.3` to variables `a` and `b`, respectively
+* Use R to calculate `(2*a)/b+a*b` and assign the results to variable `x`
+* Use `help.search()` to find out how to compute the square root of variables and compute the square root of `a` and `b`
+* Quit RStudio and save the work space
+* Start RStudio again and check that all variables you created are still there.
+* Use R to calculate `log(x)` and assign the result to variable `y`
+* Quit RStudio without saving the work space.
+* Restart RStudio and check that the variables `a`, `b` and `x` exist, but not `y`.
+* Write a new script to assign the values `75` and `0.1` to the variables `u` and `v`, respectively, and to `print(u, v)`.
+* Execute the script in full and line by line.
+* Save the script on your computer, close the script, exit RStudio , start RStudio again, reopen the script and execute it again.
+* Go back to "Rtrainning_20150907.R" and type a command to run the previous script.
+
+## Exercice {.build}
+
+Copy the line below and paste it in the code editor and execute it.
+
+```{r, eval=FALSE}
+anticonstitucionalissimamente <- lm(iris)
+```
+
+Write the line below by typing only 1-3 letters (not counting `$` signs). Tip use tab...
+
+```{r, eval=FALSE}
+anticonstitucionalissimamente$model$Petal.Width
+```
+
+
+## Exercice {.build}
+
+* Type `head(iris)` in your script and execute the code.
+* In RStudio, find the `iris` dataset in the datasets environment.
+* What is it?
+* How many columns?
+* What is the type of data in the columns?
+* How many observations?
+
+
+

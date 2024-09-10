@@ -45,9 +45,11 @@ Remember the R-specific sessions will be 1.5 dyas top.
 
 -   what makes R special? Vectorized Functions, pipes?,
 
--   R studio a dedicated IDE: main features including accessing packages documentation. Take advantage of this to ask students to find the R syntax for concepts that have been covered in the previeous "algo" section.
+-   R studio a dedicated IDE: main features including accessing packages documentation. Take advantage of this to ask students to find the R syntax for concepts that have been covered in the previous "algo" section.
 
 -   packages ecosystemS: CRAN, bioconductor, rOpenSci, Tidyverse ... -\> R-universe system
+
+-   Learning `R` *or* `tidyverse` philosophy [?](https://bitsofanalytics.org/posts/base-vs-tidy/)
 
     </details>
 
