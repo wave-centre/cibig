@@ -1,46 +1,121 @@
 ---
-title: "ignite"
-format: revealjs
+title: "Ignition 🚀"
+format: 
+  html:
+    toc: true
+    code-fold: false
+
+
+editor_options: 
+  chunk_output_type: console
 ---
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(
+  eval = FALSE,
+  include = TRUE
+)
+myWd <- 'not/yet/defined/directory'
+```
 
 ## Quarto
 
-Quarto is a multi-language, next generation version of **R Markdown** from Posit, with many new new features and capabilities.
+Quarto is a multi-language, next generation version of [**R Markdown**](https://rmarkdown.rstudio.com/lesson-1.html) from **Posit** (aka RStudio...), with many new new features and capabilities.
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+Take a look at `>Help>Markdown Quick Reference` in the RStudio menu.
 
-## Bullets
+Quarto enables you to weave together content and executable code into a finished presentation. Click on the link to learn more about [Quarto](https://quarto.org/docs/get-started/hello/rstudio.html)
+
+## Let's have a quick satisfiying experience before the hard work...
 
 When you click the **Render** button a document will be generated that includes:
 
 -   Content authored with markdown
 -   Output from executable code
 
+::: callout-important
+## You can try to see what happens...
+:::
+
+::: callout-tip
+## Do you think the code blocks below were executed during kniting? Why is that?
+:::
+
+Now modify the `format` parameter value in the YAML header above:
+
+```         
+format: 
+  html:
+    toc: true
+    code-fold: false
+```
+
+to this value:
+
+```         
+format: revealjs
+```
+
+And render again to see what happens.
+
+::: callout-important
+## Quarto is quite convenient to quickly change the format of the output document without bothering to change anything else...
+:::
+
 ## Create you own worksapce
 
 Now it is time to settle at home. BUT... wait! What is home?
 
-Let's first create a persistant folder that you will be using during the whole R trainning module:
+Let's first create a persistent folder that you will be using during the whole R trainning module:
 
 ```{r}
 #| label: create my own work folder
-wd <- getwd()
-myWd <- file.path(wd, "mydatalocal", "myprecious")
-gitWd <- "~/mydatalocal/cibig-wave.github.io/docs/course_materials/R"
 
-dir.create(myWd)
+wd <- getwd()
+myWd <- file.path(wd, "ifbdata", "mydatalocal", "myprecious")
+localGitDir <- "~/mydatalocal/cibig-wave.github.io/docs/course_materials/R"
+
+dir.create(myWd, recursive = TRUE)
+setwd(myWd)
 ```
 
-Now let's bring in some furniture in your space to make it cozy and useful:
+> 🥺 What is this **code chunk** doing?
+
+Now let's bring some furniture in your space to make it cozy and useful:
 
 ```{r}
 #| label: create a copy of the github repo qmd files
 
-file.copy(from = file.path(gitWd), "data", to = myWd, recursive = TRUE)
-file.copy(from = file.path(gitWd), "rmds", to = myWd, recursive = TRUE)
+file.copy(from = file.path(localGitDir, "data"), # External 'data' files for our playground
+          to = myWd,
+          recursive = TRUE)
+file.copy(from = file.path(localGitDir, "qmds"), # The actual Quarto files we will be studying
+          to = myWd,
+          recursive = TRUE)
+head(list.dirs(myWd))
+```
+
+What is `list.dirs` doing? What the hell is `head` used for?
+
+## Advices on how to get your files organized
+
+-   It makes sense to start implementing basic practices for **reproducible science**, right now! You will have a dedicated module soon...
+
+-   [Here](https://swcarpentry.github.io/r-novice-gapminder/02-project-intro.html) are some best practices applied to a R Studio environment
+
+-   Let's create a R project in your `myWd` folder (`r myWd`)
+
+-   although you could in principle work directly with the `.qmd` files in the folder we just copied in your project, I recommend that you create your own `.qmd` file(s) in a dedicated `src`
+
+-   in addition you should create a `results` directory that will host all output files created during the training.
+
+```{r}
+#| label: TIP on how to do that...
+
+dir.create(file.path(myWd, c("src", "results")), recursive = TRUE)
 
 ```
 
-
-
-
+## NOW let's move on to our first actual topic...
