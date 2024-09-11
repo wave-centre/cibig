@@ -3,4 +3,5 @@
 .RData
 .Ruserdata
 .local
+.data
 /.quarto/

@@ -104,6 +104,13 @@ Remember the R-specific sessions will be 1.5 dyas top.
 
     </details>
 
+## Required packages
+
+```
+c("adegenet", "vcfR", "poppr")
+
+```
+
 ## Questions for discussion with other mentors
 
 -  Datasets: flag stat table from bioanalysis + matrice snp

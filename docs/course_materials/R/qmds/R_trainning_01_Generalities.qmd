@@ -10,7 +10,6 @@ knitr::opts_chunk$set(
   eval = FALSE,
   include = TRUE
 )
-myProjectDir <- 'not/yet/defined/directory'
 ```
 
 

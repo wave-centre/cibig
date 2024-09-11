@@ -1,10 +1,6 @@
 ---
 title: "Ignition 🚀"
 date: "`r Sys.Date()`"
-format: 
-  html:
-    toc: true
-    code-fold: false
 ---
 
 ```{r}
@@ -59,7 +55,7 @@ What is `list.dirs` doing? What the hell is `head` used for?
 
 -   [Here](https://swcarpentry.github.io/r-novice-gapminder/02-project-intro.html) are some best practices applied to a R Studio environment
 
--   Let's create a R project in your `myProjectDir` folder (`r myProjectDir`). This is useful for various reasons.
+-   Let's create a **R project** in your `cibig_R-module` folder (`r myProjectDir`). This is useful for various reasons. **You will need to reopen the copy of this file in your `cibig_R-module` and run again the code chuncks above...**
 
 -   although you could in principle work directly with the `.qmd` files in the folder we just copied in your project, we recommend that you create your own `.qmd` file(s) in a dedicated `src`
 
