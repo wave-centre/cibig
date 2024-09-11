@@ -17,6 +17,68 @@ knitr::opts_chunk$set(
 myProjectDir <- 'not/yet/defined/directory'
 ```
 
+## Create you own worksapce
+
+Now it is time to settle at home. BUT... wait! What is home?
+
+Let's first create a persistent folder that you will be using during the whole R training module:
+
+```{r}
+#| label: create my own work folder
+
+wd <- getwd()
+myProjectDir <- file.path(wd, "ifbdata", "mydatalocal", "myprecious")
+localGitDir <- "~/mydatalocal/cibig-wave.github.io/docs/course_materials/R"
+
+dir.create(myProjectDir, recursive = TRUE)
+setwd(myProjectDir)
+```
+
+> 🥺 What is this **code chunk** doing?
+
+Now let's bring some furniture in your space to make it cozy and useful:
+
+```{r}
+#| label: create a copy of the github repo qmd files
+
+file.copy(from = file.path(localGitDir, "data"), # External 'data' files for our playground
+          to = myProjectDir,
+          recursive = TRUE)
+file.copy(from = file.path(localGitDir, "qmds"), # The actual Quarto files we will be studying
+          to = myProjectDir,
+          recursive = TRUE)
+head(list.dirs(myProjectDir))
+```
+
+What is `list.dirs` doing? What the hell is `head` used for?
+
+## Advices on how to get your files organized
+
+-   It makes sense to start implementing basic practices for **reproducible science**, right now! You will have a dedicated module soon...
+
+-   [Here](https://swcarpentry.github.io/r-novice-gapminder/02-project-intro.html) are some best practices applied to a R Studio environment
+
+-   Let's create a R project in your `myProjectDir` folder (`r myProjectDir`). This is useful for various reasons.
+
+-   although you could in principle work directly with the `.qmd` files in the folder we just copied in your project, I recommend that you create your own `.qmd` file(s) in a dedicated `src`
+
+-   in addition you should create a `results` directory that will host all output files created during the training.
+
+```{r}
+#| label: TIP on how to do that...
+
+lapply(X = file.path(myProjectDir, c("src", "results")),
+       FUN = function(pth) {
+         dir.create(pth, recursive = TRUE)
+         }
+       )
+```
+
+
+
+
+
+
 ## Cheat Sheet of R module
 
 ### CIBIG main URLs
@@ -81,61 +143,5 @@ And render again to see what happens.
 ## Quarto is quite convenient to quickly change the format of the output document without bothering to change anything else...
 :::
 
-## Create you own worksapce
-
-Now it is time to settle at home. BUT... wait! What is home?
-
-Let's first create a persistent folder that you will be using during the whole R training module:
-
-```{r}
-#| label: create my own work folder
-
-wd <- getwd()
-myProjectDir <- file.path(wd, "ifbdata", "mydatalocal", "myprecious")
-localGitDir <- "~/mydatalocal/cibig-wave.github.io/docs/course_materials/R"
-
-dir.create(myProjectDir, recursive = TRUE)
-setwd(myProjectDir)
-```
-
-> 🥺 What is this **code chunk** doing?
-
-Now let's bring some furniture in your space to make it cozy and useful:
-
-```{r}
-#| label: create a copy of the github repo qmd files
-
-file.copy(from = file.path(localGitDir, "data"), # External 'data' files for our playground
-          to = myProjectDir,
-          recursive = TRUE)
-file.copy(from = file.path(localGitDir, "qmds"), # The actual Quarto files we will be studying
-          to = myProjectDir,
-          recursive = TRUE)
-head(list.dirs(myProjectDir))
-```
-
-What is `list.dirs` doing? What the hell is `head` used for?
-
-## Advices on how to get your files organized
-
--   It makes sense to start implementing basic practices for **reproducible science**, right now! You will have a dedicated module soon...
-
--   [Here](https://swcarpentry.github.io/r-novice-gapminder/02-project-intro.html) are some best practices applied to a R Studio environment
-
--   Let's create a R project in your `myProjectDir` folder (`r myProjectDir`). This is useful for various reasons.
-
--   although you could in principle work directly with the `.qmd` files in the folder we just copied in your project, I recommend that you create your own `.qmd` file(s) in a dedicated `src`
-
--   in addition you should create a `results` directory that will host all output files created during the training.
-
-```{r}
-#| label: TIP on how to do that...
-
-lapply(X = file.path(myProjectDir, c("src", "results")),
-       FUN = function(pth) {
-         dir.create(pth, recursive = TRUE)
-         }
-       )
-```
 
 ## NOW let's move on to our first actual topic...
