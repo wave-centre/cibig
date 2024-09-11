@@ -16,7 +16,10 @@ This is primarily a very crude repos that aims at gathering notes about the sect
 
   - [IFB Core Doc](https://ifb-elixirfr.gitlab.io/cluster/doc/)
   - [ondemand.cluster](https://ondemand.cluster.france-bioinformatique.fr/)
+    * projet `/shared/projects/tp_cibig_166601` sur le cluster ifb
   - [Biosphere](https://biosphere.france-bioinformatique.fr/)
+  
+
   
 
 ## A few selected and annotated ressources of special interest on Data Science with R.

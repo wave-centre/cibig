@@ -1,16 +1,20 @@
 ---
-title: 'CIBIG 2024 trainning to R, the statistical programming language'
-author: "Sebastien Cunnac & Emmanuel Paradis"
-date: "Sept. 7-11, 2015"
-format:
-  html:
+title: 'Generalities on R'
+date: "`r Sys.Date()`"
 ---
 
-```{r setup, include = FALSE, cache = FALSE}
-knitr::opts_chunk$set(error = TRUE, collapse = TRUE)
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(
+  eval = FALSE,
+  include = TRUE
+)
+myProjectDir <- 'not/yet/defined/directory'
 ```
 
-# Updated tentative program of the week
+
+# Tentative program of these 1.5 days
 
 ## J1 - Generalities on R {.build}
 * Short overview of R distributions, installation and packages
@@ -47,7 +51,7 @@ knitr::opts_chunk$set(error = TRUE, collapse = TRUE)
 
 # Short overview of R distributions, installation and packages
 
-![](/media/cunnac/DONNEES/CUNNAC/Lab-Related/Communications/Teaching/R_trainning_module/slides/images/Rlogo.png)
+![](images/Rlogo.png)
 
 
 ## Comprehensive R Archive Network (CRAN) {.build}
@@ -153,7 +157,7 @@ Does this sound familiar to all of you?
 install.packages(c("ape", "devtools"))
 ```
 
-* Another popular repository is ![](/media/cunnac/DONNEES/CUNNAC/Lab-Related/Communications/Teaching/R_trainning_module/slides/images/logo_bioconductor.gif)   
+* Another popular repository is ![](images/logo_bioconductor.gif)   
 
 [Bioconductor](https://www.bioconductor.org/) is *bioinformatics-oriented*
 
@@ -477,6 +481,9 @@ source(file = "sourceMe.R", echo = FALSE)
 Let's start Rstudio on your machines!
 
 ## RStudio: selected keyboard shortcuts {.build}
+
+A convenient reference point to get around RStudio: `>Help>Cheat Sheets>RStudio IDE...`
+
 
 For the complete list go [there](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts)
 
