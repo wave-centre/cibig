@@ -22,17 +22,33 @@ This is primarily a very crude repos that aims at gathering notes about the sect
 
   
 
-## A few selected and annotated ressources of special interest on Data Science with R.
+## URLs of selected and annotated external learning resources
+
+### Ressources of special interest on Data Science with R.
 
 -   [<img src="https://r4ds.hadley.nz/cover.jpg" alt="R for Data Science" style="float:right" width="100" height="150"/>](https://r4ds.hadley.nz) The bible written by gods themselves.
 
--   [Rstudio materials for teaching](https://education.rstudio.com/teach/materials/) offers A LOT of related ressources and even ready to use courses. Some have a one day format wich may be convenient. I like that fact the they define expectations about the minimal level students should have at the begining.
+-   [Rstudio materials for teaching](https://education.rstudio.com/teach/materials/) offers A LOT of related resources and even ready to use courses. Some have a one day format which may be convenient. I like that fact the they define expectations about the minimal level students should have at the beginning.
 
-- [Data Analysis and Visualization in R for Ecologists](https://datacarpentry.org/R-ecology-lesson/index.html) content fits pretty nicely with what we had in mind.
+- [Data Analysis and Visualization in R for Ecologists](https://datacarpentry.org/R-ecology-lesson/index.html) content fits pretty nicely with what we had in mind. There is profuse text accompanying the code with excellent in depth explanations.
 
--   [Data wrangling, exploration, and analysis with R](https://stat545.com/?utm_source=perplexity). A course by Jenny Bryan that is digestible enough without compromise regarding the essential basics. Do not provide much statistical stuff though.
+-   [Data wrangling, exploration, and analysis with R](https://stat545.com/?utm_source=perplexity). A course by Jenny Bryan that is digestible enough without compromises regarding the essential basics. Do not provide much statistical material though.
+
+- [Advanced data analysis](https://kbroman.org/AdvData/schedule.html): By  Karl Broman. The goal for this course is to help students improve their skills in exploring and answering questions with data. This is be accomplished with a series of case studies.
+
+
+### Dive deeper into advanced R programming issues
+
+- [Programming with R](https://swcarpentry.github.io/r-novice-inflammation/key-points.html): gentle but pretty extensive resource from an excellent source.
+
+
+
+### One stop, rich and broad trainning material
+
+[<img src="https://datacarpentry.org/assets/img/DC_logo_vision.png" alt="datacarpentry.org" style="display:block" height="100"/>](https://datacarpentry.org/)
 
 -   [Biggest Collection of Free R Programming Books and Other Resources](https://github.com/javedali99/r-resources-for-data-science). A very BIG and very FREE collection... Need to have critical notion of how to navigate the list and of what is needed or very rapidily lost in the sea of material.
+
 
 ## A rough delineation of the main topics
 
@@ -42,7 +58,7 @@ Remember the R-specific sessions will be 1.5 dyas top.
 
 <summary>
 
-1.  R basics and workflows
+1.R basics and workflows
 
     </summary>
 
@@ -60,7 +76,7 @@ Remember the R-specific sessions will be 1.5 dyas top.
 
 <summary>
 
-2.  Reading/writting data files
+2.Reading/writting data files
 
     </summary>
 
@@ -70,9 +86,11 @@ Remember the R-specific sessions will be 1.5 dyas top.
 
 <summary>
 
-3.  Tidy data concepts, data wrangling and dplyr
+3.Tidy data concepts, data wrangling and dplyr
 
     </summary>
+- Messy data examples: https://kbroman.org/AdvData/16_wrangling.pdf
+
 
     </details>
 

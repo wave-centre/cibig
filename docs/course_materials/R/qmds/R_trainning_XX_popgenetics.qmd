@@ -8,6 +8,7 @@ date: "`r Sys.Date()`"
 #| include: false
 knitr::opts_chunk$set(
   eval = TRUE,
+  collapse = TRUE,
   include = TRUE
 )
 ```
@@ -27,28 +28,37 @@ library("adegenet")
 library("vcfR")
 ```
 
-If they are not already available on your system.
-Can you take care of the installation?
+If they are not already available on your system. Can you take care of the installation?
+
+```{r}
+#| label: install packages
+#| eval: false
+#| code-fold: true
+#| code-summary: "💭 !! Check the answer !! 🪂"
+#| output: false
 
 
-# Loading the vcf file data in R
+install.packages(c("adegenet", "vcfR"))
+# A more 
+pak::pkg_install(c("adegenet", "vcfR"))
+```
+
+# Loading the vcf file data in R and extract a snp matrix
 
 ```{r}
 #| label: vcf file path
 vcfPath <- here::here(".data", "all_samples.vcf.gz")
 ```
 
-# Extract the snp matrix
-
 ```{r}
 #| label: processing vfc to adegenet genlight object
 #| results: "markup"
-#| eval: FALSE
+#| eval: false
+#| output: false
 vcf <- read.vcfR(vcfPath, verbose = FALSE)
 glight <- vcfR2genlight(vcf)
 saveRDS(glight, file = here::here(".local", "genotypes_genlight.rds"))
 ```
-
 
 # Run the PCA and plot
 
@@ -62,17 +72,13 @@ saveRDS(glight, file = here::here(".local", "genotypes_genlight.rds"))
 if (!exists("glight")) glight <- readRDS(here::here(".data", "genotypes_genlight.rds"))
 nInd(glight)
 nLoc(glight)
-pca1 <- glPca(glight, nf = 20, parallel = TRUE, n.cores = 2)
+pca1 <- glPca(glight, nf = 20, parallel = TRUE, n.cores = 6)
 print(pca1)
+
 scatter(pca1, posi="topright")
 ```
 
+The reason we picked `glPca()` is because it is specialized for genotyping data. BUT **keep in mind** that the PCA analysis could have been done a number of ways, notably using base R `stats::princomp()` or the `FactoMineR` package (excellent [MOOC](http://factominer.free.fr/course/MOOC.html) on multivariate analysis). If you want to learn more about PCA in R, we advise you to examine specialized resources describing how to do statistical analysis with R using best practices. Here are a few resources as a starter:
 
-
-
-
-
-
-
-
-
+-   [The Handbook of Biological Statistics](https://rcompanion.org/rcompanion)
+-   [datacamp](https://www.datacamp.com/doc/r/anova)

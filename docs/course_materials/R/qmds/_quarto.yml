@@ -3,6 +3,10 @@ format:
   html:
     toc: true
     code-fold: false
+    toc-title: Section Contents
+    embed-resources: true
+    link-external-icon: true
+    link-external-newwindow: true
 editor_options: 
   chunk_output_type: console
   
