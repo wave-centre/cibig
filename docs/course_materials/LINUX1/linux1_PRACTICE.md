@@ -237,7 +237,12 @@ We will prepare our blast analysis performed after by creating directory and mov
 
 ### Practice 7 : Searching with `grep`
 
-* Go on the following page : https://plants.ensembl.org/Oryza_sativa/Info/Index using your internet navigator
+* Go on NCBI website and search if a refence genome exist for the Oryza sativa species.
+
+* Download the sequence of rna,cds,protein and genome as the genome annotation (gff3 file): https://plants.ensembl.org/Oryza_sativa/Info/Index using your internet navigator
+
+https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_034140825.1//
+
 * Copy the url of the rice genome annotation file (gff format, all chromosomes) that we will use to download the file directly on the server
 * Go to the `Bank` directory and type the following command :
 
