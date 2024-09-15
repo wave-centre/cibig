@@ -1,12 +1,7 @@
-layout	title
-page
-2024 session
 ---
 layout: page
-title: "Linux Practice"
-permalink: /linux/linuxPractice/
-tags: [ linux, survival guide ]
-description: Linux Practice page
+title:  "Linux Practice"
+permalink: /LINUX1/linux1_Practice/
 ---
 
 ## Description
