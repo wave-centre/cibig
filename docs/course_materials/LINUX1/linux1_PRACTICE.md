@@ -275,29 +275,29 @@ We will prepare our blast analysis performed after by creating directory and mov
 * Remove the directory `T-coffee-copy`.
 
 
-
-
 <a name="practice-8"></a>
 
 ### Practice 8 : Searching with `grep`
 
-* Go on the databank `plant ensembl` (https://plants.ensembl.org) and search if a refence genome exist for the Oryza sativa species.
+* Go on ncbi ([https://plants.ensembl.org](https://www.ncbi.nlm.nih.gov/)) and search if a reference genome exist for the `Oryza sativa` species.
 
-* Go to the `Bank` directory and type the following command :
-* Download the genome sequence and and its annotation (gff3 file). You have two options :
+* Go to the `Rice_sequencing_ONT` directory and download the genome sequence and and its annotation (gff3 file). You have two options :
 > download files on your computer and transfer them on the linux cluster
-> download directely on the linux server using the command `datasets` 
+> download directely on the linux server using the command `datasets`
+
 {% highlight bash %}module load ncbi-datasets/16.27.2{% endhighlight %}
+{% highlight bash %}datasets download genome accession ... {% endhighlight %}
 
-{% highlight bash %}wget gff_url{% endhighlight %}
-
-* After checking the content of your current directory, what have you done with the `wget`command?
-* Decompress the gff with the command `gzip -d file.gz`
+* After checking the content of your current directory, what have you done with the `datasets`command?
+* List the files of the zip file with the command `unzip -l file_name`
+* Decompress the zip directory with the command `unzip file_name`
+* List the content of the directory `ncbi_dataset` - `tree` 
 * Display the firsts and lasts lines of the gff file
 * Print the lines with the word `gene` in the gff file
 * Count the number of genes
-* Search for the nbs-lrr genes
-* Count lines without the word "putative" 
+* Count the number of annotated sequences in the african rice genome sequenced with ONT technology and compare this number with the numb er of genes annotated in the Asian rice genome.
+* Count lines without the word "putative" in the gff downloaded
+* Search for the EREBP genes in the gff downloaded
 
 -----------------------
 
