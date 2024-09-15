@@ -90,7 +90,7 @@ In the FileZilla menu, go to _File > Site Manager_. Then go through these 5 step
 
 | Cluster HPC | hostname| 
 | :------------- | :------------- | 
-| IRD HPC |  bioinfo-nas.ird.fr | 
+| IRD HPC |  bioinfo-san.ird.fr | 
 
 
 ##### Transferring files
