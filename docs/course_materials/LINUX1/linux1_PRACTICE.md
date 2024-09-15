@@ -1,3 +1,14 @@
+layout	title
+page
+2024 session
+---
+layout: page
+title: "Linux Practice"
+permalink: /linux/linuxPractice/
+tags: [ linux, survival guide ]
+description: Linux Practice page
+---
+
 ## Description
 
 | Description              | Hands On Lab Exercises for Linux                                                                                    |
