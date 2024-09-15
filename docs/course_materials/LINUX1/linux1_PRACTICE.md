@@ -279,7 +279,7 @@ We will prepare our blast analysis performed after by creating directory and mov
 
 ### Practice 8 : Searching with `grep`
 
-* Go on ncbi ([https://plants.ensembl.org](https://www.ncbi.nlm.nih.gov/)) and search if a reference genome exist for the `Oryza sativa` species.
+* Go on ncbi website and search if a reference genome exist for the `Oryza sativa` species.
 
 * Go to the `Rice_sequencing_ONT` directory and download the genome sequence and and its annotation (gff3 file). You have two options :
 > download files on your computer and transfer them on the linux cluster
@@ -304,20 +304,11 @@ We will prepare our blast analysis performed after by creating directory and mov
 <a name="practice-9"></a>
 ### Practice 9 : Blast analysis
 
-##### Connection to bioinfo-inter.ird.fr
-
-Open another terminal or mobaxterm session but this time choose the bioinfo-inter.ird.fr server.
-
 ##### Preparing working environment 
 
 Before launching your blast, you have to prepare your working environment (even if we will not use slurm) :
-* go inside the directory /scratch2
-* create a directory called 'formation_YOUR_ID' into the directory `/scratch2` and go into this new drectory
-* download the archive with the data that will be used to perform a blast - `wget http://itrop.ird.fr/LINUX-TP/BlastAnalysis.tar.gz`
-* decompress the gzip file `tar -xzvf BlastAnalysis.tar.gz`
-* after listing the content of the current directory, remove the archive `BlastAnalysis.tar.gz`
-* go inside the directory BlastAnalysis
-* Load the module blast, we will use the program `makeblastdbcmd`to create a local `blast` database then the program `blastn`.
+* go inside the directory created previously in the scratch directory
+* Load the module blast, we will use the program `makeblastdbcmd`to create a local `blast` database then the program `blastx`.
 {% highlight bash %}module load bioinfo/blast/2.12.0+{% endhighlight %}
 
 ##### Creating a custom database with `makeblastdb`
@@ -325,9 +316,9 @@ Before launching your blast, you have to prepare your working environment (even 
 As we use a custom database for the first time, if we have a fasta format file of these sequences we have to create a database from our fasta format file `AllEst.fasta` with the `makeblastdb` command.
 
 * Go inside the `Bank` directory and list the content of this directory
-* create a nucleotide database by typing:
+* create the blast index for uniprot database by typing:
 {% highlight bash %}
-makeblastdb -in AllEst.fasta -dbtype nucl -parse_seqids{% endhighlight %}
+makeblastdb -in uniprot_plant.fasta -dbtype prot -parse_seqids{% endhighlight %}
 
 * List the content of the directory to check if the database has been indexed
 
@@ -335,16 +326,14 @@ makeblastdb -in AllEst.fasta -dbtype nucl -parse_seqids{% endhighlight %}
 
 * Go inside the `blastAnalysis` directory
 * print the blast manual -  `blastn -help`
-* Perform  the blast by typing the following command, using transcritsAssembly.fasta as a query file: 
-{% highlight bash %}blastn -query [fastaFile] -db [databaseFile] -out [resultFile]{% endhighlight %}
+* Perform  the blast by typing the following command, using Oglab_var1_cds.only1000.fasta  as a query file: 
+{% highlight bash %}blastn -query [fastaFile] -db [databaseFile] -out [resultFile] -num_threads 4 {% endhighlight %}
 * Display the result file with the command `less`
 * Perform the blast adding the option outfmt equals to 6 and display the result file
 
-{% highlight bash %}blastn -query [fastaFile] -db [databaseFile] -outfmt [0-11] -out [resultFile]{% endhighlight %}
+{% highlight bash %}blastx -query [fastaFile] -db [databaseFile] -outfmt [0-11] -out [resultFile]{% endhighlight %}
 
-* Perform the blast adding the option -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore' 
-
-{% highlight bash %} blastn -query [fastaFile] -db [databaseFile] -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore' -out [resultFile]{% endhighlight %}
+* Perform the blast adding the option -outfmt 6 -max_target_seqs 1 
 
 
 ####### Output formats
@@ -423,7 +412,7 @@ bank.fasta the file containig the sequences that we want to extract
 {% endhighlight %}
 
 * Count the number of sequences extracted - `grep ">" c `
-* Get the help of theprogram `seqtk comp` - `seqtk comp`
+* Get the help of the program `seqtk comp` - `seqtk comp`
 * Run the program `seqtk comp` on your fasta file created just before
 
 {% highlight bash %}
