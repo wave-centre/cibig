@@ -3,9 +3,9 @@
 | Description              | Hands On Lab Exercises for Linux                                                                                    |
 |:-------------------------|:--------------------------------------------------------------------------------------------------------------------|
 | Related-course materials | [Linux for Dummies](https://github.com/CIBiG-wave/cibig-wave.github.io/blob/gh-pages/docs/course_materials/LINUX1/) |
-| Authors                  | Christine Tranchant-Dubreuil (christine.tranchant@ird.fr)                                                           |
+| Authors                  | Christine Tranchant-Dubreuil (christine.tranchant@ird.fr), Bruno Granouillac                                                           |
 | Creation Date            | 26/02/2018                                                                                                          |
-| Last Modified Date       | 11/08/2024                                                                                                          |
+| Last Modified Date       | 15/09/2024                                                                                                          |
 | Modified by              | itrop/Soutgreen trainers ([see](https://southgreenplatform.github.io/trainings/linux/linuxPractice/)) |              |
 
 -----------------------
@@ -81,7 +81,7 @@ In mobaXterm:
 
 | Cluster HPC | hostname| 
 | :------------- | :------------- | 
-| IRD HPC |  bioinfo-nas.ird.fr | 
+| IRD HPC |  bioinfo-master.ird.fr | 
 
 -----------------------
 
