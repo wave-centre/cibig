@@ -192,7 +192,7 @@ Test the command `tree`
 
 <details>
 
-{% highlight bash %}
+```
 [tranchant@node6 LINUX-TP]$ tree
 .
 ├── AllEst.fasta
@@ -255,7 +255,7 @@ Test the command `tree`
 
 29 directories, 253 files
 [tranchant@node6 LINUX-TP]$ 
-{% endhighlight %}
+```
 
 </details>
 ---
@@ -291,8 +291,8 @@ We will prepare our blast analysis performed after by creating directory and mov
 > download files on your computer and transfer them on the linux cluster
 > download directely on the linux server using the command `datasets`
 
-{% highlight bash %}module load ncbi-datasets/16.27.2{% endhighlight %}
-{% highlight bash %}datasets download genome accession ... {% endhighlight %}
+``` module load ncbi-datasets/16.27.2 ```
+``` datasets download genome accession ... ```
 
 * After checking the content of your current directory, what have you done with the `datasets`command?
 * List the files of the zip file with the command `unzip -l file_name`
@@ -315,7 +315,7 @@ We will prepare our blast analysis performed after by creating directory and mov
 Before launching your blast, you have to prepare your working environment (even if we will not use slurm) :
 * go inside the directory created previously in the scratch directory
 * Load the module blast, we will use the program `makeblastdbcmd`to create a local `blast` database then the program `blastx`.
-{% highlight bash %}module load bioinfo/blast/2.12.0+{% endhighlight %}
+```module load bioinfo/blast/2.12.0+{```
 
 ##### Creating a custom database with `makeblastdb`
 
@@ -323,8 +323,9 @@ As we use a custom database for the first time, if we have a fasta format file o
 
 * Go inside the `Bank` directory and list the content of this directory
 * create the blast index for uniprot database by typing:
-{% highlight bash %}
-makeblastdb -in uniprot_plant.fasta -dbtype prot -parse_seqids{% endhighlight %}
+```
+makeblastdb -in uniprot_plant.fasta -dbtype prot -parse_seqids
+```
 
 * List the content of the directory to check if the database has been indexed
 
@@ -333,18 +334,18 @@ makeblastdb -in uniprot_plant.fasta -dbtype prot -parse_seqids{% endhighlight %}
 * Go inside the `blastAnalysis` directory
 * print the blast manual -  `blastn -help`
 * Perform  the blast by typing the following command, using Oglab_var1_cds.only1000.fasta  as a query file: 
-{% highlight bash %}blastn -query [fastaFile] -db [databaseFile] -out [resultFile] -num_threads 4 {% endhighlight %}
+```blastn -query [fastaFile] -db [databaseFile] -out [resultFile] -num_threads 4 ```
 * Display the result file with the command `less`
 * Perform the blast adding the option outfmt equals to 6 and display the result file
 
-{% highlight bash %}blastx -query [fastaFile] -db [databaseFile] -outfmt [0-11] -out [resultFile]{% endhighlight %}
+```blastx -query [fastaFile] -db [databaseFile] -outfmt [0-11] -out [resultFile]```
 
 * Perform the blast adding the option -outfmt 6 -max_target_seqs 1 
 
 
 ####### Output formats
 
-{% highlight bash %}
+```
 The flag for the output format is -outfmt followed by a number which denotes the format request :
 
 0 = pairwise,
@@ -360,11 +361,13 @@ The flag for the output format is -outfmt followed by a number which denotes the
 10 = Comma-separated values,
 11 = BLAST archive format (ASN.1)
 </pre>
-{% endhighlight %}
+```
+
+
 
 #######  Output tabular format (6 or 7): one line per results splitted in 12 fields.
 
-{% highlight bash %}
+```
 1. query id
 2. subject id
 3. percent identity
@@ -377,7 +380,9 @@ The flag for the output format is -outfmt followed by a number which denotes the
 10. subject end
 11. expect value
 12. bit score
-{% endhighlight %}
+```
+
+
 
 
 ##### Parsing the results file
@@ -404,26 +409,26 @@ The flag for the output format is -outfmt followed by a number which denotes the
 * How many sequences have a homology with EST sequences ? (TIPs: `cut` command with `sort -u` (uniq) or `uniq` command ))
 * Extract ESTs sequences from database (or "bank") with `seqtk` by typing :
 
-{% highlight bash %}
+```
 module load bioinfo/seqtk/1.3-r106
 seqtk 
 seqtk subseq
 seqtk subseq [bank.fasta] [ests.id] | head
 seqtk subseq [bank.fasta] [ests.id] > ests.fasta
-{% endhighlight %}
+```
 
-{% highlight bash %}
+```
 ests.id the file containing the sequence names 
 bank.fasta the file containig the sequences that we want to extract
-{% endhighlight %}
+```
 
 * Count the number of sequences extracted - `grep ">" c `
 * Get the help of the program `seqtk comp` - `seqtk comp`
 * Run the program `seqtk comp` on your fasta file created just before
 
-{% highlight bash %}
+```
 seqtk comp  FASTA_FILE | head
-{% endhighlight %}
+```
 
 * Display only the accession and the length with the command `cut` directly from the output of the command `seqtk comp`
 * What is the shorthest sequence (Accession and length)?
@@ -440,9 +445,9 @@ seqtk comp  FASTA_FILE | head
 * Create a shortcut of the different vcf file in the directory `/scratch2/VCF_LINUX`  with the command `ln -s source_file myfile`
 
 For example
-{% highlight bash %}
+```
 ln -s /scratch2/VCF_LINUX_FORMATIONX/OgOb-all-MSU7-CHR6.GATKVARIANTFILTRATION.vcf.gz OgOb-all-MSU7-CHR6.GATKVARIANTFILTRATION.LINK.vcf.gz
-{% endhighlight %}
+```
 
 Thus, OgOb-all-MSU7-CHR6.GATKVARIANTFILTRATION.LINK.vcf is the name of the new file containing the reference to the file named OgOb-all-MSU7-CHR6.GATKVARIANTFILTRATION.vcf.
 
@@ -472,16 +477,16 @@ To get some basics stats of the output VCF files, let's use linux command!
 * Go into the directory `LINUX-TP/Data/fastq/pairedTwoIndividusGzippedIrigin` - `cd`
 * List the directory content
 * Run fastq-stats program ( [more](http://manpages.ubuntu.com/manpages/xenial/man1/fastq-stats.1.html) to get stats about the fastq file `irigin1_1.fastq.gz`
-{% highlight bash %}
+```
 fastq-stats -D irigin1_1.fastq.gz
-{% endhighlight %}
+```
 * BONUS :
 Use a `for` loop to run fastq-stats with every fastq file in the directory
-{% highlight bash %}
+```
 for file in *fastq; do 
   fastq-stats -D $file > $file.fastq-stats ; 
 done;
-{% endhighlight %}
+```
 
 
 -----------------------
