@@ -1,7 +1,7 @@
 ---
 layout: page
 title:  "Linux Practice"
-permalink: /LINUX1/linux1_Practice/
+permalink: /LINUX1/linux1_PRACTICE/
 ---
 
 ## Description
