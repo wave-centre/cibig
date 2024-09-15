@@ -1,5 +1,3 @@
-PUT LOGO CIBIG 
-
 # Linux for Bioinformatics or a Survival Guide To Linux
 
 ## Content
