@@ -82,11 +82,21 @@ In mobaXterm:
 | Cluster HPC | hostname| 
 | :------------- | :------------- | 
 | IRD HPC |  bioinfo-master.ird.fr | 
-
 -----------------------
+
 
 <a name="practice-2"></a>
 ###  Practice 2 : First steps : prompt & `pwd`
+
+#### Working environment
+
+* Connect to node 17 with the `srun` command (this command will be explained later in the linux cluster” module) 
+
+```
+srun -p formation -c 2 --pty bash -i
+```
+
+#### Linux discovering
 
 * What is the current/working directory just by looking the prompt?
 * Check the name of your working directory with `pwd` command?
