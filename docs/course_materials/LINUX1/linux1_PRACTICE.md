@@ -142,13 +142,13 @@ srun -p formation -c 2 --pty bash -i
 * List the content of the directory
 * On the console, type your 2 first linux commands to get data necessary for the next (we will explain the two commands later):
 
-{% highlight bash %}
+```
 # get the file from the web
 wget http://itrop.ird.fr/LINUX-TP/LINUX-TP.tar.gz
 
 # decompress the gzip file
 tar -xzvf LINUX-TP.tar.gz
-{% endhighlight %}
+```
 
 *  List the content of your home directory on the server now (cf. filetree just below)
 
