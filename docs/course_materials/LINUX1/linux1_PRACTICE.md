@@ -292,6 +292,7 @@ We will prepare our blast analysis performed after by creating directory and mov
 > download directely on the linux server using the command `datasets`
 
 ``` module load ncbi-datasets/16.27.2 ```
+
 ``` datasets download genome accession ... ```
 
 * After checking the content of your current directory, what have you done with the `datasets`command?
