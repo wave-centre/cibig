@@ -262,12 +262,13 @@ Test the command `tree`
 We will prepare our blast analysis performed after by creating directory and moving files as showing in the image just below :
 <img width="50%" class="img-responsive" src="img/arbo-2.png"/>
 
-* Create a subdirectory called `BlastAnalysis` in the directory `LINUX_TP` with the `mkdir` command.
-* Move `transcritsAssembly.fasta` into this new directory with the `mv` command.
-* List the content of `LINUX-TP` and `BlastAnalysis` with the `ls` command.
-* Copy `AllEst.fasta` in  the directory `Bank` with the `cp` command.
-* List the content of the `LINUX-TP` and `Bank` directories. What are the differences between mv and cp?
-* Remove the file `AllEst.fasta` in the directory `LINUX-TP` with the `rm` command.
+* Create a subdirectory called `Rice_sequencing_ONT` in the directory `LINUX_TP` with the `mkdir` command.
+* Move all the files started by `Oglab_var1`  into this new directory with the `mv` command.
+* List the content of `LINUX-TP` and `Rice_sequencing_ONT` with the `ls` command.
+* Create a subdirectory called `BlastAnalysis` in the directory `/scratch/<PUT YOUR_LOGIN>` with the `mkdir` command.
+* Copy all the files started by `Oglab_var1`  in  the directory `BlastAnalysis` with the `cp` command.
+* List the content of the `BlastAnalysis` and `Rice_sequencing_ONT` directories. What are the differences between mv and cp?
+* Remove the files `Oglab_var1_cds.fna` and `Oglab_var1_genome_v1.fasta` in the directory `BlastAnalysis` with the `rm` command.
 * Copy the whole directory `T-coffee` with the name `T-coffee-copy`into the directory `LINUX-TP`.
 * After checking the content of the directory `LINUX-TP`, remove the directory `T-coffee-copy`. How to remove a directory ?
 * Remove all the files into the director  `T-coffee-copy` with the `rm *` command.
