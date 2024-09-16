@@ -98,12 +98,21 @@
    ```bash
    conda deactivate
    ```
-
+* Add the defaults channels:
+  
+   ```bash
+   conda config --add channels defaults
+   conda config --add channels bioconda
+   conda config --add channels conda-forge
+   conda config --set channel_priority strict
+   ```
 
 -----------------------
 
 <a name="practice-2"></a>
 ###  Practice 2 : Create your first conda environment
+
+#### Installation of samtools:
 
 Let's create our first environment to use the samtools software:
 
@@ -130,6 +139,11 @@ Now,  activate your environment newly created with the following command:
 
  ```bash
    conda activate conda-training
+   ```
+Relaunch the following command 
+
+ ```bash
+   samtools version
    ```
 
 
