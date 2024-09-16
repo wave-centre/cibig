@@ -13,13 +13,13 @@
 ### Summary
 
 <!-- TOC depthFrom:2 depthTo:2 withLinks:1 updateOnSave:1 orderedList:0 -->
-* [Preambule: Softwares to install before connecting to a distant linux server ](#preambule)
-* [Practice 1: Install miniconda in your home](#practice-1)
-* [Practice 2: Create your first environment](#practice-2)
-* [Practice 3: Launch an analysis on the cluster using your conda environment](#practice-3)
-* [Practice 4 : Retreive a apptainer container on the cluster using pull](#practice-4)
-* [practice-5 : Launch an analysis on the cluster using containers](#practice-5)
-* [practice-6 : Generate a container using a definition file](#practice-6)
+* [Preambule 0: Softwares to install before connecting to a distant linux server ](#preambule-0)
+* [Preambule 1: If you need to Install miniconda on your PC](#preambule-1)
+* [Practice 1: Create your first environment](#practice-1)
+* [Practice 2: Launch an analysis on the cluster using your conda environment](#practice-2)
+* [Practice 3 : Retreive a apptainer container on the cluster using pull](#practice-3)
+* [practice 4 : Launch an analysis on the cluster using containers](#practice-4)
+* [practice 5 : Generate a container using a definition file](#practice-5)
 * [Links](#links)
 * [License](#license)
 
@@ -57,8 +57,12 @@
 -----------------------
 
 
-<a name="practice-1"></a>
-### Practice 1 : Install miniconda in your home
+<a name="preambule-1"></a>
+### Preambule 1  : Install miniconda on your PC
+
+If you need to install miniconda on your PC:
+
+<details>
 
 * Create a directory called `miniconda`
 
@@ -107,25 +111,29 @@
    conda config --set channel_priority strict
    ```
 
+</details>
 -----------------------
 
-<a name="practice-2"></a>
-###  Practice 2 : Create your first conda environment
+<a name="practice-1"></a>
+###  Practice 1 : Create your first conda environment
 
 #### Installation of samtools:
 
 Let's create our first environment to use the samtools software:
 
  ```bash
-   conda create -n conda-training -c bioconda samtools
+   conda create -n conda-training 
    ```
-
-To the question `Proceed ([y]/n)?`, press `y` then `enter`
 
 Type the following command to make sure that your environment is created:
 
  ```bash
    conda env list
+   ```
+Now,  activate your environment newly created with the following command:
+
+ ```bash
+   conda activate conda-training
    ```
 
 Try to launch the following command :
@@ -135,39 +143,65 @@ Try to launch the following command :
    ```
 Observe the result.
 
-Now,  activate your environment newly created with the following command:
+Go to the website https://anaconda.org/  and search for samtools 
+
+Install samtools in this environment with the following command:
 
  ```bash
-   conda activate conda-training
+   conda install bioconda:samtools
    ```
+
 Relaunch the following command 
 
  ```bash
    samtools version
    ```
+Please note the version of samtools
+
+Remove this version of samtools with the command:
+
+ ```bash
+   conda remove samtools
+   ```
+Install instead the version 1.20 of samtools:
+
+ ```bash
+   conda install samtools==1.20
+   ```
+#### Installation of bwa-mem2:
+
+Go to the website https://anaconda.org/  and search for the software bwa-mem2
+
+Install the version 2.2.1 of bwa-mem2 in your environment
+
+-----------------------
+
+<a name="practice-2"></a>
+### Practice 2 : Export and recreate your conda environment
+
+
+
+-----------------------
+
+<a name="practice-2"></a>
+### Practice 2 : Launch an analysis on the cluster using your conda environment
+
 
 
 -----------------------
 
 <a name="practice-3"></a>
-### Practice 3 : Launch an analysis on the cluster using your conda environment
-
-
+### Practice 3 :  Retreive a apptainer container on the cluster using pull
 
 -----------------------
 
 <a name="practice-4"></a>
-### Practice 4 :  Retreive a apptainer container on the cluster using pull
+### Practice 4 : Launch an analysis on the cluster using containers
 
 -----------------------
 
 <a name="practice-5"></a>
-### Practice 5 : Launch an analysis on the cluster using containers
-
------------------------
-
-<a name="practice-6"></a>
-### Practice 6 : Generate a container using a definition file
+### Practice 5 : Generate a container using a definition file
 
 
 -----------------------
