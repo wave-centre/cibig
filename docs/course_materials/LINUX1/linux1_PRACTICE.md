@@ -1,4 +1,4 @@
----
+![image](https://github.com/user-attachments/assets/9069ac77-cdb7-46dd-88a9-86dc42acc7ff)---
 layout: page
 title:  "Linux Practice"
 permalink: /LINUX1/linux1_PRACTICE/
@@ -277,7 +277,7 @@ We will prepare our blast analysis performed after by creating directory and mov
 * Remove the files `Oglab_var1_cds.fna` and `Oglab_var1_genome_v1.fasta` in the directory `BlastAnalysis` with the `rm` command.
 * Copy the whole directory `T-coffee` with the name `T-coffee-copy`into the directory `LINUX-TP`.
 * After checking the content of the directory `LINUX-TP`, remove the directory `T-coffee-copy`. How to remove a directory ?
-* Remove all the files into the director  `T-coffee-copy` with the `rm *` command.
+* Remove all the files into the directory `T-coffee-copy` with the `rm *` command after moving in the correct directory. BE CAREFUL !
 * Remove the directory `T-coffee-copy`.
 
 
@@ -299,12 +299,12 @@ We will prepare our blast analysis performed after by creating directory and mov
 * List the files of the zip file with the command `unzip -l file_name`
 * Decompress the zip directory with the command `unzip file_name`
 * List the content of the directory `ncbi_dataset` - `tree` 
-* Display the firsts and lasts lines of the gff file
-* Print the lines with the word `gene` in the gff file
-* Count the number of genes
-* Count the number of annotated sequences in the african rice genome sequenced with ONT technology and compare this number with the numb er of genes annotated in the Asian rice genome.
+* Display the firsts and lasts lines of the gff file - `head` `tail`
+* Search for only the lines with the word `gene` in the gff file - `grep`
+* Count the number of genes - `grep -c`
+* Count the number of annotated sequences in the african rice genome sequenced with ONT technology and compare this number with the number of genes annotated in the Asian rice genome. - `grep -c`
 * Count lines without the word "putative" in the gff downloaded
-* Search for the EREBP genes in the gff downloaded
+* Search for the `EREBP` genes in the gff downloaded
 
 -----------------------
 
@@ -313,17 +313,20 @@ We will prepare our blast analysis performed after by creating directory and mov
 
 ##### Preparing working environment 
 
-Before launching your blast, you have to prepare your working environment (even if we will not use slurm) :
-* go inside the directory created previously in the scratch directory
-* Load the module blast, we will use the program `makeblastdbcmd`to create a local `blast` database then the program `blastx`.
-```module load bioinfo/blast/2.12.0+{```
+Before launching your blast, you need to prepare your working environment (although we won't be using slurm) :
+* go to the previously created directory
+* Load the blast module to first use the `makeblastdbcmd` program to create a local `blast` database and then to align sequences to this bank using the program `blastx`.
+  
+```module load /blast/2.10.0+```
 
 ##### Creating a custom database with `makeblastdb`
+As we are using this database for the first time, we need to create all the indexes for the local Uniprot ` database with the `makeblastdb` command.
 
-As we use a custom database for the first time, if we have a fasta format file of these sequences we have to create a database from our fasta format file `AllEst.fasta` with the `makeblastdb` command.
+* Go to the `Bank` directory and list its contents.
+* copy the uniprot_plant.fasta file from the /scratch/SHARED directory into the Bank directory
+* count the number of sequences in this databank - `grep`
+* Create the blast index for the uniprot database by typing :
 
-* Go inside the `Bank` directory and list the content of this directory
-* create the blast index for uniprot database by typing:
 ```
 makeblastdb -in uniprot_plant.fasta -dbtype prot -parse_seqids
 ```
@@ -333,15 +336,18 @@ makeblastdb -in uniprot_plant.fasta -dbtype prot -parse_seqids
 ##### BLASTing against our remote database
 
 * Go inside the `blastAnalysis` directory
-* print the blast manual -  `blastn -help`
-* Perform  the blast by typing the following command, using Oglab_var1_cds.only1000.fasta  as a query file: 
-```blastn -query [fastaFile] -db [databaseFile] -out [resultFile] -num_threads 4 ```
+* print the blast manual -  `blastx -help`
+* Perform  the blast by typing the following command, using Oglab_var1_cds.only1000.fasta  as a query file:
+   
+```blastx -query [fastaFile] -db [databaseFile] -out [resultFile] -num_threads 4 ```
+
 * Display the result file with the command `less`
+
 * Perform the blast adding the option outfmt equals to 6 and display the result file
 
 ```blastx -query [fastaFile] -db [databaseFile] -outfmt [0-11] -out [resultFile]```
 
-* Perform the blast adding the option -outfmt 6 -max_target_seqs 1 
+* Perform the blast adding the option -outfmt "6 qseqid sseqid sacc stitle  pident length mismatch gapopen qstart qend sstart send evalue bitscore" -max_target_seqs 1 
 
 
 ####### Output formats
@@ -394,32 +400,32 @@ The flag for the output format is -outfmt followed by a number which denotes the
 * Sort the lines using the second field (subject  id) by alphabetical order, ascending then descending   - `sort`
 * Sort lines by e‐value (ascending) and by “alignment length” (descending) - `sort`
 * Extract the first 4 fields - `cut`
-* Extract query id, subject id, evalue, alignment length `cut`
+* Extract query id, subject id, evalue, alignment length - `cut`
 
 -----------------------
 
 <a name="practice-10"></a>
 ### Practice 10 : Redirecting a command output to a File with `>`
-* Extract all ESTs identifiers and print them in the file ESTs_accession.list - `cut >`
+* Extract all proteins identifiers and print them in the file protein_accession.list - `cut >`
 
 -----------------------
 
 <a name="practice-11"></a>
 ### Practice 11 :  Sending data from one command to another (piping) with `|`
-* How many sequences contains the file transcritsAssembly.fasta ?
-* How many sequences have a homology with EST sequences ? (TIPs: `cut` command with `sort -u` (uniq) or `uniq` command ))
-* Extract ESTs sequences from database (or "bank") with `seqtk` by typing :
+* How many sequences contains the file that contains CDS sequences ?
+* How many sequences have a homology with protein sequences ? (TIPs: `cut` command with `sort -u` (uniq) or `uniq` command ))
+* Extract protein sequences from database (or "bank") with `seqtk` by typing :
 
 ```
 module load bioinfo/seqtk/1.3-r106
 seqtk 
 seqtk subseq
-seqtk subseq [bank.fasta] [ests.id] | head
-seqtk subseq [bank.fasta] [ests.id] > ests.fasta
+seqtk subseq [bank.fasta] [accessions.id] | head
+seqtk subseq [bank.fasta] [accessions.id] > accessions_prot.fasta
 ```
 
 ```
-ests.id the file containing the sequence names 
+accessions.id the file containing the sequence names 
 bank.fasta the file containig the sequences that we want to extract
 ```
 
@@ -436,6 +442,8 @@ seqtk comp  FASTA_FILE | head
 * What is the longuest sequence (Accession and length)?
 
 -----------------------
+
+## BONUS
 
 <a name="practice-12"></a>
 ### Practice 12 : Dealing with vcf Files 
