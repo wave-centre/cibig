@@ -17,7 +17,7 @@
 * [Practice 1: Install miniconda on your PC](#practice-1)
 * [Practice 2: Create your first environment](#practice-2)
 * [Practice 3: Launch an analysis on the cluster using your conda environment](#practice-3)
-* [Practice 4 : Retreive a appatainer container on the cluster using pull](#practice-4)
+* [Practice 4 : Retreive a apptainer container on the cluster using pull](#practice-4)
 * [practice-5 : Launch an analysis on the cluster using containers](#practice-5)
 * [practice-6 : Generate a container using a definition file](#practice-6)
 * [Links](#links)
@@ -143,7 +143,7 @@ Now,  activate your environment newly created with the following command:
 -----------------------
 
 <a name="practice-4"></a>
-### Practice 4 :  Retreive a appatainer container on the cluster using pull
+### Practice 4 :  Retreive a apptainer container on the cluster using pull
 
 -----------------------
 
