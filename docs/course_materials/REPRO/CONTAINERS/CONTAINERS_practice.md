@@ -5,7 +5,7 @@
 | Related-course materials | [Reproductibility:Apptainer(singularity) and Conda](https://github.com/CIBiG-wave/cibig-wave.github.io/blob/gh-pages/docs/course_materials/REPRO/CONTAINERS/) |
 | Authors                  | Ndomassi TANDO (ndomassi.tando@ird.fr)                                                           |
 | Creation Date            | 13/09/2024                                                                                                          |
-| Last Modified Date       | 13/09/2024                                                                                                          |
+| Last Modified Date       | 16/09/2024                                                                                                          |
 | Modified by              | ndomassi TANDO              |
 
 -----------------------
@@ -73,7 +73,7 @@
 
 * Run the Miniconda installation script (`-b` to be able to run unattended, which means that all of the agreements are automatically accepted without user prompt. `-u` updates any existing installation in the directory of install if there is one. `-p` is the directory to install into):
   ```bash
-  bash Miniconda3-latest-Linux-x86_64.sh  -b -u -p ~/miniconda
+  bash Miniconda3-latest-Linux-x86_64.sh  -b -u -p ~/miniconda3
   ```
 
 * Add this conda initialization incantation to your .bashrc:
@@ -90,7 +90,7 @@
 
 * This will start the conda environment. Notice that your command prompt now includes **(base)**, e.g.,:
   ```
-  (base) dom@dom-PC:~$
+  (base) formation20@master1:~$
   ```
 
 * If you don't want conda to start every time you open a terminal, simply add the following line at the end of your .bashrc:
@@ -105,6 +105,32 @@
 <a name="practice-2"></a>
 ###  Practice 2 : Create your first conda environment
 
+Let's create our first environment to use the samtools software:
+
+ ```bash
+   conda create -n conda-training -c bioconda samtools
+   ```
+
+To the question `Proceed ([y]/n)?`, press `y` then `enter`
+
+Type the following command to make sure that your environment is created:
+
+ ```bash
+   conda env list
+   ```
+
+Try to launch the following command :
+
+ ```bash
+   samtools version
+   ```
+Observe the result.
+
+Now,  activate your environment newly created with the following command:
+
+ ```bash
+   conda activate conda-training
+   ```
 
 
 -----------------------
