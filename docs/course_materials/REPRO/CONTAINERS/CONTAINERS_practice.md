@@ -63,7 +63,7 @@
 * Create a directory called `miniconda`
 
    ```bash
-   mkdir miniconda
+   mkdir miniconda3
    ```
 
 * Download the Miniconda installation script for Linux (Google Cloud Shell runs on a Linux virtual machine):
@@ -79,7 +79,7 @@
 * Add this conda initialization incantation to your .bashrc:
 
   ```bash
-  ~/miniconda/bin/conda init bash
+  ~/miniconda3/bin/conda init bash
   ```
 
 * After the install is complete, source your **.bashrc** to refresh the terminal with information about conda:
