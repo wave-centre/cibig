@@ -14,7 +14,7 @@
 
 <!-- TOC depthFrom:2 depthTo:2 withLinks:1 updateOnSave:1 orderedList:0 -->
 * [Preambule: Softwares to install before connecting to a distant linux server ](#preambule)
-* [Practice 1: Install miniconda on your PC](#practice-1)
+* [Practice 1: Install miniconda in your home](#practice-1)
 * [Practice 2: Create your first environment](#practice-2)
 * [Practice 3: Launch an analysis on the cluster using your conda environment](#practice-3)
 * [Practice 4 : Retreive a apptainer container on the cluster using pull](#practice-4)
@@ -58,7 +58,7 @@
 
 
 <a name="practice-1"></a>
-### Practice 1 : Install miniconda on your PC
+### Practice 1 : Install miniconda in your home
 
 * Create a directory called `miniconda`
 
