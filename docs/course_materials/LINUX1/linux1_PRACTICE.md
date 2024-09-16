@@ -372,7 +372,7 @@ The flag for the output format is -outfmt followed by a number which denotes the
 
 
 
-#######  Output tabular format (6 or 7): one line per results splitted in 12 fields.
+######  Output tabular format (6 or 7): one line per results splitted in 12 fields.
 
 ```
 1. query id
