@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/9069ac77-cdb7-46dd-88a9-86dc42acc7ff)---
+---
 layout: page
 title:  "Linux Practice"
 permalink: /LINUX1/linux1_PRACTICE/
