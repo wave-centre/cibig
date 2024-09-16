@@ -350,7 +350,7 @@ makeblastdb -in uniprot_plant.fasta -dbtype prot -parse_seqids
 * Perform the blast adding the option -outfmt "6 qseqid sseqid sacc stitle  pident length mismatch gapopen qstart qend sstart send evalue bitscore" -max_target_seqs 1 
 
 
-####### Output formats
+###### Output formats
 
 ```
 The flag for the output format is -outfmt followed by a number which denotes the format request :
