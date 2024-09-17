@@ -62,7 +62,7 @@
 
 If you need to install miniconda on your PC:
 
-<details>
+<details><summary>Click here to view</summary>
 
 * Create a directory called `miniconda`
 
