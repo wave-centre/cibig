@@ -131,8 +131,8 @@ https://www.ncbi.nlm.nih.gov/sra/docs/sradownload/
 
 
 
-<a name="practice-5"></a>
-### Practice 5 : Searching for text using `https://regex101.com/`
+<a name="practice-2"></a>
+### Practice 2 : Searching for text using `https://regex101.com/`
 
 * Go to the web site https://regex101.com/
 * Copy the following accession gene names and paste it in the field `test string`
