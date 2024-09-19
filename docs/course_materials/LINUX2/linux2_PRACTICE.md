@@ -36,6 +36,7 @@ permalink: /LINUX2/linux2_PRACTICE/
 ### Practice 1 : Using the && separator
 
 * Connect to node17 using `srun` command (slurm command)
+  
    `srun -p formation -c 2 --pty bash -i`
   
 * Move into the directory /scratch/Put_Your_Login_Here
