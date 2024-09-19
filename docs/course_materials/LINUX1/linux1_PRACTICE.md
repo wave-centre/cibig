@@ -320,7 +320,7 @@ Before launching your blast, you need to prepare your working environment (altho
 * go to the previously created directory
 * Load the blast module to first use the `makeblastdbcmd` program to create a local `blast` database and then to align sequences to this bank using the program `blastx`.
   
-```module load /blast/2.10.0+```
+```module load blast/2.10.0+```
 
 ##### Creating a custom database with `makeblastdb`
 As we are using this database for the first time, we need to create all the indexes for the local Uniprot ` database with the `makeblastdb` command.
