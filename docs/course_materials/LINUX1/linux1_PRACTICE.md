@@ -446,6 +446,25 @@ seqtk comp  FASTA_FILE | head
 
 -----------------------
 
+<a name="practice-12"></a>
+### Practice 12 :  Getting stats from fastq sequences
+
+* Go to the directory `~/LINUX-TP/Data/fastq/pairedTwoIndividusGzippedIrigin` - `cd`
+* Count the number of fastq files in this directory - `wc -l`
+* List the first 8 lines of the fastq file `irigin1_1.fastq.gz` without unzipping the file - `zcat`, `head`
+* List the first line of all fastq files in this directory without unzipping files - `zcat`, `head`
+* count the number of lines in the fastq file `irigin1_1.fastq.gz` - `wc -l`
+* Count the number of lines in all fastq files in this directory - `wc -l`
+* Count the number of lines in each file. There are several ways of doing this. Try by using `for` loop in bash
+
+`for file in *fastq.gz; \
+do \
+echo $file;
+done; \
+`
+
+-----------------------
+
 ## BONUS
 
 <a name="practice-12"></a>
