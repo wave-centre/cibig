@@ -18,8 +18,8 @@ permalink: /LINUX2/linux2_PRACTICE/
 
 <!-- TOC depthFrom:2 depthTo:2 withLinks:1 updateOnSave:1 orderedList:0 -->
 * [Practice 1: Using the `&&` separator](#practice-1)
-* [Practice 4: Monitoring processes) with `w, ps, kill, top`](#practice-4)
-* [Practice 5: Searching for text using `regex101.com`](#practice-5)
+* [Practice 2: Downloading files from SRA](#practice-2)
+* [Practice 3: Searching for text using `regex101.com`](#practice-3)
 * [Practice 6: Searching for text using `grep`](#practice-6)
 * [Practice 7: Displaying lines with `sed`](#practice-7)
 * [Practice 8: Deleting lines with `sed`](#practice-8)
