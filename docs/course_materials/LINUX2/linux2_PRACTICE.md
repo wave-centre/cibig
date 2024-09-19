@@ -101,28 +101,21 @@ bash-4.2# tree -L 2
 
  </details>
  
-<img width="80%" class="img-responsive" src="{{ site.url }}/images/tpLinux/arbo3.png"/>
-
-
- 
 -----------------------
-<a name="practice-4"></a>
-### Practice 2 :  Monitoring processes
-
-#### Downloading files from SRA 
+<a name="practice-2"></a>
+### Practice 2 :  Downloading files from SRA 
 
 * Go into the directory `LINUX4JEDI-TP/1-fastq` 
 * Display the size of all fastq files - `ls -lh, du -h`
 
 We want to download two fastq files from NCBI SRA (available here https://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=518559) using SRAtoolkit as below :
 
-{% highlight bash %}
+```
 module load bioinfo/sratoolkit/3.0.1
 
 prefetch SRRXXX
 fasterq-dump --split-files SRRXXX
-
-{% endhighlight %}
+```
 
 https://www.ncbi.nlm.nih.gov/sra/docs/sradownload/
 
@@ -130,8 +123,8 @@ https://www.ncbi.nlm.nih.gov/sra/docs/sradownload/
 
 
 
-<a name="practice-2"></a>
-### Practice 2 : Searching for text using `https://regex101.com/`
+<a name="practice-3"></a>
+### Practice 3 : Searching for text using `https://regex101.com/`
 
 * Go to the web site https://regex101.com/
 * Copy the following accession gene names and paste it in the field `test string`
