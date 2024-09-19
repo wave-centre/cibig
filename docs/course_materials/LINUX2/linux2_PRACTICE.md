@@ -43,17 +43,16 @@ permalink: /LINUX2/linux2_PRACTICE/
 
 * On the console, type the 2 following linux commands to get data necessary for the next :
 
-{% highlight bash %}
+```
 # get the file on the web and decompress the gzip file 
-wget http://itrop.ird.fr/LINUX-TP/LINUX4JEDI-TP.tar.gz && tar -xzvf LINUX4JEDI-TP.tar.gz
-{% endhighlight %}
+wget http://itrop.ird.fr/LINUX-TP/LINUX4JEDI-TP.tar.gz && tar -xzvf LINUX4JEDI-TP.tar.gz && rm LINUX4JEDI-TP.tar.gz
+```
 
 * Check the content of your home directory on the server now 
-* Delete the file LINUX4JEDI.tar.gz on the server - `rm`
 * Execute the `tree` command 
 
 <details>
-{% highlight bash %}
+```
 bash-4.2# tree -L 2  
 .
 |-- 1-fastq
@@ -98,7 +97,7 @@ bash-4.2# tree -L 2
 |   `-- testNum.sh
 |-- erz340.pdf
 `-- erz340_suppl_supplementary_table_s1.csv
-{% endhighlight %}
+```
 
  </details>
  
