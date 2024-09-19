@@ -417,7 +417,7 @@ The flag for the output format is -outfmt followed by a number which denotes the
 ### Practice 11 :  Sending data from one command to another (piping) with `|`
 * How many sequences contains the file that contains CDS sequences ?
 * How many sequences have a homology with protein sequences ? (TIPs: `cut` command with `sort -u` (uniq) or `uniq` command ))
-* Extract protein sequences from database (or "bank") with `seqtk` by typing :
+* Extract protein sequences that have homogy  with our CDS using  `seqtk subseq` and the protein bank by typing :
 
 ```
 module load bioinfo/seqtk/1.3-r106
