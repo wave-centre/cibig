@@ -31,12 +31,14 @@ permalink: /LINUX1/linux1_PRACTICE/
 * [practice-9 : Blast analysis](#practice-9)
 * [Practice-10: Redirecting a command output to a File with `>`](#practice-10)
 * [Practice-11: Sending data from one command to another (piping) with `|`](#practice-11)
-
+* [Practice 12 :  Getting stats from fastq sequences(#practice-12)
+ 
 BONUS
 
-* [practice-12 : Dealing with VCF files](#practice-12)
-* [practice-13 : Filtering VCF files](#practice-13)
-* [Practice-14 : Getting basic stats](#practice-14)
+* [Practice-13 : Getting basic stats](#practice-13)
+* [practice-14 : Dealing with VCF files](#practice-14)
+* [practice-15 : Filtering VCF files](#practice-15)
+
 * [Tips](#tips)
   - [How to convert between Unix and Windows text files?](#convertFileFormat)
   - [How to open and read a file through a text editor on a distant linux server?](#readFile)
@@ -467,8 +469,24 @@ done; \
 
 ## BONUS
 
-<a name="practice-12"></a>
-### Practice 12 : Dealing with vcf Files 
+<a name="practice-13"></a>
+### Practice 13 : Getting basic stats
+* Go into the directory `LINUX-TP/Data/fastq/pairedTwoIndividusGzippedIrigin` - `cd`
+* List the directory content
+* Run fastq-stats program ( [more](http://manpages.ubuntu.com/manpages/xenial/man1/fastq-stats.1.html) to get stats about the fastq file `irigin1_1.fastq.gz`
+```
+fastq-stats -D irigin1_1.fastq.gz
+```
+* BONUS :
+Use a `for` loop to run fastq-stats with every fastq file in the directory
+```
+for file in *fastq; do 
+  fastq-stats -D $file > $file.fastq-stats ; 
+done;
+```
+
+<a name="practice-14"></a>
+### Practice 14 : Dealing with vcf Files 
 
 * List the content of the directory `/scratch2/VCF_LINUX`
 * Before creating your directory `/scratch2/VCF_LINUX_FORMATIONX`, displays the amount of disk space available on the file system with the command `df`
@@ -493,7 +511,7 @@ Thus, OgOb-all-MSU7-CHR6.GATKVARIANTFILTRATION.LINK.vcf is the name of the new f
 -----------------------
 
 <a name="practice-13"></a>
-### Practice 13 :  Filtering VCF files `|` - `zgrep` 
+### Practice 15 :  Filtering VCF files `|` - `zgrep` 
 To get some basics stats of the output VCF files, let's use linux command!
 * How many polymorphisms were detected (Displaying all the lines which does not start with # / header lines) in the different vcf files ?
 * How many polymorphisms were considered "good" after filtering steps by GATK VARIANTFILTRATION (ie marked `PASS`)?
@@ -503,21 +521,6 @@ To get some basics stats of the output VCF files, let's use linux command!
 
 -----------------------
 
-<a name="practice-14"></a>
-### Practice 14 : Getting basic stats
-* Go into the directory `LINUX-TP/Data/fastq/pairedTwoIndividusGzippedIrigin` - `cd`
-* List the directory content
-* Run fastq-stats program ( [more](http://manpages.ubuntu.com/manpages/xenial/man1/fastq-stats.1.html) to get stats about the fastq file `irigin1_1.fastq.gz`
-```
-fastq-stats -D irigin1_1.fastq.gz
-```
-* BONUS :
-Use a `for` loop to run fastq-stats with every fastq file in the directory
-```
-for file in *fastq; do 
-  fastq-stats -D $file > $file.fastq-stats ; 
-done;
-```
 
 
 -----------------------
