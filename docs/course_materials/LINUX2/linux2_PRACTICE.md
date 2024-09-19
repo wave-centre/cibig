@@ -127,33 +127,34 @@ https://www.ncbi.nlm.nih.gov/sra/docs/sradownload/
 ### Practice 3 : Searching for text using `https://regex101.com/`
 
 * Go to the web site https://regex101.com/
-* Copy the following accession gene names and paste it in the field `test string`
-{% highlight bash %}
-xkn59438
-yhdck2
-eihd39d9
-chdsye847
-hedle3455
-xjhd53e
-45da
-de37dp
-{% endhighlight %}
+* Copy the following text and paste it in the field `test string`
 
-* print only the accession names that satisfy the following criteria – treat each criterion separately
-> * contain the number 5
-> * contain the letter d or e
-> * contain the letters d and e in that order
-> * contain the letters d and e in that order with a single letter between them
-> * contain both the letters d and e in any order
-> * start with x or y
-> * start with x or y and end with e
-> * contain three or more digits in a row
-> * end with d followed by either a, r or p
+```
+Nom              | Email                        | Téléphone           | Code Postal | Site web
+Kouassi Yao      | yao.kouassi@exemple.ci        | +225 07 12 34 56    | 00225       | https://yaokouassi.ci
+Ahoua Konan      | ahoua.konan@fournisseur.ci    | +225 01 22 33 44    | 00225       | http://ahouakonan.com
+Ouedraogo Salif  | salif.ouedraogo@exemple.bf    | +226 70 45 67 89    | 00226       | https://salifouedraogo.bf
+Kaboré Ibrahim   | ibrahim.kabore@fournisseur.bf | +226 60 34 56 78    | 00226       | http://ibrahimkabore.com
+Martin Durand    | martin.durand@exemple.fr      | +33 6 12 34 56 78   | 75000       | https://martindurand.fr
+Dupont Claire    | claire.dupont@fournisseur.fr  | +33 7 89 45 23 67   | 69000       | http://clairedupont.fr
+```
+
+* print only the line that meet the following criteria – treat each criterion separately
+> * contain the code postal 00225
+> * contain the letter z or h (uppercase/lowercase)
+> * contain the letters k and o in that order
+> * contain the letters k and o in that order with two single letters between them
+> * start with m or M or a or A
+> * start with m or M or a or A ans end with fr
+> * contain three digits following a + sign in a row
+
+* What do this criteria ? ```^[A-Z][a-z]+ [A-Z][a-z]+```
+ 
 
 ------------------------
 
-<a name="practice-6"></a>
-### Practice 6 : Searching for text using `grep`
+<a name="practice-4"></a>
+### Practice 4 : Searching for text using `grep`
 
 * List the content of the directory `LINUX4JEDI-TP/Bank` 
 * Display the first 10 lines of all the files that are the `Bank` directory - `head`
