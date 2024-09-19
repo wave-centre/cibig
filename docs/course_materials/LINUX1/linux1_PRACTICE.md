@@ -31,7 +31,7 @@ permalink: /LINUX1/linux1_PRACTICE/
 * [practice-9 : Blast analysis](#practice-9)
 * [Practice-10: Redirecting a command output to a File with `>`](#practice-10)
 * [Practice-11: Sending data from one command to another (piping) with `|`](#practice-11)
-* [Practice 12 :  Getting stats from fastq sequences(#practice-12)
+* [Practice 12 :  Getting stats from fastq sequences](#practice-12)
  
 BONUS
 
