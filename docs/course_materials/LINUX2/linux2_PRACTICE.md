@@ -108,7 +108,7 @@ bash-4.2# tree -L 2
 We want to download two fastq files from NCBI SRA (available here https://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=518559) using SRAtoolkit as below :
 
 ```
-module load bioinfo/sratoolkit/3.0.1
+module load sratoolkit/3.0.1
 
 prefetch SRRXXX
 fasterq-dump --split-files SRRXXX
