@@ -20,8 +20,7 @@ permalink: /LINUX2/linux2_PRACTICE/
 * [Practice 1: Using the `&&` separator](#practice-1)
 * [Practice 2: Downloading files from SRA](#practice-2)
 * [Practice 3: Searching for text using `regex101.com`](#practice-3)
-* [Practice 6: Searching for text using `grep`](#practice-6)
-* [Practice 7: Displaying lines with `sed`](#practice-7)
+* [Practice 4: Displaying lines with `sed`](#practice-4)
 * [Practice 8: Deleting lines with `sed`](#practice-8)
 * [Practice 9: Parsing files with `sed` using regexp](#practice-9)
 * [Practice 10: Modifying files with `sed`](#practice-10)
@@ -154,41 +153,7 @@ Dupont Claire    | claire.dupont@fournisseur.fr  | +33 7 89 45 23 67   | 69000  
 ------------------------
 
 <a name="practice-4"></a>
-### Practice 4 : Searching for text using `grep`
-
-* List the content of the directory `LINUX4JEDI-TP/Bank` 
-* Display the first 10 lines of all the files that are the `Bank` directory - `head`
-* Display the last 20 lines of all the files  - `tail`
-* Count the sequences number in the two files that are the `Bank` directory - `grep`
-* Print the line that contains the gene name `DEFL` - `grep regexp`, all.seq
-* Print the line that contains the gene name `DEFL` following just by one digit - `grep regexp`, all.seq
-
-Infos:  The file all.con contains the sequence of the asian rice genome (fasta format) and all. pep contains the sequence of all the genes annotated on the rice genome (fasta format).
-
-
-#### from a gff file
-
-We have the genome reference (all.con, fasta file) and we want to download the annotation of our genome reference (gff format).
-* Go on the following page : http://rice.uga.edu/pub/data/Eukaryotic_Projects/o_sativa/annotation_dbs/pseudomolecules/version_7.0/all.dir
-* Copy the url of the rice genome annotation file that we will use to download the file directly on the server (all.gff3)
-* Go to the `bank` directory and type the following command :
-
-{% highlight bash %}
-wget PUT_GFF_URL
-{% endhighlight %}
-
-* Count the number of genes annotated in the genome reference (lines with the word `gene` in the gff file) - `grep`
-* Search for the nbs-lrr genes - `grep`
-* Count the number of gene `DEFL` following just by one digit - `grep regexp`
-* Count the number of gene `DEFL` following by one or two digit ranging from 1 to 50 - `grep regexp`
-* Counts the number of mRNA in the chromosome 1 - `grep -c regexp`
-* Counts the number of mRNA in the first five chromosomes - `grep -c regexp`
-* count the number of gene by chromosome - `grep, cut, sort, uniq` 
-
------------------------
-
-<a name="practice-7"></a>
-### Practice 7 :  Displaying lines with `sed`
+### Practice 4 :  Displaying lines with `sed`
 For this exercise, you will work on the fastq file LINUX4JEDI-TP/1-fastq/SRR8517015_1.10000.fastq
 
 * Print the 8 first lines
