@@ -138,7 +138,7 @@ Dupont Claire    | claire.dupont@fournisseur.fr  | +33 7 89 45 23 67   | 69000  
 
 * print only the line that meet the following criteria – treat each criterion separately
 > * contain the code postal 00225
-> * contain the letter z or h (uppercase/lowercase)
+> * contain the letter d or h (uppercase/lowercase)
 > * contain the letters k and o in that order
 > * contain the letters k and o in that order with two single letters between them
 > * start with m or M or a or A
