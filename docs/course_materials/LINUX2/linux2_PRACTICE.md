@@ -21,9 +21,7 @@ permalink: /LINUX2/linux2_PRACTICE/
 * [Practice 2: Downloading files from SRA](#practice-2)
 * [Practice 3: Searching for text using `regex101.com`](#practice-3)
 * [Practice 4: Displaying lines with `sed`](#practice-4)
-* [Practice 8: Deleting lines with `sed`](#practice-8)
-* [Practice 9: Parsing files with `sed` using regexp](#practice-9)
-* [Practice 10: Modifying files with `sed`](#practice-10)
+* [Practice 5: Modifying files with `sed`](#practice-5)
 * [Practice 11: Manipulating files with `awk`](#practice-11)
 * [Practice 12: For loop with bash](#practice-12)
 * [Links](#links)
@@ -163,36 +161,13 @@ For this exercise, you will work on the fastq file LINUX4JEDI-TP/1-fastq/SRR8517
 
 -----------------------
 
-<a name="practice-8"></a>
-### Practice 8 : Deleting lines with `sed`
-For this exercise, you will work on the fastq file LINUX4JEDI-TP/1-fastq/SRR8517015_1.10000.fastq
-
-* Delete the end of the file from the line 9
-* Delete the lines containing only a `+`
-* Delete the lines containing only a `+` and the quality sequences
-
------------------------
-
-<a name="practice-9"></a>
-### Practice 9 : File parsing with `sed` using regexp (regular expression)
-
-#### Fastq file
-For this exercise, you will work on the fastq file `LINUX4JEDI-TP/1-fastq/SRR8517015_1.10000.fastq`
-* Print only read sequences using a regular expression (print only lines with the letters ATCG)
-
-#### vcf file
-For this exercise, you will work with the vcf file `LINUX4JEDI-TP/4-vcf/OgOb-all-MSU7-CHR6.GATKVARIANTFILTRATION.shuf.100000.vcf.gz`
-* Print only the line corresponding to the header (line starting by #) or polymorphisms passing all filters (line with tag `PASS`)
-
------------------------
-
-<a name="practice-10"></a>
-### Practice 10 : File modification with `sed`
+<a name="practice-5"></a>
+### Practice 5 : File modification with `sed`
 
 #### From fasta files in `LINUX-TP/Fasta`
 * In the `LINUX4JEDI-TP/9-denovoAssembly` directory, there are two files : `DAOSW_abyss-contigs.fa`and `TOG5681_abyss-contigs.fa`. Before merging both libraries into a unique file, we would like to tag each sequence per its origin. In each file, add the respective tag DAOSW_ / TOG5681_ just before the identifier.
 
-{% highlight bash %}
+```
 # File DAOSW_abyss-contigs.fa initially
 >0 71 531
 CTTTTTGAACTTTTTCATTCCGGTCAAAAAAATATCGCACCCGTGGGGGCTCAATATATGCCAATATTGGC
@@ -203,8 +178,7 @@ CTTTTTGAACTTTTTCATTCCGGTCAAAAAAATATCGCACCCGTGGGGGCTCAATATATGCCAATATTGGC
 >DAOSW_0 71 531
 CTTTTTGAACTTTTTCATTCCGGTCAAAAAAATATCGCACCCGTGGGGGCTCAATATATGCCAATATTGGC
 >DAOSW_2 217 449
-
-{% endhighlight %}
+```
 
 Rq : First test the sed command on one file, then store the results in new files named DAOSW_abyss-contigs.renamed.fasta and TOG5681_abyss-contigs.renamed.fasta
 
@@ -219,8 +193,8 @@ Rq : First test the sed command on one file, then store the results in new files
 
 -----------------------
 
-<a name="practice-11"></a>
-### Practice 11 : Manipulating files with `awk`
+<a name="practice-6"></a>
+### Practice 6 : Manipulating files with `awk`
 
 ### From a fasta file
 
