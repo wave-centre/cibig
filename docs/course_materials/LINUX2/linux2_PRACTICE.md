@@ -225,17 +225,17 @@ We are going to use seqtk comp to get statistics  get the nucleotide composition
 * List the directory content
 * Run fastq-stats program ( [more](http://manpages.ubuntu.com/manpages/xenial/man1/fastq-stats.1.html) to get stats about the fastq file `SRR8517015_1.10000.fastq`
 * 
-{% highlight bash %}
+```
 fastq-stats -D SRR8517015_1.10000.fastq
-{% endhighlight %}
+```
 
 * Use a `for` loop to run fastq-stats with each fastq file in the directory
 * 
-{% highlight bash %}
+```
 for file in *fastq; do 
   fastq-stats -D $file > $file.fastq-stats ; 
 done;
-{% endhighlight %}
+```
 
 -----------------------
 <a name="practice-13"></a>
@@ -247,13 +247,13 @@ Write a bash script that :
 * takes as argument a file that contains a list of accessions (/scratch/accession.list)
 * reads this file and downloads fastq files (reverse and forward) for each accession - fastq-dump
 
-{% highlight bash %}
+```
 # Use the following code to read the file (variable $filename) line by line
 while read line;
 do
 echo $line;
 done < $filename
-{% endhighlight %}
+```
 
 -----------------------
 #### A bash script to get basic statistics on each fastq file (in the directory 1-fastq) using fastq-stats
@@ -265,7 +265,7 @@ done < $filename
 * Run fastq-stats on a fastq file, get the column 2 of the output of the command and turn the column into a single row - `linux command: paste -s`
 * Save the output of the command in the file 
  
-{% highlight bash %}
+```
 # fastq-dump output
 reads	10000
 len	125
@@ -288,8 +288,7 @@ total bases	1250000
 
 # We want this format
 10000	125	125.0000	0.0000	125	33	10000	35	2	38	36.1021	4.2358	25.5594	24.3560	26.111123.8691	0.1043	1250000
-{% endhighlight %}
-
+```
 
 ##### Write a bash script 
 
@@ -301,11 +300,11 @@ Write a bash script that :
 
 On a terminal, use awk to parse all files created by the previous bash script and to generate the following output:
 
-{% highlight bash %}
+```
 SRR8517015_1.10000.fastq.stats          10000        125        125.0000        0.0000        125        33        10000        35        2        38        36.1021        4.2358        25.5594        24.3560        26.1111        23.8691        0.1043        1250000
 SRR8517015_2.10000.fastq.stats          10000        125        125.0000        0.0000        125        33        10000        35        2        38        34.4527        7.0727        23.5631        25.5657        25.6063        25.2649        0.0000        1250000
 SRX5320622_1.10000.fastq.stats          10000        125        125.0000        0.0000        125        33        10000        35        2        38        36.4891        3.6410        26.3371        24.0457        24.8703        24.6883        0.0586        1250000
-{% endhighlight %}
+```
 
 ----------------------- 
 #### Analysis of the read count file `3-RNAseqCount/erz340_suppl_supplementary_table_s5.csv`
@@ -318,7 +317,7 @@ Goal : Get the chromosome and its positions (start-stop) for some genes differen
 * As the file is already sorted, extract the first ten lines and save the result in a new file called `my_10_genes.tab`
 
 <details>
-{% highlight bash %}
+```
 [tranchant@node6 3-RNAseqCount]$ head erz340_suppl_supplementary_table_s5.csv 
 gene_id;log2FoldChange;lfcSE;pvalue;padj;symbols;MsuAnnotation
 LOC_Os06g06750;4,02391987172844;0,291852309336462;4,76E-32;1,20E-27;MADS5;OsMADS5 - MADS-box family gene with MIKCc type-box, expressed
@@ -326,7 +325,7 @@ LOC_Os03g11614;6,14058803847572;0,534044090654195;2,40E-25;3,03E-21;LHS1;OsMADS1
 LOC_Os04g43580;-2,32647724746766;0,178467573376802;1,70E-22;1,43E-18;G1L4;DUF640 domain containing protein, putative, expressed
 LOC_Os02g45770;4,57158531291166;0,416805180501083;1,13E-21;7,08E-18;MFO1;OsMADS6 - MADS-box family gene with MIKCc type-box, expressed
 LOC_Os03g14140;5,01958570820803;0,502245405032766;1,05E-18;5,29E-15;;POEI16 - Pollen Ole e I allergen and extensin family protein precursor, expressed
-{% endhighlight %}
+```
 </details>
 
 * sort the file on the locus name and save the result into a new file `my_10_genes.sorted.tab`
@@ -339,25 +338,18 @@ LOC_Os03g14140;5,01958570820803;0,502245405032766;1,05E-18;5,29E-15;;POEI16 - Po
 * print only the locus identifier of each line of the gff file (eg : LOC_Os01g01010)
 * generate the following file : 
 
-{% highlight bash %}
+```
 [tranchant@node6 3-RNAseqCount]$ head all.gene.loc.csv 
 Chr1 gene 2903 10817 LOC_Os01g01010
 Chr1 gene 11218 12435 LOC_Os01g01019
 Chr1 gene 12648 15915 LOC_Os01g01030
 Chr1 gene 16292 20323 LOC_Os01g01040
-{% endhighlight %}
+```
 
 * sort the file all.gene.loc.csv on the locus name and save the output in a new file
 
 ##### Join the lines of the two files previously created on the common field (locus identifier) - linux command join
 
-
-
-### Links
-<a name="links"></a>
-
-* Related courses : [Linux for Jedi](https://southgreenplatform.github.io/trainings/linuxJedi/)
-* Tutorials : [Linux Command-Line Cheat Sheet](https://southgreenplatform.github.io/trainings/linux/linuxTuto/)
 
 -----------------------
 
