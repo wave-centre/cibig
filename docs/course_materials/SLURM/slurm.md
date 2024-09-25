@@ -54,12 +54,7 @@ Once you are successfully logged in, you will be use this console for the rest o
 2. Type the command `squeue -u your_login` with your_login to change with your  account and noticed the difference
 3. More details with the command: `squeue -O "username,name:40,partition,nodelist,NumCPUs,state,timeused,timelimit"`
 4. Type the command `srun -p short --pty bash -i ` then `squeue` again 
-5. Create your own working folder in the /scratch of your node:
- 
-```
-cd /scratch
- mkdir login
- with login : the name of your choice
+
 ```
         
 
