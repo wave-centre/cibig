@@ -55,7 +55,7 @@ Once you are successfully logged in, you will be use this console for the rest o
 3. More details with the command: `squeue -O "username,name:40,partition,nodelist,NumCPUs,state,timeused,timelimit"`
 4. Type the command `srun -p short --pty bash -i ` then `squeue` again 
 
-```
+
         
 
 -----------------------
