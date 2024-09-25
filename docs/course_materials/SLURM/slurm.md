@@ -70,15 +70,14 @@ Once you are successfully logged in, you will be use this console for the rest o
 
 ##### Open FileZilla and save the IRD cluster into the site manager
 
-<img width="100%" class="img-responsive" src="https://southgreenplatform.github.io/trainings//images/tpLinux/tp-filezilla1.png"/>
 
-In the FileZilla menu, go to _File > Site Manager_. Then go through these 5 steps:
 
-1. Click _New Site_.
-2. Add a custom name for this site.
-3. Add the hostname bioinfo-san.ird.fr to have access to /home
-4. Set the Logon Type to "Normal" and insert your username and password used to connect on the IRD cluster
-5. Press the "Connect" button.
+
+
+1. Add the hostname bioinfo-san.ird.fr to have access to /home
+2. Set the Login with yours and insert your  password used to connect on the IRD cluster
+3. Choose port 22
+4. Press the "Connect" button.
 
 
 ##### Transferring files
@@ -87,7 +86,7 @@ In the FileZilla menu, go to _File > Site Manager_. Then go through these 5 step
 
 1. From your computer to the cluster : click and drag an text file item from the left local colum to the right remote column 
 2. From the cluster to your computer : click and drag an text file item from he right remote column to the left local column
-3. Retrieve the file ssh-login.zip from the right window into your folder /home/login
+3. Retrieve the file you want from the right window into your folder on your PC
 
 
 
