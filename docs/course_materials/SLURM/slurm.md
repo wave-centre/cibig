@@ -97,7 +97,7 @@ Once you are successfully logged in, you will be use this console for the rest o
 ### Practice 4: Transfer your data from the san server to the node
 
 
-1. Using scp, transfer the folder `Ebola` located in `/share/formation/Slurm/TPassembly` into your working directory
+1. Using scp, transfer the folder `SHARE` located in `/share/formation/Slurm/` into your working directory
 2. Check your result with ls
  
 
@@ -107,7 +107,7 @@ Once you are successfully logged in, you will be use this console for the rest o
 ### Practice 5: Use module environment to  load your tools
 
 
-1. Load abyss 2.2.5 module
+1. Load blast 2.10.0+ module
 2. Check if the tool are loaded
  
 
@@ -117,35 +117,29 @@ Once you are successfully logged in, you will be use this console for the rest o
 <a name="practice-6"></a>
 ###  Practice 6 : Launch analyses
 
-#### Perform an assembly with abyss-pe
+#### Perform a blast on your data
 
-With abyss software, we reassembly the sequences using the 2 fastq files ebola1.fastq and ebola2.fastq
+1) Perform a makeblastdb
 
 Launch the command
 
 ```
-abyss-pe k=35 in='ebola1.fastq ebola2.fastq' name=k35
+makeblastdb -in uniprot_plant.fasta -dbtype prot -parse_seqids
+```
+2) Perform yhe blast analysis
+   
+```
+blastx -query Oglab_var1_cds.only1000.fasta -db uniprot_plant.fasta -num_threads 6 -outfmt "6 qseqid sseqid sacc stitle  pident length mismatch gapopen qstart qend sstart send evalue bitscore" -max_target_seqs 5 -out Oglab_var1_cds.VS.uniprot.blastx.csv2
 ```
 
-NB: you can do the same thing using srun directly from the master assuming that the data have been transfer to the /scratch of your node and that you know the nodename:
 
-From the master, type the following commands:
-
-```
-module load abyss/2.2.5
-srun -p partitionname --nodelist=nodename --chdir=/scratch/login/TPassembly/Ebola abyss-pe k=35 -j1 np=1  in='ebola1.fastq ebola2.fastq' name=k35
-```
-
-the -p allows to indicate the partition to use , replace `partitionname`parameter 
-the --nodelist allows to indicate the node to use , replace `nodename`parameter 
-the `--chdir` allows to change the working directory and to precise in which directory the analysis will be done directly into the node.
 
 -----------------------
 <a name="practice-7"></a>
 ### Practice 7: Transfering data to the san server
 
 
-1. Using scp, transfer your results from your `/scratch/login` to your `/home/login` 
+1. Using scp, transfer your results from your `/scratch/your_dir` to your `/home/login` 
 2. Check if the transfer is OK with ls
  
 
@@ -175,26 +169,23 @@ Following the several steps performed during the practice, create a script to la
 1er step: create the Slurm section in your script 
 
 1) Set  a name for your job
-
-2) Precise your email
-
-3) Choose the short partition
+   
+2) Choose the formation partition
+   
+3) Reserve 2 cores
+   
 
 2nd step: type  the commands you want the script to launch:
 
 1) create a personal folder in /scratch with `mkdir`
 
-2) Using scp, transfer the folder `Ebola` located in `/share/formation/Slurm/TPassembly` into your working directory
+2) Using scp, transfer your data
 
-3) Launch abyss version 2.2.5 with module load
+3) Load the software to use with module load
 
-4) Into the the folder `Ebola`, launch the following command:
+4) Launch the commands to perform your analysis
 
-```
-abyss-pe k=35 in='ebola1.fastq ebola2.fastq' name=k35
-```
-
-5) Using scp, transfer your results from your `/scratch/login` to your `/home/login` 
+5) Using scp, transfer your results from your `/scratch/your_dir` to your `/home/login` 
 
 
 6) Delete the personal folder in the  `/scratch`
@@ -206,50 +197,6 @@ Launch the following commands to obtain info on the finished job:
 seff <JOB_ID>
 sacct --format=JobID,elapsed,ncpus,ntasks,state,node -j <JOB_ID>
 ```
-
-
-Bonus:
--------
-
-We are  going to launch a 4 steps analysis:
-
-1) Perform a multiple alignment with the nucmer  tool
-
-2) Filter these alignments with the delta-filter  tool
-
-3) Generate a tab file easy to parse the with show-coords tools
-
-4) Generate a png image with mummerplot
-
-
-- Retrieve the script /projects/medium/formation/Slurm/scripts/alignment_slurm.sh into your /home/login
-
-- modify the Slurm section and the variables
-
-- launch the script with sbatch:
-
-```
-sbatch alignment.sh
-```
-
-- Do a `ls -altr` in your `/home/login`. What do you notice?
-
-- Launch the following commands to obtain info on the finished job:
-
-```
-seff <JOB_ID>
-sacct --format=JobID,elapsed,ncpus,ntasks,state,node -j <JOB_ID>
-```
-
-- Open filezilla and retrieve the png image to your computer
-
-- Launch the following commande to clear the /scratch of the node
-
-```
-sh /opt/scripts/scratch-scripts/scratch_use.sh
-```
-
-and choose the number of the node used
 
 -----------------------
 
