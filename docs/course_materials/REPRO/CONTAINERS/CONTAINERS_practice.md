@@ -5,7 +5,7 @@
 | Related-course materials | [Reproductibility:Apptainer(singularity) and Conda](https://github.com/CIBiG-wave/cibig-wave.github.io/blob/gh-pages/docs/course_materials/REPRO/CONTAINERS/) |
 | Authors                  | Ndomassi TANDO (ndomassi.tando@ird.fr)                                                           |
 | Creation Date            | 13/09/2024                                                                                                          |
-| Last Modified Date       | 16/09/2024                                                                                                          |
+| Last Modified Date       | 26/09/2024                                                                                                          |
 | Modified by              | ndomassi TANDO              |
 
 -----------------------
