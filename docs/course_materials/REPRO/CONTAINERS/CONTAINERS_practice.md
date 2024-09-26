@@ -118,6 +118,12 @@ If you need to install miniconda on your PC:
 <a name="practice-1"></a>
 ###  Practice 1 : Create your first conda environment
 
+Load the miniconda3 software:
+
+```
+module load miniconda3/23.10.0-1
+```
+
 #### Installation of samtools:
 
 Let's create our first environment to use the samtools software:
@@ -149,7 +155,7 @@ Go to the website https://anaconda.org/  and search for samtools
 Install samtools in this environment with the following command:
 
  ```bash
-   conda install bioconda:samtools
+   conda install -c bioconda samtools
    ```
 
 Relaunch the following command 
