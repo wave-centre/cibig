@@ -126,7 +126,7 @@ Launch the command
 ```
 makeblastdb -in uniprot_plant.fasta -dbtype prot -parse_seqids
 ```
-2) Perform yhe blast analysis
+2) Perform the blast analysis
    
 ```
 blastx -query Oglab_var1_cds.only1000.fasta -db uniprot_plant.fasta -num_threads 6 -outfmt "6 qseqid sseqid sacc stitle  pident length mismatch gapopen qstart qend sstart send evalue bitscore" -max_target_seqs 5 -out Oglab_var1_cds.VS.uniprot.blastx.csv2
