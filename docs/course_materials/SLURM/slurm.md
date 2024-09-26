@@ -152,7 +152,7 @@ blastx -query Oglab_var1_cds.only1000.fasta -db uniprot_plant.fasta -num_threads
 
 ```
 cd /scratch
-rm -r login
+rm -r your_dir
 ```
 
 ```
