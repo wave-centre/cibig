@@ -150,7 +150,7 @@ Go to the website https://anaconda.org/  and search for samtools
 Install samtools in this environment with the following command:
 
  ```bash
-   conda install -c bioconda samtools
+   conda install samtools
    ```
 
 Relaunch the following command 
@@ -176,18 +176,28 @@ Go to the website https://anaconda.org/  and search for the software bwa-mem2
 
 Install the version 2.2.1 of bwa-mem2 in your environment
 
+Check if it's OK;
+
 -----------------------
 
 <a name="practice-2"></a>
 ### Practice 2 : Export and recreate your conda environment
 
-Export your environment conda-training without dependencies into a file called conda-training.yml.
+Export your environment conda-training into a file called conda-training.yaml:
 
+```
+conda export --no-builds conda-training > conda-training.yaml
+
+```
 
 Modify the name of the environment in the file with conda-training2 instead of conda-training
 
 
-Create a new environment using the conda-training.yml file.
+Create a new environment conda-training2 using the conda-training.yml file:
+
+```
+conda env create -f conda-training.yaml
+```
 
 Verify that your new environment has been created
 
@@ -196,15 +206,13 @@ Verify that your new environment has been created
 <a name="practice-3"></a>
 ### Practice 3 : Launch an analysis on the cluster using your conda environment
 
-Using this template script with the slurm configuraion set:
+1) go to node17: srun -p formation --pty bash -i
 
-Create a bash script that :
+2) Create a folder called /scratch/analyses_formationX
 
-1) Create a folder called analyses
+3) Copy the reference file /scratch/SV_DATA/REF/GCA_002220235.1_ASM222023v1_genomic.fna into it
 
-2) Copy the reference file /shared/projects/tp_cibig_/SV_DATA/REF/GCA_002220235.1_ASM222023v1_genomic.fna into it
-
-3) Copy  SV_DATA/SHORT_READS/1613_R1.fastq.gz and SV_DATA/SHORT_READS/1613_R2.fastq.gz into it
+4) Copy  /scratch/SV_DATA/SHORT_READS/1613_R1.fastq.gz and /scratch/SV_DATA/SHORT_READS/1613_R2.fastq.gz into it
 
 
 4) use your conda environment to index the reference:
