@@ -118,11 +118,6 @@ If you need to install miniconda on your PC:
 <a name="practice-1"></a>
 ###  Practice 1 : Create your first conda environment
 
-Load the miniconda3 software:
-
-```
-module load miniconda3/23.10.0-1
-```
 
 #### Installation of samtools:
 
