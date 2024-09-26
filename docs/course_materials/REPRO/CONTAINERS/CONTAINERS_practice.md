@@ -242,26 +242,26 @@ samtools sort  -@ 2 -o 1613.sorted.bam 1613.sam
 <a name="practice-4"></a>
 ### Practice 4 :  Retreive apptainer containers on the cluster using pull
 
-#### Load apptainer software
+#### Load singularity software
 
 ```
-module load apptainer/1.2.5
+module load singularity/4.0.1
 ```
 
 #### Pull the samtools v 1.20 container from docker hub
 
 ```
-apptainer pull samtools-1.20.sif docker://staphb/samtools:latest
+singularity pull samtools-1.20.sif docker://staphb/samtools:latest
 
 ```
 
-Verify the version of samtools using `apptainer shell`
+Verify the version of samtools using `singularity shell`
 
 
 #### Pull the bwa-mem2 v 2.2.1 container from docker hub
 
 ```
-apptainer pull bwa-mem2.2.2.1.sif docker://quay.io/biocontainers/bwa-mem2:2.2.1--hd03093a_4
+singularity pull bwa-mem2.2.2.1.sif docker://quay.io/biocontainers/bwa-mem2:2.2.1--hd03093a_4
 
 ```
 
@@ -274,7 +274,7 @@ Verify the version of bwa-mem2 using `apptainer shell`
 ### Practice 5 : Launch an analysis on the cluster using containers
 
 
-Use the command apptainer exec to execute the commands from practice 3
+Use the command singularity exec to execute the commands from practice 3
 
 -----------------------
 
