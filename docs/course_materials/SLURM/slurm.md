@@ -53,7 +53,7 @@ Once you are successfully logged in, you will be use this console for the rest o
 1. Type the command `squeue` and noticed the result
 2. Type the command `squeue -u your_login` with your_login to change with your  account and noticed the difference
 3. More details with the command: `squeue -O "username,name:40,partition,nodelist,NumCPUs,state,timeused,timelimit"`
-4. Type the command `srun -p short --pty bash -i ` then `squeue` again 
+4. Type the command `srun -p formation -c 2 --pty bash -i ` then `squeue` again 
 
 
         
@@ -129,7 +129,7 @@ makeblastdb -in uniprot_plant.fasta -dbtype prot -parse_seqids
 2) Perform the blast analysis
    
 ```
-blastx -query Oglab_var1_cds.only1000.fasta -db uniprot_plant.fasta -num_threads 1 -outfmt "6 qseqid sseqid sacc stitle  pident length mismatch gapopen qstart qend sstart send evalue bitscore" -max_target_seqs 5 -out Oglab_var1_cds.VS.uniprot.blastx.csv2
+blastx -query Oglab_var1_cds.only1000.fasta -db uniprot_plant.fasta -num_threads 2 -outfmt "6 qseqid sseqid sacc stitle  pident length mismatch gapopen qstart qend sstart send evalue bitscore" -max_target_seqs 5 -out Oglab_var1_cds.VS.uniprot.blastx.csv2
 ```
 
 
