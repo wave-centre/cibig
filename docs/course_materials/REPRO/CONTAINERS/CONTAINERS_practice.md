@@ -20,7 +20,6 @@
 * [Practice 3: Launch an analysis on the cluster using your conda environment](#practice-3)
 * [Practice 4 : Retreive apptainer containers on the cluster using pull](#practice-4)
 * [practice 5 : Launch an analysis on the cluster using containers](#practice-5)
-* [practice 6 : Generate a container using a definition file](#practice-6)
 * [Links](#links)
 * [License](#license)
 
@@ -243,10 +242,16 @@ samtools sort  -@ 2 -o 1613.sorted.bam 1613.sam
 <a name="practice-4"></a>
 ### Practice 4 :  Retreive apptainer containers on the cluster using pull
 
+#### Load apptainer software
+
+```
+module load apptainer/1.2.5
+```
+
 #### Pull the samtools v 1.20 container from docker hub
 
 ```
-singularity pull samtools-1.20.sif docker://staphb/samtools:latest
+apptainer pull samtools-1.20.sif docker://staphb/samtools:latest
 
 ```
 
@@ -256,7 +261,7 @@ Verify the version of samtools using `apptainer shell`
 #### Pull the bwa-mem2 v 2.2.1 container from docker hub
 
 ```
-singularity pull bwa-mem2.2.2.1.sif docker://quay.io/biocontainers/bwa-mem2:2.2.1--hd03093a_4
+apptainer pull bwa-mem2.2.2.1.sif docker://quay.io/biocontainers/bwa-mem2:2.2.1--hd03093a_4
 
 ```
 
@@ -268,17 +273,12 @@ Verify the version of bwa-mem2 using `apptainer shell`
 <a name="practice-5"></a>
 ### Practice 5 : Launch an analysis on the cluster using containers
 
-Modify the bash script created before to use the containers instead of the conda environment .
 
-Use the command apptainer exec to execute the command
-
------------------------
-
-<a name="practice-6"></a>
-### Practice 6 : Generate a container using a definition file
-
+Use the command apptainer exec to execute the commands from practice 3
 
 -----------------------
+
+
 
 
 
