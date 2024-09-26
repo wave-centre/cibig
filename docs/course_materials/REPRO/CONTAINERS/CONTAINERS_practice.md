@@ -210,9 +210,7 @@ Verify that your new environment has been created
 
 2) Create a folder called /scratch/analyses_formationX
 
-3) Copy the reference file /scratch/SV_DATA/REF/GCA_002220235.1_ASM222023v1_genomic.fna into it
-
-4) Copy  /scratch/SV_DATA/SHORT_READS/1613_R1.fastq.gz and /scratch/SV_DATA/SHORT_READS/1613_R2.fastq.gz into it
+3) Copy the content of  file /scratch/SV_DATA/ into it
 
 
 4) use your conda environment to index the reference:
