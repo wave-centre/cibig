@@ -16,10 +16,11 @@
 * [Preambule 0: Softwares to install before connecting to a distant linux server ](#preambule-0)
 * [Preambule 1: If you need to Install miniconda on your PC](#preambule-1)
 * [Practice 1: Create your first environment](#practice-1)
-* [Practice 2: Launch an analysis on the cluster using your conda environment](#practice-2)
-* [Practice 3 : Retreive a apptainer container on the cluster using pull](#practice-3)
-* [practice 4 : Launch an analysis on the cluster using containers](#practice-4)
-* [practice 5 : Generate a container using a definition file](#practice-5)
+* [Practice 2: Export and recreate your conda environment](#practice-2)
+* [Practice 3: Launch an analysis on the cluster using your conda environment](#practice-3)
+* [Practice 4 : Retreive apptainer containers on the cluster using pull](#practice-4)
+* [practice 5 : Launch an analysis on the cluster using containers](#practice-5)
+* [practice 6 : Generate a container using a definition file](#practice-6)
 * [Links](#links)
 * [License](#license)
 
@@ -179,29 +180,95 @@ Install the version 2.2.1 of bwa-mem2 in your environment
 <a name="practice-2"></a>
 ### Practice 2 : Export and recreate your conda environment
 
+Export your environment conda-training without dependencies into a file called conda-training.yml.
 
 
------------------------
-
-<a name="practice-2"></a>
-### Practice 2 : Launch an analysis on the cluster using your conda environment
+Modify the name of the environment in the file with conda-training2 instead of conda-training
 
 
+Create a new environment using the conda-training.yml file.
+
+Verify that your new environment has been created
 
 -----------------------
 
 <a name="practice-3"></a>
-### Practice 3 :  Retreive a apptainer container on the cluster using pull
+### Practice 3 : Launch an analysis on the cluster using your conda environment
+
+Using this template script with the slurm configuraion set:
+
+Create a bash script that :
+
+1) Create a folder called analyses
+
+2) Copy the reference file /shared/projects/tp_cibig_/SV_DATA/REF/GCA_002220235.1_ASM222023v1_genomic.fna into it
+
+3) Copy  SV_DATA/SHORT_READS/1613_R1.fastq.gz and SV_DATA/SHORT_READS/1613_R2.fastq.gz into it
+
+
+4) use your conda environment to index the reference:
+
+```
+bwa-mem2 index GCA_002220235.1_ASM222023v1_genomic.fna
+
+```
+
+5) use you conda environment to map your fastq.gz files:
+
+```
+bwa-mem2 mem -R "@RG\tID:1613\tSM:1613" -M -t 2 analyses/GCA_002220235.1_ASM222023v1_genomic.fna analyses/1613_R1.fastq.gz analyses/1613_R2.fastq.gz > 1613.sam
+
+```
+
+6) Use your conda environment to sort and create a bam file:
+
+```
+samtools sort  -@ 2 -o 1613.sorted.bam 1613.sam
+
+
+```
+
+
+
 
 -----------------------
 
 <a name="practice-4"></a>
-### Practice 4 : Launch an analysis on the cluster using containers
+### Practice 4 :  Retreive apptainer containers on the cluster using pull
+
+#### Pull the samtools v 1.20 container from docker hub
+
+```
+singularity pull samtools-1.20.sif docker://staphb/samtools:latest
+
+```
+
+Verify the version of samtools using `apptainer shell`
+
+
+#### Pull the bwa-mem2 v 2.2.1 container from docker hub
+
+```
+singularity pull bwa-mem2.2.2.1.sif docker://quay.io/biocontainers/bwa-mem2:2.2.1--hd03093a_4
+
+```
+
+Verify the version of bwa-mem2 using `apptainer shell`
+
 
 -----------------------
 
 <a name="practice-5"></a>
-### Practice 5 : Generate a container using a definition file
+### Practice 5 : Launch an analysis on the cluster using containers
+
+Modify the bash script created before to use the containers instead of the conda environment .
+
+Use the command apptainer exec to execute the command
+
+-----------------------
+
+<a name="practice-6"></a>
+### Practice 6 : Generate a container using a definition file
 
 
 -----------------------
