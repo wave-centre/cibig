@@ -265,7 +265,7 @@ singularity pull bwa-mem2.2.2.1.sif docker://quay.io/biocontainers/bwa-mem2:2.2.
 
 ```
 
-Verify the version of bwa-mem2 using `apptainer shell`
+Verify the version of bwa-mem2 using `singularity shell`
 
 
 -----------------------
