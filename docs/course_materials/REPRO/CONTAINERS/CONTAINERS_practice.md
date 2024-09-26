@@ -223,7 +223,7 @@ bwa-mem2 index GCA_002220235.1_ASM222023v1_genomic.fna
 5) use you conda environment to map your fastq.gz files:
 
 ```
-bwa-mem2 mem -R "@RG\tID:1613\tSM:1613" -M -t 2 analyses/GCA_002220235.1_ASM222023v1_genomic.fna analyses/1613_R1.fastq.gz analyses/1613_R2.fastq.gz > 1613.sam
+bwa-mem2 mem -R "@RG\tID:1613\tSM:1613" -M -t 2 GCA_002220235.1_ASM222023v1_genomic.fna 1613_R1.fastq.gz 1613_R2.fastq.gz > 1613.sam
 
 ```
 
