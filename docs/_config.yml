@@ -27,3 +27,7 @@ github:
 
 exclude:
   -README.md
+  -readme.md
+  -linux1_PRACTICE.md
+  -linux2_PRACTICE.md
+  -slurm.md
