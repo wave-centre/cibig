@@ -26,8 +26,18 @@ github:
   repo:           https://github.com/CIBiG-wave/cibig-wave.github.io
 
 exclude:
+  -course_materials/ALGO/readme.md
+  -course_materials/BANK/readme.md
+  -course_materials/DATA_ANALYSIS/readme.md
+  -course_materials/GIT/readme.md
+  -course_materials/LINUX1/README.md
+  -course_materials/LINUX1/linux1_PRACTICE.md
+  -course_materials/LINUX2/README.md
+  -course_materials/LINUX2/linux2_PRACTICE.md
+  -course_materials/R/README.md
+  -course_materials/REPRO/readme.md
+  -course_materials/REPRO/CONTAINERS/readme.md
+  -course_materials/REPRO/CONTAINERS/CONTAINERS_practice.md
+  -course_materials/SLURM/readme.md
+  -course_materials/SLURM/slurm.md
   -README.md
-  -readme.md
-  -linux1_PRACTICE.md
-  -linux2_PRACTICE.md
-  -slurm.md
