@@ -10,7 +10,7 @@ The **International Certificate in Bioinformatics and Genomics (CIBiG)** offers 
 | Session  | Dates                                                          | Location                                                                                                                 | Seats | Status                                       |
 | -------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ----- | -------------------------------------------- |
 | **2024** | 9 Sep 4 Oct 2024                                             | [WAVE Regional Center of Excellence](https://wave-center.org/), UniversitFlixHouphoutBoigny, Bingerville (Abidjan) | 15    | **Completed**                                |
-| **2025** | **17 Nov 12 Dec 2025** <br> (online intro: 1014Nov2025) | Same as above                                                                                                            | 15    | **Applications open  deadline 16 Jun 2025** |
+| **2025** | **17 Nov 12 Dec 2025** <br> (online intro: 10-14 Nov 2025) | Same as above                                                                                                            | 15    | **Applications open  deadline 16 Jun 2025** |
 
 [Full details on the CIBiG website](https://cibig-wave.github.io/)
 
