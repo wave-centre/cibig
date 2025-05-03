@@ -1,0 +1,30 @@
+# Dependencies
+# markdown:         redcarpet
+# highlighter:      pygments
+
+# Permalinks
+# permalink:        pretty
+# relative_permalinks: true
+
+# Setup
+title:            CIBiG
+tagline:          'One month course'
+description:      'From sequencing data production to analysis for agriculture and health'
+#baseurl: ""
+url:              'cibig-wave.github.io'
+author:
+  name:           'Christine Tranchant-Dubreuil'
+  mail:            christine.tranchant@ird.fr'
+
+
+#paginate:         5
+
+# Custom vars
+#version:          2.1.0
+
+github:
+  repo:           https://github.com/CIBiG-wave/cibig-wave.github.io
+
+# Exclude specific pages and files from the site build
+exclude:
+  - course_materials/*

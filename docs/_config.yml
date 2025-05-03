@@ -1,30 +1,69 @@
-# Dependencies
-# markdown:         redcarpet
-# highlighter:      pygments
+# -------------------------------------------------------------
+#  CIBiG  International Certificate in Bioinformatics and Genomics
+#  Global configuration file for the GitHubPages site (Jekyll)
+# -------------------------------------------------------------
 
-# Permalinks
-# permalink:        pretty
-# relative_permalinks: true
+# --- Site settings -----------------------------------------------------------
 
-# Setup
-title:            CIBiG
-tagline:          'One month course'
-description:      'From sequencing data production to analysis for agriculture and health'
-#baseurl: ""
-url:              'cibig-wave.github.io'
+title: "CIBiG  International Certificate in Bioinformatics and Genomics"
+tagline: "Onemonth intensive course"
+description: "Training in sequencing technologies, genomics and bioinformatics with a focus on agriculture and health applications."
+lang: fr
+url: "https://cibig-wave.github.io"      # full base URL
+baseurl: ""                               # repository root (for orgsite)
+
+# Author (used by JekyllSEOtag)
 author:
-  name:           'Christine Tranchant-Dubreuil'
-  mail:            christine.tranchant@ird.fr'
+  name: "Christine TranchantDubreuil"
+  email: "christine.tranchant@ird.fr"
 
+# --- Appearance & theme ------------------------------------------------------
 
-#paginate:         5
+# Preferred remote theme (comment out if you stick to the default GitHub theme)
+remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+# If you prefer GitHub default theme, comment the line above and uncomment:
+# theme: jekyll-theme-minimal
 
-# Custom vars
-#version:          2.1.0
+# --- Plugins -----------------------------------------------------------------
+plugins:
+  - jekyll-feed          # RSS feed
+  - jekyll-seo-tag       # SEO metatags
+  - jekyll-sitemap       # sitemap.xml
+  - jekyll-remote-theme  # required for remote_theme
 
-github:
-  repo:           https://github.com/CIBiG-wave/cibig-wave.github.io
+# --- Defaults (applied to every markdown page) -------------------------------
 
-# Exclude specific pages and files from the site build
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: page
+
+# --- Navigation (for MinimalMistakes) ---------------------------------------
+# Create a menu via _data/navigation.yml (see documentation) -------------------
+
+# --- Collections (optional) ---------------------------------------------------
+# collections:
+#   sessions:
+#     output: true
+#     permalink: /sessions/:path/
+
+# --- Build settings -----------------------------------------------------------
+
+# Exclude files/folders from the build
 exclude:
   - course_materials/*
+  - README.md
+  - Gemfile*
+
+# Keep files/folders that are normally excluded
+# keep_files:
+#   - "assets/img"
+
+# Enable incremental build locally
+# incremental: true
+
+# Timezone (optional)
+# timezone: "Africa/Abidjan"
+

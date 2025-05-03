@@ -1,0 +1,13 @@
+main:
+  - title: "Home"
+    url: "/"
+  - title: "Apply"
+    url: "/apply/02-apply"
+  - title: "Session 2025"
+    url: "/sessions/2025/05-2025"
+  - title: "Session 2024"
+    url: "/sessions/2024/05-2024"
+  - title: "Resources"
+    url: "/resources"
+  - title: "Contact"
+    url: "/contact"
