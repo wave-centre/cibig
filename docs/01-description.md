@@ -27,7 +27,7 @@ The course will be in French, but the slides and other course material will be i
 ## Program structure
 
 * 12 hours of distance learning
-* 154 hours in the WAVE center
+* 153 hours in the WAVE center
 
 | Module                                             | Description                                                                                                                                               | Hours |
 |----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|----|  
