@@ -19,7 +19,7 @@ This training will provide comprehensive insights into sequencing, genomics and 
 <img src="public/icon_calendar-5.png">
 </div>
 <div>
-9 September - 4 October 2024
+17 November - 12 December 2025
 </div>
 </div>
 
@@ -28,7 +28,7 @@ This training will provide comprehensive insights into sequencing, genomics and 
 <img src="public/icon_place-8.png">
 </div>
 <div>
-The <a href="https://wave-center.org/" target_blank>WAVE Regional Center of Excellence</a>, Université Felix Houphouët Boigny, Bingerville, Abijan
+The <a href="https://wave-center.org/" target_blank>WAVE Regional Center of Excellence</a>, Universit?? Felix Houphou??t Boigny, Bingerville, Abijan
 </div>
 </div>
 
