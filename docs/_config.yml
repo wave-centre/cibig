@@ -5,8 +5,8 @@
 
 # --- Site settings -----------------------------------------------------------
 
-title: "CIBiG  International Certificate in Bioinformatics and Genomics"
-tagline: "Onemonth intensive course"
+title: "CIBiG"
+tagline: "One month intensive course"
 description: "Training in sequencing technologies, genomics and bioinformatics with a focus on agriculture and health applications."
 lang: fr
 url: "https://cibig-wave.github.io"      # full base URL
