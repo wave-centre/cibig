@@ -3,15 +3,16 @@
 <img src="img/logo_uboigny.jpeg" style="display: block; margin: 0 auto; width: 20%; height: 20%;">
 </div> 
 
-# Welcome on the github repository of the CIBiG
+# Welcome to the GitHub repository of **CIBiG**
 
-The International Certificate in Bioinformatics and Genomics (CIBiG) offers an intensive training aimed at PhD students and researchers who use sequencing technologies and data in their research. This one-month training  provides comprehensive insights into sequencing, genomics and bioinformatics, and will teach participants how to effectively use bioinformatics methods to analyse sequencing data, with a focus on applications in agriculture and health.
+The **International Certificate in Bioinformatics and Genomics (CIBiG)** offers an intensive training program aimed at PhD students and researchers who work with sequencing technologies and genomic data. Over one month, participants gain comprehensive insights into sequencing, genomics and bioinformatics, learning to analyse data with stateoftheart methods, with applications in agriculture and health.
 
-| Date | Location | Trainees | Status | 
-|---------|---------|---------|---------|
-| 9 September - 4 October 2024 | The <a href="https://wave-center.org/" target_blank>WAVE Regional Center of Excellence</a>, Université Felix Houphouët Boigny, Bingerville, Abijan | 15 participants | Application opened |
+| Session  | Dates                                                          | Location                                                                                                                 | Seats | Status                                       |
+| -------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ----- | -------------------------------------------- |
+| **2024** | 9Sep4Oct2024                                             | [WAVE Regional Center of Excellence](https://wave-center.org/), UniversitFlixHouphoutBoigny, Bingerville (Abidjan) | 15    | **Completed**                                |
+| **2025** | **17Nov12Dec2025** <br> (online intro: 1014Nov2025) | Same as above                                                                                                            | 15    | **Applications open  deadline 16Jun2025** |
 
-[More information on the CIBiG web site](https://cibig-wave.github.io/)
+[Full details on the CIBiG website](https://cibig-wave.github.io/)
 
 <div style="display:flex"> 
 <img src="img/logo_ujkz.jpeg" style="display: block; margin: 0 auto; width: 16%;">
@@ -21,6 +22,7 @@ The International Certificate in Bioinformatics and Genomics (CIBiG) offers an i
 
 ### License
 
-The resource material is licensed under the Creative Commons Attribution 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/
+All course material is licensed under the **Creative Commons Attribution 4.0 International License**.
 
-![http://creativecommons.org/licenses/by-nc-sa/4.0/](img/license-by-nc-sa.jpeg)
+![CC BYNCSA4.0](img/license-by-nc-sa.jpeg)
+
