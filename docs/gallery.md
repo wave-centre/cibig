@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Photo Gallery"
-permalink: /gallery/
+permalink: docs/assets/img/gallery/
 ---
 A glimpse of CIBiG moments  training sessions, lab work, and community life.
 
