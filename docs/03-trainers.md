@@ -47,7 +47,7 @@ title: Trainers
 
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="/assets/img/trainer_francois_sabot.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
-    <p>Fran??ois SABOT- IRD</p>
+    <p>François SABOT- IRD</p>
   </div>
 
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
@@ -62,7 +62,7 @@ title: Trainers
 
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="/assets/img/trainer_fidele_tiendrebeogo.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
-    <p>Fid??le TIENDREBEOGO - WAVE</p>
+    <p>Fidèle TIENDREBEOGO - WAVE</p>
   </div>
 
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
@@ -72,7 +72,7 @@ title: Trainers
 
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="/assets/img/trainer_romuald_boua.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
-    <p>Palwend?? Romuald BOUA - IRSS</p>
+    <p>Palwendé Romuald BOUA - IRSS</p>
   </div>
 
   <!-- Ajout d'un div vide pour ??quilibrer la derni??re ligne -->
