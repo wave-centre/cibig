@@ -3,6 +3,8 @@ layout: page
 title: "Photo Gallery"
 permalink: /gallery/
 ---
+A glimpse of CIBiG moments  training sessions, lab work, and community life.
+
 {% for file in site.static_files %}
   {% if file.path contains "assets/img/gallery" %}
     {% assign alt = file.name | replace:"_", " " | replace:"-", " " | split:"." | first %}
