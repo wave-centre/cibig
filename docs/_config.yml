@@ -10,7 +10,7 @@ tagline: "One month intensive course"
 description: "Training in sequencing technologies, genomics and bioinformatics with a focus on agriculture and health applications."
 lang: fr
 url: "https://wave-centre.github.io/cibig/"      # full base URL
-baseurl: "/cibig/"                               # repository root (for orgsite)
+baseurl: ""                               # repository root (for orgsite)
 github:
   repo:           https://github.com/wave-centre
 
