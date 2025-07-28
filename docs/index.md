@@ -4,8 +4,8 @@ title: Home
 ---
 
 <div style="display:flex"> 
-<img src="/assets/img/logo_wave2.jpeg" style="display: block; margin: 0 auto; width: 30%; ">
-<img src="/assets/img/logo_uboigny.jpeg" style="display: block; margin: 0 auto; width: 20%; ">
+<img src="./assets/img/logo_wave2.jpeg" style="display: block; margin: 0 auto; width: 30%; ">
+<img src="./assets/img/logo_uboigny.jpeg" style="display: block; margin: 0 auto; width: 20%; ">
 </div> 
 
 <br />
@@ -16,7 +16,7 @@ This training will provide comprehensive insights into sequencing, genomics and 
 
 <div style="display: flex; align-items: center;">
 <div style="margin-left: 15px; margin-right: 10px;">
-<img src="/assets/img/icon_calendar-5.png">
+<img src="assets/img/icon_calendar-5.png">
 </div>
 <div>
 17 November - 12 December 2025
