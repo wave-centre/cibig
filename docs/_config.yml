@@ -9,14 +9,14 @@ title: "CIBiG"
 tagline: "One month intensive course"
 description: "Training in sequencing technologies, genomics and bioinformatics with a focus on agriculture and health applications."
 lang: fr
-url: "https://wave-centre.github.io/cibig/"      # full base URL
-baseurl: ""                               # repository root (for orgsite)
+url: "https://wave-centre.github.io"      # full base URL
+baseurl: "/cibig"                               # repository root (for orgsite)
 github:
-  repo:           https://github.com/wave-centre/cibig
+  repo: https://github.com/wave-centre/cibig
 
 # Author (used by JekyllSEOtag)
 author:
-  name: "Christine TranchantDubreuil"
+  name: "Christine Tranchant-Dubreuil"
   email: "christine.tranchant@ird.fr"
 
 # --- Appearance & theme ------------------------------------------------------
