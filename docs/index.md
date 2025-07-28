@@ -16,7 +16,7 @@ This training will provide comprehensive insights into sequencing, genomics and 
 
 <div style="display: flex; align-items: center;">
 <div style="margin-left: 15px; margin-right: 10px;">
-<img src="assets/img/icon_calendar-5.png">
+<img src="./cibig/assets/img/icon_calendar-5.png">
 </div>
 <div>
 17 November - 12 December 2025
@@ -25,7 +25,7 @@ This training will provide comprehensive insights into sequencing, genomics and 
 
 <div style="display: flex; align-items: center;">
 <div style="margin-left: 15px; margin-right: 10px;">
-<img src="/assets/img/icon_place-8.png">
+<img src="./cibig/assets/img/icon_place-8.png">
 </div>
 <div>
 The <a href="https://wave-center.org/" target_blank>WAVE Regional Center of Excellence</a>, Université Félix Houphouët-Boigny, Bingerville, Abijan
@@ -34,7 +34,7 @@ The <a href="https://wave-center.org/" target_blank>WAVE Regional Center of Exce
 
 <div style="display: flex; align-items: center;">
 <div style="margin-left: 15px; margin-right: 10px;">
-<img src="/assets/img/icon-dollar-5.png">
+<img src="cibig/assets/img/icon-dollar-5.png">
 </div>
 <div>
 2,000,000 CFA
@@ -43,7 +43,7 @@ The <a href="https://wave-center.org/" target_blank>WAVE Regional Center of Exce
 
 <div style="display: flex; align-items: center;">
 <div style="margin-left: 15px; margin-right: 10px;">
-<img src="/assets/img/icon_email-5.png">
+<img src="cibig/assets/img/icon_email-5.png">
 </div>
 <div>
  bioinfo@wave-center.org
@@ -52,7 +52,7 @@ The <a href="https://wave-center.org/" target_blank>WAVE Regional Center of Exce
 
 <div style="display: flex; align-items: center;">
 <div style="margin-left: 15px; margin-right: 10px;">
-<img src="/assets/img/icon_apply-5.png" style="vertical-align: middle;">
+<img src="cibig/assets/img/icon_apply-5.png" style="vertical-align: middle;">
 </div>
 <div>
 Open application with selection : 15 places
@@ -62,7 +62,7 @@ Open application with selection : 15 places
 <br/>
 
 <div style="display:flex"> 
-<img src="/assets/img/logo_ujkz.jpeg" style="display: block; margin: 0 auto; width: 16%;">
-<img src="/assets/img/logo_itrop.png" style="display: block; margin: 0 auto; width: 16%; ">
-<img src="/assets/img/logo_ird.png" style="display: block; margin: 0 auto; width: 16%;">
+<img src="cibig/assets/img/logo_ujkz.jpeg" style="display: block; margin: 0 auto; width: 16%;">
+<img src="cibig/assets/img/logo_itrop.png" style="display: block; margin: 0 auto; width: 16%; ">
+<img src="cibig/assets/img/logo_ird.png" style="display: block; margin: 0 auto; width: 16%;">
 </div> 
