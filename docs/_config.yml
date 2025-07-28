@@ -9,10 +9,10 @@ title: "CIBiG"
 tagline: "One month intensive course"
 description: "Training in sequencing technologies, genomics and bioinformatics with a focus on agriculture and health applications."
 lang: fr
-url: "https://cibig-wave.github.io"      # full base URL
+url: "https://centre-wave.github.io/cibig/"      # full base URL
 baseurl: ""                               # repository root (for orgsite)
 github:
-  repo:           https://github.com/CIBiG-wave/cibig-wave.github.io
+  repo:           https://github.com/wave-centre.github.io/
 
 # Author (used by JekyllSEOtag)
 author:
