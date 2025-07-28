@@ -12,7 +12,7 @@ lang: fr
 url: "https://wave-centre.github.io/cibig/"      # full base URL
 baseurl: ""                               # repository root (for orgsite)
 github:
-  repo:           https://github.com/wave-centre
+  repo:           https://github.com/wave-centre/cibig
 
 # Author (used by JekyllSEOtag)
 author:
