@@ -4,8 +4,8 @@ title: Home
 ---
 
 <div style="display:flex"> 
-<img src="./cibig/assets/img/logo_wave2.jpeg" style="display: block; margin: 0 auto; width: 30%; ">
-<img src="./cibig/assets/img/logo_uboigny.jpeg" style="display: block; margin: 0 auto; width: 20%; ">
+<img src="/assets/img/logo_wave2.jpeg" style="display: block; margin: 0 auto; width: 30%; ">
+<img src="/assets/img/logo_uboigny.jpeg" style="display: block; margin: 0 auto; width: 20%; ">
 </div> 
 
 <br />
