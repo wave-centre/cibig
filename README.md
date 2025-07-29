@@ -1,6 +1,6 @@
 <div style="display:flex"> 
-<img src="docs/public/logo_wave2.jpeg" style="display: block; margin: 0 auto; width: 30%; height: 30%;">
-<img src="docs/public/logo_uboigny.jpeg" style="display: block; margin: 0 auto; width: 20%; height: 20%;">
+<img src="docs/assets/img/logo_wave2.jpeg" style="display: block; margin: 0 auto; width: 30%; height: 30%;">
+<img src="docs/assets/img/logo_uboigny.jpeg" style="display: block; margin: 0 auto; width: 20%; height: 20%;">
 </div> 
 
 # Welcome on the github repository of the CIBIG
@@ -14,9 +14,9 @@ The International Certificate in Bioinformatics and Genomics (CIBiG)  offers an 
 [More information on the CIBIG web site](https://wave-centre.github.io/cibig/)
 
 <div style="display:flex"> 
-<img src="docs/public/logo_ujkz.jpeg" style="display: block; margin: 0 auto; width: 16%;">
-<img src="docs/public/logo_itrop.png" style="display: block; margin: 0 auto; width: 16%; ">
-<img src="docs/public/logo-ird-grey.jpg" style="display: block; margin: 0 auto; width: 30%;">
+<img src="docs/assets/img/logo_ujkz.jpeg" style="display: block; margin: 0 auto; width: 16%;">
+<img src="docs/assets/img/logo_itrop.png" style="display: block; margin: 0 auto; width: 16%; ">
+<img src="docs/assets/img/logo-ird-grey.jpg" style="display: block; margin: 0 auto; width: 30%;">
 </div> 
 
 ### License
