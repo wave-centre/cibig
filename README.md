@@ -23,4 +23,4 @@ The International Certificate in Bioinformatics and Genomics (CIBiG)  offers an 
 
 The resource material is licensed under the Creative Commons Attribution 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/
 
-![http://creativecommons.org/licenses/by-nc-sa/4.0/](img/license-by-nc-sa.jpeg)
+![http://creativecommons.org/licenses/by-nc-sa/4.0/](docs/assets/img/license-by-nc-sa.jpeg)
