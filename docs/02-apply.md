@@ -17,7 +17,7 @@ Number of available spots: 15
 <img src="/cibig/assets/img/icon_calendar-5.png">
 </div>
 <div>
-Application deadline: **June 16, 2025, at 11:59 PM (GMT)**  
+Application deadline: <b>June 16, 2025, at 11:59 PM (GMT)</b>  
 </div>
 </div>
 
@@ -30,7 +30,7 @@ To apply for the course, candidates must submit the following documents, all in 
 
 Applications must be submitted via the following link: [here](https://forms.gle/yT49tcERiHjhqUEp8)
 
-**Selection results will be announced by July 1, 2025.**
+_**Selection results will be announced by July 1, 2025.**_
 
 The organizing committee will review all applications and select candidates based on the submitted documents.
 
