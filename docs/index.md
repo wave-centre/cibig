@@ -62,10 +62,15 @@ Open application with selection : 15 places
 
 <div style="display: flex; align-items: center;">
 <div style="margin-left: 15px; margin-right: 10px;">
-<img src="/cibig/assets/img/icon_apply-5.png" style="vertical-align: middle;">
+<img src="/cibig/assets/img/kit-starter_icon2.png" style="vertical-align: middle;">
 </div>
 <div>
-<a href="https://wave-centre.github.io/cibig/assets/img/CIBIG2025_Welcome_Starter Kit_v1.1.pdf" target_blank><img src="/cibig/assets/img/kit-starter_icon2.png" style="vertical-align: middle;"></a></div>
+Download the Welcome & Starter Kit
+    </a>
+    <br>
+    <small style="color: gray;">
+      Everything you need to prepare for the CIBiG training: program overview, resources, tools, and useful info.
+    </small></div>
 </div>
 
 <br/>
