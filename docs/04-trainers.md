@@ -16,11 +16,6 @@ title: Trainers
   </div>
 
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
-    <img src="/cibig/assets/img/trainer_anonym.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
-    <p>Marie COUDERC - IRD</p>
-  </div>
-
-  <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="/cibig/assets/img/trainer_sebastien_cunnac.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>Sebastien CUNNAC - IRD</p>
   </div>
@@ -38,11 +33,6 @@ title: Trainers
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="/cibig/assets/img/trainer_julie_orjuela.jpg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>Julie ORJUELA-BOUNIOL - IRD</p>
-  </div>
-
-  <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
-    <img src="/cibig/assets/img/trainer_sebastien_ravel.jpg" style=" height: 150px; border-radius: 50%; margin: 0 auto;">
-    <p>Sebastien RAVEL - CIRAD</p>
   </div>
 
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
@@ -84,5 +74,16 @@ title: Trainers
 
 </div>
 
+---
 
+Past session
 
+  <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
+    <img src="/cibig/assets/img/trainer_anonym.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
+    <p>Marie COUDERC - IRD</p>
+  </div>
+
+  <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
+    <img src="/cibig/assets/img/trainer_sebastien_ravel.jpg" style=" height: 150px; border-radius: 50%; margin: 0 auto;">
+    <p>Sebastien RAVEL - CIRAD</p>
+  </div>
