@@ -12,7 +12,7 @@ To apply for the course, candidates must submit the following documents, all in 
 
 Applications must be submitted via the following link: [here](https://forms.gle/yT49tcERiHjhqUEp8)
 
-### Training Fees
+### <img src="/cibig/assets/img/icon-dollar-5.png"> Training Fees
 
 The training cost is:
 
@@ -21,9 +21,25 @@ The training cost is:
 
 This fee covers training expenses and lunch during the in-person training period. Travel and accommodation costs in Abidjan are the responsibility of the participant.
 
- Application deadline: **June 16, 2025, at 11:59 PM (GMT)**  
- Number of available spots: 15  
- Selection results will be announced by July 1, 2025.
+<div style="display: flex; align-items: center;">
+<div style="margin-left: 15px; margin-right: 10px;">
+<img src="/cibig/assets/img/icon_calendar-5.png">
+</div>
+<div>
+Application deadline: **June 16, 2025, at 11:59 PM (GMT)**  
+</div>
+</div>
+
+<div style="display: flex; align-items: center;">
+<div style="margin-left: 15px; margin-right: 10px;">
+<img src="/cibig/assets/img/icon_apply-5.png" style="vertical-align: middle;">
+</div>
+<div>
+Number of available spots: 15  
+</div>
+</div>
+ 
+**Selection results will be announced by July 1, 2025.**
 
 The organizing committee will review all applications and select candidates based on the submitted documents.
 
