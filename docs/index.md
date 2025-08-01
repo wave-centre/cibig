@@ -32,7 +32,7 @@ The <a href="https://wave-center.org/" target_blank>WAVE Regional Center of Exce
 </div>
 </div>
 
-<div style="display: flex; align-items: center;">
+<!--- <div style="display: flex; align-items: center;">
 <div style="margin-left: 15px; margin-right: 10px;">
 <img src="/cibig/assets/img/icon-dollar-5.png">
 </div>
@@ -40,6 +40,7 @@ The <a href="https://wave-center.org/" target_blank>WAVE Regional Center of Exce
 2,000,000 CFA
 </div>
 </div>
+--->
 
 <div style="display: flex; align-items: center;">
 <div style="margin-left: 15px; margin-right: 10px;">
