@@ -12,7 +12,7 @@ To apply for the course, candidates must submit the following documents, all in 
 
 Applications must be submitted via the following link: [here](https://forms.gle/yT49tcERiHjhqUEp8)
 
-### <img src="/cibig/assets/img/icon-dollar-5.png"> Training Fees
+### Training Fees
 
 The training cost is:
 
