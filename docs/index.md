@@ -65,7 +65,7 @@ Open application with selection : 15 places
 <img src="/cibig/assets/img/kit-starter_icon2.png" style="vertical-align: middle;">
 </div>
 <div>
-    <a href="https://wave-centre.github.io/cibig/assets/img/CIBIG2025_Welcome_Starter Kit_v1.3.pdf" target="_blank">
+    <a href="https://wave-centre.github.io/cibig/assets/img/CIBIG2025_Welcome_Starter_Kit_v1.3.pdf" target="_blank">
 Download the Welcome & Starter Kit - v1.3 (September 3)
     </a>
     <br>
