@@ -16,8 +16,8 @@ title: Trainers
   </div>
 
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
-    <img src="/cibig/assets/img/trainer_sebastien_cunnac.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
-    <p>Sebastien CUNNAC - IRD</p>
+    <img src="/cibig/assets/img/trainer_yann_bourgeois.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
+    <p>Yann BOURGEOIS - IRD</p>
   </div>
 
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
@@ -27,19 +27,37 @@ title: Trainers
 
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="/cibig/assets/img/trainer_romaric_nanema.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
-    <p>Romaric Kiswendsida NANEMA - Universit?? Joseph Ki-Zerbo</p>
+    <p>Romaric Kiswendsida NANEMA - Université Joseph Ki-Zerbo</p>
   </div>
 
+
+  <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
+    <img src="/cibig/assets/img/trainer_cyrielle_ndougonna.jpg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
+    <p>Cyrielle NDOUGONNA - WAVE</p>
+  </div>
+  
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="/cibig/assets/img/trainer_julie_orjuela.jpg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>Julie ORJUELA-BOUNIOL - IRD</p>
   </div>
 
+
+  <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
+    <img src="/cibig/assets/img/trainer_name_pakyendou.jpg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
+    <p>Name PAKYENDOU - WAVE</p>
+  </div>
+  
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="/cibig/assets/img/trainer_francois_sabot.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>François SABOT- IRD</p>
   </div>
 
+
+  <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
+    <img src="/cibig/assets/img/trainer_koissi_savi.jpg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
+    <p>Koissi SAVI- WAVE</p>
+  </div>
+  
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="/cibig/assets/img/trainer_ndomassi_tando.jpg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>Ndomassi TANDO- IRD</p>
@@ -83,6 +101,11 @@ Past session
     <p>Marie COUDERC - IRD</p>
   </div>
 
+  <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
+    <img src="/cibig/assets/img/trainer_sebastien_cunnac.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
+    <p>Sebastien CUNNAC - IRD</p>
+  </div>
+  
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="/cibig/assets/img/trainer_sebastien_ravel.jpg" style=" height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>Sebastien RAVEL - CIRAD</p>
