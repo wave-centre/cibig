@@ -25,11 +25,6 @@ title: Contact
     <img src="/cibig/assets/img/trainer_fidele_tiendrebeogo.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>Fidèle TIENDREBEOGO - WAVE</p>
   </div>
-
-  <div style="flex: 1 1 calc(50% - 20px); text-align: center; margin-bottom: 20px;">
-    <img src="/cibig/assets/img/trainer_serge_anoman.jpg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
-    <p>Serge ANOMAN - WAVE</p>
-  </div>
  
  <div style="flex: 1 1 calc(50% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="/cibig/assets/img/trainer_romaric_nanema.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
