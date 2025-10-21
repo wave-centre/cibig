@@ -35,7 +35,11 @@ title: Trainers
     <p>Romaric Kiswendsida NANEMA - Université Joseph Ki-Zerbo</p>
   </div>
 
-
+  <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
+    <img src="/cibig/assets/img/trainer_perla_farhat.png" style="height: 150px; border-radius: 50%; margin: 0 auto;">
+    <p>Perla FARHAT - IRD</p>
+  </div>
+  
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="/cibig/assets/img/trainer_cyrielle_ndougonna.jpg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>Cyrielle NDOUGONNA - WAVE</p>
@@ -50,6 +54,11 @@ title: Trainers
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="/cibig/assets/img/trainer_name_pakyendou.jpg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>Pakyendou Estel NAME - WAVE</p>
+  </div>
+
+  <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
+    <img src="/cibig/assets/img/trainer_damien_richard.jpg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
+    <p>Damien Richard - IRD</p>
   </div>
   
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
