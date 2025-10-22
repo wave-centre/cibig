@@ -26,7 +26,7 @@ title: Trainers
   </div>
 
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
-    <img src="/cibig/assets/img/trainer_philippe_cubry" style="height: 150px; border-radius: 50%; margin: 0 auto;">
+    <img src="/cibig/assets/img/trainer_philippe_cubry.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>Philippe CUBRY - IRD</p>
   </div>
   
