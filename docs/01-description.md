@@ -29,19 +29,19 @@ The course will be in French, but the slides and other course material will be i
 * 36 hours of distance learning
 * 153 hours in the WAVE center
 
-| Module                                             | Description                                                                                                                                               | Hours |
+| Module                                             | Description                                                                                                                                               | Hours | Instructors |
 |----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|----| ----|  
-| Course review                                      | General biology, Genomics basis, Genome Structure and Dynamics / Evolution, Sequencing technologies and Applications                                      | 12H | 
+| Course review                                      | General biology, Genomics basis, Genome Structure and Dynamics / Evolution, Sequencing technologies and Applications                                      | 36H | 
 | Sequencing: from library preparation to sequencing | Overview of Sequencing Technologies, RNA/DNA Extraction, Library Preparation for Illumina and ONT, Sequencing and Quality Control                         | 30h |
-| Biological database                                | Sequence Databases (e.g., NCBI/SWISS-Prot), Blast Alignment, Primer design                                                                                | 8h |
-| Linux                                              | Basic Linux Commands,  Bioinformatics Tools (e.g., BLAST), Advanced Linux (e.g., sed, awk), VCF, GFF Manipulation, slurm, Containers (Singularity, Conda) | 38h |
+| Biological database                                | Sequence Databases (e.g., NCBI/SWISS-Prot), Blast Alignment, Primer design                                                                                | 12h |
 | Introduction to Algorithmics | 	Introduction to algorithms, data and control structures, with simplified exercises to acquire the basics, reused later in R and Python. | 8h | 
-| Data analysis and visualization in R               | Read Tabular File into DataFrame, DataFrame Manipulation, Data Visualization (Plotting), R Markdown                                                       | 12h |
-| OMICs data analysis                                | Diversity analysis / metagenomic analysis (ONT and illumina sequencing, Sequence Quality, Mapping, Structural Variant detection, SNP Annotation)          | 34h | 
-| Python programming                                 | Variables, Display, Lists, Loops and Comparisons, Tests, Files, Modules, Functions, Containers, Dictionaries, Tuples, and Sets                                                                                                                                                          | 24h |
+| Linux                                              | Basic Linux Commands,  Bioinformatics Tools (e.g., BLAST), Advanced Linux (e.g., sed, awk), VCF, GFF Manipulation, slurm, Containers (Singularity, Conda) | 20h |
+| OMICs data analysis                                | Diversity analysis / metagenomic analysis (ONT and illumina sequencing, Sequence Quality, Mapping, Structural Variant detection, SNP Annotation)          | 40h | 
+| Data analysis and visualization in R               | Read Tabular File into DataFrame, DataFrame Manipulation, Data Visualization (Plotting), R Markdown                                                      | 20h |
+| Python programming                                 | Variables, Display, Lists, Loops and Comparisons, Tests, Files, Modules, Functions, Containers, Dictionaries, Tuples, and Sets                                                                                                                                                          | 20h |
 | Science reproductibility                           | Best Practices (Data Management, Code, Licensing), Containers (Docker, Singularity), Conda, Git, Snakemake                                                | 10h |
 
 ### Practical sessions
 
 * A tutored project will begin in the second week with data identification and bioinformatics strategy definition, followed by workflow design, data analysis, and a final oral presentation.
-* One-Month Internship: Following the 4-week course, each student will complete a supervised immersion internship supervised by two teaching tutors and a researcher from the host laboratory.
+* Two-Month Internship: Following the 4-week course, each student will complete a supervised immersion internship supervised by two teaching tutors and a researcher from the host laboratory.
