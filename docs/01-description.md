@@ -30,7 +30,7 @@ The course will be in French, but the slides and other course material will be i
 * 153 hours in the WAVE center
 
 | Module                                             | Description                                                                                                                                               | Hours |
-|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|----|  
+|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|----| ----|  
 | Course review                                      | General biology, Genomics basis, Genome Structure and Dynamics / Evolution, Sequencing technologies and Applications                                      | 12H | 
 | Sequencing: from library preparation to sequencing | Overview of Sequencing Technologies, RNA/DNA Extraction, Library Preparation for Illumina and ONT, Sequencing and Quality Control                         | 30h |
 | Biological database                                | Sequence Databases (e.g., NCBI/SWISS-Prot), Blast Alignment, Primer design                                                                                | 8h |
