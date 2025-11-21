@@ -1,4 +1,4 @@
-# Lab Session: Advanced Search in NCBI and EMBL-EBI Databases
+# Advanced Search in NCBI and EMBL-EBI Databases
 
 ## Learning Objectives
 
@@ -16,7 +16,7 @@ At the end of this lab session, the student should be able to:
 
 ### Exercise 1: Scientific Literature Search
 
-**Platform:** NCBI (PubMed)
+**Platform:** NCBI PubMed database
 
 **Task:**  
 Search for publications related to *TP53* mutations associated with breast cancer.
@@ -37,7 +37,7 @@ Search for publications related to *TP53* mutations associated with breast cance
 
 ### Exercise 2: Sequence Extraction (DNA & Protein)
 
-**Platform:** NCBI Gene / Nucleotide / Protein
+**Platform:** NCBI Gene / Nucleotide / Protein databases
 
 #### Procedure
 
@@ -56,7 +56,7 @@ Search for publications related to *TP53* mutations associated with breast cance
 
 ### Exercise 3: Pathogenic TP53 Variants
 
-**Platform:** ClinVar / dbSNP
+**Platform:** ClinVar / dbSNP databases
 
 #### Procedure
 
@@ -73,7 +73,7 @@ Search for publications related to *TP53* mutations associated with breast cance
 
 ### Exercise 4: Raw SRA Data Search
 
-**Platform:** NCBI SRA
+**Platform:** NCBI SRA database
 
 #### Procedure
 
