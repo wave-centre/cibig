@@ -1,9 +1,3 @@
----
-layout: page
-title:  "Linux Practice"
-permalink: /LINUX1/linux1_PRACTICE/
----
-
 ## Description
 
 | Description              | Hands On Lab Exercises for Linux                                                                                    |
@@ -11,8 +5,7 @@ permalink: /LINUX1/linux1_PRACTICE/
 | Related-course materials | [Linux for Dummies](https://github.com/CIBiG-wave/cibig-wave.github.io/blob/gh-pages/docs/course_materials/LINUX1/) |
 | Authors                  | Christine Tranchant-Dubreuil (christine.tranchant@ird.fr), Bruno Granouillac                                                           |
 | Creation Date            | 26/02/2018                                                                                                          |
-| Last Modified Date       | 15/09/2024                                                                                                          |
-| Modified by              | itrop/Soutgreen trainers ([see](https://southgreenplatform.github.io/trainings/linux/linuxPractice/)) |              |
+| Last Modified Date       | 24/11/2025                                                                                                          |
 
 -----------------------
 
