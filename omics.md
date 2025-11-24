@@ -1,6 +1,7 @@
 ---
-layout: default
-title: CIBIG Omics trainings
+layout: page
+title: "Omics"
+permalink: /omics/
 ---
 
 # __How to check raw fastq quality and to map reads against a reference genome ?__ 
