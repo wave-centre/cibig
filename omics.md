@@ -1,3 +1,8 @@
+---
+layout: default
+title: CIBIG Omics trainings
+---
+
 # __How to check raw fastq quality and to map reads against a reference genome ?__ 
 
 Created by C. Tranchant (DIADE-IRD), J. Orjuela (DIADE-IRD), F. Sabot (DIADE-IRD) and A. Dereeper (PHIM-IRD)
