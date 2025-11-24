@@ -35,21 +35,16 @@ After this course, participants should be able to:
 |---------|--------------------------------------------------------------------------------------------------------|
 | Level 1 | [here](https://github.com/CIBiG-wave/cibig-wave.github.io/blob/gh-pages/docs/course_materials/LINUX1/) | 
 | Level 2 | [here](https://github.com/CIBiG-wave/cibig-wave.github.io/blob/gh-pages/docs/course_materials/LINUX2/) | 
-| Cluster | url                                                                                                    | 
-| Singularity/conda | url                                                                                                    | 
+
 
 
 # Instructors
 
 * Christine Tranchant-Dubreuil - IRD (UMR DIADE, plateau itrop)
 * Ezechiel Tibiri - WAVE
-* Marie Couderc - IRD (UMR DIADE)
-* Alexis Dereepeer - URD (UMR PHIM)
 
 # Date
 
-2024, WAVE, Abidjan, Ivory cost 
+2025, WAVE, Abidjan, Ivory cost 
 
--------
 
-PUT LOGO / IRD / WAVE ...
