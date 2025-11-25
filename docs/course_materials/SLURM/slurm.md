@@ -5,7 +5,7 @@
 | Related-course materials | [HPC initiation](https://github.com/CIBiG-wave/cibig-wave.github.io/blob/gh-pages/docs/course_materials/SLURM) |
 | Authors                  | Ndomassi TANDO (ndomassi.tando@ird.fr)                                                           |
 | Creation Date            | 24/09/2024                                                                                                          |
-| Last Modified Date       | 25/09/2024                                                                                                          |
+| Last Modified Date       | 25/11/2025                                                                                                          |
 | Modified by              | ndomassi TANDO              |
 
 -----------------------
@@ -62,31 +62,14 @@ Once you are successfully logged in, you will be use this console for the rest o
 
 
 <a name="practice-3"></a>
-### Practice 3 : Transferring files with filezilla `sftp` 
+### Practice 3 : Transferring files to or from the nas `rsync` 
 
 
-##### Download and install FileZilla
+1. Using rsync, transfer a file from your computer to your personnal folder <code>/home/login</code> on the nas
+2. Verify the result with ls from bioinfo-master1.ird.fr
+3. Using rsync, transfer the file <code>/share/formation/Slurm/TPassembly/TP.txt</code> from the nas to your PC
 
 
-##### Open FileZilla and save the IRD cluster into the site manager
-
-
-
-
-
-1. Add the hostname bioinfo-san.ird.fr to have access to /home
-2. Set the Login with yours and insert your  password used to connect on the IRD cluster
-3. Choose port 22
-4. Press the "Connect" button.
-
-
-##### Transferring files
-
-<img width="100%" class="img-responsive" src="https://southgreenplatform.github.io/trainings//images/tpLinux/tp-filezilla2.png"/>
-
-1. From your computer to the cluster : click and drag an text file item from the left local colum to the right remote column 
-2. From the cluster to your computer : click and drag an text file item from he right remote column to the left local column
-3. Retrieve the file you want from the right window into your folder on your PC
 
 
 
@@ -94,7 +77,7 @@ Once you are successfully logged in, you will be use this console for the rest o
 
 
 <a name="practice-4"></a>
-### Practice 4: Transfer your data from the san server to the node
+### Practice 4: Transfer your data from the nas server to the node
 
 
 1. Using scp, transfer the folder `SHARE` located in `/share/formation/Slurm/` into your working directory
