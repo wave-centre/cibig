@@ -53,7 +53,8 @@ Once you are successfully logged in, you will be use this console for the rest o
 1. Type the command `squeue` and noticed the result
 2. Type the command `squeue -u your_login` with your_login to change with your  account and noticed the difference
 3. More details with the command: `squeue -O "username,name:40,partition,nodelist,NumCPUs,state,timeused,timelimit"`
-4. Type the command `srun -p formation -c 2 --pty bash -i ` then `squeue` again 
+4. Type the command `srun -p short -c 2 --pty bash -i ` then `squeue` again
+5. Type the command `cd /data` then `mkdir <my_folder>`
 
 
         
@@ -62,12 +63,12 @@ Once you are successfully logged in, you will be use this console for the rest o
 
 
 <a name="practice-3"></a>
-### Practice 3 : Transferring files to or from the nas `rsync` 
+### Practice 3 : Transferring files to or from the storage `rsync` 
 
 
 1. Using rsync, transfer a file from your computer to your personnal folder <code>/home/login</code> on the storage server
 2. Verify the result with ls from the master: 160.120.108.164
-3. Using rsync, transfer the file <code>/share/formation/Slurm/TPassembly/TP.txt</code> from the storage server to your PC
+3. Using rsync, transfer the file <code>/projects/SLURM/TP.txt</code> from the storage server to your PC
 
 
 
@@ -77,10 +78,10 @@ Once you are successfully logged in, you will be use this console for the rest o
 
 
 <a name="practice-4"></a>
-### Practice 4: Transfer your data from the nas server to the node
+### Practice 4: Transfer your data from the nas server to the node in `/data` 
 
 
-1. Using scp, transfer the folder `SHARE` located in `/share/formation/Slurm/` into your working directory
+1. Using scp, transfer the folder `SHARE` located in `/projects/SLURM` into your working directory 
 2. Check your result with ls
  
 
@@ -119,10 +120,10 @@ blastx -query Oglab_var1_cds.only1000.fasta -db uniprot_plant.fasta -num_threads
 
 -----------------------
 <a name="practice-7"></a>
-### Practice 7: Transfering data to the san server
+### Practice 7: Transfering data to the storage server
 
 
-1. Using scp, transfer your results from your `/scratch/your_dir` to your `/home/login` 
+1. Using scp, transfer your results from your `/data/your_dir` to your `/home/login` 
 2. Check if the transfer is OK with ls
  
 
@@ -134,7 +135,7 @@ blastx -query Oglab_var1_cds.only1000.fasta -db uniprot_plant.fasta -num_threads
 ### Practice 8: Deleting your temporary folder
 
 ```
-cd /scratch
+cd /data
 rm -r your_dir
 ```
 
@@ -153,14 +154,14 @@ Following the several steps performed during the practice, create a script to la
 
 1) Set  a name for your job
    
-2) Choose the formation partition
+2) Choose the short partition
    
 3) Reserve 2 cores
    
 
 2nd step: type  the commands you want the script to launch:
 
-1) create a personal folder in /scratch with `mkdir`
+1) create a personal folder in /data with `mkdir`
 
 2) Using scp, transfer your data
 
@@ -168,10 +169,10 @@ Following the several steps performed during the practice, create a script to la
 
 4) Launch the commands to perform your analysis
 
-5) Using scp, transfer your results from your `/scratch/your_dir` to your `/home/login` 
+5) Using scp, transfer your results from your `/data/your_dir` to your `/home/login` 
 
 
-6) Delete the personal folder in the  `/scratch`
+6) Delete the personal folder in the  `/data`
 
 
 Launch the following commands to obtain info on the finished job:
