@@ -81,7 +81,7 @@ Once you are successfully logged in, you will be use this console for the rest o
 ### Practice 4: Transfer your data from the storage server to the node in `/data` with `rsync` 
 
 
-1. Using scp, transfer the folder `SHARE` located in `/projects/SLURM` into your working directory 
+1. Using rsync, transfer the folder `SHARE` located in `/projects/SLURM` into your working directory 
 2. Check your result with ls
  
 
@@ -123,7 +123,7 @@ blastx -query Oglab_var1_cds.only1000.fasta -db uniprot_plant.fasta -num_threads
 ### Practice 7: Transfering data to the storage server
 
 
-1. Using scp, transfer your results from your `/data/your_dir` to your `/home/login` 
+1. Using rsync, transfer your results from your `/data/your_dir` to your `/home/login` 
 2. Check if the transfer is OK with ls
  
 
