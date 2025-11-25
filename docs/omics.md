@@ -22,8 +22,17 @@ Created by C. Tranchant (DIADE-IRD), J. Orjuela (DIADE-IRD), F. Sabot (DIADE-IRD
    * [4. Calculate stats from mapping `samtools flagstat`](#flagstats)
    * [5. Generate a bam file that contains only the reads correctly paired mapped `samtools view`](#corrmap)
    * [6. Indexing bam file](#indexbam) 
+   * [7. Visualize mapping with Tablet and/or IGV](#tablet) 
 
-[IV- Mapping ON ALL SAMPLES](#loop)
+[IV- Mapping ON ALL SAMPLES](#loop) with `bcftools`
+
+[V- SNP Calling](#snp_calling)
+
+   * [1. Index reference with `samtools faidx`](#indexref)
+   * [2. Generate a bcf file (BCF format) using `bcftools mpileup`](#mpileup)
+   * [3. Perform SNP calling using `bcftools call`](#call)
+   * [4. Perform a complete SNP calling on all individuals using a bash script](#snp_calling)
+   * [5. Index your VCF file with `tabix`](#vcf_index)
 
 ***
 
@@ -239,21 +248,21 @@ multiqc fastqc_results/ -o multiqc_report/
 
 ## 6. Interpretation of Key FastQC Modules
 
-    -----------------------------------------------------------------------------
+    ------------------------------------------------------------------------
     Module              What to check               Common issues
-    ------------------- --------------------------- -----------------------------
-    **Per base          Boxplots across read        Decrease at read ends,
-    quality**           positions                   degraded sequencing
+    ------------------- --------------------------- ------------------------
+    Per base            Boxplots across read        Decrease at read ends,
+    quality             positions                   degraded sequencing
 
-    **GC content**      Curve vs theoretical        Contamination, GC biases
+    GC content          Curve vs theoretical        Contamination, GC biases
                         distribution                
 
-    **Adapter content** Adapter levels across       Need for adapter trimming
+    Adapter content     Adapter levels across       Need for adapter trimming
                         positions                   
 
-    **Overrepresented   Repeated sequences          rRNA, adapters, PCR
-    sequences**                                     contamination
-    -----------------------------------------------------------------------------
+    Overrepresented     Repeated sequences          rRNA, adapters, PCR
+    sequences                                     contamination
+    -----------------------------------------------------------------------
 
 ------------------------------------------------------------------------
 
@@ -357,4 +366,92 @@ bwa-mem2 mem -help
 
 * Check that the index file has been created
 
+## <span> 7. Visualize mapping with Tablet and/or IGV<a class="anchor" id="tablet"></a></span>  
+
+#### Install and launch Tablet or IGV viewer
+
+#### Transfer reference fasta file, bam file and index from the server to your computer `scp`
+
+#### Load reference file and bam file
+
 # <span> IV- Mapping on all samples <a class="anchor" id="loop"></a></span>  
+
+
+As a first step, write a bash script called `mapping1.sh` that allows to automatize the complete analysis for one sample
+
+``` bash
+cd ~/2-MAPPING
+
+bwa-mem2 mem ...
+samtools ...
+```
+
+Second, write a bash script called `mapping_all.sh` that allows to map data from all samples using a loop 
+
+``` bash
+
+for fastq in `ls ...`
+do 
+
+done;
+```
+
+This script must take a directory containing all fastq files as input
+
+First, try to launch only with 2 individuals. When the analysis is OK for 2, extent to all individuals.
+
+#### Launch the complete analysis in a cluster mode using `sbatch` SLURM command
+
+# <span> V- SNP Calling <a class="anchor" id="snp_calling"></a></span> 
+ 
+We test SNP calling protocol only with two samples before running on all samples !
+
+#### <span> Create the directory `3-SNP` into your work directory </span> 
+
+Go to this new directory `3-SNP`
+
+## <span> 1. Index reference with `samtools faidx`  <a class="anchor" id="indexref"></a></span>  
+
+``` bash
+samtools faidx --help
+```
+
+Check you obtained new indexed files
+
+## <span> 2. Generate a bcf file (BCF format) using `bcftools mpileup`  <a class="anchor" id="mpileup"></a></span>  
+
+List all the bam files
+
+Display options of bcftools mpileup 
+
+``` bash
+bcftools mpileup --help
+```
+
+Generate first a bcf file for 2 samples
+
+## <span> 3. Perform SNP calling using `bcftools call`  <a class="anchor" id="call"></a></span>
+
+Display options of bcftools call 
+
+``` bash
+bcftools call --help
+```
+
+First, generate a vcf file from the bcffile for the 2 samples
+
+Look at the first 50 lines of the VCF file
+
+Look at the last lines of the VCF file
+
+## <span> 4. Perform a complete SNP calling on all individuals using a bash script <a class="anchor" id="snp_calling"></a></span>
+
+#### <span>Use a `for loop` in a bash script for giving all infidivudals and generate the final VCF file</span> 
+
+### <span>Have a Look to the VCF created - `head` `tail` </span> 
+
+How many variants is contained in the VCF file?
+
+## <span> 5. Index your VCF file with `tabix` <a class="anchor" id="vcf_index"></a></span>
+
+Using bgzip and tabix, compress your VCF file and index it
