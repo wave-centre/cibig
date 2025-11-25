@@ -16,8 +16,8 @@
 
 * [Practice 1: Get connecting on a linux server by `ssh`](#practice-1)
 * [Practice 2: Reserve one core of a node using qrsh and create your working folder](#practice-2)
-* [Practice 3: Transfering files with filezilla `sftp` ](#practice-3)
-* [Practice 4: Transfering data to the node `scp`](#practice-4)
+* [Practice 3: Transferring files to or from the storage with `rsync` ](#practice-3)
+* [Practice 4: Transfer your data from the storage server to the node in `/data` with `rsync` ](#practice-4)
 * [Practice 5: Use module environment to  load your tool](#practice-5)
 * [Practice 6: Launch analyses ](#practice-6)
 * [Practice 7: Transfering data to the san server `scp` ](#practice-7)
@@ -63,7 +63,7 @@ Once you are successfully logged in, you will be use this console for the rest o
 
 
 <a name="practice-3"></a>
-### Practice 3 : Transferring files to or from the storage `rsync` 
+### Practice 3 : Transferring files to or from the storage with `rsync` 
 
 
 1. Using rsync, transfer a file from your computer to your personnal folder <code>/home/login</code> on the storage server
@@ -78,7 +78,7 @@ Once you are successfully logged in, you will be use this console for the rest o
 
 
 <a name="practice-4"></a>
-### Practice 4: Transfer your data from the nas server to the node in `/data` 
+### Practice 4: Transfer your data from the storage server to the node in `/data` with `rsync` 
 
 
 1. Using scp, transfer the folder `SHARE` located in `/projects/SLURM` into your working directory 
