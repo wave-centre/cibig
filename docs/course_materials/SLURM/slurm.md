@@ -65,9 +65,9 @@ Once you are successfully logged in, you will be use this console for the rest o
 ### Practice 3 : Transferring files to or from the nas `rsync` 
 
 
-1. Using rsync, transfer a file from your computer to your personnal folder <code>/home/login</code> on the nas
-2. Verify the result with ls from bioinfo-master1.ird.fr
-3. Using rsync, transfer the file <code>/share/formation/Slurm/TPassembly/TP.txt</code> from the nas to your PC
+1. Using rsync, transfer a file from your computer to your personnal folder <code>/home/login</code> on the storage server
+2. Verify the result with ls from the master: 160.120.108.164
+3. Using rsync, transfer the file <code>/share/formation/Slurm/TPassembly/TP.txt</code> from the storage server to your PC
 
 
 
@@ -90,7 +90,7 @@ Once you are successfully logged in, you will be use this console for the rest o
 ### Practice 5: Use module environment to  load your tools
 
 
-1. Load blast 2.10.0+ module
+1. Load blast 2.12.0+ module
 2. Check if the tool are loaded
  
 
