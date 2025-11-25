@@ -44,3 +44,38 @@ How many chromosomes does the reference file contain? `grep`
 
 ### <span style="color: #4CACBC;"> Go into the directory SV_DATA/SHORT_READS and list the content of this directory - `cd` `ls`</span>  
 How many files does it contain ? What is the format ?
+
+## 📌 Introduction
+
+Le contrôle qualité (QC) est une étape essentielle dans l'analyse de
+données NGS.\
+Deux outils sont couramment utilisés :
+
+-   **FastQC** : analyse individuelle des fichiers FASTQ\
+-   **MultiQC** : agrégation et visualisation globale de multiples
+    rapports (FastQC, alignement, quantification...)
+
+Ce tutoriel explique :
+
+✔ Installation\
+✔ Commandes essentielles\
+✔ Interprétation des résultats\
+✔ Exemples concrets\
+✔ « Captures d'écran » textuelles typiques de FastQC et MultiQC
+
+------------------------------------------------------------------------
+
+# 1. 🔧 Installation
+
+### Avec conda (recommandé)
+
+``` bash
+conda install -c bioconda fastqc multiqc
+```
+
+### Versions rapides
+
+``` bash
+fastqc --version
+multiqc --version
+```
