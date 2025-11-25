@@ -3,22 +3,30 @@ layout: page
 title: "Omics"
 ---
 
-# __How to check raw fastq quality and to map reads against a reference genome ?__ 
+# OMICS training: From sequencing raw reads to SNP analysis
 
 Created by C. Tranchant (DIADE-IRD), J. Orjuela (DIADE-IRD), F. Sabot (DIADE-IRD) and A. Dereeper (PHIM-IRD)
 
 ***
 
-# <span style="color: #006E7F">Table of contents</span>
+# <span>Table of contents</span>
 <a class="anchor" id="home"></a>
 
-## **Getting datasets for this training**
+[I- Getting datasets for this training](#data)
+
+[II- Quality control: checking the reads quality](#quality) 
+
+***
+
+
+
+# <span> I- Getting datasets for this training <a class="anchor" id="data"></a></span>  
 
 To analyze sequencing data, we usually use a lot of bioinformatics softwares generating a lot of data. It's very important to manage and organize your data. 
 
 Firstly, we are going to download data we use in this training.
 
-### <span style="color: #4CACBC;"> Download sequencing data and the reference genome <a class="anchor" id="download"> - `wget` </span>  
+### <span> Download sequencing data and the reference genome <a class="anchor" id="download"> - `wget` </span>  
 
 Data are available at the following URL : https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA.tar.gz
 
@@ -29,36 +37,37 @@ wget --no-check-certificat -rm -nH --cut-dirs=1 --reject="index.html*" https://i
 tar xzvf variants_trainings/SV_DATA_17.tar.gz
 rm variants_trainings/SV_DATA_17.tar.gz
 ```
+### <span> Check the content of the directory SV_DATA</span>  - `ls`
 
-### <span style="color: #4CACBC;"> List the content of your home directory and check that the directory SV_DATA have been created</span>  - `ls` 
+#### <span> List the content of your home directory and check that the directory SV_DATA have been created</span>  - `ls` 
 
-### <span style="color: #4CACBC;"> List the content of the directory SV_DATA</span>  - `ls`
+#### <span> List the content of the directory SV_DATA</span>  - `ls`
 
-### <span style="color: #4CACBC;"> List the content of the directory REF</span>  - `ls`
+#### <span> List the content of the directory REF</span>  - `ls`
 
 What are the formats of the files present in this directory ? What do you think these file contains?
 <br>
 How many chromosomes does the reference file contain? `grep`
 
 
+#### <span> Go into the directory SV_DATA/SHORT_READS and list the content of this directory - `cd` `ls`</span>  
 
-### <span style="color: #4CACBC;"> Go into the directory SV_DATA/SHORT_READS and list the content of this directory - `cd` `ls`</span>  
 How many files does it contain ? What is the format ?
 
-# 🧬 Tutorial: Quality Control of RNA-seq / DNA-seq Data with **FastQC** and **MultiQC**
+# <span> II- Quality Control of RNA-seq / DNA-seq Data with **FastQC** and **MultiQC** <a class="anchor" id="quality"></a></span>  
 
-## 📌 Introduction
+## Introduction
 
 Quality control (QC) is an essential step in the analysis of NGS data.\
 Two tools are commonly used:
 
--   **FastQC** --- individual analysis of FASTQ files\
+-   **FastQC** --- individual analysis of FASTQ files
 -   **MultiQC** --- aggregation and visualization of multiple QC reports
     (FastQC, alignment, quantification, etc.)
 
 This tutorial covers:
 
-✔ Installation\
+✔ Fastq files checking\
 ✔ Essential commands\
 ✔ How to interpret QC metrics\
 ✔ Concrete examples\
@@ -66,13 +75,22 @@ This tutorial covers:
 
 ------------------------------------------------------------------------
 
-# 1. 🔧 Installation
+## 1. Fastq files checking
 
-### Using conda (recommended)
+#### <span> Go into the directory SV_DATA/SHORT_READS and list the content of this directory - `cd` `ls`</span>  
 
-``` bash
-conda install -c bioconda fastqc multiqc
-```
+How many files does it contain ? What is the format ?
+
+
+#### <span> List the 10 first lines of one file</span>  - `head` `zcat` `wc`
+
+How many sequences are there in the first fastq file?
+
+#### <span> Go into your working directory and create the directory 1-FASTQC</span>  `mkdir`
+
+------------------------------------------------------------------------
+
+## 2. Running FastQC
 
 ### Quick version check
 
@@ -81,39 +99,32 @@ fastqc --version
 multiqc --version
 ```
 
-------------------------------------------------------------------------
+### Display options for fastqc
 
-# 2. ▶️ Running FastQC
+``` bash
+fastqc --help
+```
 
-### On a single FASTQ file
+
+### Here are examples of command for running fastqc
+
+On a single FASTQ file
 
 ``` bash
 fastqc sample_01.fastq.gz
 ```
-
-### On multiple files at once
+ 
+On multiple files at once
 
 ``` bash
 fastqc *.fastq.gz -o fastqc_results/
 ```
 
-### Useful options
-
-  Option        Description
-  ------------- -----------------------------------------------------
-  `-o`          Output directory
-  `-t`          Number of threads
-  `--nogroup`   Do not group similar reads (useful for small files)
-
-Multithread example:
-
-``` bash
-fastqc -t 8 *.fastq.gz -o fastqc_results/
-```
+### Run fastqc on all raw fastq files
 
 ------------------------------------------------------------------------
 
-# 3. 📊 Example of FastQC Output
+## 3. Example of FastQC Output
 
 FastQC generates two files:
 
@@ -124,7 +135,7 @@ Below are **simulated screenshots** of the main report sections.
 
 ------------------------------------------------------------------------
 
-## 📌 Example: FastQC Summary (simulated)
+## Example: FastQC Summary (simulated)
 
     >> Basic Statistics            PASS
     >> Per base sequence quality   PASS
@@ -134,7 +145,7 @@ Below are **simulated screenshots** of the main report sections.
 
 ------------------------------------------------------------------------
 
-## 📌 Example: Per-base quality plot (simplified ASCII)
+## Example: Per-base quality plot (simplified ASCII)
 
     Quality (Phred)
     40 | ████████████████████████████████
@@ -146,7 +157,7 @@ Below are **simulated screenshots** of the main report sections.
 
 ------------------------------------------------------------------------
 
-## 📌 Example: Adapter contamination (simulated)
+## Example: Adapter contamination (simulated)
 
     Adapter Content (%)
     100 |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -159,7 +170,7 @@ Below are **simulated screenshots** of the main report sections.
 
 ------------------------------------------------------------------------
 
-# 4. ▶️ Inspecting and Extracting FastQC Data
+## 4. Inspecting and Extracting FastQC Data
 
 To extract the ZIP file:
 
@@ -173,7 +184,7 @@ Useful data is in:
 
 ------------------------------------------------------------------------
 
-# 5. 📚 MultiQC: Aggregating All Reports
+## 5. MultiQC: Aggregating All Reports
 
 ### Basic command in a folder containing multiple FastQC reports
 
@@ -181,9 +192,15 @@ Useful data is in:
 multiqc fastqc_results/ -o multiqc_report/
 ```
 
+
+### <span> Run `MultiQC`</span>  
+
+* go into the directory 1-FASTQC
+* run MultiQC into this directory
+
 ------------------------------------------------------------------------
 
-## 📌 Example: MultiQC Summary (simulated)
+## Example: MultiQC Summary (simulated)
 
     ==================== MultiQC Report ====================
 
@@ -201,7 +218,7 @@ multiqc fastqc_results/ -o multiqc_report/
 
 ------------------------------------------------------------------------
 
-## 📈 Example: MultiQC Table (simulated)
+## Example: MultiQC Table (simulated)
 
     Sample       | Reads (M) | %GC | Q30 (%) | Adapter Fail
     --------------------------------------------------------
@@ -211,27 +228,27 @@ multiqc fastqc_results/ -o multiqc_report/
 
 ------------------------------------------------------------------------
 
-# 6. 📝 Interpretation of Key FastQC Modules
+## 6. Interpretation of Key FastQC Modules
 
-  -----------------------------------------------------------------------------
-  Module              What to check               Common issues
-  ------------------- --------------------------- -----------------------------
-  **Per base          Boxplots across read        Decrease at read ends,
-  quality**           positions                   degraded sequencing
+    -----------------------------------------------------------------------------
+    Module              What to check               Common issues
+    ------------------- --------------------------- -----------------------------
+    **Per base          Boxplots across read        Decrease at read ends,
+    quality**           positions                   degraded sequencing
 
-  **GC content**      Curve vs theoretical        Contamination, GC biases
-                      distribution                
+    **GC content**      Curve vs theoretical        Contamination, GC biases
+                        distribution                
 
-  **Adapter content** Adapter levels across       Need for adapter trimming
-                      positions                   
+    **Adapter content** Adapter levels across       Need for adapter trimming
+                        positions                   
 
-  **Overrepresented   Repeated sequences          rRNA, adapters, PCR
-  sequences**                                     contamination
-  -----------------------------------------------------------------------------
+    **Overrepresented   Repeated sequences          rRNA, adapters, PCR
+    sequences**                                     contamination
+    -----------------------------------------------------------------------------
 
 ------------------------------------------------------------------------
 
-# 7. ✂️ Follow-up: Adapter Trimming (optional)
+## 7. Follow-up: Adapter Trimming (optional)
 
 Example using **Trimmomatic**:
 
@@ -248,7 +265,7 @@ multiqc .
 
 ------------------------------------------------------------------------
 
-# 8. 🎯 Conclusion
+## 8. Take-home messages
 
 With FastQC and MultiQC you can:
 
@@ -257,5 +274,3 @@ With FastQC and MultiQC you can:
 -   identify GC biases\
 -   visualize QC for all samples simultaneously
 
-This tutorial provides a strong foundation for incorporating QC into any
-NGS workflow.
