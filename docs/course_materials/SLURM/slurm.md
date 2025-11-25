@@ -66,8 +66,8 @@ Once you are successfully logged in, you will be use this console for the rest o
 ### Practice 3 : Transferring files to or from the storage with `rsync` 
 
 
-1. Using rsync, transfer a file from your computer to your personnal folder <code>/home/login</code> on the storage server
-2. Verify the result with ls from the master: 160.120.108.164
+1. Using rsync, transfer a file from your computer to your personnal folder <code>/home/login</code> on the storage server (160.120.108.168)
+2. Verify the result with ls from the master (160.120.108.164)
 3. Using rsync, transfer the file <code>/projects/SLURM/TP.txt</code> from the storage server to your PC
 
 
@@ -163,13 +163,13 @@ Following the several steps performed during the practice, create a script to la
 
 1) create a personal folder in /data with `mkdir`
 
-2) Using scp, transfer your data
+2) Using rsync, transfer your data
 
 3) Load the software to use with module load
 
 4) Launch the commands to perform your analysis
 
-5) Using scp, transfer your results from your `/data/your_dir` to your `/home/login` 
+5) Using rsync, transfer your results from your `/data/your_dir` to your `/home/login` 
 
 
 6) Delete the personal folder in the  `/data`
