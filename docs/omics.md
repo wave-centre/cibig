@@ -1,7 +1,9 @@
 ---
 layout: page
-title: "OMICS training: From sequencing raw reads to SNP analysis"
+title: "OMICS"
 ---
+
+# OMICS training: From sequencing raw reads to SNP analysis
 
 Created by C. Tranchant (DIADE-IRD), J. Orjuela (DIADE-IRD), F. Sabot (DIADE-IRD) and A. Dereeper (PHIM-IRD)
 
@@ -248,21 +250,21 @@ multiqc fastqc_results/ -o multiqc_report/
 
 ## 6. Interpretation of Key FastQC Modules
 
-    ------------------------------------------------------------------------
+    ----------------------------------------------------------------------
     Module              What to check               Common issues
-    ------------------- --------------------------- ------------------------
+    ------------------- --------------------------- ----------------------
     Per base            Boxplots across read        Decrease at read ends,
     quality             positions                   degraded sequencing
 
-    GC content          Curve vs theoretical        Contamination, GC biases
-                        distribution                
+    GC content          Curve vs theoretical        Contamination, 
+                        distribution                GC biases               
 
-    Adapter content     Adapter levels across       Need for adapter trimming
-                        positions                   
+    Adapter content     Adapter levels across       Need for adapter 
+                        positions                   trimming               
 
     Overrepresented     Repeated sequences          rRNA, adapters, PCR
-    sequences                                     contamination
-    -----------------------------------------------------------------------
+    sequences                                       contamination
+    ---------------------------------------------------------------------
 
 ------------------------------------------------------------------------
 
