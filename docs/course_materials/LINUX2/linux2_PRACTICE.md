@@ -1,19 +1,3 @@
----
-layout: page
-title:  "Advanced Linux Practice"
-permalink: /LINUX2/linux2_PRACTICE/
----
-
-| Description | Hands On Lab Exercises for Linux |
-| :------------- | :------------- | :------------- | :------------- |
-| Related-course materials | [Linux for Jedi](https://github.com/CIBiG-wave/cibig-wave.github.io/blob/gh-pages/docs/course_materials/LINUX1/)) |
-| Authors | Christine Tranchant-Dubreuil (christine.tranchant@ird.fr) & Gautier Sarah (gautier.sarah |
-| Creation Date | 11/03/2018 |
-| Last Modified Date | 19/09/2024 |
-| Modified by | Christine Tranchant-Dubreuil |
-
------------------------
-
 ### Summary
 
 <!-- TOC depthFrom:2 depthTo:2 withLinks:1 updateOnSave:1 orderedList:0 -->
