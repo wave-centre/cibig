@@ -269,7 +269,7 @@ We will prepare our blast analysis performed after by creating directory and mov
 * Create a subdirectory called `Rice_sequencing_ONT` in the directory `LINUX_TP` with the `mkdir` command.
 * Move all the files started by `Oglab_var1`  into this new directory with the `mv` command.
 * List the content of `LINUX-TP` and `Rice_sequencing_ONT` with the `ls` command.
-* Create a subdirectory called `BlastAnalysis` in the directory `/scratch/<PUT YOUR_LOGIN>` with the `mkdir` command.
+* Create a subdirectory called `BlastAnalysis` in the directory `/data/<PUT YOUR_LOGIN>` with the `mkdir` command.
 * Copy all the files started by `Oglab_var1`  in  the directory `BlastAnalysis` with the `cp` command.
 * List the content of the `BlastAnalysis` and `Rice_sequencing_ONT` directories. What are the differences between mv and cp?
 * Remove the files `Oglab_var1_cds.fna` and `Oglab_var1_genome_v1.fasta` in the directory `BlastAnalysis` with the `rm` command.
