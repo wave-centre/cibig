@@ -5,7 +5,7 @@
 | Related-course materials | [HPC initiation](https://github.com/CIBiG-wave/cibig-wave.github.io/blob/gh-pages/docs/course_materials/SLURM) |
 | Authors                  | Ndomassi TANDO (ndomassi.tando@ird.fr)                                                           |
 | Creation Date            | 24/09/2024                                                                                                          |
-| Last Modified Date       | 25/11/2025                                                                                                          |
+| Last Modified Date       | 27/11/2025                                                                                                          |
 | Modified by              | ndomassi TANDO              |
 
 -----------------------
@@ -20,7 +20,7 @@
 * [Practice 4: Transfer your data from the storage server to the node in `/data` with `rsync` ](#practice-4)
 * [Practice 5: Use module environment to  load your tool](#practice-5)
 * [Practice 6: Launch analyses ](#practice-6)
-* [Practice 7: Transfering data to the san server `scp` ](#practice-7)
+* [Practice 7: Transfering data to the san server `rsync` ](#practice-7)
 * [Practice 8: Deleting your temporary folder ](#practice-8)
 * [Practice 9: Launch a job via sbatch](#practice-9)
 * [Links](#links)
