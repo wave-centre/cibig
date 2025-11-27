@@ -14,7 +14,7 @@
 
 <!-- TOC depthFrom:2 depthTo:2 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-* [Practice 1: Get connecting on a linux server by `ssh`](#practice-1)
+* [Practice 1: Connect to a linux server with `ssh`](#practice-1)
 * [Practice 2: Reserve one core of a node using qrsh and create your working folder](#practice-2)
 * [Practice 3: Transferring files to or from the storage with `rsync` ](#practice-3)
 * [Practice 4: Transfer your data from the storage server to the node in `/data` with `rsync` ](#practice-4)
@@ -31,12 +31,12 @@
 
 
 <a name="practice-1"></a>
-### Practice 1: Get Connecting on a linux server by `ssh`
+### Practice 1: Connect to a linux server by `ssh`
 
-In mobaXterm:
-1. Click the session button, then click SSH.
-* In the remote host text box, type: bioinfo-master1.ird.fr
-* Check the specify username box and enter your user name
+
+1. Open a terminal
+ Type  `ssh <your_login>@160.120.108.168` with <your_login>  the login given
+  
 2. In the console, enter the password when prompted.
 Once you are successfully logged in, you will be use this console for the rest of the lecture. 
 3. Type the command `sinfo` and comment the result
@@ -53,8 +53,9 @@ Once you are successfully logged in, you will be use this console for the rest o
 1. Type the command `squeue` and noticed the result
 2. Type the command `squeue -u your_login` with your_login to change with your  account and noticed the difference
 3. More details with the command: `squeue -O "username,name:40,partition,nodelist,NumCPUs,state,timeused,timelimit"`
-4. Type the command `srun -p short -c 2 --pty bash -i ` then `squeue` again
-5. Type the command `cd /data` then `mkdir <my_folder>`
+4. Type the command `hostname` then srun `hostname` , note the difference
+5. Type the command `srun -p short -c 2 --pty bash -i ` then `squeue` again
+6. Type the command `cd /data` then `mkdir <my_folder>`
 
 
         
