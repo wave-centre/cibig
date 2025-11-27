@@ -321,12 +321,12 @@ Before launching your blast, you need to prepare your working environment (altho
 As we are using this database for the first time, we need to create all the indexes for the local Uniprot ` database with the `makeblastdb` command.
 
 * Go to the `Bank` directory and list its contents.
-* copy the uniprot_plant.fasta file from the /scratch/SHARED directory into the Bank directory
+* copy the uniprot_splant.fasta file from the /scratch/SHARED directory into the Bank directory
 * count the number of sequences in this databank - `grep`
 * Create the blast index for the uniprot database by typing :
 
 ```
-makeblastdb -in uniprot_plant.fasta -dbtype prot -parse_seqids
+makeblastdb -in uniprot_splant.fasta -dbtype prot -parse_seqids
 ```
 
 * List the content of the directory to check if the database has been indexed
