@@ -286,8 +286,8 @@ We will prepare our blast analysis performed after by creating directory and mov
 * Go on ncbi website and search if a reference genome exist for the `Oryza sativa` species.
 
 * Go to the `Rice_sequencing_ONT` directory and download the genome sequence and and its annotation (gff3 file). You have two options :
-> download files on your computer and transfer them on the linux cluster
-> download directely on the linux server using the command `datasets`
+1. download files on your computer and transfer them on the linux cluster
+2. download directely on the linux server using the command `datasets`
 
 ``` module load ncbi-datasets/16.27.2 ```
 
