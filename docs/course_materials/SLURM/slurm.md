@@ -15,7 +15,7 @@
 <!-- TOC depthFrom:2 depthTo:2 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 * [Practice 1: Connect to a linux server with `ssh`](#practice-1)
-* [Practice 2: Reserve one core of a node using qrsh and create your working folder](#practice-2)
+* [Practice 2: Reserve one core of a node using srun and create your working folder](#practice-2)
 * [Practice 3: Transferring files to or from the storage with `rsync` ](#practice-3)
 * [Practice 4: Transfer your data from the storage server to the node in `/data` with `rsync` ](#practice-4)
 * [Practice 5: Use module environment to  load your tool](#practice-5)
