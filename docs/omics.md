@@ -177,7 +177,15 @@ Below are **simulated screenshots** of the main report sections.
 
 ## Example: Per-base quality plot (simplified ASCII)
 
+Example of good quality sample:
+
+![alt](assets/img/omics/fastqc_good.PNG "a title")
+
+Example of bad quality sample:
+
 ![alt](assets/img/omics/fastqc_bad.jpg "a title")
+
+
 
 ------------------------------------------------------------------------
 
