@@ -210,7 +210,7 @@ Below are **simulated screenshots** of the main report sections.
 
 Example of good quality sample:
 
-![alt](assets/img/omics/fastqc_good.PNG "a title"){: width="600px"}
+![alt](../../assets/img/omics/fastqc_good.PNG "a title"){: width="600px"}
 
 Example of bad quality sample:
 
