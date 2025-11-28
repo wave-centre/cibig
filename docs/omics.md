@@ -14,6 +14,9 @@ Created by C. Tranchant (DIADE-IRD), J. Orjuela (DIADE-IRD), F. Sabot (DIADE-IRD
 
 [I- Data retrieval: Getting datasets](#data)
 
+   * [1. Download raw sequencing data](#download_raw)
+   * [2. Download the reference genome from NCBI](#download_ref)
+
 [II- Quality control: checking the reads quality](#quality) 
 
 [III- Mapping: How to map reads against a reference genome ?](#mapping) 
@@ -55,6 +58,8 @@ To analyze sequencing data, we usually use a lot of bioinformatics softwares gen
 
 Firstly, we are going to download data we use in this training.
 
+## <span> 1. Download raw sequencing data <a class="anchor" id="download_raw"></a></span>
+
 #### <span> Download sequencing data and the reference genome <a class="anchor" id="download"></a> - `wget` </span>  
 
 Data are available at the following URL : [https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA.tar.gz](https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA.tar.gz)
@@ -67,9 +72,13 @@ Uncompress the gzipped archive.
 
 #### <span> List the content of the directory SV_DATA</span>  - `ls`
 
-#### <span> List the content of the directory REF</span>  - `ls`
+#### <span> Go into the directory SV_DATA/SHORT_READS and list the content of this directory - `cd` `ls`</span>  
 
-#### <span> Download the reference genome from NCBI
+How many files does it contain ? What is the format ?
+
+## <span> 2. Download the reference genome from NCBI (Practice1)<a class="anchor" id="download_ref"></a></span>
+
+#### <span> 
 
 Using either `datasets` command from NCBI, or from NCBI web site [https://www.ncbi.nlm.nih.gov/datasets/genome/](https://www.ncbi.nlm.nih.gov/datasets/genome/), search for reference genome of : Bathycoccus prasinos
 
@@ -79,10 +88,6 @@ What are the formats of the files present in this directory ? What do you think 
 <br>
 How many chromosomes does the reference file contain? `grep`
 
-
-#### <span> Go into the directory SV_DATA/SHORT_READS and list the content of this directory - `cd` `ls`</span>  
-
-How many files does it contain ? What is the format ?
 
 # <span> II- Quality Control of RNA-seq / DNA-seq Data with **FastQC** and **MultiQC** <a class="anchor" id="quality"></a></span>  
 
@@ -175,7 +180,7 @@ Below are **simulated screenshots** of the main report sections.
 
 ------------------------------------------------------------------------
 
-## Example: Per-base quality plot (simplified ASCII)
+## Example: Per-base quality plot
 
 Example of good quality sample:
 
