@@ -14,10 +14,15 @@ Created by C. Tranchant (DIADE-IRD), J. Orjuela (DIADE-IRD), F. Sabot (DIADE-IRD
 
 [I- Data retrieval: Getting datasets](#data)
 
-   * [1. Download raw sequencing data](#download_raw)
-   * [2. Download the reference genome from NCBI](#download_ref)
+   * [1. Set up your working environment ](#setup)
+   * [2. Download raw sequencing data with `wget`](#download_raw)
+   * [3. Download the reference genome from NCBI with `datasets`](#download_ref)
 
 [II- Quality control: checking the reads quality](#quality) 
+
+   * [1. Fastq files checking](#fastq_check)
+   * [2. FastqC](#fastqc)
+   * [3. MultiQC](#multiqc)
 
 [III- Mapping: How to map reads against a reference genome ?](#mapping) 
 
@@ -58,7 +63,27 @@ To analyze sequencing data, we usually use a lot of bioinformatics softwares gen
 
 Firstly, we are going to download data we use in this training.
 
-## <span> 1. Download raw sequencing data <a class="anchor" id="download_raw"></a></span>
+## <span> 1. Set up your working environment <a class="anchor" id="setup"></a></span> - `wget`
+
+1 - Log in to the cluster
+
+2 - Open an interactive session on a node
+
+3 - Check that there is enough space in the working (temporary) directory
+
+4- Create a working directory: /Data/Put_Your_login .
+
+Create a project folder structure:
+banks/
+raw_data/
+results/
+scripts/
+logs/
+
+
+
+
+## <span> 2. Download raw sequencing data <a class="anchor" id="download_raw"></a></span> - `wget`
 
 #### <span> Download sequencing data and the reference genome <a class="anchor" id="download"></a> - `wget` </span>  
 
@@ -76,7 +101,7 @@ Uncompress the gzipped archive.
 
 How many files does it contain ? What is the format ?
 
-## <span> 2. Download the reference genome from NCBI (Practice1)<a class="anchor" id="download_ref"></a></span>
+## <span> 3. Download the reference genome from NCBI (Practice1)<a class="anchor" id="download_ref"></a></span>
 
 #### <span> 
 
@@ -110,7 +135,7 @@ This tutorial covers:
 
 ------------------------------------------------------------------------
 
-## 1. Fastq files checking
+## <span> 1. Fastq files checking  <a class="anchor" id="fastq_check"></a></span>
 
 #### <span> Go into the directory SV_DATA/SHORT_READS and list the content of this directory - `cd` `ls`</span>  
 
@@ -125,7 +150,7 @@ How many sequences are there in the first fastq file?
 
 ------------------------------------------------------------------------
 
-## 2. Running FastQC
+## <span> 2. Running FastQC  <a class="anchor" id="fastqc"></a></span>  
 
 ### Quick version check
 
@@ -159,8 +184,6 @@ fastqc *.fastq.gz -o fastqc_results/
 
 ------------------------------------------------------------------------
 
-## 3. Example of FastQC Output
-
 FastQC generates two files:
 
 -   `sample_01_fastqc.html` → graphical report\
@@ -170,7 +193,7 @@ Below are **simulated screenshots** of the main report sections.
 
 ------------------------------------------------------------------------
 
-## Example: FastQC Summary (simulated)
+#### Example: FastQC Summary (simulated)
 
     >> Basic Statistics            PASS
     >> Per base sequence quality   PASS
@@ -180,7 +203,7 @@ Below are **simulated screenshots** of the main report sections.
 
 ------------------------------------------------------------------------
 
-## Example: Per-base quality plot
+#### Example: Per-base quality plot
 
 Example of good quality sample:
 
@@ -194,7 +217,7 @@ Example of bad quality sample:
 
 ------------------------------------------------------------------------
 
-## Example: Adapter contamination (simulated)
+#### Example: Adapter contamination (simulated)
 
     Adapter Content (%)
     100 |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -207,7 +230,7 @@ Example of bad quality sample:
 
 ------------------------------------------------------------------------
 
-## 4. Inspecting and Extracting FastQC Data
+#### Inspecting and Extracting FastQC Data
 
 To extract the ZIP file:
 
@@ -221,7 +244,7 @@ Useful data is in:
 
 ------------------------------------------------------------------------
 
-## 5. MultiQC: Aggregating All Reports
+## <span> 3. Running MultiQC: Aggregating All Reports <a class="anchor" id="multiqc"></a></span>  
 
 ### Basic command in a folder containing multiple FastQC reports
 
