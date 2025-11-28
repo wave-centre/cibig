@@ -179,11 +179,11 @@ Below are **simulated screenshots** of the main report sections.
 
 Example of good quality sample:
 
-![alt](assets/img/omics/fastqc_good.PNG "a title")
+![alt](assets/img/omics/fastqc_good.PNG "a title"){: width="200px"}
 
 Example of bad quality sample:
 
-![alt](assets/img/omics/fastqc_bad.jpg "a title")
+![alt](assets/img/omics/fastqc_bad.jpg "a title"){: width="200px"}
 
 
 
