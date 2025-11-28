@@ -214,7 +214,7 @@ Example of good quality sample:
 
 Example of bad quality sample:
 
-![alt](assets/img/omics/fastqc_bad.jpg "a title"){: width="600px"}
+![alt](../../assets/img/omics/fastqc_bad.jpg "a title"){: width="600px"}
 
 
 
@@ -293,7 +293,7 @@ multiqc fastqc_results/ -o multiqc_report/
 
 Example of multiQC output
 
-![alt](assets/img/omics/multiqc.PNG "a title"){: width="600px"}
+![alt](../../assets/img/omics/multiqc.PNG "a title"){: width="600px"}
 
 ## 6. Interpretation of Key FastQC Modules
 
