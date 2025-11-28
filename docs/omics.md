@@ -177,7 +177,7 @@ Below are **simulated screenshots** of the main report sections.
 
 ## Example: Per-base quality plot (simplified ASCII)
 
-
+![alt](assets/img/trainer_serge_anoman.jpg "a title")
 
 ------------------------------------------------------------------------
 
