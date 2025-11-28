@@ -66,9 +66,9 @@ Firstly, we are going to download data we use in this training.
 
 3 - Check that there is enough space in the working (temporary) directory
 
-4- Create a working directory: /Data/Put_Your_login .
+4- Create a working directory: /data/Put_Your_login .
 
-5- Create a project folder structure:
+5- Create a project directory `omics` with folowing subdirectories :
 
 * banks/
 * raw_data/
@@ -80,16 +80,13 @@ Firstly, we are going to download data we use in this training.
 ## <span> 2. Download raw sequencing data <a class="anchor" id="download_raw"></a></span> - `wget`
 
 #### <span> Download sequencing data and the reference genome <a class="anchor" id="download"></a> - `wget` </span>  
+* Go in the raw_data directory
 
-Go in the raw_data directory
+* Data are available at the following URL : [https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA.tar.gz](https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA.tar.gz)
 
-Data are available at the following URL : [https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA.tar.gz](https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA.tar.gz)
-
-Uncompress the gzipped archive.
+* Uncompress the gzipped archive.
 
 #### <span> Check the content of the directory SV_DATA</span>  - `ls`
-
-#### <span> List the content of your home directory and check that the directory SV_DATA have been created</span>  - `ls` 
 
 #### <span> List the content of the directory SV_DATA</span>  - `ls`
 
