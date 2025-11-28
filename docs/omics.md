@@ -179,11 +179,11 @@ Below are **simulated screenshots** of the main report sections.
 
 Example of good quality sample:
 
-![alt](assets/img/omics/fastqc_good.PNG "a title"){: width="200px"}
+![alt](assets/img/omics/fastqc_good.PNG "a title"){: width="500px"}
 
 Example of bad quality sample:
 
-![alt](assets/img/omics/fastqc_bad.jpg "a title"){: width="200px"}
+![alt](assets/img/omics/fastqc_bad.jpg "a title"){: width="500px"}
 
 
 
@@ -250,7 +250,7 @@ multiqc fastqc_results/ -o multiqc_report/
 
 ------------------------------------------------------------------------
 
-## Example: MultiQC Table (simulated)
+## Example: MultiQC Table
 
     Sample       | Reads (M) | %GC | Q30 (%) | Adapter Fail
     --------------------------------------------------------
@@ -259,6 +259,8 @@ multiqc fastqc_results/ -o multiqc_report/
     sample_03    |   21.9    | 47  |   93     |    NO
 
 ------------------------------------------------------------------------
+
+![alt](assets/img/omics/multiqc.PNG "a title"){: width="500px"}
 
 ## 6. Interpretation of Key FastQC Modules
 
@@ -279,6 +281,10 @@ multiqc fastqc_results/ -o multiqc_report/
     ---------------------------------------------------------------------
 
 ------------------------------------------------------------------------
+
+Using results of MultiQC for all samples, calculate the average sequencing depth (coverage) for all samples.
+
+Store this information in a table
 
 ## 7. Follow-up: Adapter Trimming (optional)
 
