@@ -67,7 +67,7 @@ Once you are successfully logged in, you will be use this console for the rest o
 ### Practice 3 : Transferring files to or from the storage with `rsync` 
 
 
-1. Using rsync, transfer a file from your computer to your personnal folder <code>/home/login</code> on the storage server (160.120.108.168)
+1. Using rsync, transfer a file from your computer to your personal folder <code>/home/login</code> on the storage server (160.120.108.168)
 2. Verify the result with ls from the master (160.120.108.164)
 3. Using rsync, transfer the file <code>/projects/SLURM/TP.txt</code> from the storage server to your PC
 
