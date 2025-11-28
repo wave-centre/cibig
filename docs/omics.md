@@ -18,10 +18,10 @@ Created by C. Tranchant (DIADE-IRD), J. Orjuela (DIADE-IRD), F. Sabot (DIADE-IRD
    * [2. Download raw sequencing data with `wget`](#download_raw)
    * [3. Download the reference genome from NCBI with `datasets`](#download_ref)
 
-[II- Quality control: checking the reads quality](#quality) 
+[II- Quality Control: checking the reads quality](#quality) 
 
    * [1. Fastq files checking](#fastq_check)
-   * [2. FastqC](#fastqc)
+   * [2. FastQC](#fastqc)
    * [3. MultiQC](#multiqc)
 
 [III- Mapping: How to map reads against a reference genome ?](#mapping) 
@@ -73,19 +73,20 @@ Firstly, we are going to download data we use in this training.
 
 4- Create a working directory: /Data/Put_Your_login .
 
-Create a project folder structure:
-banks/
-raw_data/
-results/
-scripts/
-logs/
+5- Create a project folder structure:
 
-
+* banks/
+* raw_data/
+* results/
+* scripts/
+* logs/
 
 
 ## <span> 2. Download raw sequencing data <a class="anchor" id="download_raw"></a></span> - `wget`
 
 #### <span> Download sequencing data and the reference genome <a class="anchor" id="download"></a> - `wget` </span>  
+
+Go in the raw_data directory
 
 Data are available at the following URL : [https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA.tar.gz](https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA.tar.gz)
 
@@ -107,7 +108,7 @@ How many files does it contain ? What is the format ?
 
 Using either `datasets` command from NCBI, or from NCBI web site [https://www.ncbi.nlm.nih.gov/datasets/genome/](https://www.ncbi.nlm.nih.gov/datasets/genome/), search for reference genome of : Bathycoccus prasinos
 
-Download reference genome
+Download genome into banks(sequence and annotation)
 
 What are the formats of the files present in this directory ? What do you think these file contains?
 <br>
@@ -146,11 +147,13 @@ How many files does it contain ? What is the format ?
 
 How many sequences are there in the first fastq file?
 
-#### <span> Go into your working directory and create the directory 1-FASTQC</span>  `mkdir`
+Estimate the depth coverage for this sample
 
 ------------------------------------------------------------------------
 
 ## <span> 2. Running FastQC  <a class="anchor" id="fastqc"></a></span>  
+
+#### <span> Go into your working directory and create the directory 1-FASTQC</span>  `mkdir`
 
 ### Quick version check
 
@@ -288,6 +291,8 @@ multiqc fastqc_results/ -o multiqc_report/
 
 ------------------------------------------------------------------------
 
+Example of multiQC output
+
 ![alt](assets/img/omics/multiqc.PNG "a title"){: width="500px"}
 
 ## 6. Interpretation of Key FastQC Modules
@@ -343,9 +348,9 @@ multiqc .
 
 With FastQC and MultiQC you can:
 
--   quickly assess raw FASTQ quality\
--   detect adapter contamination\
--   identify GC biases\
+-   quickly assess raw FASTQ quality
+-   detect adapter contamination
+-   identify GC biases
 -   visualize QC for all samples simultaneously
 
 
