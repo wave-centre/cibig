@@ -1,8 +1,3 @@
----
-layout: page
-title: "OMICS"
----
-
 # OMICS training: From sequencing raw reads to SNP analysis
 
 Created by C. Tranchant (DIADE-IRD), J. Orjuela (DIADE-IRD), F. Sabot (DIADE-IRD) and A. Dereeper (PHIM-IRD)
