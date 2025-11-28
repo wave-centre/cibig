@@ -55,24 +55,25 @@ To analyze sequencing data, we usually use a lot of bioinformatics softwares gen
 
 Firstly, we are going to download data we use in this training.
 
-### <span> Download sequencing data and the reference genome <a class="anchor" id="download"></a> - `wget` </span>  
+#### <span> Download sequencing data and the reference genome <a class="anchor" id="download"></a> - `wget` </span>  
 
-Data are available at the following URL : https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA.tar.gz
+Data are available at the following URL : [https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA.tar.gz](https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA.tar.gz)
 
-```
-# download available compressed DATA 
-wget --no-check-certificat -rm -nH --cut-dirs=1 --reject="index.html*" https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA_17.tar.gz 
-# decompress data
-tar xzvf variants_trainings/SV_DATA_17.tar.gz
-rm variants_trainings/SV_DATA_17.tar.gz
-```
-### <span> Check the content of the directory SV_DATA</span>  - `ls`
+Uncompress the gzipped archive.
+
+#### <span> Check the content of the directory SV_DATA</span>  - `ls`
 
 #### <span> List the content of your home directory and check that the directory SV_DATA have been created</span>  - `ls` 
 
 #### <span> List the content of the directory SV_DATA</span>  - `ls`
 
 #### <span> List the content of the directory REF</span>  - `ls`
+
+#### <span> Download the reference genome from NCBI
+
+Using either `datasets` command from NCBI, or from NCBI web site [https://www.ncbi.nlm.nih.gov/datasets/genome/](https://www.ncbi.nlm.nih.gov/datasets/genome/), search for reference genome of : Bathycoccus prasinos
+
+Download reference genome
 
 What are the formats of the files present in this directory ? What do you think these file contains?
 <br>
@@ -176,13 +177,7 @@ Below are **simulated screenshots** of the main report sections.
 
 ## Example: Per-base quality plot (simplified ASCII)
 
-    Quality (Phred)
-    40 | ████████████████████████████████
-    35 | ████████████████████████████████
-    30 | ██████████████████████████████
-    25 | ███████████████████████████
-        -------------------------------------------------------
-          A     C     G     T     N  (read positions)
+
 
 ------------------------------------------------------------------------
 
@@ -284,6 +279,14 @@ Example using **Trimmomatic**:
 ``` bash
 trimmomatic PE -threads 8   sample_01_R1.fastq.gz sample_01_R2.fastq.gz   sample_01_R1_trimmed.fastq.gz sample_01_R1_unpaired.fastq.gz   sample_01_R2_trimmed.fastq.gz sample_01_R2_unpaired.fastq.gz   ILLUMINACLIP:TruSeq3-PE.fa:2:30:10   LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
 ```
+
+This will perform the following:
+
+* Remove adapters (ILLUMINACLIP:TruSeq3-PE.fa:2:30:10)
+* Remove leading low quality or N bases (below quality 3) (LEADING:3)
+* Remove trailing low quality or N bases (below quality 3) (TRAILING:3)
+* Scan the read with a 4-base wide sliding window, cutting when the average quality per base drops below 15 (SLIDINGWINDOW:4:15)
+* Drop reads below 36 bases long (MINLEN:36)
 
 Then rerun QC:
 
