@@ -52,6 +52,9 @@ Created by C. Tranchant (DIADE-IRD), J. Orjuela (DIADE-IRD), F. Sabot (DIADE-IRD
    * [4. PCA of samples using `plink`](#plink)
    * [5. Compare populations using FST `vcftools`](#fst)
 
+[V- Bonus (advanced users)](#bonus)
+
+ * [1. Quick tree from fastq files with `mashtree`](#mashtree)
 
 ***
 
@@ -437,6 +440,7 @@ Can you identify SNP visually? Indels?
 
 Try to highlight variations using Tablet options
 
+Can you find a SNP position with heterozygote variation?
 
 
 # <span> IV- Mapping on all samples <a class="anchor" id="loop"></a></span>  
@@ -617,3 +621,13 @@ This will generate a matrix of coordinates in the different component. By defaul
 FST is an index that reflect the level of differenciation between populations. We will calculate FST values for each variant in order to know if they can dissociate specific alleles of the two populations.
 
 Using `grep` and `awk`, create two distinct file (called `pop1` and `pop2`) listing the names of accessions that are assigned to each group
+
+# <span> V- Bonus (advanced users) <a class="anchor" id="bonus"></a></span> 
+
+## <span> 1. Quick tree from fastq files with `mashtree`<a class="anchor" id="mashtree"></a></span>
+
+Create a tree using Mash distances from fasta files or directly from fastq files
+
+```bash
+mashtree --help
+```
