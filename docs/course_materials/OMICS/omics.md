@@ -1,3 +1,8 @@
+---
+layout: page
+title: "OMICS"
+---
+
 # OMICS training: From sequencing raw reads to SNP analysis
 
 Created by C. Tranchant (DIADE-IRD), J. Orjuela (DIADE-IRD), F. Sabot (DIADE-IRD) and A. Dereeper (PHIM-IRD)
@@ -66,9 +71,9 @@ Firstly, we are going to download data we use in this training.
 
 3 - Check that there is enough space in the working (temporary) directory
 
-4- Create a working directory: /data/Put_Your_login .
+4- Create a working directory: /Data/Put_Your_login .
 
-5- Create a project directory `omics` with folowing subdirectories :
+5- Create a project folder structure:
 
 * banks/
 * raw_data/
@@ -80,13 +85,16 @@ Firstly, we are going to download data we use in this training.
 ## <span> 2. Download raw sequencing data <a class="anchor" id="download_raw"></a></span> - `wget`
 
 #### <span> Download sequencing data and the reference genome <a class="anchor" id="download"></a> - `wget` </span>  
-* Go in the raw_data directory
 
-* Data are available at the following URL : [https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA.tar.gz](https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA.tar.gz)
+Go in the raw_data directory
 
-* Uncompress the gzipped archive.
+Data are available at the following URL : [https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA.tar.gz](https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA.tar.gz)
+
+Uncompress the gzipped archive.
 
 #### <span> Check the content of the directory SV_DATA</span>  - `ls`
+
+#### <span> List the content of your home directory and check that the directory SV_DATA have been created</span>  - `ls` 
 
 #### <span> List the content of the directory SV_DATA</span>  - `ls`
 
@@ -204,9 +212,13 @@ Example of good quality sample:
 
 ![alt](../../assets/img/omics/fastqc_good.PNG "a title")
 
+<img src="../../assets/img/omics/fastqc_good.PNG" alt="good quality fastqc" width="300" height="200">
+
 Example of bad quality sample:
 
-![alt](../../assets/img/omics/fastqc_bad.jpg "a title")
+<img src="../../assets/img/omics/fastqc_bad.jpg" alt="bad quality fastqc" width="300" height="200">
+
+
 
 
 
