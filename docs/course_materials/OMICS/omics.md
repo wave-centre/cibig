@@ -201,11 +201,11 @@ Below are **simulated screenshots** of the main report sections.
 
 Example of good quality sample:
 
-<img src="../../assets/img/omics/fastqc_good.PNG" alt="good quality fastqc" width="600" height="200">
+<img src="../../assets/img/omics/fastqc_good.PNG" alt="good quality fastqc" width="600">
 
 Example of bad quality sample:
 
-<img src="../../assets/img/omics/fastqc_bad.jpg" alt="bad quality fastqc" width="600" height="200">
+<img src="../../assets/img/omics/fastqc_bad.jpg" alt="bad quality fastqc" width="600">
 
 
 
@@ -286,7 +286,7 @@ multiqc fastqc_results/ -o multiqc_report/
 
 Example of multiQC output
 
-<img src="../../assets/img/omics/multiqc.PNG" alt="bad quality fastqc" width="600" height="200">
+<img src="../../assets/img/omics/multiqc.PNG" alt="bad quality fastqc" width="600">
 
 ## Interpretation of Key FastQC Modules
 
