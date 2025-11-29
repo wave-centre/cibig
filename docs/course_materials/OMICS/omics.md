@@ -65,15 +65,15 @@ Firstly, we are going to download data we use in this training.
 
 ## <span> 1. Set up your working environment <a class="anchor" id="setup"></a></span> - `wget`
 
-1 - Log in to the cluster
+Log in to the cluster
 
-2 - Open an interactive session on a node
+Open an interactive session on a node
 
-3 - Check that there is enough space in the working (temporary) directory
+Check that there is enough space in the working (temporary) directory
 
-4- Create a working directory: /Data/Put_Your_login .
+Create a working directory: /data/Put_Your_login
 
-5- Create a project folder structure:
+Create a project folder structure:
 
 * banks/
 * raw_data/
@@ -92,13 +92,11 @@ Data are available at the following URL : [https://itrop.ird.fr/CIBIG2024/varian
 
 Uncompress the gzipped archive.
 
-#### <span> Check the content of the directory SV_DATA</span>  - `ls`
-
-#### <span> List the content of your home directory and check that the directory SV_DATA have been created</span>  - `ls` 
+#### <span> List the content of your directory and check that the directory SV_DATA have been created</span>  - `ls` 
 
 #### <span> List the content of the directory SV_DATA</span>  - `ls`
 
-#### <span> Go into the directory SV_DATA/SHORT_READS and list the content of this directory - `cd` `ls`</span>  
+#### <span> Go into the directory SHORT_READS and list the content of this directory - `cd` `ls`</span>  
 
 How many files does it contain ? What is the format ?
 
@@ -126,13 +124,6 @@ Two tools are commonly used:
 -   **MultiQC** --- aggregation and visualization of multiple QC reports
     (FastQC, alignment, quantification, etc.)
 
-This tutorial covers:
-
-✔ Fastq files checking\
-✔ Essential commands\
-✔ How to interpret QC metrics\
-✔ Concrete examples\
-✔ Simulated "screenshots" of FastQC and MultiQC
 
 ------------------------------------------------------------------------
 
@@ -210,13 +201,11 @@ Below are **simulated screenshots** of the main report sections.
 
 Example of good quality sample:
 
-![alt](../../assets/img/omics/fastqc_good.PNG "a title")
-
-<img src="../../assets/img/omics/fastqc_good.PNG" alt="good quality fastqc" width="300" height="200">
+<img src="../../assets/img/omics/fastqc_good.PNG" alt="good quality fastqc" width="600" height="200">
 
 Example of bad quality sample:
 
-<img src="../../assets/img/omics/fastqc_bad.jpg" alt="bad quality fastqc" width="300" height="200">
+<img src="../../assets/img/omics/fastqc_bad.jpg" alt="bad quality fastqc" width="600" height="200">
 
 
 
@@ -297,9 +286,9 @@ multiqc fastqc_results/ -o multiqc_report/
 
 Example of multiQC output
 
-![alt](../../assets/img/omics/multiqc.PNG "a title")
+<img src="../../assets/img/omics/multiqc.PNG" alt="bad quality fastqc" width="600" height="200">
 
-## 6. Interpretation of Key FastQC Modules
+## Interpretation of Key FastQC Modules
 
     ----------------------------------------------------------------------
     Module              What to check               Common issues
@@ -323,12 +312,12 @@ Using results of MultiQC for all samples, calculate the average sequencing depth
 
 Store this information in a table
 
-## 7. Follow-up: Adapter Trimming (optional)
+## Follow-up: Adapter Trimming (optional)
 
 Example using **Trimmomatic**:
 
 ``` bash
-trimmomatic PE -threads 8   sample_01_R1.fastq.gz sample_01_R2.fastq.gz   sample_01_R1_trimmed.fastq.gz sample_01_R1_unpaired.fastq.gz   sample_01_R2_trimmed.fastq.gz sample_01_R2_unpaired.fastq.gz   ILLUMINACLIP:TruSeq3-PE.fa:2:30:10   LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+trimmomatic PE -threads 8 sample_01_R1.fastq.gz sample_01_R2.fastq.gz sample_01_R1_trimmed.fastq.gz sample_01_R1_unpaired.fastq.gz sample_01_R2_trimmed.fastq.gz sample_01_R2_unpaired.fastq.gz ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
 ```
 
 This will perform the following:
@@ -343,12 +332,11 @@ Then rerun QC:
 
 ``` bash
 fastqc trimmed/*.fastq.gz
-multiqc .
 ```
 
 ------------------------------------------------------------------------
 
-## 8. Take-home messages
+## Take-home messages
 
 With FastQC and MultiQC you can:
 
