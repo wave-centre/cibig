@@ -421,11 +421,23 @@ bwa-mem2 mem -help
 
 ## <span> 7. Visualize mapping with Tablet and/or IGV<a class="anchor" id="tablet"></a></span>  
 
-#### Install and launch Tablet or IGV viewer
+#### Install Tablet or IGV viewer
+
+https://ics.hutton.ac.uk/tablet/download-tablet/
 
 #### Transfer reference fasta file, bam file and index from the server to your computer `scp`
 
-#### Load reference file and bam file
+#### Launch Tablet and load reference file and bam file
+
+Here is an example of visualisation with Tablet
+
+<img src="../../assets/img/omics/tablet.PNG" alt="tablet" width="600">
+
+Can you identify SNP visually? Indels?
+
+Try to highlight variations using Tablet options
+
+
 
 # <span> IV- Mapping on all samples <a class="anchor" id="loop"></a></span>  
 
