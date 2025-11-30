@@ -53,7 +53,6 @@ Created by C. Tranchant (DIADE-IRD), J. Orjuela (DIADE-IRD), F. Sabot (DIADE-IRD
 
 ***
 
---------------
 
 ## <span> I- Data retrieval: Getting datasets <a class="anchor" id="data"></a></span>  
 
@@ -96,7 +95,7 @@ How many files does it contain ? What is the format ?
 
 
 
-## <span> 3. Download the reference genome from NCBI (Practice1)<a class="anchor" id="download_ref"></a></span>
+### <span> 3. Download the reference genome from NCBI (Practice1)<a class="anchor" id="download_ref"></a></span>
 
 #### <span> 
 
@@ -111,9 +110,9 @@ Download genome into banks(sequence and annotation)
 
 --------------
 
-# <span> II- Quality Control of RNA-seq / DNA-seq Data with **FastQC** and **MultiQC** <a class="anchor" id="quality"></a></span>  
+## <span> II- Quality Control of RNA-seq / DNA-seq Data with **FastQC** and **MultiQC** <a class="anchor" id="quality"></a></span>  
 
-## Introduction
+### Introduction
 
 Quality control (QC) is an essential step in the analysis of NGS data.\
 Two tools are commonly used:
@@ -125,33 +124,32 @@ Two tools are commonly used:
 
 ------------------------------------------------------------------------
 
-## <span> 1. Fastq files checking  <a class="anchor" id="fastq_check"></a></span>
+### <span> 1. Fastq files checking  <a class="anchor" id="fastq_check"></a></span>
 
 #### <span> Go into the directory SV_DATA/SHORT_READS and list the content of this directory - `cd` `ls`</span>  
 
-How many files does it contain ? What is the format ?
+* How many files does it contain ? What is the format ?
 
 
 #### <span> List the 10 first lines of one file</span>  - `head` `zcat` `wc`
 
-How many sequences are there in the first fastq file?
-
-Estimate the depth coverage for this sample
+* How many sequences are there in the first fastq file?
+* Estimate the depth coverage for this sample
 
 ------------------------------------------------------------------------
 
-## <span> 2. Running FastQC  <a class="anchor" id="fastqc"></a></span>  
+### <span> 2. Running FastQC  <a class="anchor" id="fastqc"></a></span>  
 
 #### <span> Go into your working directory and create the directory 1-FASTQC</span>  `mkdir`
 
-### Quick version check
+#### Quick version check
 
 ``` bash
 fastqc --version
 multiqc --version
 ```
 
-### Display options for fastqc
+#### Display options for fastqc
 
 ``` bash
 fastqc --help
@@ -238,23 +236,23 @@ Useful data is in:
 
 ------------------------------------------------------------------------
 
-## <span> 3. Running MultiQC: Aggregating All Reports <a class="anchor" id="multiqc"></a></span>  
+### <span> 3. Running MultiQC: Aggregating All Reports <a class="anchor" id="multiqc"></a></span>  
 
-### Basic command in a folder containing multiple FastQC reports
+#### Basic command in a folder containing multiple FastQC reports
 
 ``` bash
 multiqc fastqc_results/ -o multiqc_report/
 ```
 
 
-### <span> Run `MultiQC`</span>  
+#### <span> Run `MultiQC`</span>  
 
 * go into the directory 1-FASTQC
 * run MultiQC into this directory
 
 ------------------------------------------------------------------------
 
-## Example: MultiQC Summary (simulated)
+### Example: MultiQC Summary (simulated)
 
     ==================== MultiQC Report ====================
 
@@ -272,7 +270,7 @@ multiqc fastqc_results/ -o multiqc_report/
 
 ------------------------------------------------------------------------
 
-## Example: MultiQC Table
+### Example: MultiQC Table
 
     Sample       | Reads (M) | %GC | Q30 (%) | Adapter Fail
     --------------------------------------------------------
@@ -310,7 +308,7 @@ Using results of MultiQC for all samples, calculate the average sequencing depth
 
 Store this information in a table
 
-## Follow-up: Adapter Trimming (optional)
+### Follow-up: Adapter Trimming (optional)
 
 Example using **Trimmomatic**:
 
@@ -334,7 +332,7 @@ fastqc trimmed/*.fastq.gz
 
 ------------------------------------------------------------------------
 
-## Take-home messages
+### Take-home messages
 
 With FastQC and MultiQC you can:
 
@@ -343,8 +341,9 @@ With FastQC and MultiQC you can:
 -   identify GC biases
 -   visualize QC for all samples simultaneously
 
+---------------
 
-# <span> III- Mapping: How to map reads against a reference genome ? <a class="anchor" id="mapping"></a></span>  
+## <span> III- Mapping: How to map reads against a reference genome ? <a class="anchor" id="mapping"></a></span>  
 
 In this practice, we are going to map short reads against a reference. We will use reference.fasta as reference genome and ILLUMINA READS from your favorite CLONE.
 
@@ -354,11 +353,11 @@ In this practice, we are going to map short reads against a reference. We will u
 
 
 
-## <span> 1. Reference indexation  <a class="anchor" id="refindex"></a></span>  
+### <span> 1. Reference indexation  <a class="anchor" id="refindex"></a></span>  
 
 Before mapping we need to index reference file! Check bwa-mem2 index command line. 
 
-* Go into the directory REF
+* Go into the directory banks
 * Index the reference with reference.fasta
 
 ``` bash
