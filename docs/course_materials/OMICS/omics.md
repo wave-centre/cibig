@@ -107,6 +107,60 @@ How many files does it contain ? What is the format ?
 * What do you think these file contains?
 * How many chromosomes does the reference file contain? `grep`
 
+#### omic structure before starting bioinformatics analysis
+
+```
+omics/
+├── banks
+│   ├── GCF_002220235.1
+│   │   ├── cds_from_genomic.fna
+│   │   ├── GCF_002220235.1_ASM222023v1_genomic.fna
+│   │   ├── genomic.gff
+│   │   ├── protein.faa
+│   │   ├── rna.fna
+│   │   └── sequence_report.jsonl
+│   └── ncbi_dataset.zip
+├── logs
+├── raw_data
+│   ├── 1613_R1.fastq.gz
+│   ├── 1613_R2.fastq.gz
+│   ├── 1868_R1.fastq.gz
+│   ├── 1868_R2.fastq.gz
+│   ├── 4752_R1.fastq.gz
+│   ├── 4752_R2.fastq.gz
+│   ├── 5417_R1.fastq.gz
+│   ├── 5417_R2.fastq.gz
+│   ├── 685_R1.fastq.gz
+│   ├── 685_R2.fastq.gz
+│   ├── 716_R1.fastq.gz
+│   ├── 716_R2.fastq.gz
+│   ├── A1_R1.fastq.gz
+│   ├── A1_R2.fastq.gz
+│   ├── A8_R1.fastq.gz
+│   ├── A8_R2.fastq.gz
+│   ├── B1_R1.fastq.gz
+│   ├── B1_R2.fastq.gz
+│   ├── B8_R1.fastq.gz
+│   ├── B8_R2.fastq.gz
+│   ├── C218_R1.fastq.gz
+│   ├── C218_R2.fastq.gz
+│   ├── C2_R1.fastq.gz
+│   ├── C2_R2.fastq.gz
+│   ├── D119_R1.fastq.gz
+│   ├── D119_R2.fastq.gz
+│   ├── E2_R1.fastq.gz
+│   ├── E2_R2.fastq.gz
+│   ├── E318_R1.fastq.gz
+│   ├── E318_R2.fastq.gz
+│   ├── G11_R1.fastq.gz
+│   ├── G11_R2.fastq.gz
+│   ├── H44_R1.fastq.gz
+│   └── H44_R2.fastq.gz
+├── results
+└── scripts
+
+6 directories, 41 files
+```
 
 --------------
 
