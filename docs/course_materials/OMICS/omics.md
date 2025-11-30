@@ -1,15 +1,10 @@
----
-layout: page
-title: "OMICS"
----
-
 # OMICS training: From sequencing raw reads to SNP analysis
 
 Created by C. Tranchant (DIADE-IRD), J. Orjuela (DIADE-IRD), F. Sabot (DIADE-IRD) and A. Dereeper (PHIM-IRD)
 
 ***
 
-# <span>Table of contents</span>
+## <span>Table of contents</span>
 <a class="anchor" id="home"></a>
 
 [I- Data retrieval: Getting datasets](#data)
@@ -58,50 +53,48 @@ Created by C. Tranchant (DIADE-IRD), J. Orjuela (DIADE-IRD), F. Sabot (DIADE-IRD
 
 ***
 
+--------------
 
-
-# <span> I- Data retrieval: Getting datasets <a class="anchor" id="data"></a></span>  
+## <span> I- Data retrieval: Getting datasets <a class="anchor" id="data"></a></span>  
 
 To analyze sequencing data, we usually use a lot of bioinformatics softwares generating a lot of data. It's very important to manage and organize your data. 
 
 Firstly, we are going to download data we use in this training.
 
-## <span> 1. Set up your working environment <a class="anchor" id="setup"></a></span> - `wget`
+### <span> 1. Set up your working environment <a class="anchor" id="setup"></a></span> - `wget`
 
-Log in to the cluster
+1. Log in to the cluster
+2. Open an interactive session on a node
+3. Check that there is enough space in the working (temporary) directory
+4. Create a working directory `/data/Put_Your_login`
+5. Create a project directory `omics` with the following arborescence
 
-Open an interactive session on a node
-
-Check that there is enough space in the working (temporary) directory
-
-Create a working directory: /data/Put_Your_login
-
-Create a project folder structure:
-
-* banks/
-* raw_data/
-* results/
-* scripts/
-* logs/
+```
+omics/
+├── banks
+├── logs
+├── raw_data
+├── results
+└── scripts
+```
 
 
-## <span> 2. Download raw sequencing data <a class="anchor" id="download_raw"></a></span> - `wget`
+### <span> 2. Download raw sequencing data <a class="anchor" id="download_raw"></a></span> - `wget`
 
-#### <span> Download sequencing data and the reference genome <a class="anchor" id="download"></a> - `wget` </span>  
+#### <span> Download sequencing data and the reference genome <a class="anchor" id="download"></a>  </span>  
+1. Go in the raw_data directory
+2. Copy the full directory SHORT_READS from /projects/cibig25/SV_DATA/ into your raw_data directory. `rsync`
 
-Go in the raw_data directory
-
-Data are available at the following URL : [https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA.tar.gz](https://itrop.ird.fr/CIBIG2024/variants_trainings/SV_DATA.tar.gz)
-
-Uncompress the gzipped archive.
-
-#### <span> List the content of your directory and check that the directory SV_DATA have been created</span>  - `ls` 
-
-#### <span> List the content of the directory SV_DATA</span>  - `ls`
+```
+rsync -avz --progress storage:/projects/cibig25/SV_DATA/SHORT_READS/ /data/tranchant/omics/raw_data
+```
 
 #### <span> Go into the directory SHORT_READS and list the content of this directory - `cd` `ls`</span>  
 
 How many files does it contain ? What is the format ?
+
+
+
 
 ## <span> 3. Download the reference genome from NCBI (Practice1)<a class="anchor" id="download_ref"></a></span>
 
@@ -111,10 +104,12 @@ Using either `datasets` command from NCBI, or from NCBI web site [https://www.nc
 
 Download genome into banks(sequence and annotation)
 
-What are the formats of the files present in this directory ? What do you think these file contains?
-<br>
-How many chromosomes does the reference file contain? `grep`
+* What are the formats of the files present in this directory ?
+* What do you think these file contains?
+* How many chromosomes does the reference file contain? `grep`
 
+
+--------------
 
 # <span> II- Quality Control of RNA-seq / DNA-seq Data with **FastQC** and **MultiQC** <a class="anchor" id="quality"></a></span>  
 
