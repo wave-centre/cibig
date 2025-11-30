@@ -77,6 +77,7 @@ omics/
 └── scripts
 ```
 
+--------------
 
 ### <span> 2. Download raw sequencing data <a class="anchor" id="download_raw"></a></span> - `wget`
 
@@ -92,16 +93,15 @@ rsync -avz --progress storage:/projects/cibig25/SV_DATA/SHORT_READS/ /data/tranc
 
 How many files does it contain ? What is the format ?
 
-
+--------------
 
 
 ### <span> 3. Download the reference genome from NCBI (Practice1)<a class="anchor" id="download_ref"></a></span>
 
 #### <span> 
 
-Using either `datasets` command from NCBI, or from NCBI web site [https://www.ncbi.nlm.nih.gov/datasets/genome/](https://www.ncbi.nlm.nih.gov/datasets/genome/), search for reference genome of : Bathycoccus prasinos
-
-Download genome into banks(sequence and annotation)
+* search for reference genome of _Bathycoccus prasinos_
+* using either `datasets` command from NCBI, or from NCBI web site [https://www.ncbi.nlm.nih.gov/datasets/genome/](https://www.ncbi.nlm.nih.gov/datasets/genome/), download genome (sequence and annotation) into `banks`
 
 * What are the formats of the files present in this directory ?
 * What do you think these file contains?
@@ -126,7 +126,7 @@ Two tools are commonly used:
 
 ### <span> 1. Fastq files checking  <a class="anchor" id="fastq_check"></a></span>
 
-#### <span> Go into the directory SV_DATA/SHORT_READS and list the content of this directory - `cd` `ls`</span>  
+#### <span> Go into the directory `SHORT_READS` and list the content of this directory - `cd` `ls`</span>  
 
 * How many files does it contain ? What is the format ?
 
@@ -202,8 +202,6 @@ Example of good quality sample:
 Example of bad quality sample:
 
 <img src="../../assets/img/omics/fastqc_bad.jpg" alt="bad quality fastqc" width="600">
-
-
 
 
 
