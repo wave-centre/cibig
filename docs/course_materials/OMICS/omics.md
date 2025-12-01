@@ -100,8 +100,8 @@ How many files does it contain ? What is the format ?
 
 #### <span> 
 
-* search for reference genome of _Bathycoccus prasinos_
-* using either `datasets` command from NCBI, or from NCBI web site [https://www.ncbi.nlm.nih.gov/datasets/genome/](https://www.ncbi.nlm.nih.gov/datasets/genome/), download genome (sequence and annotation) into `banks`
+* Search for reference genome of _Bathycoccus prasinos_
+* Using either `datasets` command from NCBI, or from NCBI web site [https://www.ncbi.nlm.nih.gov/datasets/genome/](https://www.ncbi.nlm.nih.gov/datasets/genome/), download genome (sequence and annotation) into `banks`
 
 * What are the formats of the files present in this directory ?
 * What do you think these file contains?
@@ -194,7 +194,7 @@ Two tools are commonly used:
 
 ### <span> 2. Running FastQC  <a class="anchor" id="fastqc"></a></span>  
 
-#### <span> Go into your working directory and create the directory 1-FASTQC</span>  `mkdir`
+#### <span> Go into `results` directory and create the directory 1-FASTQC</span>  `mkdir`
 
 #### Quick version check
 
@@ -224,7 +224,9 @@ On multiple files at once
 fastqc *.fastq.gz -o fastqc_results/
 ```
 
-### Run fastqc on all raw fastq files
+* Run FastQC on the first sample so that the output can be accessed in `results/1-FASTQC` directory
+
+* One you have checked it is running properly, run FastQC on all raw fastq files
 
 ------------------------------------------------------------------------
 
@@ -397,7 +399,7 @@ With FastQC and MultiQC you can:
 
 ## <span> III- Mapping: How to map reads against a reference genome ? <a class="anchor" id="mapping"></a></span>  
 
-In this practice, we are going to map short reads against a reference. We will use reference.fasta as reference genome and ILLUMINA READS from your favorite CLONE.
+In this practice, we are going to map short reads against a reference. We will use our genome as reference sequence and ILLUMINA READS from your favorite sample.
 
 2 steps are required : 
 - **Reference indexing**: `bwa index reference`
@@ -410,7 +412,7 @@ In this practice, we are going to map short reads against a reference. We will u
 Before mapping we need to index reference file! Check bwa-mem2 index command line. 
 
 * Go into the directory banks
-* Index the reference with reference.fasta
+* Index the reference fasta file with the subcommand `index`
 
 ``` bash
 bwa-mem2 index reference.fasta
