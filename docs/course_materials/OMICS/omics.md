@@ -525,9 +525,9 @@ We test SNP calling protocol only with two samples before running on all samples
 
 #### <span> Create the directory `3-SNP` into your work directory </span> 
 
-Go to this new directory `3-SNP`
-
 ## <span> 1. Index reference with `samtools faidx`  <a class="anchor" id="indexref"></a></span>  
+
+Go to the directory containing the reference genome and index the reference using `samtools`
 
 ``` bash
 samtools faidx --help
@@ -537,15 +537,16 @@ Check you obtained new indexed files
 
 ## <span> 2. Generate a bcf file (BCF format) using `bcftools mpileup`  <a class="anchor" id="mpileup"></a></span>  
 
-List all the bam files
+Go into the `2-MAPPING` directory and list all the bam files
 
 Display options of bcftools mpileup 
 
 ``` bash
-bcftools mpileup --help
+bcftools mpileup
 ```
 
-Generate first a bcf file for 2 samples
+Generate first a bcf file for 2 samples (using the option -O for specifying an output type as uncompressed bcf). 
+This bcf file must be located in the '3-SNP' directory.
 
 ## <span> 3. Perform SNP calling using `bcftools call`  <a class="anchor" id="call"></a></span>
 
@@ -555,7 +556,7 @@ Display options of bcftools call
 bcftools call --help
 ```
 
-First, generate a vcf file from the bcffile for the 2 samples
+First, generate a vcf file from the bcffile for the 2 samples.
 
 Look at the first 50 lines of the VCF file
 
