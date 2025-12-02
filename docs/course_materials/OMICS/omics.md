@@ -43,13 +43,12 @@ Created by C. Tranchant (DIADE-IRD), J. Orjuela (DIADE-IRD), F. Sabot (DIADE-IRD
 
    * [1. Some statistics about SNPs with `bcftools`](#snp_stats)
    * [2. SNP frequency and density using `vcftools`](#snp_freq)
-   * [3. Annotate SNPs using `snpEff`](#snpeff)
-   * [4. PCA of samples using `plink`](#plink)
-   * [5. Compare populations using FST `vcftools`](#fst)
+   * [3. PCA of samples using `plink`](#plink)
 
 [V- Bonus (advanced users)](#bonus)
 
  * [1. Quick tree from fastq files with `mashtree`](#mashtree)
+ * [2. Compare populations using FST `vcftools`](#fst)
 
 ***
 
@@ -576,7 +575,7 @@ Using bgzip and tabix, compress your VCF file and index it
 
 # <span> VI- SNP analysis <a class="anchor" id="snp_analysis"></a></span> 
 
-## <span> 1. Some statistics about SNPs with `bcftools`<a class="anchor" id="snp_stats"></a></span> 
+## <span> 1. Some statistics about SNPs with `bcftools` and `plink`<a class="anchor" id="snp_stats"></a></span> 
 
 Count the number of variants with `bcftools stat`
 - Run the bcftools stats on the vcf file and save the result into the file `SNP_statistics.txt`
@@ -584,11 +583,24 @@ Count the number of variants with `bcftools stat`
 - How many SNPs were detected ? Is there any other easy way to identify the number of variants in VCF file?
 - What is the ratio transition/transversion?
 
+Evaluate level of missing data (by sample, by positions) using `plink`
+
+```bash
+plink -vcf <your_vcf_file> --missing
+```
+
+* Plink generates 2 files. What information do they contain?
+* Can you observe differences between samples in term of missing data. Which sample shows the highest level of missing data?
+
 ## <span> 2. SNP frequency and density using `vcftools`<a class="anchor" id="snp_freq"></a></span>
 
 ### <span>Calculate allele frequency of each position - `vcftools` </span> 
 
 Calculate allele frequency of each position using `vcftools`
+
+```bash
+vcftools --vcf <your_vcf_file> 
+```
 
 --freq2 : outputs the frequencies without information about the alleles
 
@@ -600,7 +612,13 @@ Compare outputs between these two options
 
 ### <span>Calculate SNP density along chromosome - `vcftools` </span> 
 
-We will make use of `vcftools` to calculate the density of variants along the chromosome 1 of Japonica rice, in sliding windows. To do so, we will set a 100kb sliding window to the option `--SNPdensity`
+We will make use of `vcftools` to calculate the density of variants along the chromosome 1 of Japonica rice, in sliding windows. To do so, we will set a 10kb sliding window to the option `--SNPdensity`
+
+Generate a well-formatted file to be used for visualization with Circos.
+
+```bash
+awk {'print $1" "$2" "$2" "$3'} out.snpden | grep -v BIN_START >density.txt
+```
 
 
 ### <span>Visualize SNP density using `circos` </span>
@@ -633,11 +651,10 @@ Go to the Circos directory and download an example of circos configuration file 
 
 Try to guess the length of the chromosome1 to indicate in the karyotype file. For instance by using the `tail` command on `density.txt` file
 
-Write into a karyotype file called `karyotype.txt`, the size and color of the chromosome 1.
+Write into a karyotype file called `karyotype.txt`, the size and color of each chromosomes using the index reference file .fai, following this example
 
 ```bash
-cd /home/jovyan/rice3k
-echo "chr - 1 1 0 43200000 black" >karyotype.txt
+awk {'print "chr - 1 "$1" 0 "$2" black"'} <your_indexed_reference_fai> >karyotype.txt
 ```
 
 ##### Edit the Circos configuration file to adapt the data file names. And run Circos as follows:
@@ -655,21 +672,13 @@ Look at the SNP density on Circos image output
 
 <img src="circos1.png" align="center" width="70%" style="display: block; margin: auto;"/> 
 
-## <span> 3. Annotate SNPs using `snpEff`<a class="anchor" id="snpeff"></a></span>
-
-## <span> 4. PCA of samples using `plink`<a class="anchor" id="plink"></a></span>
+## <span> 3. PCA of samples using `plink`<a class="anchor" id="plink"></a></span>
 
 ### <span>Generate PCA using genotyping information contained in VCF - `plink --cluster --pca` </span> 
 
 `Plink` alllows to create a PCA (principal components analysis) of samples, so that we can easily evaluate genetic distance between samples. 
 
 This will generate a matrix of coordinates in the different component. By default, it provides the first 20 principal components of the variance-standardized relationship matrix. We will focus only the first 3 axes for subsequent visualization (`--pca 3`)
-
-## <span> 5. Compare populations using FST `vcftools`<a class="anchor" id="fst"></a></span>
-
-FST is an index that reflect the level of differenciation between populations. We will calculate FST values for each variant in order to know if they can dissociate specific alleles of the two populations.
-
-Using `grep` and `awk`, create two distinct file (called `pop1` and `pop2`) listing the names of accessions that are assigned to each group
 
 # <span> V- Bonus (advanced users) <a class="anchor" id="bonus"></a></span> 
 
@@ -680,3 +689,9 @@ Create a tree using Mash distances from fasta files or directly from fastq files
 ```bash
 mashtree --help
 ```
+
+## <span> 2. Compare populations using FST `vcftools`<a class="anchor" id="fst"></a></span>
+
+FST is an index that reflect the level of differenciation between populations. We will calculate FST values for each variant in order to know if they can dissociate specific alleles of the two populations.
+
+Using `grep` and `awk`, create two distinct file (called `pop1` and `pop2`) listing the names of accessions that are assigned to populations/groups (in the light of the results of PCA clustering and tree)
