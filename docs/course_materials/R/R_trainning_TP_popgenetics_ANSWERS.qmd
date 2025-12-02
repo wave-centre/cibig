@@ -1,0 +1,921 @@
+---
+title: 'Introductory practical on data analysis with R: the algae genotyping data'
+date: "`r Sys.Date()`"
+editor: 
+  markdown: 
+    wrap: sentence
+execute:
+  freeze: auto
+format:
+  html:
+    embed-resources: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(
+  eval = TRUE,
+  collapse = TRUE,
+  include = TRUE
+)
+set.seed("1234")
+```
+
+# Setting up key project parameters
+
+No matter what you are doing, a quick analysis of a colleague's data set or a complex 'omics project with multiple data type and sources.
+Before you even start coding, it is immensely useful to:
+
+-   create a dedicated project folder,
+-   create a RStudio project and setup version control,
+-   think about the nature of the data you will handle and plan accordingly especially with regard to the 'goals' of the analysis,
+-   organize "input data" and "results" folders separately,
+-   avoid hardcoding file paths in your chunks. Use variables instead to specify paths relative to your "input data" and "results" folders.
+
+## Attach necessary packages
+
+```{r}
+#| label: attach packages
+#| output: false
+
+library("dplyr")
+library("tidyr")
+library("ggplot2")
+library("adegenet")
+library("ape")
+library("vcfR")
+```
+
+If they are not already available on your system.
+Can you take care of the installation?
+🤔
+
+```{r, eval=FALSE}
+#| label: install packages
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+#| output: false
+install.packages(c("adegenet", "vcfR"))
+
+```
+
+# Introduction, background and questions
+
+This notebook will record our efforts to **analyse further** the data generated in the "structural variation" module" with the **algae dataset**.
+
+Specifically, our **goals** are:
+
+-   Take a look at the quality of the output of the reads mapping stage.
+-   Contrast the genotypes inferred from reads mapping and the available information on the examined algae strains.
+
+# Loading the input data in R
+
+## I/O file paths
+
+```{r}
+#| label: input and output paths
+setwd("/home/damien/Desktop/xx.CIBIG/R_training/")
+dataDir <- "input" # modify to fit your own project input folder
+outDir <- "output" # modify to fit your own project results folder
+
+
+```
+
+## Download data files from a distant repository
+
+```{r, eval=FALSE}
+#| label: download input data files
+#| eval: false
+# download from iTrop as an archive
+dataArchiveUrl <- "https://itrop.ird.fr/programming_data/coding_data_CIBIG25.zip"
+
+download.file(url = dataArchiveUrl,
+              destfile = "coding_data_CIBIG25.zip")
+# extract in dataDir
+unzip(zipfile = "coding_data_CIBIG25.zip",
+      exdir = dataDir,
+      junkpaths = F)
+# Take a look at the files
+list.files(dataDir, recursive = TRUE)
+
+```
+
+## Load algea strains metadata
+
+In order to contrast the genotyping results with the metadata about these algea, we first need to load this info from a file that appears to be tab-separated values.
+
+::: callout-tip
+## Let's read the file using read.csv
+:::
+
+```{r}
+#| label: load strains metadata
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+
+algeaInfo <- read.csv("input/coding_data_CIBIG25/metadata_algae.tsv", row.names=NULL,sep="\t",dec=".", header=TRUE, stringsAsFactors=F, check.names=FALSE)
+
+# Inspecting the resulting object
+class(algeaInfo)
+str(algeaInfo)
+head(algeaInfo)
+```
+
+The functions above allow to inspect the content of the resulting object.
+It is **ALWAYS** good practice to spend some time making sure the input data is really what we think it is.
+These functions help doing that.
+
+Clearly here, column names are intuitively easy to understand but not necessarily easy to process by code.
+There are too many white spaces and other special characters.
+We will probably need to fix that.
+
+## Load flagstat ouput
+
+Now it is time to load the quality informatuion of each sample.
+
+First, we look at the folder structure :
+
+```{r}
+#| label: check all flagstat files content in R
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+flagstatsDir <- "input/coding_data_CIBIG25/algea_flagstats/2_bam_flagstats"
+list.files(flagstatsDir, full.names = TRUE)
+
+flagstats_files <- list.files(flagstatsDir, full.names = TRUE)
+
+```
+
+Here, we want to read a bunch of consistently formatted tabular files in **a sole** R object.
+
+To do that, one would intuitively write a looping structure to iteratively load the content of individual files and dump into an object that can be grown as files are read.
+
+While this is doable, loops are not memory efficient which can cause problems for handling large files and/or large amounts of files.
+
+```{r}
+#| label: load all flagstat files content in R
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+
+# loop - based solution (to be avoided in R for large amount of files)
+flagstatsRaw <- NULL
+
+for (f in flagstats_files) {
+  x <- read.delim(f, header = FALSE, sep = "\t")
+  x$strainId <- f
+  flagstatsRaw <- rbind(flagstatsRaw, x)
+}
+
+# apply - based solution 
+df_list <- lapply(flagstats_files, function(f) {
+  x <- read.delim(f, header = FALSE, sep = "\t")
+  x$strainId <- f
+  x
+})
+
+flagstatsRaw <- do.call(rbind, df_list)
+
+str(flagstatsRaw)
+head(flagstatsRaw)
+summary(flagstatsRaw)
+
+
+```
+
+A little glimpse into the content of the `flagstatsRaw` dataframe suffices to realize that in order to extract meaning from this will require some wrangling of the raw material...
+
+# Plot reads mapping qualities across the investigated genetic diversity
+
+## Reformating raw flagstat data to prepare for plotting
+
+Now let's take a close look at the content of `flagstatsRaw`.
+You can use the Rstudio 'Environment' panel for that and also learn about a neat way to display large tables (or part of them) in a Quarto notebook.
+
+```{r}
+#| label: demonstrate paged_table
+rmarkdown::paged_table(flagstatsRaw, options = list(cols.min.print = 4))
+```
+
+::: callout-important
+#### We use a function from the `rmarkdown` package that ships with RStudio.
+:::
+
+To learn the meaning of the dataframe content and if in doubt about what to do, it may be wise to study the documentation for the command line program that generated this output: [samtools flagstat](http://www.htslib.org/doc/samtools-flagstat.html).
+Note this specific section:
+
+> In this format the first column contains the values for QC-passed reads, the second column has the values for QC-failed reads and the third contains the category names.
+
+OK so based on this you can rename the columns with base R syntax 🤔.
+
+```{r}
+#| label: rename columns of flagstatsRaw
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+colnames(flagstatsRaw)
+colnames(flagstatsRaw) <- c("passed", "failed", "category", "strainId")
+colnames(flagstatsRaw)
+head(flagstatsRaw)
+
+```
+
+*Please, if you found the answer, use the actual names employed in the solution to this question in order to **keep references to the columns consistent** across our notebooks.*
+
+To verify the consistency with the flagstat command documentation, how would you take a look at the unique values in the `category` column of the flagstatsRaw object ?
+
+```{r}
+#| label: unique categories in flagstatsRaw
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+
+unique(flagstatsRaw$category)
+
+# what does the below do ?
+table(flagstatsRaw$category)
+
+```
+
+::: callout-tip
+#### Create a new `flagstatsClean` table and coherce this column to a factor and then list the levels of this factor.
+:::
+
+```{r}
+#| label: categories in flagstatsRaw
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+
+flagstatsClean <- flagstatsRaw
+flagstatsClean$category <- as.factor(flagstatsClean$category)
+levels(flagstatsClean$category)
+head(flagstatsClean)
+
+```
+
+Still, intuitively, `passed` and `failed` should have a *numeric* type, right?
+Is it the case?
+Can you guess why when `readr` tried to infer the type of those value columns in the first place it converted them to `character`?
+🤔
+
+To solve this, we need to have a sense of what values in the `passed` and `failed` columns of `flagstatsRaw` have characters that prevent coercion to numeric.
+So we will list those values using R regular expressions (`"[^0-9.]"` matches anything that is not a number or a dot).
+Because this is a bit advanced, here is the solution:
+
+```{r}
+#| label: why coercion does not work?
+as.numeric(flagstatsClean$passed)
+
+grepl("[^0-9.]", flagstatsRaw$passed)
+
+
+```
+
+OK, so now we can diagnose the issues:
+
+-   flagstat codes `NA` (Not Available) values as `"N/A"`
+-   it looks like the values for categories expressed as a percentage contain a "%" sign.
+
+So if we ultimately want to plot numeric values, we must get ride of those "%" characters in the corresponding value columns.
+For the `"N/A"`, `as.numeric()` will convert them to `NA` anyhow ('non-numeric strings give NA + warning' in the example page of the help page)
+
+How can we do that?
+🤔
+
+::: callout-tip
+#### This is a bit advanced, but we will use regular expressions to remove the "%" in the `passed` and `failed` columns and subsequently coherce them to numeric.
+:::
+
+```{r}
+#| label: remove percents in values
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+
+flagstatsClean$passed <- gsub(pattern = "%", replacement = "", flagstatsClean$passed)
+flagstatsClean$failed <- gsub(pattern = "%", replacement = "", flagstatsClean$failed)
+
+flagstatsClean$passed <- as.numeric(flagstatsClean$passed)
+flagstatsClean$failed <- as.numeric(flagstatsClean$failed)
+
+```
+
+Now that you know how to use replacement patterns for text, take a look at the strainId column.
+How could you improve it ?
+
+```{r}
+#| label: improve strainId column 
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+
+flagstatsClean$strainId <- gsub(pattern = "_flagstat.tsv", replacement = "", flagstatsClean$strainId)
+flagstatsClean$strainId <- basename(flagstatsClean$strainId)
+
+
+```
+
+::: callout-important
+#### While you should first learn the basics of regular expressions in base R (type `?regex` in the console and read the help), again, if you have to perform a lot of strings manipulations, consider the `tidyverse` [`stringr`](https://stringr.tidyverse.org/) package which is **really** convenient.
+:::
+
+We have made some progress but you surely have noticed the Warnings thrown by R after running your conversion commands...
+What is going on?
+
+As a reality check, let's list rows of the `flagstatsClean` that have a `NA` in the `passed` or `failed` column.
+
+```{r}
+#| label: display rows with NA in flagstatsClean
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+
+flagstatsClean[is.na(flagstatsClean$failed),]
+flagstatsClean[is.na(flagstatsClean$passed),]
+
+```
+
+Well, from this we learn an important thing about the "B218" sample, right?
+What is going on with it?
+May be we should take a look at the records for this specific sample in the raw data (`flagstatsRaw`) 🤔
+
+```{r}
+#| label: what is going on with B218?
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+
+# We observe the CLEAN file
+flagstatsClean[flagstatsClean$strainId =="B218",]
+
+# We observe the RAW file
+flagstatsRaw[flagstatsRaw$strainId =="B218",]
+
+# Why doesn't' the above work ?
+flagstatsRaw[grepl("B218", flagstatsRaw$strainId), ]
+
+```
+
+So what happened with this sample?
+🤔
+
+To have a sense of the read mapping quality, because the dataset is rather complex, we want to start by examining only the percentages computed by flagstat.
+
+::: callout-tip
+#### Take a close look again at the flagstat command documentation. Can this help?:
+
+> "In the tsv and json formats, these percentages are listed in separate categories mapped %, primary mapped %, properly paired %, and singletons %."
+:::
+
+Can you create a new dataframe called `statsRatios` that will only contain `passed` records for which the category value has a "%" sign?
+🤔
+
+::: callout-tip
+#### Again, use `grepl`..
+:::
+
+```{r}
+#| label: extract % records
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+
+flagstatsClean$category
+
+grepl("%", flagstatsClean$category)
+
+statsRatios <- flagstatsClean[grepl("%", flagstatsClean$category),]
+
+```
+
+::: callout-important
+#### Can you tell if this table of data is tidy? Is it in a long or wide format? 🤔
+:::
+
+## Let's dive in the flagstat QC results
+
+To approach this data 'step-by-step', we first just want to plot the mapping rate `mapped %`.
+For that, we will `filter()` the `statsRatios` table to keep only the records belonging "mapped %" `category`.
+Let's call the resulting table `mapRatios`.
+🤔
+
+```{r}
+#| label: filter only mapping rate
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+
+mapRatios <- statsRatios[statsRatios$category == "mapped %", ]
+head(mapRatios)
+
+```
+
+So now, we can plot the percentages (`passed` column) as y-values and the strain ids as x-values (aesthetics) and further add a `geom_col()` geom.
+Let's plot it!
+🤔
+
+```{r}
+#| label: plot mapping rate by sample
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+#| fig-width: 5
+#| fig-height: 4
+#| 
+mapRatioP <- ggplot(data = mapRatios,
+       mapping = aes(x = strainId, y = passed)) +
+  geom_col(fill = "gold")
+mapRatioP
+```
+
+::: callout-important
+#### What do we learn from this regarding strains B218, 716, 685, ...? 🤔
+:::
+
+So this is not too bad but, the texts of the strain ids on the x-axis tend to overlap which is ugly.
+We could surely increase the overall width of the graph but this would take up space unnecessarily.
+Instaed, we can tweak the ggplot2 `theme()` parameters as such:
+
+```{r}
+#| label: rotate x axis text in mapping rate plot
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+#| fig-width: 5
+#| fig-height: 4
+#| 
+mapRatioP <- mapRatioP +
+  theme(axis.text.x = element_text(hjust = 1, vjust = 1, angle = 45))
+mapRatioP
+```
+
+So we learnt already something regarding the mapping step but the statsRatios table contains far more info.
+Ideally, we would like to inspect **everything** to have a complete picture.
+
+There are several ways to represent this.
+One is by adding a color aesthetic based on category and specifying a special position in `geom_col()`
+
+```{r}
+#| label: plot all statsRatios data with position dodge
+#| code-fold: true
+#| code-summary: "💭 !! Check the answer !! 🪂"
+#| fig-width: 5
+#| fig-height: 4
+#| 
+statsRatiosP <-  ggplot(data=  statsRatios, mapping = aes(x = strainId, y = passed, fill = category)) +  geom_col(position = position_dodge()) +
+  scale_fill_brewer(direction = 1) +
+  theme(axis.text.x = element_text(hjust = 1, vjust = 1, angle = 45),
+        legend.position = "bottom")
+statsRatiosP
+
+
+
+
+
+```
+
+## Pivoting and exporting the flagstat data
+
+For your non-bioinformaticians colleague to read the data, it would be far more convenient to "[pivot](https://tidyr.tidyverse.org/articles/pivot.html)" this dataframe from a 'long' format to a 'wide' one.
+We would like to have the values of the `category` column as separate columns (see the result below).
+For each strain (one row) the values from the `passed` column are pivoted to their cognate category.
+Furthermore, we sort the records in the table based on the strain id.
+The resulting `statsRatiosWide` table is displayed in html.
+
+Can you try to figure out how to do that with `tidyr::pivot_wider()`?
+🤔
+
+```{r}
+#| label: reshape the flagstatsClean and display table
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+
+statsRatiosWide <- tidyr::pivot_wider(
+  statsRatios,
+  id_cols=strainId,
+  names_from = category,
+  values_from = passed
+)
+
+statsRatiosWide <- statsRatiosWide[order(statsRatiosWide$strainId), ]
+
+rmarkdown::paged_table(statsRatiosWide, options = list(cols.min.print = 4))
+```
+
+Finally, after so much troubles parsing the "flagstats" data, we would like to save the primary data `flagstatsClean` and the resulting `statsRatiosWide` tables as tsv files for subsequent scrutiny by other colleagues in the `outDir`.
+Can you do that with `write.table` ?
+🤔
+
+```{r}
+#| label: export important tables to tsv
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+
+write.table(flagstatsClean, file = file.path(outDir, "algea_flagstats.tsv"), sep = "\t", quote = FALSE, col.names = TRUE, row.names = FALSE)
+
+write.table(statsRatiosWide, file = file.path(outDir, "algea_flagstats_summary.tsv"), sep = "\t", quote = FALSE, col.names = TRUE, row.names = FALSE)
+
+
+```
+
+# Examining the infered genetic diversity
+
+## Loading the vcf file data and extract a SNP matrix
+
+```{r, eval=FALSE}
+#| label: processing vfc to adegenet genlight object
+#| results: "markup"
+#| output: false
+
+# Take a look at the files
+list.files(dataDir, recursive = TRUE)
+
+vcfData <- read.vcfR(file.path(dataDir, "coding_data_CIBIG25/all_samples.vcf.gz"), verbose = FALSE)
+
+glight <- vcfR2genlight(vcfData)
+saveRDS(glight, file = file.path(outDir, "genotypes_genlight.rds"))
+```
+
+## Run a PCA with genotypes data and plot the infered genetic diversity
+
+The analysis workflow on this section is in large part inspired from the material provided by the Niklaus J. Grünwald lab in [Population genetics and genomics in R](https://grunwaldlab.github.io/Population_Genetics_in_R/index.html)
+
+Just like with any topic in R and other programming languages, there are tons of other options to conduct this type of analysis.
+For example [`pegas`](https://emmanuelparadis.github.io/pegas.html) is another R package dedicated to population genetic analysis.
+
+```{r}
+#| label: adegenet PCA and plotting
+#| fig-width: 4
+#| fig-height: 5
+#| fig-align: "left"
+#| fig.cap: "Genotypes in the PCA subspace"
+
+if (!exists("glight")) glight <- readRDS(file.path(dataDir, "/coding_data_CIBIG25/genotypes_genlight.rds"))
+nInd(glight)
+nLoc(glight)
+pca1 <- glPca(glight, nf = 20, parallel = TRUE, n.cores = 6)
+print(pca1)
+
+scatter(pca1, posi="topright")
+```
+
+The reason we picked `glPca()` is because it is specialized for genotyping data.
+If you want to learn more about PCA in R, we advise you to examine specialized resources describing how to do statistical analysis with R using best practices.
+Here are a few resources as a starter:
+
+-   [The Handbook of Biological Statistics](https://rcompanion.org/rcompanion)
+-   [datacamp](https://www.datacamp.com/doc/r/anova)
+
+## Revisiting the PCA results with ggplot2 plots
+
+While the resulting plot is OK in preliminary stages.
+It is not entirely satisfactory because:
+
+-   It is difficult to overlay strains metadata which would be useful to fully grasp the output.
+-   stains labels are plotted on top of each others which hides part of the information.
+
+Let's try to come up with our own plots with `ggplot2`.
+
+### Metadata fixing and matching
+
+First, it is time to include the strains metadata to this dataframe so that we can plot the samples along with their characteristics (sampling site, species ...).
+
+For that we need two objects: the **metadata** (`algeaInfo`) object and the **PCA** (`pca1`)object.
+
+The Principal components matrix, the`scores` element from the `pca1` object (list) are stored in `pca1$scores`
+
+```{r}
+#| label: extract pcr matrix
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+pcaScores <- as.data.frame(pca1$scores)
+
+
+```
+
+In this object the strain id are stored in the rownames, that are accessible using the rownames() function.
+
+How would you create a strainId column with this information ?
+
+```{r}
+#| label: add a strainId column to the pca object
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+
+rownames(pcaScores)
+pcaScores$strainId <- rownames(pcaScores)
+
+```
+
+The `strainId` column contains the information about the algae strain but we need to extract it to match values in `algeaInfo`:
+
+At this point, it may be a good idea to verify that strain IDs in both tables match, right?
+We could do that with set operations (`?union`).
+🤔
+
+```{r}
+#| label: intersection of strain ids
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+
+pcaScores$strainId 
+algeaInfo$`Strain ID`
+
+pcaScores$strainId %in% algeaInfo$`Strain ID`
+
+```
+
+So it looks like the **"RCC" prefix got striped out** somehow in the read mapping data...
+We will **fix that.**
+
+So first, we will modify the ids in this table (*note that it is usually better to conduct reformatting of this kind of essential metadata table, right after loading into R in order to have a consistent object across the analysis*).
+🤔
+
+::: callout-tip
+#### You can create a new `strainId` column filled with the result of substituting `"RCC"` in the strain ids `Strain ID` with `""` using `gsub()`
+:::
+
+```{r}
+#| label: reformat ids in strains metadata
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+
+algeaInfo$strainId <- gsub("RCC", "", algeaInfo$`Strain ID`)
+algeaInfo$`Strain ID` <- NULL
+
+algeaInfo
+
+```
+
+Now we want to join the two dataframes.
+
+can use `dplyr` join functions (type `?"mutate-joins"` in the console).
+We will perform a `left_join` to bring strains info into the `pcaScores` tibble.
+The join will be done on the `strainId` key column that provides the 'bridging' information.
+🤔
+
+```{r}
+#| label: include strains info in pcaScores
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+pcaScores <- left_join(x = pcaScores,
+                       y = algeaInfo,
+                       by = join_by("strainId" == "strainId")
+                       )
+pcaScores
+```
+
+::: callout-important
+#### Are all strains included in the genotyping described in the strains metadata table `algeaInfo`? 🤔
+:::
+
+We should now have the required info in order to generate an informative plot.
+We start with a base `ggplot2` plot assigned to the `pp` variable :
+
+-   We represent the position of the strains in the PC space using the first and second PCs as points (`geom_point()`).
+-   The `shape` aesthetic will be mapped to values in the `Species` column.
+-   The `color` aesthetic will be mapped to values in the `Sampling site` column
+-   Point `size` should be = 5 and transparency increased with `alpha` set to 0.3
+
+```{r}
+#| label: base ggplot2 plot with pca results
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+#| fig-width: 6
+#| fig-height: 4
+
+pp <- ggplot(data = pcaScores,
+             mapping =  aes(x = PC1,
+                            y= PC2,
+                            shape = Species,
+                            color = `Sampling site`)
+             ) +
+  geom_point(size = 5, alpha = 0.3)
+pp
+```
+
+So now we are in a much better position to interpret the graph.
+
+::: callout-note
+#### The strain belonging to the *B. calidus* species is isolated, consistent with an expected more distant relatedness with strains from the *B. prasinos* species. This is captured by PC2.
+:::
+
+::: callout-note
+#### Strains collected in the Baffin area tend to separate from the others. This is captured by PC1.
+:::
+
+It would be nice to add strain ids in this plot.
+For that, let's add some space around the data points in `pp` and modify the limits of the plot axis with `xlim` and `ylim`.
+Minimum x should be -250 and minmum y should be -150.
+We will also add an informative title.
+🤔
+
+```{r}
+#| label: change plot limits to have more space
+#| code-fold: true
+#| code-summary: "💭 **Check the answer** 🪂"
+#| fig-width: 6
+#| fig-height: 4.5
+pp <- pp +
+  xlim(-250, NA) + ylim(-150, NA) +
+  labs(title = "The algea genetic diversity is in part explained by sampling site")
+pp
+```
+
+To include strain ids as labels, we will add a text geom from the `ggrepel` package and tweak the parameters to force plotting of all overlapping labels.
+
+```{r}
+#| label: add labels with ggrepel
+#| fig-width: 6
+#| fig-height: 4.5
+
+pp <- pp +
+  ggrepel::geom_text_repel(mapping = aes(label = strainId),
+                           force = 20,
+                           max.overlaps = 30)
+pp
+```
+
+This looks nice but lets use a more sober `theme` that is suitable for publications, like `theme_light()` 🤔
+
+```{r}
+#| label: sober theme
+#| code-summary: "💭 **Check the answer** 🪂"
+#| code-fold: true
+#| fig-width: 6
+#| fig-height: 4.5
+
+pp <- pp +
+  theme_light()
+pp
+```
+
+We are perfectionists and clearly the values and ticks in the context of a PCA do not make much sense.
+We would like to avoid plotting them but we do not know how to tweak the plot to do that...
+
+::: callout-tip
+#### May be we could ask an LLM like Chat GPT or Gemini. Can you figure out what prompts to use ?🤔
+:::
+
+```{r, eval=FALSE}
+#| label: AI pprompts
+#| code-summary: "💭 **Check the answer** 🪂"
+#| code-fold: true
+glue::glue("
+*** Prompt1 ***
+Hi,
+Here is the code of a ggplot2 plot:
+pp <- pp +
+  ggrepel::geom_text_repel(mapping = aes(label = strainId),
+                           force = 20,
+                           max.overlaps = 30)
+pp
+
+*** Prompt2 ***
+How can I avoid plotting the scales on the axis (numbers and tick marks)?
+")
+```
+
+Let's implement the solution suggested by the LLM:
+
+```{r}
+#| label: remove axis decorations
+#| code-summary: "💭 **Check the answer** 🪂"
+#| code-fold: true
+#| fig-width: 6
+#| fig-height: 4.5
+
+pp <- pp +
+    theme(axis.text =  element_blank(),
+        axis.ticks = element_blank())
+pp
+```
+
+# Make a composite plot as a final wrap up
+
+Now let's imagine we would like to make a composite plot of our best graphics to use as a Figure in a manuscript.
+
+In R there are several packages that enables to do that.
+To name the main ones: - [patchwork](https://patchwork.data-imaginist.com/index.html) makes it ridiculously simple to combine separate ggplots into the same graphic.
+- [cowplot](https://wilkelab.org/cowplot/index.html) helps with creating publication-quality figures, such as a set of themes, functions to align plots and arrange them into complex compound figures - [aplot](https://yulab-smu.top/pkgdocs/aplot.html) by the creator of amazing packages for phylogenetic trees plotting or complex heatmaps.
+This is our favorite because it works very well with these kind of atypical plots...
+
+Let's pick `pp` and `statsRatiosP` plots and plot them together in a plot named `compoPlot`.
+With the `cowplot::plot_grid()`, this is pretty easy...
+🤔
+
+```{r}
+#| label: composite plot
+#| code-summary: "💭 **Check the answer** 🪂"
+#| code-fold: true
+#| fig-width: 6.5
+#| fig-height: 8
+
+compoPlot <- cowplot::plot_grid(statsRatiosP + ggtitle("An outlook on mapping QC"),
+                                pp,
+                                labels = c('A', 'B'), ncol = 1)
+compoPlot
+
+
+```
+
+::: callout-important
+BTW, do you now have an hypothesis for the reason why only a limited fraction of the, say "716" strains reads, mapped to the reference?
+🤔
+:::
+
+OK, great but for the manuscript we would like to have a separate image file in the pdf format.
+Because `compoPlot` is a `r class(compoPlot)[2]` object.
+We can use a the dedicated `ggplot2` function for this task.
+
+```{r}
+#| label: save composite plot
+#| code-summary: "💭 **Check the answer** 🪂"
+#| code-fold: true
+ggsave(filename = file.path(outDir, "composite_plot.pdf"),
+       plot = compoPlot,
+       width = 6.5, height = 8, units = "in", dpi = 300)
+```
+
+# Bonus: Distance tree of the samples
+
+In biology, trees are a common way of representing the relationships between a diversity of samples.
+
+Using the `ape` package, commonly used in phylogenetics and evolution, we will build a phenetic tree (distance-based from SNP data).
+Be careful, it's not a model-based phylogeny !
+
+```{r}
+#| label: compute distance tree
+#| code-summary: "💭 **Check the answer** 🪂"
+#| code-fold: true
+
+# genetic distances (e.g., Euclidean on genlight)
+Distances <- dist(glight)
+
+# Neighbor-Joining tree
+distance_tree <- nj(Distances)
+
+# distance_tree is a "phylo" object
+plot(distance_tree)
+
+```
+
+::: callout-important
+The orientation of the resulting tree is arbitrary.
+How would you orient it now that we know a little bit more about the diversity of our samples ?
+🤔
+:::
+
+Using the `ape` package, commonly used in phylogenetics and evolution, we will build a phenetic tree (distance-based from SNP data).
+Be careful, it's not a model-based phylogeny !
+
+```{r}
+#| label: Tree manipulation and ploting
+#| code-summary: "💭 **Check the answer** 🪂"
+#| code-fold: true
+
+# Rooting the tree
+rooted_tree <- root(distance_tree, "716")
+
+# ploting the tree again
+plot(rooted_tree)
+
+
+```
+
+In the same manner as for the PCA, it's best to plot the phylogeny with some more information that we can get from the metadata table.1
+
+```{r}
+#| label: Tree ploting with metadata
+#| code-summary: "💭 **Check the answer** 🪂"
+#| code-fold: true
+
+# Where are the tip labels stored ?
+str(rooted_tree)
+
+tips <- rooted_tree$tip.label
+
+# what does the below return ?
+match(rooted_tree$tip.label,algeaInfo$strainId)
+
+# the "species" column from the metadata table
+algeaInfo$Species
+
+# the species in the an order that matches the tree tips !
+algeaInfo$Species[match(rooted_tree$tip.label,algeaInfo$strainId)]
+
+# we store it and do the same for the localization
+tip_species <- algeaInfo$Species[match(rooted_tree$tip.label,algeaInfo$strainId)]
+tip_localisation <- algeaInfo$`Sampling site`[match(rooted_tree$tip.label,algeaInfo$strainId)]
+
+# we change the tip labels in the tree object
+rooted_tree$tip.label <- paste0(tips,"_",tip_localisation)
+
+# we now want two different symbols for the tips belonging to each species
+# we start by producing a vector of one symbol
+symbols <- rep(16,length(tip_species))
+# and we modify those matching the second species
+symbols[grepl("B. calidus", tip_species)] <- 17
+
+symbols
+
+# plot
+print({
+  
+  plot(rooted_tree, cex = 0.9,show.tip.label = F)
+  tiplabels(text = rooted_tree$tip.label, adj = 0, offset = 25, frame="none")
+  tiplabels(pch = symbols, col = "black", bg = "white", cex = 1.2)
+  
+})
+
+```
