@@ -1,0 +1,230 @@
+---
+title: "Correction of in-class Exercise"
+author: "Koissi  & Damien"
+date: "2025-12-02"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Exercise 2 — Basic objects
+
+```{r}
+# 1. Create vectors
+x <- 1:10
+y <- c("a", "b", "c")
+
+# 2. Inspect
+str(x)
+typeof(y)
+length(x)
+
+# 3. Convert to factor
+f <- factor(y)
+levels(f)
+
+```
+ 
+## Exercise 3 — Matrices and arrays
+ 
+```{r}
+# 1. Create matrix
+m <- matrix(1:6, nrow = 2)
+
+# 2. Use functions
+dim(m)
+dimnames(m)
+t(m)
+
+# 3. Set row names
+rownames(m) <- c("r1", "r2")
+m
+
+```
+ 
+## Exercise 4 — Lists and data.frames
+ 
+```{r}
+# 1. Create list
+L <- list(id = 1:3, vals = c(4.5, 2.3, 9.1), name = "set")
+
+# 2. Make a data.frame
+df <- data.frame(id = 1:3,
+                 vals = c(4.5, 2.3, 9.1),
+                 group = c("A","A","B"))
+
+# Inspect
+head(df)
+str(df)
+
+```
+ 
+## Exercise 5 — Vectorization
+ 
+```{r}
+
+# Comparing loop vs vectorized
+x <- 1:1e6
+
+# Loop
+loop_square <- function(x){
+  out <- numeric(length(x))
+  for(i in seq_along(x)){
+    out[i] <- x[i]^2
+  }
+  out
+}
+
+system.time(loop_square(x))
+
+# Vectorized
+system.time(vect <- x^2)
+
+# Recycling rule
+1:10 + 1:3
+
+```
+ 
+## Exercise 6 — Functional programming
+ 
+```{r}
+# Compute column means using lapply
+df <- data.frame(a=1:5, b=6:10, c=11:15)
+lapply(df, mean)
+
+# Reduce: cumulative sum of list elements
+Reduce(`+`, list(1:3, 4:6, 7:9))
+
+# Filter: keep only even numbers
+Filter(function(z) z %% 2 == 0, 1:20)
+
+```
+ 
+## Exercise 7 — Writing functions
+ 
+```{r}
+row_standardize <- function(mat){
+  med <- apply(mat, 1, median)
+  md  <- apply(mat, 1, mad)
+  sweep(sweep(mat, 1, med, "-"), 1, md, "/")
+}
+
+# Test
+set.seed(1)
+mat <- matrix(rnorm(25), nrow = 5)
+row_standardize(mat)
+
+```
+ 
+## Exercise 8 — Replacement function
+ 
+```{r}
+`rowrep<-` <- function(x, i, value){
+  x[i, ] <- value
+  x
+}
+
+# Example
+m <- matrix(1:9, nrow = 3)
+rowrep(m, 2) <- c(9,9,9)
+m
+
+```
+
+## Exercise 9 — Exception handling
+
+```{r}
+safe_div <- function(x, y){
+  tryCatch({
+    x / y
+  }, warning = function(w){
+    message("Warning: ", w$message)
+    NA
+  }, error = function(e){
+    message("Error: ", e$message)
+    NA
+  })
+}
+
+safe_div(10, 0)  # triggers error
+safe_div(10, 2)
+
+```
+
+# Quiz / Home assignment
+
+## Assignment 1
+
+```{r, echo=FALSE}
+# Install/load packages
+library(tidyverse)
+
+# Demonstrate vectors/lists/data frames
+v <- 1:10
+lst <- list(a=1, b="yes", c=TRUE)
+df <- data.frame(x=1:3, y=c("a","b","c"))
+
+# Vectorized vs loop
+x <- 1:1e6
+system.time(loop <- sapply(x, function(z) z^2))
+system.time(vec  <- x^2)
+
+```
+
+## Assignment 2
+
+```{r, echo=FALSE}
+# Simulate matrix
+set.seed(1)
+mat <- matrix(rnorm(100*10), nrow=100)
+
+# Standardize rows
+mat_std <- row_standardize(mat)
+
+# Variance per gene
+gene_var <- apply(mat_std, 1, var)
+
+# Top 10
+order(gene_var, decreasing = TRUE)[1:10]
+
+```
+
+## Home assignment
+
+```{r, echo=FALSE}
+library(stringr)
+
+# Simulate sequences
+seqs <- c("ATGATCGAATG", "CGTATGATGAA", "TTTATGCCC")
+
+# Count ATG
+motif_counts <- sapply(seqs, function(s) str_count(s, "ATG"))
+
+df <- data.frame(
+  id = paste0("seq", 1:length(seqs)),
+  seq = seqs,
+  atg_count = motif_counts
+)
+
+df
+
+```
+
+## Extra Credit Example
+
+```{r, echo=FALSE}
+mydata <- function(x) structure(list(data = x), class = "mydata")
+
+print.mydata <- function(x) {
+  cat("Object of class 'mydata'\n")
+  print(head(x$data))
+}
+
+obj <- mydata(df)
+obj
+
+
+```
+
