@@ -1,0 +1,12 @@
+name: CIBiG_R
+title: CIBiG_R
+username: koissi
+account: koissi
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 16221564
+bundleId: 11264995
+url: https://koissi.shinyapps.io/CIBiG_R/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
