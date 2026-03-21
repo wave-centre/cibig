@@ -28,7 +28,7 @@ To apply for the course, candidates must submit the following documents, all in 
 - Letter of recommendation  
 - Letter from an institutional supervisor committing to follow-up/co-supervise your internship  
 
-Applications must be submitted via the following link: [here](https://forms.gle/yT49tcERiHjhqUEp8)
+Applications must be submitted via the following link: [here](https://forms.gle/ZzCTPgkT8b81xbDG8)
 
 _**Selection results will be announced by May 4, 2026.**_
 
