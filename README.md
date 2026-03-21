@@ -11,7 +11,7 @@ Thee **International Certificate in Bioinformatics and Genomics (CIBiG)** offers
 | -------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ----- | -------------------------------------------- |
 | 2024 | 9 Sep - 4 Oct                                             | [WAVE Regional Center of Excellence](https://wave-center.org/), Université Félix Houphouët-Boigny, Bingerville (Abidjan) | 15    | Completed                                |
 | 2025 | 17 Nov - 12 Dec <br> online session: 3-14 Nov |  [WAVE Regional Center of Excellence](https://wave-center.org/), Université Félix Houphouët-Boigny, Bingerville (Abidjan)   | 15    | Completed |
-| **2026** | **19 OCT - 20 Nov** <br> online session: 1-14 Oct | [WAVE Regional Center of Excellence](https://wave-center.org/), Université Félix Houphouët-Boigny, Bingerville (Abidjan)    | 15    | **Ongoing** |
+| **2026** | **19 Oct - 20 Nov** <br> online session: 1-14 Oct | [WAVE Regional Center of Excellence](https://wave-center.org/), Université Félix Houphouët-Boigny, Bingerville (Abidjan)    | 15    | **Ongoing** |
 
 [Full details on the CIBiG website](https://wave-centre.github.io/cibig/)
 
