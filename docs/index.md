@@ -19,7 +19,7 @@ This training will provide comprehensive insights into sequencing, genomics and 
 <img src="/cibig/assets/img/icon_calendar-5.png">
 </div>
 <div>
-17 November - 12 December 2025
+19 October - 20 November 2026 
 </div>
 </div>
 
@@ -37,7 +37,7 @@ The <a href="https://wave-center.org/" target_blank>WAVE Regional Center of Exce
 <img src="/cibig/assets/img/icon-dollar-5.png">
 </div>
 <div>
-2,000,000 CFA
+2,500,000 CFA
 </div>
 </div>
 --->
