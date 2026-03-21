@@ -17,7 +17,7 @@ Number of available spots: 15
 <img src="/cibig/assets/img/icon_calendar-5.png">
 </div>
 <div>
-Application deadline: <b>June 16, 2025, at 11:59 PM (GMT)</b>  
+Application deadline: <b>April 20, 2026, at 11:59 PM (GMT)</b>  
 </div>
 </div>
 
@@ -30,7 +30,7 @@ To apply for the course, candidates must submit the following documents, all in 
 
 Applications must be submitted via the following link: [here](https://forms.gle/yT49tcERiHjhqUEp8)
 
-_**Selection results will be announced by July 1, 2025.**_
+_**Selection results will be announced by May 4, 2026.**_
 
 The organizing committee will review all applications and select candidates based on the submitted documents.
 
@@ -38,8 +38,7 @@ The organizing committee will review all applications and select candidates base
 
 The training cost is:
 
-- 2,000,000 FCFA per participant  
-- 2,500,000 FCFA for participants funded by a sponsoring institution  
+- 2,500,000 FCFA per participants   
 
 This fee covers training expenses and lunch during the in-person training period. Travel and accommodation costs in Abidjan are the responsibility of the participant.
 
