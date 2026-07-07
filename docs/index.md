@@ -19,7 +19,7 @@ This training will provide comprehensive insights into sequencing, genomics and 
 <img src="/cibig/assets/img/icon_calendar-5.png">
 </div>
 <div>
-19 October - 20 November 2026 
+5 October - 20 November 2026 
 </div>
 </div>
 
