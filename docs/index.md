@@ -28,7 +28,7 @@ This training will provide comprehensive insights into sequencing, genomics and 
 <img src="/cibig/assets/img/icon_place-8.png">
 </div>
 <div>
-The <a href="https://wave-center.org/" target_blank>WAVE Regional Center of Excellence</a>, Université Félix Houphouët-Boigny, Bingerville, Abijan
+The <a href="https://www.wave-research.org/home" target_blank>WAVE Regional Center of Excellence</a>, Université Félix Houphouët-Boigny, Bingerville, Abijan
 </div>
 </div>
 

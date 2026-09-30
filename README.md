@@ -1,5 +1,5 @@
 <div style="display:flex"> 
-<img src="docs/assets/img/logo_wave2.jpeg" style="display: block; margin: 0 auto; width: 30%; height: 30%;">
+<img src="docs/assets/img/logo_wave_Reseach.png" style="display: block; margin: 0 auto; width: 30%; height: 30%;">
 <img src="docs/assets/img/logo_uboigny.jpeg" style="display: block; margin: 0 auto; width: 20%; height: 20%;">
 </div> 
 
@@ -9,9 +9,9 @@ The **International Certificate in Bioinformatics and Genomics (CIBiG)** offers 
 
 | Session  | Dates                                                          | Location                                                                                                                 | Seats | Status                                       |
 | -------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ----- | -------------------------------------------- |
-| **2026** | **26 Oct - 20 Nov** <br> online session: 5-16 Oct | [WAVE Regional Center of Excellence](https://wave-center.org/), Université Félix Houphouët-Boigny, Bingerville (Abidjan)    | 15    | **Ongoing** |
-| 2025 | 17 Nov - 12 Dec <br> online session: 3-14 Nov |  [WAVE Regional Center of Excellence](https://wave-center.org/), Université Félix Houphouët-Boigny, Bingerville (Abidjan)   | 15    | Completed |
-| 2024 | 9 Sep - 4 Oct                                             | [WAVE Regional Center of Excellence](https://wave-center.org/), Université Félix Houphouët-Boigny, Bingerville (Abidjan) | 15    | Completed                                |
+| **2026** | **26 Oct - 20 Nov** <br> online session: 5-16 Oct | [WAVE Regional Center of Excellence](https://www.wave-research.org/home), Université Félix Houphouët-Boigny, Bingerville (Abidjan)    | 15    | **Ongoing** |
+| 2025 | 17 Nov - 12 Dec <br> online session: 3-14 Nov |  [WAVE Regional Center of Excellence](https://www.wave-research.org/home), Université Félix Houphouët-Boigny, Bingerville (Abidjan)   | 15    | Completed |
+| 2024 | 9 Sep - 4 Oct                                             | [WAVE Regional Center of Excellence](https://www.wave-research.org/home), Université Félix Houphouët-Boigny, Bingerville (Abidjan) | 15    | Completed                                |
 
 [Full details on the CIBiG website](https://wave-centre.github.io/cibig/)
 
