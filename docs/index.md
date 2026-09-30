@@ -4,7 +4,7 @@ title: Home
 ---
 
 <div style="display:flex"> 
-<img src="/cibig/assets/img/logo_wave2.jpeg" style="display: block; margin: 0 auto; width: 30%; ">
+<img src="/cibig/assets/img/logo_wave_Reseach.png" style="display: block; margin: 0 auto; width: 30%; ">
 <img src="/cibig/assets/img/logo_uboigny.jpeg" style="display: block; margin: 0 auto; width: 20%; ">
 </div> 
 
@@ -65,8 +65,8 @@ Open application with selection : 15 places
 <img src="/cibig/assets/img/kit-starter_icon2.png" style="vertical-align: middle;">
 </div>
 <div>
-    <a href="https://wave-centre.github.io/cibig/assets/img/CIBIG2025_Welcome_Starter_Kit_v1.4.pdf" target="_blank">
-Download the Welcome & Starter Kit - v1.4 (October 24)
+    <a href="https://wave-centre.github.io/cibig/assets/img/CIBIG2026_Welcome_Starter_Kit_v1.1.pdf" target="_blank">
+Download the Welcome & Starter Kit - v1.1 (October 26)
     </a>
     <br>
     <small style="color: gray;">
