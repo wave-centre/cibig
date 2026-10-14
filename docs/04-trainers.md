@@ -36,38 +36,38 @@ title: Trainers
     <p>Alexis DEREEPER - IRD</p>
   </div>
 
+ <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
+    <img src="/cibig/assets/img/trainer_perla_farhat.png" style="height: 150px; border-radius: 50%; margin: 0 auto;">
+    <p>Perla FARHAT - IRD</p>
+  </div>
+  
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="/cibig/assets/img/trainer_juliette_hayer.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>Juliette HAYER - IRD</p>
   </div>
   
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
-    <img src="/cibig/assets/img/trainer_romaric_nanema.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
-    <p>Romaric K. NANEMA - Univ. Joseph Ki-Zerbo</p>
-  </div>
-
-  <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="/cibig/assets/img/trainer_michael_lucas.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>Michael LUCAS - IRD</p>
   </div>
-  
-  <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
-    <img src="/cibig/assets/img/trainer_perla_farhat.png" style="height: 150px; border-radius: 50%; margin: 0 auto;">
-    <p>Perla FARHAT - IRD</p>
-  </div>
-  
+ 
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="/cibig/assets/img/trainer_name_pakyendou.jpg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>Pakyendou Estel NAME - WAVE</p>
   </div>
 
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
+    <img src="/cibig/assets/img/trainer_romaric_nanema.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
+    <p>Romaric K. NANEMA - Univ. Joseph Ki-Zerbo</p>
+  </div>
+  
+  <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="/cibig/assets/img/trainer_cyrielle_ndougonna.jpg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>Cyrielle NDOUGONNA - WAVE</p>
   </div>
   
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
-  <img src="/cibig/assets/img/trainer_anonym.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
+  <img src="/cibig/assets/img/trainer_edith_nikiema.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>Edith NIKIEMA- CRST/INERA</p>
   </div>
 
