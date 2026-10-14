@@ -32,7 +32,7 @@ title: Contact
   </div>
 
 <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
-  <img src="/cibig/assets/img/trainer_anonym.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
+  <img src="/cibig/assets/img/trainer_edith_nikiema.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>Edith NIKIEMA- CRST/INERA</p>
 </div>
   
