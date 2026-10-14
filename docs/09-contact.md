@@ -33,7 +33,7 @@ title: Contact
 
 <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
   <img src="/cibig/assets/img/trainer_edith_nikiema.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
-    <p>Edith NIKIEMA- CNRST/INERA</p>
+    <p>Marguerite Edith M. NIKIEMA- CNRST/INERA</p>
 </div>
   
 <div style="flex: 1 1 calc(50% - 20px); text-align: center; margin-bottom: 20px;">
