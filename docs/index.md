@@ -62,7 +62,7 @@ Open application with selection : 15 places
 
 <div style="display: flex; align-items: center;">
 <div style="margin-left: 15px; margin-right: 10px;">
-<img src="/cibig/assets/img/kit-starter_icon.png" style="vertical-align: middle; width: 25%;>
+<img src="/cibig/assets/img/kit-starter_icon.png" style="vertical-align: middle; width: 25%;">
 </div>
 <div>
     <a href="https://wave-centre.github.io/cibig/assets/img/CIBIG2026_Welcome_Starter_Kit_v1.3.pdf" target="_blank">
