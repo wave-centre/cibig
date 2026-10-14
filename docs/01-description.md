@@ -3,7 +3,9 @@ layout: page
 title: Program overview
 ---
 
-The course  provides comprehensive multidisciplinary training in genome sequencing, advancing computing, programming, data reproducibility, open science, and specialized bioinformatics.
+The CIBiG team is pleased to welcome applicants for its **2026 cohort**.
+
+The course provides comprehensive multidisciplinary training in genome sequencing, advancing computing, programming, data reproducibility, open science, and specialized bioinformatics.
 
 * Understanding fundamental bioinformatics concepts 
 * Develop practical skills in sequencing genome and analysis of sequencing data.
