@@ -11,6 +11,7 @@ title: Trainers
     <p>Isaac Oloruntoba ABEGUNDE - Covenent University</p>
   </div>
 
+
   <div style="flex: 1 1 calc(25% - 20px); text-align: center; margin-bottom: 20px;">
     <img src="/cibig/assets/img/trainer_serge_anoman.jpg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>Serge ANOMAN - WAVE</p>
