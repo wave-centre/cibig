@@ -27,7 +27,7 @@ title: Trainers
   </div>
 
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
-    <img src="/cibig/assets/img/trainer_bertrand_cosson.jpg style="height: 150px; border-radius: 50%; margin: 0 auto;">
+    <img src="/cibig/assets/img/trainer_bertrand_cosson.jpg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>Bertrand COSSON - Univ. Paris Saclay</p>
   </div>
   
@@ -37,7 +37,7 @@ title: Trainers
   </div>
 
   <div style="flex: 1 1 calc(33.333% - 20px); text-align: center; margin-bottom: 20px;">
-    <img src="/cibig/assets/img/trainer_alexis_dereeper.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
+    <img src="/cibig/assets/img/trainer_juliette_hayer.jpeg" style="height: 150px; border-radius: 50%; margin: 0 auto;">
     <p>Juliette HAYER - IRD</p>
   </div>
   
