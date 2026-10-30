@@ -92,7 +92,7 @@ Once you are successfully logged in, you will be use this console for the rest o
 ### Practice 5: Use module environment to  load your tools
 
 
-1. Load blast 2.12.0+ module
+1. Load blast 2.12.0 module using the bioinfo-shared environment
 2. Check if the tool are loaded
  
 
