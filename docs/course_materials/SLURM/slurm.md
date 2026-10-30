@@ -5,7 +5,7 @@
 | Related-course materials | [HPC initiation](https://github.com/CIBiG-wave/cibig-wave.github.io/blob/gh-pages/docs/course_materials/SLURM) |
 | Authors                  | Ndomassi TANDO (ndomassi.tando@ird.fr)                                                           |
 | Creation Date            | 24/09/2024                                                                                                          |
-| Last Modified Date       | 27/11/2025                                                                                                          |
+| Last Modified Date       | 30/10/2026                                                                                                          |
 | Modified by              | ndomassi TANDO              |
 
 -----------------------
@@ -55,7 +55,7 @@ Once you are successfully logged in, you will be use this console for the rest o
 3. More details with the command: `squeue -O "username,name:40,partition,nodelist,NumCPUs,state,timeused,timelimit"`
 4. Type the command `hostname` then srun `hostname` , note the difference
 5. Type the command `srun -p short -c 2 --pty bash -i ` then `squeue` again
-6. Type the command `cd /data` then `mkdir <my_folder>`
+6. Type the command `cd /scratch` then `mkdir <my_folder>`
 
 
         
@@ -79,7 +79,7 @@ Once you are successfully logged in, you will be use this console for the rest o
 
 
 <a name="practice-4"></a>
-### Practice 4: Transfer your data from the storage server to the node in `/data` with `rsync` 
+### Practice 4: Transfer your data from the storage server to the node in `/scratch` with `rsync` 
 
 
 1. Using rsync, transfer the folder `SHARE` located in `/projects/SLURM` into your working directory 
@@ -124,7 +124,7 @@ blastx -query Oglab_var1_cds.only1000.fasta -db uniprot_plant.fasta -num_threads
 ### Practice 7: Transfering data to the storage server
 
 
-1. Using rsync, transfer your results from your `/data/your_dir` to your `/home/login` 
+1. Using rsync, transfer your results from your `/scratch/your_dir` to your `/home/login` 
 2. Check if the transfer is OK with ls
  
 
@@ -136,7 +136,7 @@ blastx -query Oglab_var1_cds.only1000.fasta -db uniprot_plant.fasta -num_threads
 ### Practice 8: Deleting your temporary folder
 
 ```
-cd /data
+cd /scratch
 rm -r your_dir
 ```
 
@@ -162,7 +162,7 @@ Following the several steps performed during the practice, create a script to la
 
 2nd step: type  the commands you want the script to launch:
 
-1) create a personal folder in /data with `mkdir`
+1) create a personal folder in /scratch with `mkdir`
 
 2) Using rsync, transfer your data
 
@@ -170,10 +170,10 @@ Following the several steps performed during the practice, create a script to la
 
 4) Launch the commands to perform your analysis
 
-5) Using rsync, transfer your results from your `/data/your_dir` to your `/home/login` 
+5) Using rsync, transfer your results from your `/scratch/your_dir` to your `/home/login` 
 
 
-6) Delete the personal folder in the  `/data`
+6) Delete the personal folder in the  `/scratch`
 
 
 Launch the following commands to obtain info on the finished job:
