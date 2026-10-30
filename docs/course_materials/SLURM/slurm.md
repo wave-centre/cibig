@@ -124,7 +124,7 @@ blastx -query Oglab_var1_cds.only1000.fasta -db uniprot_plant.fasta -num_threads
 ### Practice 7: Transfering data to the storage server
 
 
-1. Using rsync, transfer your results from your `/scratch/your_dir` to your `/home/login` 
+1. Using rsync, transfer your results : the  `Oglab_var1_cds.VS.uniprot.blastx.csv2` file from your `/scratch/your_dir` to your `/home/login` 
 2. Check if the transfer is OK with ls
  
 
@@ -170,7 +170,7 @@ Following the several steps performed during the practice, create a script to la
 
 4) Launch the commands to perform your analysis
 
-5) Using rsync, transfer your results from your `/scratch/your_dir` to your `/home/login` 
+5) Using rsync, transfer your results: the `Oglab_var1_cds.VS.uniprot.blastx.csv2` file from your `/scratch/your_dir` to your `/home/login` 
 
 
 6) Delete the personal folder in the  `/scratch`
