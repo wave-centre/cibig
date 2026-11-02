@@ -551,9 +551,6 @@ ndzndioezdnezd^M
 After installing Komodo Edit, open it and click on _Edit –> Preferences_
 <img width="50%" class="img-responsive" src="img/tp-komodoEdit1.png"/>
 
-Select Servers from the left and enter sftp account information, then save it.
-<img width="50%" class="img-responsive" src="img/tp-komodoEdit2.png"/>
-
 To edit a distant content, click on _File –> Open –> Remote File_
 <img width="50%" class="img-responsive" src="img/tp-komodoEdit3.png"/>
 
