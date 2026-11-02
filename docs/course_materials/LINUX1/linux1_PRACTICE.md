@@ -146,10 +146,10 @@ srun -p short -c 2 --pty bash -i
 
 ```
 # get the file from the web
-wget http://itrop.ird.fr/LINUX-TP/LINUX-TP.tar.gz
+cp /shared/formation/LINUX-TP.tar.gz /home/$USER
 
 # decompress the gzip file
-tar -xzvf LINUX-TP.tar.gz
+tar -xzvf /home/$USER/LINUX-TP.tar.gz
 ```
 
 *  List the content of your home directory on the server now (cf. filetree just below)
