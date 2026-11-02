@@ -13,24 +13,23 @@
 
 <!-- TOC depthFrom:2 depthTo:2 withLinks:1 updateOnSave:1 orderedList:0 -->
 * [Preambule: Softwares to install before connecting to a distant linux server ](#preambule)
-* [Practice 1: Transferring files with filezilla `sftp`](#practice-1)
-* [Practice 2: Get Connecting on a linux server by `ssh`](#practice-2)
-* [Practice 3: First steps : prompt & `pwd`command](#practice-3)
-* [Practice 4: List the files using `ls` command](#practice-4)
-* [Practice 5 : List the files using `ls` command and wildcards  _*_](#practice-5)
-* [practice-6 : Moving into file system using `cd`and `ls` commands](#practice-6)
-* [practice-7 : Manipulating Files and Directories](#practice-7)
-* [practice-8 : Searching with `grep`](#practice-8)
-* [practice-9 : Blast analysis](#practice-9)
-* [Practice-10: Redirecting a command output to a File with `>`](#practice-10)
-* [Practice-11: Sending data from one command to another (piping) with `|`](#practice-11)
-* [Practice 12 :  Getting stats from fastq sequences](#practice-12)
+* [Practice 1: Get Connecting on a linux server by `ssh`](#practice-1)
+* [Practice 2: First steps : prompt & `pwd`command](#practice-2)
+* [Practice 3: List the files using `ls` command](#practice-3)
+* [Practice 4 : List the files using `ls` command and wildcards  _*_](#practice-4)
+* [practice 5 : Moving into file system using `cd`and `ls` commands](#practice-5)
+* [practice-6 : Manipulating Files and Directories](#practice-6)
+* [practice-7 : Searching with `grep`](#practice-7)
+* [practice-8 : Blast analysis](#practice-8)
+* [Practice-9: Redirecting a command output to a File with `>`](#practice-9)
+* [Practice-10: Sending data from one command to another (piping) with `|`](#practice-10)
+* [Practice 11 :  Getting stats from fastq sequences](#practice-11)
  
 BONUS
 
-* [Practice-13 : Getting basic stats](#practice-13)
-* [practice-14 : Dealing with VCF files](#practice-14)
-* [practice-15 : Filtering VCF files](#practice-15)
+* [Practice-12 : Getting basic stats](#practice-12)
+* [practice-13 : Dealing with VCF files](#practice-13)
+* [practice-14 : Filtering VCF files](#practice-14)
 
 * [Tips](#tips)
   - [How to convert between Unix and Windows text files?](#convertFileFormat)
@@ -51,7 +50,6 @@ BONUS
 
 | Platform                                                              | Software  | Description | url |
 |:----------------------------------------------------------------------| :------------- | :------------- | :------------- |
-| <img width="10%" class="img-responsive" src="img/osWin.png"/> | mobaXterm |An enhanced terminal for Windows with an X11 server and a tabbed SSH client | [More](https://mobaxterm.mobatek.net/) |
 | <img width="10%" class="img-responsive" src="img/osWin.png"/>      | WSL | The Windows Subsystem for Linux (WSL) lets developers install a Linux distribution and use Linux applications, utilities, and Bash command-line tools directly on Windows.	|[More](https://etibiri.github.io/cours/installation-environnement.html) |
 
 
@@ -73,40 +71,7 @@ BONUS
 -----------------------
 
 <a name="practice-1"></a>
-### Practice 1 : Transferring files with filezilla `sftp`
-
-
-##### Download and install FileZilla
-
-
-##### Open FileZilla and save the cluster adress into the site manager
-
-<img width="50%" class="img-responsive" src="{{ site.url }}/images/tpLinux/tp-filezilla1.png"/>
-
-In the FileZilla menu, go to _File > Site Manager_. Then go through these 5 steps:
-
-1. Click _New Site_.
-2. Add a CUSTOM NAME for this site such as IRD_HPC.
-3. Add the HOSTNAME (see table below).
-4. Set the Logon Type to "Normal" and insert your username and password used to connect on the IRD HPC
-5. Press the "Connect" button.
-
-| Cluster HPC | hostname| 
-| :------------- | :------------- | 
-| IRD HPC |  bioinfo-san.ird.fr | 
-
-
-##### Transferring files
-
-<img width="50%" class="img-responsive" src="{{ site.url }}/images/tpLinux/tp-filezilla2.png"/>
-
-1. From your computer to the cluster : click and drag an text file item from the left to the right column
-2. From the cluster to your computer : click and drag an text file item from he right  to the left column
-
------------------------
-
-<a name="practice-2"></a>
-### Practice 2 : Get Connecting on a linux server by `ssh`
+### Practice 1 : Get Connecting on a linux server by `ssh`
 
 In mobaXterm:
 1. Click the session button, then click SSH.
@@ -126,8 +91,8 @@ In Linux/MacOS or WSL shell:
 ```bash 
 ssh login@wavebc.wavecenter.tech
 ```
-<a name="practice-3"></a>
-###  Practice 3 : First steps : prompt & `pwd`
+<a name="practice-2"></a>
+###  Practice 2 : First steps : prompt & `pwd`
 
 #### Working environment
 
@@ -146,10 +111,10 @@ srun -p short -c 2 --pty bash -i
 
 ```
 # get the file from the web
-cp /shared/formation/LINUX-TP.tar.gz /home/$USER
+rsync -avP master:/shared/formation/LINUX-TP.tar.gz /scratch/$USER
 
 # decompress the gzip file
-tar -xzvf /home/$USER/LINUX-TP.tar.gz
+tar -xzvf /scratch/$USER/LINUX-TP.tar.gz
 ```
 
 *  List the content of your home directory on the server now (cf. filetree just below)
@@ -158,8 +123,8 @@ tar -xzvf /home/$USER/LINUX-TP.tar.gz
 
 -----------------------
 
-<a name="practice-4"></a>
-### Practice 4 : List the files using `ls` command
+<a name="practice-3"></a>
+### Practice 3 : List the files using `ls` command
 
 * List the content of your home directory
 * List the content of the directory `Fasta` by using its absolute path in first then its relative path - `ls` command
@@ -168,8 +133,8 @@ tar -xzvf /home/$USER/LINUX-TP.tar.gz
 
 -----------------------
 
-<a name="practice-5"></a>
-### Practice 5 : List the files using `ls` command and wildcards  _*_
+<a name="practice-4"></a>
+### Practice 4 : List the files using `ls` command and wildcards  _*_
 
 * List the content of the directory `T-coffee`. Are there only fasta files ? - `ls` command
 * List only the files starting by sample (in the directory `T-coffee` ) -  `ls` command & _*_
@@ -177,8 +142,8 @@ tar -xzvf /home/$USER/LINUX-TP.tar.gz
 
 -----------------------
 
-<a name="practice-6"></a>
-### Practice 6 : Moving into file system using `cd` and `ls` command
+<a name="practice-5"></a>
+### Practice 5 : Moving into file system using `cd` and `ls` command
 
 * Go to the directory `Script` and check in the prompt you have correctly changed your working directory (`pwd`).
 * List the dir content with `ls`.
@@ -264,8 +229,8 @@ Test the command `tree`
 
 -----------------------
 
-<a name="practice-7"></a>
-### Practice 7 : Manipulating Files and Directories
+<a name="practice-6"></a>
+### Practice 6 : Manipulating Files and Directories
 
 We will prepare our blast analysis performed after by creating directory and moving files as showing in the image just below :
 <img width="50%" class="img-responsive" src="img/arbo-2.png"/>
@@ -283,9 +248,9 @@ We will prepare our blast analysis performed after by creating directory and mov
 * Remove the directory `T-coffee-copy`.
 
 
-<a name="practice-8"></a>
+<a name="practice-7"></a>
 
-### Practice 8 : Searching with `grep`
+### Practice 7 : Searching with `grep`
 
 * Go on ncbi website and search if a reference genome exist for the `Oryza sativa` species.
 
@@ -311,8 +276,8 @@ We will prepare our blast analysis performed after by creating directory and mov
 
 -----------------------
 
-<a name="practice-9"></a>
-### Practice 9 : Blast analysis
+<a name="practice-8"></a>
+### Practice 8 : Blast analysis
 
 ##### Preparing working environment 
 
@@ -407,14 +372,14 @@ The flag for the output format is -outfmt followed by a number which denotes the
 
 -----------------------
 
-<a name="practice-10"></a>
-### Practice 10 : Redirecting a command output to a File with `>`
+<a name="practice-9"></a>
+### Practice 9 : Redirecting a command output to a File with `>`
 * Extract all proteins identifiers and print them in the file protein_accession.list - `cut >`
 
 -----------------------
 
-<a name="practice-11"></a>
-### Practice 11 :  Sending data from one command to another (piping) with `|`
+<a name="practice-10"></a>
+### Practice 10 :  Sending data from one command to another (piping) with `|`
 * How many sequences contains the file that contains CDS sequences ?
 * How many sequences have a homology with protein sequences ? (TIPs: `cut` command with `sort -u` (uniq) or `uniq` command ))
 * Extract protein sequences that have homogy  with our CDS using  `seqtk subseq` and the protein bank by typing :
@@ -446,8 +411,8 @@ seqtk comp  FASTA_FILE | head
 
 -----------------------
 
-<a name="practice-12"></a>
-### Practice 12 :  Getting stats from fastq sequences
+<a name="practice-11"></a>
+### Practice 11 :  Getting stats from fastq sequences
 
 * Go to the directory `~/LINUX-TP/Data/fastq/pairedTwoIndividusGzippedIrigin` - `cd`
 * Count the number of fastq files in this directory - `wc -l`
@@ -467,8 +432,8 @@ done; \
 
 ## BONUS
 
-<a name="practice-13"></a>
-### Practice 13 : Getting basic stats
+<a name="practice-12"></a>
+### Practice 12 : Getting basic stats
 * Go into the directory `LINUX-TP/Data/fastq/pairedTwoIndividusGzippedIrigin` - `cd`
 * List the directory content
 * Run fastq-stats program ( [more](http://manpages.ubuntu.com/manpages/xenial/man1/fastq-stats.1.html) to get stats about the fastq file `irigin1_1.fastq.gz`
@@ -483,8 +448,8 @@ for file in *fastq; do
 done;
 ```
 
-<a name="practice-14"></a>
-### Practice 14 : Dealing with vcf Files 
+<a name="practice-13"></a>
+### Practice 13 : Dealing with vcf Files 
 
 * List the content of the directory `/scratch2/VCF_LINUX`
 * Before creating your directory `/scratch2/VCF_LINUX_FORMATIONX`, displays the amount of disk space available on the file system with the command `df`
@@ -508,8 +473,8 @@ Thus, OgOb-all-MSU7-CHR6.GATKVARIANTFILTRATION.LINK.vcf is the name of the new f
 
 -----------------------
 
-<a name="practice-13"></a>
-### Practice 15 :  Filtering VCF files `|` - `zgrep` 
+<a name="practice-14"></a>
+### Practice 14 :  Filtering VCF files `|` - `zgrep` 
 To get some basics stats of the output VCF files, let's use linux command!
 * How many polymorphisms were detected (Displaying all the lines which does not start with # / header lines) in the different vcf files ?
 * How many polymorphisms were considered "good" after filtering steps by GATK VARIANTFILTRATION (ie marked `PASS`)?
