@@ -121,18 +121,17 @@ In mobaXterm:
 | WAVE RESEACH HPC | wavebc.wavecenter.tech | 
 -----------------------
 
-In Linux/MacOS or WSL shell
+In Linux/MacOS or WSL shell:
 
 ```bash 
 ssh login@wavebc.wavecenter.tech
-
 ```
 <a name="practice-3"></a>
 ###  Practice 3 : First steps : prompt & `pwd`
 
 #### Working environment
 
-* Connect to node 17 with the `srun` command (this command will be explained later in the linux cluster” module) 
+* Connect to a node  with the `srun` command (this command will be explained later in the linux cluster” module) 
 
 ```
 srun -p short -c 2 --pty bash -i
