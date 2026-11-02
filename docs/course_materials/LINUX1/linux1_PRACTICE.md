@@ -5,7 +5,7 @@
 | Related-course materials | [Linux for Dummies](https://github.com/CIBiG-wave/cibig-wave.github.io/blob/gh-pages/docs/course_materials/LINUX1/) |
 | Authors                  | Christine Tranchant-Dubreuil (christine.tranchant@ird.fr), Bruno Granouillac                                                           |
 | Creation Date            | 26/02/2018                                                                                                          |
-| Last Modified Date       | 24/11/2025                                                                                                          |
+| Last Modified Date       | 02/11/2026                                                                                                          |
 
 -----------------------
 
@@ -52,7 +52,7 @@ BONUS
 | Platform                                                              | Software  | Description | url |
 |:----------------------------------------------------------------------| :------------- | :------------- | :------------- |
 | <img width="10%" class="img-responsive" src="img/osWin.png"/> | mobaXterm |An enhanced terminal for Windows with an X11 server and a tabbed SSH client | [More](https://mobaxterm.mobatek.net/) |
-| <img width="10%" class="img-responsive" src="img/osWin.png"/>      | WSL | https://etibiri.github.io/cours/installation-environnement.html |
+| <img width="10%" class="img-responsive" src="img/osWin.png"/>      | WSL | The Windows Subsystem for Linux (WSL) lets developers install a Linux distribution and use Linux applications, utilities, and Bash command-line tools directly on Windows.	|[More](https://etibiri.github.io/cours/installation-environnement.html) |
 
 
 ##### Transferring and copying files from your computer to a Linux servers with SFTP (SSH File Transfer Protocol) protocol
