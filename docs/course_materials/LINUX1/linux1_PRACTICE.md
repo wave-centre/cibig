@@ -53,12 +53,6 @@ BONUS
 | <img width="10%" class="img-responsive" src="img/osWin.png"/>      | WSL | The Windows Subsystem for Linux (WSL) lets developers install a Linux distribution and use Linux applications, utilities, and Bash command-line tools directly on Windows.	|[More](https://etibiri.github.io/cours/installation-environnement.html) |
 
 
-##### Transferring and copying files from your computer to a Linux servers with SFTP (SSH File Transfer Protocol) protocol
-
-| Platform                                                                                                                                                                                     | Software  | Description | url |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| :------------- | :------------- | :------------- |
-| <img width="10%" class="img-responsive" src="img/osApple.png"/> <img width="10%" class="img-responsive" src="img/osLinux.png"/> <img width="10%" class="img-responsive" src="img/osWin.png"/>| <img width="10%" class="img-responsive" src="img/filezilla.png"/> filezilla |  FTP and SFTP client  | [Download](https://filezilla-project.org/download.php?type=client)  |
-
 ##### Viewing and editing files on your computer before transferring on the linux server or directly on the distant server
 
 | Type | Software  | url |
@@ -111,10 +105,13 @@ srun -p short -c 2 --pty bash -i
 
 ```
 # get the file from the web
+
+mkdir -p /scratch/$USER
 rsync -avP master:/shared/formation/LINUX-TP.tar.gz /scratch/$USER
 
 # decompress the gzip file
 tar -xzvf /scratch/$USER/LINUX-TP.tar.gz
+cd /scratch/$USER
 ```
 
 *  List the content of your home directory on the server now (cf. filetree just below)
@@ -385,7 +382,7 @@ The flag for the output format is -outfmt followed by a number which denotes the
 * Extract protein sequences that have homogy  with our CDS using  `seqtk subseq` and the protein bank by typing :
 
 ```
-module load bioinfo/seqtk/1.3-r106
+module load seqtk/1.5
 seqtk 
 seqtk subseq
 seqtk subseq [bank.fasta] [accessions.id] | head
