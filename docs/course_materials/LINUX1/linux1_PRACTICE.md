@@ -118,7 +118,8 @@ In mobaXterm:
 
 | Cluster HPC | hostname| 
 | :------------- | :------------- | 
-| IRD HPC |  bioinfo-master.ird.fr | 
+| IRD HPC |  bioinfo-master.ird.fr |
+| WAVE RESEACH HPC | wavebc.wavecenter.tech | 
 -----------------------
 
 
@@ -130,7 +131,7 @@ In mobaXterm:
 * Connect to node 17 with the `srun` command (this command will be explained later in the linux cluster” module) 
 
 ```
-srun -p formation -c 2 --pty bash -i
+srun -p short -c 2 --pty bash -i
 ```
 
 #### Linux discovering
@@ -289,7 +290,8 @@ We will prepare our blast analysis performed after by creating directory and mov
 1. download files on your computer and transfer them on the linux cluster `ẁget`
 2. download directely on the linux server using the command `datasets`
 
-``` module load ncbi-datasets/16.27.2 ```
+``` module load bioinfo-wave ```
+``` module load ncbi-datasets/18.10.2 ```
 
 ``` datasets download genome accession ... ```
 
