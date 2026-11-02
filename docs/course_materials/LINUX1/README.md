@@ -41,10 +41,10 @@ After this course, participants should be able to:
 # Instructors
 
 * Christine Tranchant-Dubreuil - IRD (UMR DIADE, plateau itrop)
-* Ezechiel Tibiri - WAVE
+* Ezechiel B. Tibiri - WAVE RESEACH (INERA-Burkina Faso)
 
 # Date
 
-2025, WAVE, Abidjan, Ivory cost 
+2026, WAVE RESEACH, Abidjan, Ivory cost 
 
 
