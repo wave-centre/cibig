@@ -52,7 +52,7 @@ BONUS
 | Platform                                                              | Software  | Description | url |
 |:----------------------------------------------------------------------| :------------- | :------------- | :------------- |
 | <img width="10%" class="img-responsive" src="img/osWin.png"/> | mobaXterm |An enhanced terminal for Windows with an X11 server and a tabbed SSH client | [More](https://mobaxterm.mobatek.net/) |
-
+| <img width="10%" class="img-responsive" src="img/osWin.png"/>      | WSL | https://etibiri.github.io/cours/installation-environnement.html |
 
 
 ##### Transferring and copying files from your computer to a Linux servers with SFTP (SSH File Transfer Protocol) protocol
@@ -60,7 +60,6 @@ BONUS
 | Platform                                                                                                                                                                                     | Software  | Description | url |
 |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| :------------- | :------------- | :------------- |
 | <img width="10%" class="img-responsive" src="img/osApple.png"/> <img width="10%" class="img-responsive" src="img/osLinux.png"/> <img width="10%" class="img-responsive" src="img/osWin.png"/>| <img width="10%" class="img-responsive" src="img/filezilla.png"/> filezilla |  FTP and SFTP client  | [Download](https://filezilla-project.org/download.php?type=client)  |
-
 
 ##### Viewing and editing files on your computer before transferring on the linux server or directly on the distant server
 
