@@ -121,7 +121,12 @@ In mobaXterm:
 | WAVE RESEACH HPC | wavebc.wavecenter.tech | 
 -----------------------
 
+In Linux/MacOS or WSL shell
 
+````bash 
+ssh login@wavebc.wavecenter.tech
+
+```
 <a name="practice-3"></a>
 ###  Practice 3 : First steps : prompt & `pwd`
 
