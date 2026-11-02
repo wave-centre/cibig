@@ -123,7 +123,7 @@ In mobaXterm:
 
 In Linux/MacOS or WSL shell
 
-````bash 
+```bash 
 ssh login@wavebc.wavecenter.tech
 
 ```
