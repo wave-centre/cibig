@@ -648,7 +648,7 @@ Some helpful tips for using the man command :
 <a name="links"></a>
 
 * Related courses : [Linux for Dummies](https://)
-* Tutorials : [Linux Command-Line Cheat Sheet](https://)
+* Tutorials : [Linux Command-Line Cheat Sheet](https://etibiri.github.io/cours/programmation-bioinformatique.html)
 
 -----------------------
 
