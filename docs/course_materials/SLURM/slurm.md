@@ -35,7 +35,7 @@
 
 
 1. Open a terminal
- Type  `ssh <your_login>@160.120.108.168` with <your_login>  the login given
+ Type  `ssh <your_login>@wavebc.wavecenter.tech` with <your_login>  the login given
   
 2. In the console, enter the password when prompted.
 Once you are successfully logged in, you will be use this console for the rest of the lecture. 
