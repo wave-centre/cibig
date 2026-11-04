@@ -233,7 +233,7 @@ We will prepare our blast analysis performed after by creating directory and mov
 <img width="50%" class="img-responsive" src="img/arbo-2.png"/>
 
 * Create a subdirectory called `Rice_sequencing_ONT` in the directory `LINUX_TP` with the `mkdir` command.
-* Move all the files started by `Oglab_var1`  into this new directory with the `mv` command.
+* Move all the files started by `sproteases`  into this new directory with the `mv` command.
 * List the content of `LINUX-TP` and `Rice_sequencing_ONT` with the `ls` command.
 * Create a subdirectory called `BlastAnalysis` in the directory `/scratch/<USER_NAME>` with the `mkdir` command.
 * Copy all the files started by `sproteases`  in  the directory `BlastAnalysis` with the `cp` command.
@@ -255,8 +255,10 @@ We will prepare our blast analysis performed after by creating directory and mov
 1. download files on your computer and transfer them on the linux cluster `ẁget`
 2. download directely on the linux server using the command `datasets`
 
-``` module load bioinfo-wave ```
-``` module load ncbi-datasets/18.10.2 ```
+```bash
+module load bioinfo-wave
+module load ncbi-datasets/18.10.2
+```
 
 ``` datasets download genome accession ... ```
 
@@ -411,7 +413,7 @@ seqtk comp  FASTA_FILE | head
 <a name="practice-11"></a>
 ### Practice 11 :  Getting stats from fastq sequences
 
-* Go to the directory `~/LINUX-TP/Data/fastq/pairedTwoIndividusGzippedIrigin` - `cd`
+* Go to the directory `/scratch/$USER/LINUX-TP/Data/fastq/pairedTwoIndividusGzippedIrigin` - `cd`
 * Count the number of fastq files in this directory - `wc -l`
 * List the first 8 lines of the fastq file `irigin1_1.fastq.gz` without unzipping the file - `zcat`, `head`
 * List the first line of all fastq files in this directory without unzipping files - `zcat`, `head`
@@ -431,7 +433,7 @@ done; \
 
 <a name="practice-12"></a>
 ### Practice 12 : Getting basic stats
-* Go into the directory `LINUX-TP/Data/fastq/pairedTwoIndividusGzippedIrigin` - `cd`
+* Go into the directory `/scratch/$USER/LINUX-TP/Data/fastq/pairedTwoIndividusGzippedIrigin` - `cd`
 * List the directory content
 * Run fastq-stats program ( [more](http://manpages.ubuntu.com/manpages/xenial/man1/fastq-stats.1.html) to get stats about the fastq file `irigin1_1.fastq.gz`
 ```
