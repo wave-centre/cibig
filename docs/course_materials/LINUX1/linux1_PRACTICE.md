@@ -111,7 +111,7 @@ rsync -avP master:/shared/formation/LINUX-TP.tar.gz /scratch/$USER
 
 # decompress the gzip file
 tar -xzvf /scratch/$USER/LINUX-TP.tar.gz
-cd /scratch/$USER/LINUX-TP
+cd /scratch/$USER
 ```
 
 *  List the content of your home directory on the server now (cf. filetree just below)
