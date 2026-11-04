@@ -236,9 +236,9 @@ We will prepare our blast analysis performed after by creating directory and mov
 * Move all the files started by `Oglab_var1`  into this new directory with the `mv` command.
 * List the content of `LINUX-TP` and `Rice_sequencing_ONT` with the `ls` command.
 * Create a subdirectory called `BlastAnalysis` in the directory `/scratch/<USER_NAME>` with the `mkdir` command.
-* Copy all the files started by `Oglab_var1`  in  the directory `BlastAnalysis` with the `cp` command.
+* Copy all the files started by `sproteases`  in  the directory `BlastAnalysis` with the `cp` command.
 * List the content of the `BlastAnalysis` and `Rice_sequencing_ONT` directories. What are the differences between mv and cp?
-* Remove the files `Oglab_var1_cds.fna` and `Oglab_var1_genome_v1.fasta` in the directory `BlastAnalysis` with the `rm` command.
+* Remove the files `sproteases_small.fasta.gz` and `sproteases_small_dna.fasta.gz` in the directory `BlastAnalysis` with the `rm` command.
 * Copy the whole directory `T-coffee` with the name `T-coffee-copy`into the directory `LINUX-TP`.
 * After checking the content of the directory `LINUX-TP`, remove the directory `T-coffee-copy`. How to remove a directory ?
 * Remove all the files into the directory `T-coffee-copy` with the `rm *` command after moving in the correct directory. BE CAREFUL !
