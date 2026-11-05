@@ -19,6 +19,6 @@ set-threads:
 default-resources:
   mem_mb: 500
   partition: wave
-  account:wave
+  account: wave
   
 
