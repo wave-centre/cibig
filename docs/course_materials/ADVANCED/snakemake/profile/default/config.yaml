@@ -1,0 +1,14 @@
+--- 
+
+cores: 1
+
+## Job resources
+set-resources:
+  fastqc:
+    mem_mb: 1000
+    runtime: "2m"
+set-threads:
+  fastqc: 1
+default-resources:
+  mem_mb: 500
+

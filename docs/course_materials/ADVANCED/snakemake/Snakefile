@@ -1,0 +1,43 @@
+configfile: "config.yaml"
+
+# Require samples to be in configuration
+SAMPLES = config["samples"]
+
+rule all:
+  input:
+    "multiqc_report.html"
+
+rule multiqc:
+  output:
+    "multiqc_report.html"
+  input:
+    expand("FastQC/{sample}_fastqc.zip", sample=SAMPLES)
+  log:
+    std="logs/multiqc.std",
+    err="logs/multiqc.err"
+  conda:
+    "envs/multiqc-1.19.yml"
+  container:
+    "docker://quay.io/biocontainers/multiqc:1.19--pyhdfd78af_0"
+  envmodules:
+    "bioinfo-shared",
+    "multiqc/1.35"
+  shell: "multiqc -f {input} 1>{log.std} 2>{log.err}" 
+
+rule fastqc:
+  output:
+    "FastQC/{sample}_fastqc.zip",
+    "FastQC/{sample}_fastqc.html"
+  input:
+    "Data/{sample}.fastq.gz"
+  log:
+    std="logs/{sample}_fastqc.std",
+    err="logs/{sample}_fastqc.err"
+  conda:
+    "envs/fastqc-0.11.9.yml"
+  container:
+    "docker://biocontainers/fastqc:v0.11.9_cv8"
+  envmodules:
+    "bioinfo-shared",
+    "fastqc/0.11.9"
+  shell: "fastqc --threads {threads} --outdir FastQC/ {input} 1>{log.std} 2>{log.err}"
