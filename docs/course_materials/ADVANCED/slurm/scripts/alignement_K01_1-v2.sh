@@ -9,6 +9,7 @@ reference_index="/projects/ADVANCED/banks/arabidopsis_thaliana/TAIR10.1/bowtie2/
 file_id="KO1_1"
 
 mkdir -p ${scratch}/results
+rsync -ravz /projects/ADVANCED/slurm/data /scratch/demo_$USER/
 
 srun bowtie2 --threads=10 -x "${reference_index}" -U "${scratch}/data/${file_id}.fastq.gz" -S "${scratch}/results/${file_id}.sam"
 srun samtools view -hbS -q 30 -o "${scratch}/results/${file_id}.filtered.bam" "${scratch}/results/${file_id}.sam"

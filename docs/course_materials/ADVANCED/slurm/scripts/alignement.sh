@@ -12,6 +12,7 @@ files=(/scratch/demo_$USER/data/*fastq.gz)
 file_id=$(basename -s .fastq.gz "${files[$SLURM_ARRAY_TASK_ID]}")
 
 mkdir -p ${scratch}/results
+rsync -ravz /projects/ADVANCED/slurm/data /scratch/demo_$USER/
 
 srun -J "${file_id} bowtie2" bowtie2 --threads="${SLURM_CPUS_PER_TASK}" -x "${reference_index}" -U "${scratch}/data/${file_id}.fastq.gz" -S "${scratch}/results/${file_id}.sam"
 srun -J "${file_id} filter" samtools view -hbS -q 30 -o "${scratch}/results/${file_id}.filtered.bam" "${scratch}/results/${file_id}.sam"
