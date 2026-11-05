@@ -1,0 +1,8 @@
+.ipynb_checkpoints
+.snakemake
+Data
+logs
+FastQC
+multiqc_data
+dag.pdf
+multiqc_report.html

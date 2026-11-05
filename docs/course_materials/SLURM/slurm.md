@@ -5,7 +5,7 @@
 | Related-course materials | [HPC initiation](https://github.com/CIBiG-wave/cibig-wave.github.io/blob/gh-pages/docs/course_materials/SLURM) |
 | Authors                  | Ndomassi TANDO (ndomassi.tando@ird.fr)                                                           |
 | Creation Date            | 24/09/2024                                                                                                          |
-| Last Modified Date       | 30/10/2026                                                                                                          |
+| Last Modified Date       | 05/11/2026                                                                                                          |
 | Modified by              | ndomassi TANDO              |
 
 -----------------------
@@ -14,6 +14,7 @@
 
 <!-- TOC depthFrom:2 depthTo:2 withLinks:1 updateOnSave:1 orderedList:0 -->
 
+* [Preambule: Install your `ssh keys` ](#preambule)
 * [Practice 1: Connect to a linux server with `ssh`](#practice-1)
 * [Practice 2: Reserve one core of a node using srun and create your working folder](#practice-2)
 * [Practice 3: Transferring files to or from the storage with `rsync` ](#practice-3)
@@ -28,20 +29,46 @@
 
 
 -----------------------
+<a name="preambule"></a>
+### Preambule: Install you ssh keys
 
+Ssh keys allow you to connect to a remote server without password using a couple of private and public keys.
+
+Your public key will be stored by the remote server to be acknowledege everytime you connect
+
+1. Open a terminal
+2. Create your ssh keys couple
+
+`ssh-keygen -t rsa`
+
+Leave the default location for you 
+For more security, you can choose to set a passphrase but for the practice leave it blank by pressing enter
+
+3.  Send your publickey to the remote server
+
+`ssh-copy-id login@wavebc.wavecenter.tech`
+
+with login being you own login .
+
+Then enter your password for the last time
+`
+
+----------------------------------------------
 
 <a name="practice-1"></a>
 ### Practice 1: Connect to a linux server by `ssh`
 
-
+ 
 1. Open a terminal
  Type  `ssh <your_login>@wavebc.wavecenter.tech` with <your_login>  the login given
   
-2. In the console, enter the password when prompted.
 Once you are successfully logged in, you will be use this console for the rest of the lecture. 
+
 3. Type the command `sinfo` and comment the result
-4. type the command `sinfo -N nodes --long` and noticed what have been added
-5. Type the command <code>scontrol show nodes</code>
+   
+5. type the command `sinfo -N nodes --long` and noticed what have been added
+   
+7. Type the command <code>scontrol show nodes</code>
 
 -----------------------
 
@@ -67,8 +94,8 @@ Once you are successfully logged in, you will be use this console for the rest o
 ### Practice 3 : Transferring files to or from the storage with `rsync` 
 
 
-1. Using rsync, transfer a file from your computer to your personal folder <code>/home/login</code> on the storage server (160.120.108.168)
-2. Verify the result with ls from the master (160.120.108.164)
+1. Using rsync, transfer a file from your computer to your personal folder <code>/home/login</code> on the storage server (storage-bc.wavecenter.tech)
+2. Verify the result with ls from the master (wavebc.wavecenter.tech)
 3. Using rsync, transfer the file <code>/projects/SLURM/TP.txt</code> from the storage server to your PC
 
 

@@ -1,0 +1,21 @@
+--- 
+
+core: 10
+
+# Cluster
+## Job setteings
+jobname: "{rule}.{jobid}"
+jobs: 100
+
+## Job resources
+set-resources:
+  fastqc:
+    mem_mb: 1000
+    runtime: "2m"
+    partition: fast
+set-threads:
+  fastqc: 2
+default-resources:
+  mem_mb: 500
+  partition: fast
+
