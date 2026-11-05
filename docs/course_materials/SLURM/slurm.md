@@ -63,9 +63,12 @@ Then enter your password for the last time
  Type  `ssh <your_login>@wavebc.wavecenter.tech` with <your_login>  the login given
   
 Once you are successfully logged in, you will be use this console for the rest of the lecture. 
+
 3. Type the command `sinfo` and comment the result
-4. type the command `sinfo -N nodes --long` and noticed what have been added
-5. Type the command <code>scontrol show nodes</code>
+   
+5. type the command `sinfo -N nodes --long` and noticed what have been added
+   
+7. Type the command <code>scontrol show nodes</code>
 
 -----------------------
 
