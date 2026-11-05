@@ -12,13 +12,13 @@ set-resources:
   fastqc:
     mem_mb: 1000
     runtime: "2m"
-    partition: wave
-    account: wave
+    slurm_partition: wave
+    slurm_account: wave
 set-threads:
   fastqc: 2
 default-resources:
   mem_mb: 500
-  partition: wave
-  account: wave
+  slurm_partition: wave
+  slurm_account: wave
   
 
