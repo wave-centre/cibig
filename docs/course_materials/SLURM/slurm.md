@@ -33,6 +33,7 @@
 ### Preambule: Install you ssh keys
 
 Ssh keys allow you to connect to a remote server without password using a couple of private and public keys.
+
 Your public key will be stored by the remote server to be acknowledege everytime you connect
 
 1. Open a terminal
