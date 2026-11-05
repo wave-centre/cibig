@@ -1,6 +1,8 @@
 #!/bin/bash
 #SBATCH --cpus-per-task=10
 #SBATCH --mem=1G
+#SBATCH --account=wave
+#SBATCH --partition=wave
 
 module load bowtie2/2.4.4 samtools/1.15.1
 
