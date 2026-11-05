@@ -7,6 +7,8 @@
 #SBATCH --error=alignment-%j.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=mon@email.fr
+#SBATCH --account=wave
+#SBATCH --partition=wave
 
 module load bowtie2/2.4.4 samtools/1.15.1
 
