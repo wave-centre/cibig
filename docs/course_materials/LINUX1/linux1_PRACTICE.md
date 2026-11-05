@@ -233,9 +233,8 @@ We will prepare our blast analysis performed after by creating directory and mov
 * List the content of the `BlastAnalysis` and `Rice_sequencing_ONT` directories. What are the differences between mv and cp?
 * Remove the files `sproteases_small.fasta.gz` and `sproteases_small_dna.fasta.gz` in the directory `BlastAnalysis` with the `rm` command.
 * Copy the whole directory `T-coffee` with the name `T-coffee-copy`into the directory `LINUX-TP`.
-* After checking the content of the directory `LINUX-TP`, remove the directory `T-coffee-copy`. How to remove a directory ?
 * Remove all the files into the directory `T-coffee-copy` with the `rm *` command after moving in the correct directory. BE CAREFUL !
-* Remove the directory `T-coffee-copy`.
+* After checking the content of the directory `LINUX-TP`, remove the directory `T-coffee-copy`. How to remove a directory ?
 
 
 <a name="practice-7"></a>
