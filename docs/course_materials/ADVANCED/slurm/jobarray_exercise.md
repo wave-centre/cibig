@@ -13,7 +13,7 @@
 
 <!-- TOC depthFrom:2 depthTo:2 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-* [Preambule: Install your `ssh keys` ](#preambule)
+* [Preambule: Objectives](#preambule)
 * [First script: Create a  script to split the sequence file and index the database called `cutting.sh`](#first-script)
 * [Second script: Launch a blastx analysis on the first six small fasta files](#second-script)
 * [License](#license)
