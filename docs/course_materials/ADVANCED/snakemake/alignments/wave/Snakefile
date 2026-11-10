@@ -1,0 +1,41 @@
+configfile: "config.yaml"
+
+SAMPLES = config["samples"]
+
+rule all:
+  input:
+    expand("results/{sample}.bam", sample=SAMPLES)
+
+rule sort:
+  output:
+    "results/{sample}.bam"
+  input:
+    "results/{sample}_filted.bam"
+  envmodules:
+    "bioinfo-shared",
+    "samtools/1.15.1"
+  shell: "samtools sort -o {output} {input}"
+  
+rule filter:
+  output:
+    temp("results/{sample}_filted.bam")
+  input:
+    "results/{sample}.sam"
+  envmodules:
+    "bioinfo-shared",
+    "samtools/1.15.1"
+  shell: "samtools view -hbS -q 30 -o {output} {input}"
+   
+rule bowtie2:
+  input:
+    "/projects/ADVANCED/slurm/data/{sample}.fastq.gz"
+  output:
+    temp("results/{sample}.sam")
+  log:
+    std="logs/{sample}_bowtie2.std",
+    err="logs/{sample}_bowtie2.err"
+  envmodules:
+    "bioinfo-shared",
+    "bowtie2/2.4.4"
+  threads: 10
+  shell: "bowtie2 --threads=10 -x {config[reference_index]} -U {input} -S {output} 1>{log.std} 2>{log.err}"

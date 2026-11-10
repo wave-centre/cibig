@@ -1,0 +1,6 @@
+samples:
+  - KO1_1
+  - KO2_1
+  - KO3_1
+
+reference_index: "/projects/ADVANCED/banks/arabidopsis_thaliana/TAIR10.1/bowtie2/Arabidopsis_thaliana.TAIR10.1_genomic"

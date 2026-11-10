@@ -1,0 +1,82 @@
+configfile: "config.yaml"
+
+# Require samples to be in configuration
+SAMPLES = config["samples"]
+
+
+rule all:
+  input:
+    expand("results/{sample}.bam", sample=SAMPLES)
+
+rule sort:
+  output:
+    "results/{sample}.bam"
+  input:
+    "results/{sample}.filtered.bam"
+  log:
+    std="logs/{sample}_sort.std",
+    err="logs/{sample}_sort.err"
+  resources:
+    mem_mb=1000,
+    runtime=4
+  envmodules:
+    "bioinfo-shared",
+    "samtools/1.15.1"
+  shell:
+    """
+    mkdir -p {config[scratch]}
+    tmp=$(mktemp -d -p {config[scratch]})
+    rsync -a {input} $tmp/input.bam
+    samtools sort -o $tmp/output.bam $tmp/input.bam 1>{log.std} 2>{log.err}
+    rsync -a $tmp/output.bam {output}
+    rm -rf $tmp
+    """
+
+rule filter:
+  output:
+    temp("results/{sample}.filtered.bam")
+  input:
+    "results/{sample}.sam"
+  log:
+    std="logs/{sample}_filter.std",
+    err="logs/{sample}_filter.err"
+  resources:
+    mem_mb=1000,
+    runtime=4
+  envmodules:
+    "bioinfo-shared",
+    "samtools/1.15.1"
+  shell:
+    """
+    mkdir -p {config[scratch]}
+    tmp=$(mktemp -d -p {config[scratch]})
+    rsync -a {input} $tmp/input.sam
+    samtools view -hbS -q {config[min_mapq]} -o $tmp/output.bam $tmp/input.sam 1>{log.std} 2>{log.err}
+    rsync -a $tmp/output.bam {output}
+    rm -rf $tmp
+    """
+
+rule bowtie2:
+  output:
+    temp("results/{sample}.sam")
+  input:
+    config["source_data"] + "/{sample}.fastq.gz"
+  log:
+    std="logs/{sample}_bowtie2.std",
+    err="logs/{sample}_bowtie2.err"
+  threads: 10
+  resources:
+    mem_mb=1000,
+    runtime=4
+  envmodules:
+    "bioinfo-shared",
+    "bowtie2/2.4.4"
+  shell:
+    """
+    mkdir -p {config[scratch]}
+    tmp=$(mktemp -d -p {config[scratch]})
+    rsync -a {input} $tmp/input.fastq.gz
+    bowtie2 --threads {threads} -x {config[reference_index]} -U $tmp/input.fastq.gz -S $tmp/output.sam 1>{log.std} 2>{log.err}
+    rsync -a $tmp/output.sam {output}
+    rm -rf $tmp
+    """

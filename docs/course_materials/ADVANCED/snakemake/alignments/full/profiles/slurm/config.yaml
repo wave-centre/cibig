@@ -1,0 +1,11 @@
+slurm: true
+jobs: 6
+use-envmodules: true
+latency-wait: 30
+printshellcmds: true
+
+default-resources:
+  - slurm_account=wave
+  - slurm_partition=wave
+  - mem_mb=1000
+  - runtime=4

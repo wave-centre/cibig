@@ -1,0 +1,21 @@
+# Scratch local au nœud de calcul ($USER est développé par bash dans le job)
+scratch: /scratch/demo_$USER
+
+# Répertoire source des fastq (espace partagé)
+source_data: /projects/ADVANCED/slurm/data
+
+# Préfixe de l'index bowtie2
+reference_index: /projects/ADVANCED/banks/arabidopsis_thaliana/TAIR10.1/bowtie2/Arabidopsis_thaliana.TAIR10.1_genomic
+
+# Seuil de qualité de mapping pour le filtre samtools
+min_mapq: 30
+
+# Échantillons à aligner : nom des fichiers sans le suffixe .fastq.gz
+# (<source_data>/<sample>.fastq.gz)
+samples:
+  - KO1_1
+  - KO2_1
+  - KO3_1
+#  - WT1_1
+#  - WT2_1
+#  - WT3_1
